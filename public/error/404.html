@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/favicon.ico">
+        <title>Crooms Bell Schedule</title>
+        <link rel="stylesheet" type="text/css" href="/style-root.css">
+        <style>
+            body {user-select: none;}
+            div#content {position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;}
+            div#content img {padding: 10px; border-radius: 10px; background-color: #dddddd;}
+            button {font-family: var(--fonts)}
+            @media (prefers-color-scheme: dark) {div#content img {background-color: #222222;}}
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <img src="//cdn.croomssched.tech/data/7291ef48-5f58-4f73-a79d-23f146afd471/clippy.png" style="width: 200px; height: 200px;" draggable="false" alt="Clippy">
+            <h1 style="margin-bottom: 0;">It looks like you're lost!</h1>
+            <h3>Would you like some help?</h3>
+            <button onclick="window.location.href = '/'">Go back to the homepage</button>
+        </div>
+    </body>
+    <script src="/colors.js"></script>
+</html>

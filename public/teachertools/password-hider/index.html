@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=3">
+    <title>Assessment Screen</title>
+    <link rel="stylesheet" type="text/css" href="/style-root.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <style>
+        [contenteditable]:focus {
+            border-bottom: solid 2px var(--accent-color);
+            display: inline-block;
+            min-width: 30px;
+            overflow: hidden;
+        }
+
+        p#test-name {
+            font-size: 4em;
+            margin: 0;
+            font-weight: 900;
+            outline: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        div#timer {
+            font-size: 3em;
+            margin: 0;
+            font-weight: 700;
+            position: fixed;
+            top: 1em;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            user-select: none;
+        }
+
+        div#timer p {
+            margin-bottom: 0;
+        }
+
+        div#password-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100vw;
+        }
+
+        div#button-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            grid-template-areas: 'a b c';
+        }
+
+        button {
+            font-family: var(--fonts);
+        }
+
+        div.hoverbox-menu {
+            display: none;
+            position: absolute;
+            transform: translate(-13px, -58px);
+            background-color: #eeeeee;
+            padding: 8px 10px;
+            border-radius: 10px;
+            width: max-content;
+        }
+
+        div.hoverbox-menu:hover {
+            background-color: #dddddd;
+        }
+
+        button:hover div.hoverbox-menu {
+            display: block;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            div.hoverbox-menu {
+                background-color: #111111;
+                color: white;
+            }
+
+            div.hoverbox-menu:hover {
+                background-color: #222222;
+            }
+        }
+    </style>
+</head>
+<body id="body">
+<main style="padding-bottom: 50px;">
+    <div id="loading" style="position: fixed; top: 50%; left: 50%; transform: translateY(-50%); padding: 10px ;">
+        <i class="fa-solid fa-spinner fa-spin" id="loader"></i>
+    </div>
+    <div id="main" style="display: none;">
+        <p contenteditable spellcheck="true" id="test-name">Test Name (click to edit)</p>
+        <div id="timer">
+            <p id="countdown">0:00:00</p>
+        </div>
+        <div id="password-container">
+            <p style="font-size: 2em; margin: 0; width: auto; user-select: none;">Assessment Password:</p>
+            <p contenteditable spellcheck="false" id="password"
+               style="font-size: 8em; margin: 0; outline: none; width: auto; user-select: none;"
+               onkeyup="password.update()"></p>
+        </div>
+        <div id="button-bar">
+            <div style="grid-area: a; max-width: 115px; margin-right: 2px;">
+                <button id="showpwd" onclick="password.show()" style="display: none;">Show Password</button>
+                <button id="hidepwd" onclick="password.hide()" style="display: block;">Hide Password</button>
+            </div>
+            <div style="grid-area: b; max-width: 93px; margin-left: 2px; margin-right: 2px;">
+                <button id="showtim" onclick="timer.show()" style="display: none;">Show Timer</button>
+                <button id="hidetim" onclick="timer.hide()" style="display: block;">Hide Timer</button>
+            </div>
+            <div id="time-actions" style="grid-area: c; max-width: 89px; margin-left: 2px;">
+                <button id="stoptim" onclick="timer.stop()" style="display: none;">Stop Timer
+                    <div class="hoverbox-menu">
+                        <a id="pausetim">Pause Timer</a>
+                    </div>
+                </button>
+                <button id="starttim" onclick="timer.start()" style="display: block;">Start Timer</button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+<script>
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max + 1);
+        return Math.floor(Math.random() * (max - min) + min); // The maximum is inclusive and the minimum is inclusive
+    }
+
+    const main = () => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("main").style.display = "block";
+        password.element.innerText = password.value;
+    }
+
+    let password = {
+        "show": () => {
+            password.element.innerText = password.value;
+            password.element.setAttribute("contenteditable", "");
+            password.showbtn.style.display = "none";
+            password.hidebtn.style.display = "block"
+        },
+        "hide": () => {
+            index = 0;
+            password.element.innerText = null;
+            while (index < password.charcount) {
+                password.element.innerText += "•";
+                index++;
+            }
+            password.element.removeAttribute("contenteditable");
+            password.hidebtn.style.display = "none";
+            password.showbtn.style.display = "block"
+        },
+        "update": () => {
+            password.value = password.element.innerText;
+            password.charcount = password.element.innerText.length;
+        },
+        "value": "(enter your password here)",
+        "charcount": "26",
+        "element": document.getElementById("password"),
+        "showbtn": document.getElementById("showpwd"),
+        "hidebtn": document.getElementById("hidepwd")
+    }
+
+    let timer = {
+        "show": () => {
+            timer.element.style.display = "block";
+            timer.showbtn.style.display = "none";
+            timer.hidebtn.style.display = "block";
+            timer.actcontainer.style.display = "block";
+        },
+        "hide": () => {
+            timer.element.style.display = "none";
+            timer.showbtn.style.display = "block";
+            timer.hidebtn.style.display = "none";
+            timer.actcontainer.style.display = "none";
+        },
+        "time": "0:00:00",
+        "start": () => {
+            countdown("start");
+            timer.startbtn.style.display = "none";
+            timer.stopbtn.style.display = "block";
+        },
+        "pause": () => {
+            countdown("pause");
+            timer.startbtn.style.display = "block";
+            timer.stopbtn.style.display = "none";
+        },
+        "stop": () => {
+            countdown("end");
+            timer.startbtn.style.display = "block";
+            timer.stopbtn.style.display = "none";
+        },
+        "element": document.getElementById("timer"),
+        "countdown": document.getElementById("countdown"),
+        "showbtn": document.getElementById("showtim"),
+        "hidebtn": document.getElementById("hidetim"),
+        "startbtn": document.getElementById("starttim"),
+        "stopbtn": document.getElementById("stoptim"),
+        "pausebtn": document.getElementById("pausetim"),
+        "actcontainer": document.getElementById("time-actions")
+    }
+
+    const countdown = (action) => {
+        console.log(action);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+            main()
+        }, getRandomInt(0, 5000));
+    }, false);
+</script>
+</html>

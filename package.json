@@ -1,0 +1,13 @@
+{
+  "name": "crooms-bell-sched",
+  "version": "3.0.0",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~4.3.4",
+    "express": "^4.19.2",
+    "morgan": "~1.9.1"
+  }
+}

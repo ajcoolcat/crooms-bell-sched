@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /error
+Disallow: /ads
+Disallow: /countdown
+Disallow: /fonts
+Disallow: /oreo
+Disallow: /practices
+Disallow: /pwa
+Disallow: /scenes
+Disallow: /summer
+Disallow: /teachertools
+Disallow: /terms

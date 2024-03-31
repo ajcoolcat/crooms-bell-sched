@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=3">
+    <title>Crooms Bell Schedule</title>
+    <style>h1{margin-top:0;margin-bottom:0;}p{margin-top:0;}</style>
+    <script>
+      let url = new URL(document.location).searchParams; let loc = url.get("loc"); let pth;
+
+      if (loc == null) {
+        pth = "/"
+      } else if (loc == "bob") {
+        pth = "/bob";
+      } else if (loc == "poll") {
+        pth = "https://docs.google.com/forms/d/e/1FAIpQLSfKpsN7-rdUuEh9Ph7zm150UhExxGh-L1EA9HSW8MZx-tHRAQ/viewform";
+      } else if (loc == "deskpins") {
+        pth = "https://drive.google.com/file/d/1PcbDe366M1l7OgS9R-uKPIJ0Dbrd_mhG/view";
+      } else {
+        if (loc.startsWith("https://") || loc.startsWith("http://")) {
+          pthobj = new URL(loc); pth = pthobj.href;
+        } else if (loc.startsWith("/")) {
+          pth = loc;
+        } else {
+          pth = "https://" + loc;
+          pthobj = new URL(pth);
+          pth = pthobj.href;
+        }
+      }
+
+      function redir(pth) {window.location.href = pth;} redir(pth);
+    </script>
+  </head>
+  <body>
+    <h1>Redirecting...</h1><p>If it takes longer than 5 seconds, <a class="links" onclick="redir(pth)">click here</a>.</p>
+  </body>
+</html>

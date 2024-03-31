@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico">
+    <title>CAIT Bell Schedule</title>
+    <style>
+      @font-face {
+        font-family: "SegUI";
+        src: url("/SegUIVar.ttf");
+      }
+      
+      body {
+        font-family: "SegUI";
+        cursor: default;
+      }
+      
+      .accordion {
+        font-family: "SegUI";
+        background-color: #dddddd;
+        color: #000000;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+
+      .panel {
+        padding: 0 18px;
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+      }
+      
+      div.shell-dialog {
+        background-color: #ededed;
+        margin: 0;
+        padding: 10px 10px;
+        overflow: hidden;
+        position: fixed;
+        bottom: 37px;
+        right: 0;
+        width: 100
+      }
+
+      div.shell-dialog h2, p {
+        margin: 0;
+        padding: 0;
+      }
+      
+      ul.footbar {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #eeeeee;
+      }
+
+      li.mininavbutton {
+        float: left;
+      }
+
+      li.mininavbutton a {
+        cursor: default;
+        display: block;
+        color: #000000;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-bottom: 0px;">A critical issue was encountered.</h1>
+    <h3 style="margin-top: 0px;">We currently cannot assist you.</h3>
+    <button class="accordion">Why am I seeing this?</button>
+    <div class="panel">
+      <h4 style="margin-bottom: 0px;">Error 0x0068656C70</h4>
+      <p style="margin-top: 0px;">A critical problem was found and execution was interrupted to protect the server.</p>
+    </div>
+    <footer>
+      <ul class="footbar">
+        <li class="mininavbutton"><a class="nolink">Copyleft Andrew Jennings</a></li>
+        <li id="time-shell-dialog-trigger" class="mininavbutton" style="float:right"><a id="datetime"></a></li>
+      </ul>
+    </footer>
+  </body>
+  <script>
+    var x = setInterval(function() {
+      const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      const monthnames = ["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
+      const d = new Date();
+      let year = d.getFullYear();
+      let month = d.getMonth();
+      let monthname = monthnames[d.getMonth()];
+      let date = d.getDate();
+      let day = weekday[d.getDay()];
+      let hour = d.getHours();
+      let minutes = d.getMinutes();
+      let seconds = d.getSeconds();
+      if (hour >= 13) {
+        var hourshort = hour - 12
+        var apm = "PM"
+      } else if (hour == 12) {
+        var hourshort = hour
+        var apm = "PM"
+      } else if (hour == 0) {
+        var hourshort = 12
+        var apm = "AM"
+      } else {
+        var hourshort = hour
+        var apm = "AM"
+      }
+      
+      // CLOCK //
+      if (minutes < 10) {
+        minutes = "0"+minutes
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds
+      }
+      document.getElementById("datetime").innerHTML = day + ", " + monthname + " " + date + ", " + year + " " + hourshort + ":" + minutes + ":" + seconds + " " + apm
+    }, 1000);
+    
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+  </script>
+</html>
