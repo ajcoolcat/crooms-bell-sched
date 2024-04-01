@@ -17,4 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.get('*', (req, res) => {
+    res.send(__dirname + '/error/404.html')
+})
+
 module.exports = app;
