@@ -117,6 +117,8 @@
 
       .antiderp {
         animation: anti-rainbow 10s infinite;
+        width: 100px;
+        height: 100px;
       }
 
       @keyframes anti-rainbow {
@@ -230,7 +232,7 @@
               transform: translateX(0%);
           }
           50% {
-              transform: translateX(94%);
+              transform: translateX(calc(100vw - 102px));
           }
           100% {
               transform: translateX(0%);
@@ -1008,12 +1010,10 @@
         alt="Derpybird"
       />
     </div>
-    <div id="parent" style="border: solid #600000; width: 100%; height: 300px">
+    <div id="parent" style="border: solid #600000; height: 300px">
       <div class="marquee vertical" style="width: 100%; height: fit-content">
         <div class="marquee antiderp" speed="5">
           <img
-            width="100"
-            height="100"
             alt="Derpybird Master"
             class="antiderp disabled"
             src="https://cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/Derpy%20Bird1.png"
@@ -1778,6 +1778,7 @@
   <script>
     document.querySelectorAll("img").forEach((e) => {
       e.setAttribute("draggable", "false");
+      e.addEventListener("contextmenu", (e) => {e.preventDefault()}, false);
     });
   </script>
 </html>

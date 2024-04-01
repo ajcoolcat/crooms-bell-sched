@@ -16,7 +16,7 @@
     "type": "list",
     "value": "SegUI",
     "values": [
-      {"id": "SegUI", "name": "Segoe UI"}, 
+      {"id": "SegUI", "name": "Segoe UI"},
       {"id": "Torus", "name": "Torus Notched"},
       {"id": "CACula", "name": "CA Cula"}
     ]

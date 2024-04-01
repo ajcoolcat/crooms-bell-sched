@@ -4,12 +4,12 @@
   "dir": "ltr",
   "display": "standalone",
   "display_override": ["window-controls-overlay"],
-  "name": "Crooms Bell Schedule",
+  "name": "Crooms Bell Schedule Hub",
   "orientation": "landscape",
   "scope": "/",
-  "short_name": "Crooms Bell Schedule Hub",
+  "short_name": "Crooms Bell Schedule",
   "start_url": "/",
-  "theme_color": "#640024",
+  "theme_color": "#690D22",
   "categories": [
     "education",
     "utilities"

@@ -14,6 +14,7 @@
     <!-- End OpenGraph -->
     <title>Crooms Bell Schedule</title>
     <link rel="stylesheet" type="text/css" href="style-root.css">
+      <link rel="stylesheet" type="text/css" href="fa.css">
   </head>
   <body id="body" onload="main()">
     <header style="user-select:none;">
@@ -32,7 +33,7 @@
       <div id="top-separator" style="padding-top: 5px; padding-bottom: 8px;">
         <p style="margin: 0;"><span id="random" onclick="document.getElementById('senseless').removeAttribute('hidden');document.getElementById('random').setAttribute('class','noactive');">
           Today's random and senseless quip is...</span>
-          <i><span id="senseless" hidden>:(</span></i>
+          <i><span id="senseless" hidden><i class="fa-solid fa-spinner fa-spin loader"></i></span></i>
         </p>
       </div>
     </header>

@@ -9,6 +9,9 @@
           content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period.">
     <meta name="keywords"
           content="Crooms, bell schedule, CAIT, bell, schedule, CAoIT, Crooms Bell Schedule, Crooms Academy Bell Schedule, Crooms Academy, Crooms Academy of Information Technology">
+    <meta name="author" content="Andrew Jennings">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#690D22">
     <!-- OpenGraph/Social Media Sharing -->
     <meta name="og:description"
           content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period.">
@@ -24,258 +27,15 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7615151731467786"
             crossorigin="anonymous"></script>
     <!-- End AdSense -- DO NOT REMOVE -->
-    <!-- Vercel Analytics -->
-    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <!-- End Vercel Analytics -->
     <!-- Clippy -->
     <script src="https://unpkg.com/jquery@3.2.1"></script>
     <script src="clippy.js"></script>
     <!-- End Clippy -->
     <title>Crooms Bell Schedule</title>
     <link rel="stylesheet" type="text/css" href="style-root.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
-    <style>
-        main {
-            margin-top: 58px;
-        }
-
-        #widget-board ol, #widget-board ul {
-            padding-inline-end: 1em;
-        }
-
-        #widget-board {
-            transition: all 0.2s ease-in-out;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            grid-template-areas: "lunch lunch weather"
-                                 "quickbits feed weather";
-        }
-
-        .widget {
-            margin: 10px;
-            border-radius: 10px;
-            padding: 15px;
-            background-color: #eeeeee;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .navbutton a, .mininavbutton a {
-            transition: all 0.2s ease-in-out;
-        }
-
-        div.widget h3 {
-            margin-top: 0;
-        }
-
-        #lunch {
-            grid-area: lunch;
-        }
-
-        #weather {
-            grid-area: weather;
-        }
-
-        #quickbits {
-            grid-area: quickbits;
-        }
-
-        #feed {
-            grid-area: feed;
-        }
-
-        #forecast {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        }
-
-        #toosmall {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        #DailyLunchImage {
-            max-width: 65%;
-            height: fit-content;
-            float: right;
-            border-radius: 10px;
-        }
-
-        #lunchContainer {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            grid-template-areas: 'text graphic';
-        }
-
-        @media screen and (max-width: 1080px) {
-            #widget-board {
-                display: block;
-            }
-
-            #graphicast, #track {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 1440px) {
-            #DailyLunchImageContainer {
-                display: none;
-            }
-
-            #lunchContainer {
-                display: block;
-            }
-        }
-
-        @media screen and (max-width: 740px) {
-            main {
-                margin-top: 45px;
-            }
-
-            li.navbutton {
-                float: left;
-            }
-
-            li.navbutton a {
-                display: block;
-                text-align: center;
-                padding: 8px 10px;
-                text-decoration: none;
-            }
-
-            #navbutton1, #navbutton6, #pd4, #githubLogo {
-                display: none;
-            }
-
-            #forecast {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-            }
-
-            #graphicast, #track {
-                display: block;
-            }
-
-            #control-center {
-                top: 37px;
-                width: 100%;
-                left: -110%;
-                height: calc(100vh - 20px - 37px - 37px);
-            }
-        }
-
-        @media screen and (max-width: 429px) {
-            clippy, #pd3, #settings-link, #control-center, #navbutton4 {
-                display: none;
-            }
-
-            #forecast {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-        }
-
-        @media screen and (max-width: 349px) {
-            footer {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 335px) {
-            #pd2 {
-                display: none;
-            }
-
-            #forecast {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media screen and (max-width: 249px) {
-            #navbutton5 {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 239px) {
-            #pd1 {
-                display: none;
-            }
-
-            #forecast {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media screen and (max-width: 199px) {
-            header, main {
-                display: none;
-            }
-
-            #toosmall {
-                display: block;
-            }
-        }
-
-        @media screen and (max-height: 124px) {
-            header, main, footer {
-                display: none;
-            }
-
-            #toosmall {
-                display: block;
-            }
-        }
-
-        @media screen and (prefers-color-scheme: dark) {
-            .widget {
-                background-color: #111111;
-            }
-        }
-
-        .urgent {
-            animation: urgent-fade 5s infinite;
-        }
-
-        .urgent::marker {
-            color: black;
-        }
-
-        @keyframes urgent-fade {
-            0% {
-                color: black;
-            }
-            50% {
-                color: var(--accent-color);
-            }
-            100% {
-                color: black;
-            }
-        }
-
-        @media (prefers-color-scheme: dark) {
-            @keyframes urgent-fade {
-                0% {
-                    color: white;
-                }
-                50% {
-                    color: var(--accent-color);
-                }
-                100% {
-                    color: white;
-                }
-            }
-            .urgent::marker {
-                color: white;
-            }
-        }
-
-        :root {
-            --window-height: 100%;
-        }
-    </style>
 </head>
 <body id="body" onload="main()" style="margin: 0;">
 <header data-nosnippet style="user-select:none;">
@@ -301,17 +61,17 @@
     <h3>Your device's screen is too small.</h3>
     <p>To use our website, please browse on a larger display.</p>
 </div>
-<main style="height: calc(100vh - 58px);">
+<main style="height: calc(100vh - 86px);">
     <div id="loading"
          style="position: fixed; top: 50%; left: 50%; transform: translateY(-50%); padding: 10px; user-select: none;"
          data-nosnippet>
         <i class="fa-solid fa-spinner fa-spin loader" id="loader"></i>
     </div>
-    <div id="host" style="margin: 0 8px 8px; display: none; padding-bottom: 50px;">
+    <div id="host" style="margin: 8px; display: none;">
         <p style="margin: 0; user-select: none;"><span id="random"
-                                                       onclick="document.getElementById('senseless').removeAttribute('hidden');document.getElementById('random').setAttribute('class','noactive');">
+           onclick="document.getElementById('senseless').removeAttribute('hidden'); document.getElementById('random').className = 'noactive';">
                 Today's random and senseless quip is...</span>
-            <i><span id="senseless" hidden>:(</span></i>
+            <i><span id="senseless" hidden><i class="fa-solid fa-spinner fa-spin loader"></i></span></i>
         </p>
         <div id="widget-board">
             <div id="lunch" class="widget">
@@ -445,13 +205,11 @@
             </div>
         </div>
     </div>
-    <div id="gradecalc" style="user-select: none; display: none; margin-top: -10px;" data-nosnippet>
-        <div>
-            <iframe id="gradeCalcMasterFrame" src="https://gradecalc.kones.tech" width="100%"
-                    style="margin: 0; padding: 0; border: 0; height: var(--window-height);">
-                <i class="fa-solid fa-spinner fa-spin loader"></i>
-            </iframe>
-        </div>
+    <div id="gradecalc" style="user-select: none; display: none;" data-nosnippet>
+        <iframe id="gradeCalcMasterFrame" src="https://gradecalc.kones.tech" width="100%"
+                style="margin: 0; padding: 0; border: 0; height: calc(100vh - 90px)">
+            <i class="fa-solid fa-spinner fa-spin loader"></i>
+        </iframe>
     </div>
     <div id="special" style="display: none;" data-nosnippet>
 
@@ -532,51 +290,6 @@
         <button onclick="settings()">Here they are!</button>
     </div>
 </div>
-<window windowId="FeedbackWave100" type="dialog"
-        style="display: none; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    <header>Send Us Feedback<span class="close-button" onclick="windows.close('FeedbackWave100');">
-            <i class="fa-sharp fa-thin fa-xmark"></i>
-        </span></header>
-    <main>
-        <p>We&apos;d love to hear your opinions on the Crooms Bell Schedule website.</p>
-        <br>
-        <p>Feel free to submit feedback, and we can also show you
-            <a class="links" onclick="document.querySelector('#time-shell-dialog').style.display = 'block'">where you
-                can always submit feedback</a>.
-        </p>
-        <br>
-        <p>
-            In addition, you can also attempt to fix any bugs yourself by creating a pull request on the site's
-            repository.
-        </p>
-    </main>
-    <footer>
-        <input
-                type="checkbox"
-                id="dontShowWinAgain"
-                name="dontShowWinAgain"
-                style="position: relative; left: -15px;"
-        >
-        <label for="dontShowWinAgain" style="position: relative; left: -15px;">Don&apos;t Show Again</label>
-        <button onclick="windows.close('FeedbackWave100');">No Thanks</button>
-        <button onclick="windows.close('FeedbackWave100'); feedback();">Submit Feedback</button>
-    </footer>
-    <script>
-        document.getElementById("dontShowWinAgain").addEventListener('click', (e) => {
-            if (e.target.checked === false) {
-                window.localStorage.removeItem("showFeedbackWave100")
-            } else {
-                window.localStorage.setItem("showFeedbackWave100", "false")
-            }
-        }, false);
-
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.localStorage.showFeedbackWave100 !== "false") {
-                windows.open("FeedbackWave100")
-            }
-        }, false);
-    </script>
-</window>
 <noscript>
     <div class="modal" style="user-select: none; z-index: 9;" data-nosnippet>
         <div class="alert-box" style="user-select: none;">

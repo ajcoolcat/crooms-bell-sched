@@ -353,5 +353,4 @@ document.addEventListener('DOMContentLoaded', () => {
   getForecast(); setInterval(getForecast, 60000);
 });
 document.body.click();
-dragElement(document.querySelector("window[windowId='FeedbackWave100']"));
 main();
