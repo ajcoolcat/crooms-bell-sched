@@ -1,6 +1,9 @@
 {
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/teacher", "status": 200, "dest": "/error/200.html" },
+    { "src": "/derp", "status": 418, "dest": "/error/418.html" },
+    { "src": "/bob", "status": 516, "dest": "/error/516.html" },
     { "src": "/(.*)", "status": 404, "dest": "/error/404.html" }
   ]
 }

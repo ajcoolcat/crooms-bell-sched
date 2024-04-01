@@ -1,265 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
-    <title>CAIT Bell Schedule</title>
-    <style>
-      @font-face {font-family: "SegUI";src: url("/SegUIVar.ttf");}
-      body {user-select: none;}
-      input, .accordion {font-family: "SegUI";}
-    </style>
+    <title>Crooms Bell Schedule</title>
     <link rel="stylesheet" type="text/css" href="/style-root.css">
-  </head>
-  <body>
-    <div id="main">
-      <img src="https://cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/ClipWindowsGIF.gif" width="100" height="100" style="float: left;"><h1>It looks like he's dead.</h1>
-      <h3>Why'd you kill him?</h3>
-      <input type="button" value="I dunno!" onclick="window.location.href = '/'" /> <input type="button" value="Nuh uh!" onclick="window.location.href = 'https://derpybird.glitch.me/derpyderpyderpyderp'" />
-      <p></p>
-      <button class="accordion">Why am I seeing this?</button>
-      <div class="panel">
-        <h4>HTTP Error 516 (Bob is dead)</h4>
-        <p>The name requested, "Bob", refers to a dead person.</p>
-        <input onclick="learn()" type="button" value="Learn More" />
-      </div>
+    <style>
+        body {
+            user-select: none;
+        }
 
-      <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
+        div#content {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
 
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var panel = this.nextElementSibling;
-          if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-          } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-          } 
-        });
-      }
+        div#content img {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #dddddd;
+        }
 
-      window.console.error("HTTP 516 Error: Bob is dead now, so we had to give you an error.");
-      </script>
+        button {
+            font-family: var(--fonts)
+        }
+
+        @media (prefers-color-scheme: dark) {
+            div#content img {
+                background-color: #222222;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="content">
+        <img src="//cdn.croomssched.tech/data/7291ef48-5f58-4f73-a79d-23f146afd471/clippy.png"
+             style="width: 200px; height: 200px;" draggable="false" alt="Clippy">
+        <h1 style="margin-bottom: 0;">It looks like he's dead.</h1>
+        <h3>Why'd you kill him?</h3>
+        <button onclick="window.location.href = '/'">I dunno</button>
+        <button onclick="window.location.href = 'https://derpybird.glitch.me/derpyderpyderpyderp'">Nope</button>
+        <button onclick="learn()">Learn More</button>
     </div>
-    <div id="learn" hidden>
-      <h1 style="margin-bottom: 0px;">Why is Bob dead?</h1>
-      <h3 style="margin-top: 0px;">Let me explain.</h3>
-      <p>
-        Bob was killed on September 18th, 1965 at 2:38 AM by involuntary manslaghter. The one who committed the act died 7 days later and his name will not be released for security reasons. A second person was there on the scenes with the one who committed the act. His name will not be released because a privacy request form was filled out. Four friends of Bob were with him at the time of his death. Their names will also be kept private for security reasons.
-      </p>
-      <p>
-        Bob also had a girlfriend that wasn't on the scene on the night of his death, however she was involved with the killer and his friend<a id="crush" hidden> (and might also have a crush on him)</a> at a local movie theater.
-      </p>
-      <div id="cant-do-that">
-        <img width="51" height="51" src="https://cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/107.png" style="float: left;" />
+</div>
+<div id="learn" hidden>
+    <h1 style="margin-bottom: 0px;">Why is Bob dead?</h1>
+    <h3 style="margin-top: 0px;">Let me explain.</h3>
+    <p>
+        Bob was killed on September 18th, 1965 at 2:38 AM by involuntary manslaghter. The one who committed the act died
+        7 days later and his name will not be released for security reasons. A second person was there on the scenes
+        with the one who committed the act. His name will not be released because a privacy request form was filled out.
+        Four friends of Bob were with him at the time of his death. Their names will also be kept private for security
+        reasons.
+    </p>
+    <p>
+        Bob also had a girlfriend that wasn't on the scene on the night of his death, however she was involved with the
+        killer and his friend<a id="crush" hidden> (and might also have a crush on him)</a> at a local movie theater.
+    </p>
+    <div id="cant-do-that">
+        <img width="51" height="51" src="https://cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/107.png"
+             style="float: left; margin-right: 10px;"/>
         <h3 style="margin-bottom: 0px;">Sorry</h3>
         <p style="margin-top: 0px;">We can't tell you more.</p>
-      </div>
-      <div id="enemy1whokilled" hidden>
-        <p>Love your enemies.</p>
-      </div>
-      <div id="girlfriend" hidden>
-        <p style="margin-bottom: 0;">I know you want ██████, but she's taken by ███████. Sorry.</p>
-        <p style="margin-top: 0; font-size: 8;">If you wish to submit a complaint, please <a onclick="window.location.href = 'mailto:5927000274@student.myscps.us'" href="#Girlfriend">click here</a>.</p>
-      </div>
-      <div id="revealing"><h3 style="margin-top: 0px; margin-bottom: 0px;">Names of Victims and Relations to Victim</h3><table width="100%">
-        <tbody style="text-align: center;">
-          <tr>
-            <td id="█1" class="border"></td>
-            <td id="█2" class="border"></td>
-            <td id="█3" class="border"></td>
-          </tr>
-          <tr>
-            <td>Friend</td>
-            <td>Girlfriend</td>
-            <td>Girlfriend of Friend</td>
-          </tr>
-          <tr>
-            <td id="███1" class="border"></td>
-            <td id="███2" class="border"></td>
-            <td id="███3" class="border"></td>
-          </tr>
-          <tr>
-            <td>Enemy</td>
-            <td>Enemy (One who killed)</td>
-            <td>Derpy Bird</td>
-          </tr>
-        </tbody>
-      </table><br></div>
-      <input type="button" value="More" onclick="location.href = '/bob#tellmemore'" /> <input type="button" value="Back" onclick="main();" />
     </div>
-    <footer>
-      <ul class="footbar">
-        <li id="copyrights" class="mininavbutton"><a class="nolink">Copyleft Andrew Jennings</a></li>
-        <li id="time-shell-dialog-trigger" class="mininavbutton" style="float:right"><a id="datetime"></a></li>
-      </ul>
-      <div hidden id="time-shell-dialog" class="shell-dialog" height="300" style="width: 350px;">
-        <iframe src="/sched/emb/" width="100%" height="70" scrolling="no" marginwidth="0" frameborder="0"></iframe>
-        <p style="font-size: 8pt;"><a class="links" style="color: #000000;" href="https://forms.gle/6euhoUTeJaUFafGQ8" target="_blank">Send a message to Bob</a></p>
-      </div>
-      <div hidden id="copy-shell-dialog" class="copy-shell-dialog" style="width:400px;">
-        <h3>Crooms Bell Schedule Website</h3>
-        <p>Homepage developed by Andrew Jennings.</p>
-        <p>Bell schedule applet developed by Suvan Mangamuri.</p>
-        <h4 style="margin-top:8px;">Terms of Service</h4>
-        <p><a class="links" href="/terms/">Terms of Service</a></p>
-        <p><a class="links" href="/terms/acg/">Acceptable Content Guidelines</a></p>
-        <p><a class="links" href="/terms/feed/">Feed Guidelines</a></p>
-      </div>
-      <p> </p>
-    </footer>
-  </body>
-  <script>
-    var x = setInterval(function() {
-      const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-      const monthnames = ["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
-      const d = new Date();
-      let year = d.getFullYear();
-      let month = d.getMonth();
-      let monthname = monthnames[d.getMonth()];
-      let date = d.getDate();
-      let day = weekday[d.getDay()];
-      let hour = d.getHours();
-      let minutes = d.getMinutes();
-      let seconds = d.getSeconds();
-      if (hour >= 13) {
-        var hourshort = hour - 12
-        var apm = "PM"
-      } else if (hour == 12) {
-        var hourshort = hour
-        var apm = "PM"
-      } else if (hour == 0) {
-        var hourshort = 12
-        var apm = "AM"
-      } else {
-        var hourshort = hour
-        var apm = "AM"
-      }
-      
-      // CLOCK //
-      if (minutes < 10) {
-        minutes = "0"+minutes
-      }
-      if (seconds < 10) {
-        seconds = "0" + seconds
-      }
-      document.getElementById("datetime").innerHTML = (month+1) + "/" + date + "/" + year + " " + hourshort + ":" + minutes + " " + apm
-      //document.getElementById("datetimefull").innerHTML = day + ", " + monthname + " " + date + ", " + year + " " + hourshort + ":" + minutes + ":" + seconds + " " + apm
-    }, 1000);
-  </script>
-  <script>
-    var timeshelltrigger = document.getElementById("time-shell-dialog-trigger");
-    var timeshell = document.getElementById("time-shell-dialog");
-    timeshelltrigger.addEventListener("mouseover", timeshow, false);
-    timeshell.addEventListener("mouseover", timeshow, false);
-    timeshelltrigger.addEventListener("mouseout", timehide, false);
-    timeshell.addEventListener("mouseout", timehide, false);
+    <div id="enemy1whokilled" hidden>
+        <p>Love your enemies.</p>
+    </div>
+    <div id="girlfriend" hidden>
+        <p style="margin-bottom: 0;">I know you want ██████, but she's taken by ███████. Sorry.</p>
+        <p style="margin-top: 0; font-size: 8pt;">If you wish to submit a complaint, please <a
+                onclick="window.location.href = 'mailto:support@croomssched.tech'" href="#Girlfriend">click here</a>.
+        </p>
+    </div>
+    <div id="revealing"><h3 style="margin-top: 0px; margin-bottom: 0px;">Names of Victims and Relations to Victim</h3>
+        <table width="100%">
+            <tbody style="text-align: center;">
+            <tr>
+                <td id="█1" class="border"></td>
+                <td id="█2" class="border"></td>
+                <td id="█3" class="border"></td>
+            </tr>
+            <tr>
+                <td>Friend</td>
+                <td>Girlfriend</td>
+                <td>Girlfriend of Friend</td>
+            </tr>
+            <tr>
+                <td id="███1" class="border"></td>
+                <td id="███2" class="border"></td>
+                <td id="███3" class="border"></td>
+            </tr>
+            <tr>
+                <td>Enemy</td>
+                <td>Enemy (One who killed)</td>
+                <td>Derpy Bird</td>
+            </tr>
+            </tbody>
+        </table>
+        <br></div>
+    <input type="button" value="More" onclick="location.href = '/bob#tellmemore'"/> <input type="button" value="Back"
+                                                                                           onclick="main();"/>
+</div>
+<script>
+    const mainElement = document.getElementById("main");
+    const learnElement = document.getElementById("learn");
 
-    function timeshow() { 
-      var timeshell = document.getElementById("time-shell-dialog"); 
-      timeshell.removeAttribute("hidden");
+    let names = new URL(document.location).searchParams.get("shownames");
+
+    const main = () => {
+        mainElement.style.display = "block";
+        learnElement.style.display = "none";
     }
 
-    function timehide() {  
-      var timeshell = document.getElementById("time-shell-dialog"); 
-      timeshell.setAttribute("hidden", "true");
-    }
-    
-    var cpshelltrigger = document.getElementById("copyrights");
-    var cpshell = document.getElementById("copy-shell-dialog");
-    cpshelltrigger.addEventListener("mouseover", cpshow, false);
-    cpshell.addEventListener("mouseover", cpshow, false);
-    cpshelltrigger.addEventListener("mouseout", cphide, false);
-    cpshell.addEventListener("mouseout", cphide, false);
-
-    function cpshow() { 
-      document.getElementById("copy-shell-dialog").removeAttribute("hidden");
+    const learn = () => {
+        mainElement.style.display = "none";
+        learnElement.style.display = "block";
     }
 
-    function cphide() {  
-      document.getElementById("copy-shell-dialog").setAttribute("hidden", "true");
-    }
-    
-    function main() {
-      document.getElementById("main").removeAttribute("hidden");
-      document.getElementById("learn").setAttribute("hidden","true");
-    }
-    
-    function learn() {
-      document.getElementById("learn").removeAttribute("hidden");
-      document.getElementById("main").setAttribute("hidden","true");
-    }
+    let y = setInterval(function () {
+        const url = new URL(window.location.href);
+        if (url.hash === "#tellmemore") {
+            document.getElementById("cant-do-that").removeAttribute("hidden");
+            document.getElementById("revealing").setAttribute("hidden", "true");
+            document.getElementById("crush").setAttribute("hidden", "true");
+            document.getElementById("enemy1whokilled").setAttribute("hidden", "true");
+            document.getElementById("girlfriend").setAttribute("hidden", "true");
+        } else if (url.hash === "#system.reveal.names.codes.set.one") {
+            document.getElementById("revealing").removeAttribute("hidden");
+            document.getElementById("crush").setAttribute("hidden", "true");
+            document.getElementById("cant-do-that").setAttribute("hidden", "true");
+        } else if (url.hash === "#Enemy%20(One%20who%20killed)" || url.hash == "#Enemy") {
+            document.getElementById("enemy1whokilled").removeAttribute("hidden");
+            document.getElementById("revealing").setAttribute("hidden", "true");
+            document.getElementById("crush").setAttribute("hidden", "true");
+            document.getElementById("cant-do-that").setAttribute("hidden", "true");
+            document.getElementById("girlfriend").setAttribute("hidden", "true");
+        } else if (url.hash === "#Girlfriend") {
+            document.getElementById("girlfriend").removeAttribute("hidden");
+            document.getElementById("revealing").setAttribute("hidden", "true");
+            document.getElementById("crush").setAttribute("hidden", "true");
+            document.getElementById("cant-do-that").setAttribute("hidden", "true");
+        } else if (url.hash === "#Content%20Creator") {
+            window.location.href = "https://www.youtube.com/@derpybirds";
+        } else {
+            document.getElementById("cant-do-that").setAttribute("hidden", "true");
+            document.getElementById("revealing").setAttribute("hidden", "true");
+            document.getElementById("crush").setAttribute("hidden", "true");
+            document.getElementById("enemy1whokilled").setAttribute("hidden", "true");
+            document.getElementById("girlfriend").setAttribute("hidden", "true");
+        }
+    }, 100);
 
-    if (navigator.platform == "Android" || navigator.platform == "Linux armv7l" || navigator.platform == "undefined" || navigator.platform == "null" || navigator.platform == "iPhone" || navigator.platform == "iPod" || navigator.platform == "BlackBerry" || navigator.platform == "Linux armv8l" || navigator.platform == "WinCE" || navigator.platform == "Pocket PC" || navigator.platform == "PSP" || navigator.platform == "Linux armv6l" || navigator.platform == "Linux armv81") {
-      var topnavbar1 = document.getElementById("navbutton1");
-      topnavbar1.setAttribute("class","mininavbutton");
-      var topnavbar2 = document.getElementById("navbutton2");
-      topnavbar2.setAttribute("class","mininavbutton");
-      var topnavbar3 = document.getElementById("navbutton3");
-      topnavbar3.setAttribute("class","mininavbutton");
-      var topnavbar4 = document.getElementById("navbutton4");
-      topnavbar4.setAttribute("class","mininavbutton");
-      var topnavbar5 = document.getElementById("navbutton5");
-      topnavbar5.setAttribute("class","mininavbutton");
-      var topnavbar6 = document.getElementById("navbutton6");
-      topnavbar6.setAttribute("class","mininavbutton");
-      topnavbar1.setAttribute("hidden", "true");
-    }
-    
-    var y = setInterval(function() {
-      const url = new URL(window.location.href);
-      let params = new URL(document.location).searchParams;
-      let names = params.get("shownames");
-      if (url.hash == "#tellmemore") {   
-        document.getElementById("cant-do-that").removeAttribute("hidden");
-        document.getElementById("revealing").setAttribute("hidden","true");
-        document.getElementById("crush").setAttribute("hidden","true");
-        document.getElementById("enemy1whokilled").setAttribute("hidden","true");
-        document.getElementById("girlfriend").setAttribute("hidden","true");
-      } else if (url.hash == "#system.reveal.names.codes.set.one") {
-        document.getElementById("revealing").removeAttribute("hidden");
-        document.getElementById("crush").setAttribute("hidden","true");
-        document.getElementById("cant-do-that").setAttribute("hidden","true");
-      } else if (url.hash == "#Enemy%20(One%20who%20killed)" || url.hash == "#Enemy") {
-        document.getElementById("enemy1whokilled").removeAttribute("hidden");
-        document.getElementById("revealing").setAttribute("hidden","true");
-        document.getElementById("crush").setAttribute("hidden","true");
-        document.getElementById("cant-do-that").setAttribute("hidden","true");
-        document.getElementById("girlfriend").setAttribute("hidden","true");
-      } else if (url.hash == "#Girlfriend") {
-        document.getElementById("girlfriend").removeAttribute("hidden");
-        document.getElementById("revealing").setAttribute("hidden","true");
-        document.getElementById("crush").setAttribute("hidden","true");
-        document.getElementById("cant-do-that").setAttribute("hidden","true");
-      } else if (url.hash == "#Content%20Creator") {
-        window.location.href = "https://www.youtube.com/@derpybirds";
-      } else {
-        document.getElementById("cant-do-that").setAttribute("hidden","true");
-        document.getElementById("revealing").setAttribute("hidden","true");
-        document.getElementById("crush").setAttribute("hidden","true");
-        document.getElementById("enemy1whokilled").setAttribute("hidden","true");
-        document.getElementById("girlfriend").setAttribute("hidden","true");
-      }
-      
-      if (names == "true") {
+    if (names === "true") {
         document.getElementById("███1").innerHTML = "cee3eca4f86fe1452070222990cdffec283a314458229e7f987ba841bf1ae349";
         document.getElementById("███2").innerHTML = "9184e88c3685fa64622480f78adb5d3040379b05ffa257c4bd44cb73d7767b64";
         document.getElementById("███3").innerHTML = "<a class=\"links\" href=\"https://www.youtube.com/@derpybirds\">b3ce10faf6bc9fd7a8e88979392779d5e4e342930d31325c6a6858f535e50005</a>";
         document.getElementById("█1").innerHTML = "bd0ecfaa4e936a73963529b99256dea7bdc208296fdc4e963e689f444f7e72a7";
         document.getElementById("█2").innerHTML = "4968e3365013da2a66a7c4c4360b57bd16e4ece0cb9de209e990db3fda25c079";
         document.getElementById("█3").innerHTML = "d92d1ee14a7ff04052a523f91bb6d57d93ff59c929e0d4d0a0342199475ee4d2";
-      } else {
+    } else {
         document.getElementById("███1").innerHTML = "███████ ██████";
         document.getElementById("███2").innerHTML = "██████ ████";
         document.getElementById("███3").innerHTML = "████████████";
         document.getElementById("█1").innerHTML = "█████ ████████";
         document.getElementById("█2").innerHTML = "██████ ███████";
         document.getElementById("█3").innerHTML = "██████ █████";
-      }
-    }, 1000);
-  </script>
-  <script src="/colors.js"></script>
+    }
+</script>
+</body>
 </html>
