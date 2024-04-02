@@ -9,8 +9,7 @@ html {
     --accent-color-disabled: #490012;
     --accent-color-translucent: #690d2288;
     --system-color: var(--accent-color);
-    --fonts: /* "SegUI", system-ui; */ "Comic Sans MS", "Comic Sans", cursive;
-    font-size: 15px;
+    --fonts: "SegUI", system-ui;
     cursor: url("https://cdn.croomssched.tech/cursors/light/arrow.png") 5 5, auto;
 }
 
