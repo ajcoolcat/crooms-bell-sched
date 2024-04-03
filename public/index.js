@@ -261,6 +261,8 @@ const loadAlerts = (wxalert) => {
 
       if (wxalert[index].properties.severity === "Extreme" && wxalert[index].properties.event.endsWith("Warning") || wxalert[index].properties.event.endsWith("Emergency"))
       {isUrgent = 'class="urgent"'}
+      else if (wxalert[index].properties.severity === "Extreme" && wxalert[index].properties.event.endsWith("Watch"))
+      {isUrgent = 'class="important"'}
       else {isUrgent = null}
 
       item[index] = document.createElement("li");

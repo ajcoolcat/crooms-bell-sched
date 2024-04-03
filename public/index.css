@@ -78,6 +78,11 @@ div.widget h3 {
     grid-template-areas: 'text graphic';
 }
 
+#graphicast {
+    display: block;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 1080px) {
     #widget-board {
         display: block;
@@ -203,10 +208,14 @@ div.widget h3 {
 }
 
 .urgent {
-    animation: urgent-fade 5s infinite;
+    animation: urgent-fade 2s infinite;
 }
 
-.urgent::marker {
+.important {
+    animation: important-fade 5s infinite;
+}
+
+.urgent::marker, .important::marker {
     color: black;
 }
 
@@ -222,10 +231,23 @@ div.widget h3 {
     }
 }
 
+@keyframes important-fade {
+    0% {
+        color: black;
+    }
+    50% {
+        color: darkorange;
+    }
+    100% {
+        color: black;
+    }
+}
+
 @media screen and (prefers-color-scheme: dark) {
     main {
         scrollbar-color: #555 #333;
     }
+
     @keyframes urgent-fade {
         0% {
             color: white;
@@ -237,7 +259,20 @@ div.widget h3 {
             color: white;
         }
     }
-    .urgent::marker {
+
+    @keyframes important-fade {
+        0% {
+            color: white;
+        }
+        50% {
+            color: orange;
+        }
+        100% {
+            color: white;
+        }
+    }
+
+    .urgent::marker, .important::marker {
         color: white;
     }
 }
