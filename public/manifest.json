@@ -5,7 +5,7 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay"],
   "name": "Crooms Bell Schedule Hub",
-  "orientation": "landscape",
+  "orientation": "portrait",
   "scope": "/",
   "short_name": "Crooms Bell Schedule",
   "start_url": "/",
@@ -705,12 +705,12 @@
   "shortcuts": [
     {
       "name": "Open Hub",
-      "url": "https:/croomssched.tech",
+      "url": "/",
       "description": "Open the Crooms Bell Schedule Hub."
     },
     {
       "name": "Open Daily Poll",
-      "url": "https:/croomssched.glitch.me/poll",
+      "url": "https://croomssched.glitch.me/poll",
       "description": "Open the Daily Poll"
     }
   ],
