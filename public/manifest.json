@@ -14,6 +14,15 @@
     "education",
     "utilities"
   ],
+  "id": "croomssched.croomssched",
+  "lang": "en",
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "croomssched",
+      "url": "/redir.html?url=%s"
+    }
+  ],
   "screenshots": [
     {
       "src": "/pwa/screenshots/large.png",
@@ -712,15 +721,6 @@
       "name": "Open Daily Poll",
       "url": "https://croomssched.glitch.me/poll",
       "description": "Open the Daily Poll"
-    }
-  ],
-  "id": "croomssched.croomssched",
-  "lang": "en",
-  "prefer_related_applications": false,
-  "protocol_handlers": [
-    {
-      "protocol": "croomssched",
-      "url": "/redir.html?url=%s"
     }
   ]
 }
