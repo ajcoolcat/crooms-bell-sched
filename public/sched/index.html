@@ -252,7 +252,7 @@
 
           document.body.style.backgroundColor = AppBgColor;
 
-          const app = new PIXI.Application({background: AppBgColor, width: window.innerWidth, height: window.innerHeight, antialias:true});
+          const app = new PIXI.Application({background: AppBgColor, width: window.innerWidth, height: window.innerHeight, antialias:true, autoDensity:true, resolution: window.devicePixelRatio});
           document.body.appendChild(app.view);
 
           const DateAndTime = new PIXI.Text("Loading...", {fontFamily: Settings.font.value, fontSize: 17.5, fill: textColor});

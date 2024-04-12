@@ -217,6 +217,14 @@
         document.getElementById("alert").removeAttribute("hidden");
       }
     }
+    function onDone() {
+      saveSettings();
+      try {
+        window.close();
+      } catch (e) {
+        console.warn(e);
+      }
+    }
   </script>
 </head>
 
@@ -227,7 +235,7 @@
         <ul class="navbar">
           <li id="navbutton1" class="navbutton"><a class="nolink" style="border:0;">Schedule Settings</a></li>
           <li class="navbutton" style="float:right">
-          <a onclick="saveSettings(); window.close();">Done</a></li>
+          <a onclick="onDone()">Done</a></li>
         </ul>
       </nav>
     </header><br>
