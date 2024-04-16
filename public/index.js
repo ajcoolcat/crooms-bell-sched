@@ -356,7 +356,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 document.body.click();
 main();
-
-document.getElementById("mayo-launcher").onclick = () => {
-  window.open("https://en.wikipedia.org/wiki/Mayonaise");
-}
