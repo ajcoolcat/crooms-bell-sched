@@ -347,9 +347,13 @@
     </menu-item>
 </context-menu>
 <context-menu menu-id="clippy" style="z-index: 7; position: fixed;" data-nosnippet>
+    <menu-item onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyFact();">
+        <i class="fa-solid fa-lightbulb-exclamation"></i>Facts
+    </menu-item>
+    <hr style="margin: 5px 10px">
     <menu-item role="animate"
-               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyAgent.animate();"><i
-            class="fa-solid fa-lightbulb-exclamation"></i>Animate
+               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyAgent.animate();">
+        <i class="fa-solid fa-face-awesome fa-spin"></i>Animate
     </menu-item>
     <menu-item role="close"
                onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; hideClippy();"><i
@@ -361,10 +365,15 @@
                onclick="document.querySelector('[menu-id=clippy-debug]').style.display = 'none'; alertClient('Animations', `Here's all the animations available.<br><br>` + clippyAgent.animations())">
         Animations
     </menu-item>
-    <hr style="margin: 5px 10px;">
+    <hr style="margin: 5px 10px;"
     <menu-item role="animate"
-               onclick="document.querySelector('[menu-id=clippy-debug]').style.display = 'none'; clippyAgent.animate();">
-        <i class="fa-solid fa-lightbulb-exclamation"></i>Animate
+               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyFact();"><i
+            class="fa-solid fa-lightbulb-exclamation"></i>Facts
+    </menu-item>
+    <hr style="margin: 5px 10px">
+    <menu-item role="animate"
+               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyAgent.animate();"><i
+            class="fa-solid fa-face-awesome fa-spin"></i>Animate
     </menu-item>
     <menu-item role="close"
                onclick="document.querySelector('[menu-id=clippy-debug]').style.display = 'none'; hideClippy();"><i
