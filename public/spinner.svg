@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="100" height="100" style="shape-rendering: auto; display: block; background: black;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="100" height="100" style="shape-rendering: auto; display: block; background: transparent;">
     <defs>
         <style type="text/css"><![CDATA[
       :root {--body-color: #690d22;}
-      svg {background-color: #ffffff;}
-      @media screen and (prefers-color-scheme: dark) {:root {--body-color: #ff1010; background-color: #000000;}}
+      @media screen and (prefers-color-scheme: dark) {:root {--body-color: #ff1010;}}
     ]]></style>
     </defs>
     <g>
