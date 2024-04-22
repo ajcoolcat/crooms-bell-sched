@@ -2,11 +2,12 @@
     <defs>
         <style type="text/css"><![CDATA[
       :root {--body-color: #690d22;}
-      @media screen and (prefers-color-scheme: dark) {:root {--body-color: #ff1010;}}
+      svg {background-color: #ffffff;}
+      @media screen and (prefers-color-scheme: dark) {:root {--body-color: #ff1010; background-color: #000000;}}
     ]]></style>
     </defs>
     <g>
-        <circle cx="50" cy="50" r="30" stroke-width="10" stroke-linecap="round" fill="none" stroke="#000000" style="stroke: var(--body-color);">
+        <circle cx="50" cy="50" r="30" stroke-width="10" stroke-linecap="round" fill="none" style="stroke: var(--body-color);">
             <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;180 50 50;720 50 50" keyTimes="0;0.5;1"/>
             <animate attributeName="stroke-dasharray" repeatCount="indefinite" dur="1s" values="18.84955592153876 169.64600329384882;94.2477796076938 94.24777960769377;18.84955592153876 169.64600329384882" keyTimes="0;0.5;1"/>
         </circle>
