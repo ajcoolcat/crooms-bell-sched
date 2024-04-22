@@ -265,10 +265,10 @@
     <div>
         <h3 style="margin-bottom: 5px;">Clippy</h3>
         <div id="clippy-hidden" style="display: none">
-            <button id="show-clippy" onclick="showClippy()">Show Clippy</button>
+            <button id="show-clippy" onclick="showClippy(); allowClippyStartup();">Show Clippy</button>
         </div>
         <div id="clippy-shown">
-            <button id="hide-clippy" onclick="hideClippy()">Hide Clippy</button>
+            <button id="hide-clippy" onclick="hideClippy(); blockClippyStartup();">Hide Clippy</button>
             <button id="anim-clippy" onclick="animateClippy()">Animate Clippy</button>
         </div>
     </div>
@@ -388,8 +388,10 @@
 <!-- Status Pages -->
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
 <!-- Main JS Files -->
-<script src="colors.js"></script>
+<script src="commons.js"></script>
+<script src="navigator.js"></script>
 <script src="index.js"></script>
+<script src="fetch.js"></script>
 <script src="control.js"></script>
 <!-- Vercel Analytics -->
 <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
