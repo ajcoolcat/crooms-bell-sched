@@ -1,7 +1,12 @@
 {
-    "main": [
-        
-    ],
+    "scheds": {
+        "normal": [
+
+        ],
+    },
+    "days": {
+        "monday": "normal"
+    }
 }
 
 let Monday1 = new Array(12);
