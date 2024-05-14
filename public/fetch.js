@@ -110,16 +110,20 @@ const loadAlerts = (wxalert) => {
         while (index <= amnt - 1) {
             let endtime = new Date(wxalert[index].properties.ends);
             let currentday = d.getDay();
-            if (endtime == "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {endtime = "further notice"}
+            if (endtime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {endtime = "further notice"}
             else {
                 let endday = endtime.getDay();
                 if (endday === currentday) {endday = " "}
                 else {endday = weekdays[endday] + " at "}
+
                 let endhour = endtime.getHours();
-                if (endhour >= 12) {endhour -= 12; apm = "PM"}
+                if (endhour > 12) {endhour -= 12; apm = "PM"}
+                else if (endhour === 12) {apm = "PM"}
                 else {apm = "AM"}
+
                 let endminute = endtime.getMinutes();
                 if (endminute < 10) {endminute = "0"+endminute}
+
                 endtime = endday + endhour + ":" + endminute + " " + apm;
             }
             
