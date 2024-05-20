@@ -88,105 +88,58 @@ PIXI.Assets.loadBundle('fonts').then(() => {
 
         let Monday1 = new Array(12);
         Monday1[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Monday1[1] = new DayEvent(7, 20, Settings.periodNames.period1, 8, 13);
-        Monday1[2] = new DayEvent(8, 18, Settings.periodNames.period2, 9, 10);
-        Monday1[3] = new DayEvent(9, 15, Settings.periodNames.period3, 10, 5);
-        Monday1[4] = new DayEvent(10, 10, Settings.periodNames.period4, 11, 2);
-        Monday1[5] = new DayEvent(11, 2, "Lunch", 11, 32);
-        Monday1[6] = new DayEvent(11, 37, Settings.periodNames.period5, 12, 27);
-        Monday1[7] = new DayEvent(12, 32, Settings.periodNames.period6, 13, 24);
-        Monday1[8] = new DayEvent(13, 49, Settings.periodNames.period7, 14, 20);
+        Monday1[1] = new DayEvent(7, 20, Settings.periodNames.period1, 9, 25);
+        Monday1[2] = new DayEvent(9, 30, Settings.periodNames.period2, 10, 9);
+        Monday1[3] = new DayEvent(10, 14, Settings.periodNames.period3, 10, 53);
+        Monday1[4] = new DayEvent(10, 53, "Lunch", 11, 23);
+        Monday1[5] = new DayEvent(11, 28, Settings.periodNames.period4, 12, 7);
+        Monday1[6] = new DayEvent(12, 12, Settings.periodNames.period5, 12, 51);
+        Monday1[7] = new DayEvent(12, 56, Settings.periodNames.period6, 13, 35);
+        Monday1[8] = new DayEvent(13, 40, Settings.periodNames.period7, 14, 20);
         Monday1[9] = new DayEvent(14, 20, "Dismissal", 14, 25);
         Monday1[10] = new DayEvent(14, 25, "After School", 23, 59);
         Monday1[11] = new DayEvent(23, 59, "End", 23, 59);
 
         let Monday2 = new Array(12);
         Monday2[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Monday2[1] = new DayEvent(7, 20, Settings.periodNames.period1, 8, 13);
-        Monday2[2] = new DayEvent(8, 18, Settings.periodNames.period2, 9, 10);
-        Monday2[3] = new DayEvent(9, 15, Settings.periodNames.period3, 10, 5);
-        Monday2[4] = new DayEvent(10, 10, Settings.periodNames.period4, 11, 2);
-        Monday2[5] = new DayEvent(11, 7, Settings.periodNames.period5, 11, 57);
-        Monday2[6] = new DayEvent(11, 57, "Lunch", 12, 27);
-        Monday2[7] = new DayEvent(12, 32, Settings.periodNames.period6, 13, 24);
-        Monday2[8] = new DayEvent(13, 49, Settings.periodNames.period7, 14, 20);
+        Monday2[1] = new DayEvent(7, 20, Settings.periodNames.period1, 9, 25);
+        Monday2[2] = new DayEvent(9, 30, Settings.periodNames.period2, 10, 9);
+        Monday2[3] = new DayEvent(10, 14, Settings.periodNames.period3, 10, 53);
+        Monday2[4] = new DayEvent(10, 58, Settings.periodNames.period4, 11, 37);
+        Monday2[5] = new DayEvent(11, 37, "Lunch", 12, 7);
+        Monday2[6] = new DayEvent(12, 12, Settings.periodNames.period5, 12, 51);
+        Monday2[7] = new DayEvent(12, 56, Settings.periodNames.period6, 13, 35);
+        Monday2[8] = new DayEvent(13, 40, Settings.periodNames.period7, 14, 20);
         Monday2[9] = new DayEvent(14, 20, "Dismissal", 14, 25);
         Monday2[10] = new DayEvent(14, 25, "After School", 23, 59);
         Monday2[11] = new DayEvent(23, 59, "End", 23, 59);
 
-        let Wednesday1 = new Array(9);
-        Wednesday1[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Wednesday1[1] = new DayEvent(7, 20, Settings.periodNames.period2, 8, 49);
-        Wednesday1[2] = new DayEvent(8, 55, Settings.periodNames.period4, 10, 21);
-        Wednesday1[3] = new DayEvent(10, 21, "Lunch", 10, 51);
-        Wednesday1[4] = new DayEvent(10, 57, "Homeroom", 11, 47);
-        Wednesday1[5] = new DayEvent(11, 53, Settings.periodNames.period6, 13, 20);
-        Wednesday1[6] = new DayEvent(13, 20, "Dismissal", 13, 25);
-        Wednesday1[7] = new DayEvent(13, 25, "After School", 23, 59);
-        Wednesday1[8] = new DayEvent(23, 59, "End", 23, 59);
+        let Wednesday = new Array(9);
+        Wednesday[0] = new DayEvent(1, 0, "Morning", 7, 20);
+        Wednesday[1] = new DayEvent(7, 20, Settings.periodNames.period2, 9, 25);
+        Wednesday[2] = new DayEvent(9, 25, "Break", 9, 40);
+        Wednesday[5] = new DayEvent(9, 45, Settings.periodNames.period3, 11, 45);
+        Wednesday[6] = new DayEvent(11, 45, "Dismissal", 11, 50);
+        Wednesday[7] = new DayEvent(11, 50, "After School", 23, 59);
+        Wednesday[8] = new DayEvent(23, 59, "End", 23, 59);
 
-        let Wednesday2 = new Array(9);
-        Wednesday2[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Wednesday2[1] = new DayEvent(7, 20, Settings.periodNames.period2, 8, 49);
-        Wednesday2[2] = new DayEvent(8, 55, Settings.periodNames.period4, 10, 21);
-        Wednesday2[3] = new DayEvent(10, 27, "Homeroom", 11, 17);
-        Wednesday2[4] = new DayEvent(11, 17, "Lunch", 11, 47);
-        Wednesday2[5] = new DayEvent(11, 53, Settings.periodNames.period6, 13, 20);
-        Wednesday2[6] = new DayEvent(13, 20, "Dismissal", 13, 25);
-        Wednesday2[7] = new DayEvent(13, 25, "After School", 23, 59);
-        Wednesday2[8] = new DayEvent(23, 59, "End", 23, 59);
+        let Thursday = new Array(9);
+        Thursday[0] = new DayEvent(1, 0, "Morning", 7, 20);
+        Thursday[1] = new DayEvent(7, 20, Settings.periodNames.period4, 9, 25);
+        Thursday[2] = new DayEvent(9, 25, "Break", 9, 40);
+        Thursday[5] = new DayEvent(9, 45, Settings.periodNames.period5, 11, 45);
+        Thursday[6] = new DayEvent(11, 45, "Dismissal", 11, 50);
+        Thursday[7] = new DayEvent(11, 50, "After School", 23, 59);
+        Thursday[8] = new DayEvent(23, 59, "End", 23, 59);
 
-        let Thursday1 = new Array(9);
-        Thursday1[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Thursday1[1] = new DayEvent(7, 20, Settings.periodNames.period1, 8, 55);
-        Thursday1[2] = new DayEvent(9, 1, Settings.periodNames.period3, 10, 33);
-        Thursday1[3] = new DayEvent(10, 33, "Lunch", 11, 3);
-        Thursday1[4] = new DayEvent(11, 9, Settings.periodNames.period5, 12, 41);
-        Thursday1[5] = new DayEvent(12, 47, Settings.periodNames.period7, 14, 20);
-        Thursday1[6] = new DayEvent(14, 20, "Dismissal", 14, 25);
-        Thursday1[7] = new DayEvent(14, 25, "After School", 23, 59);
-        Thursday1[8] = new DayEvent(23, 59, "End", 23, 59);
-
-        let Thursday2 = new Array(9);
-        Thursday2[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Thursday2[1] = new DayEvent(7, 20, Settings.periodNames.period1, 8, 55);
-        Thursday2[2] = new DayEvent(9, 1, Settings.periodNames.period3, 10, 33);
-        Thursday2[3] = new DayEvent(10, 39, Settings.periodNames.period5, 12, 11);
-        Thursday2[4] = new DayEvent(12, 11, "Lunch", 12, 41);
-        Thursday2[5] = new DayEvent(12, 47, Settings.periodNames.period7, 14, 20);
-        Thursday2[6] = new DayEvent(14, 20, "Dismissal", 14, 25);
-        Thursday2[7] = new DayEvent(14, 25, "After School", 23, 59);
-        Thursday2[8] = new DayEvent(23, 59, "End", 23, 59);
-
-        let Activity1 = new Array(13);
-        Activity1[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Activity1[1] = new DayEvent(7, 20, Settings.periodNames.period1, 8, 5);
-        Activity1[2] = new DayEvent(8, 10, Settings.periodNames.period2, 8, 50);
-        Activity1[3] = new DayEvent(8, 55, Settings.periodNames.period3, 9, 35);
-        Activity1[4] = new DayEvent(9, 40, Settings.periodNames.period4, 10, 20);
-        Activity1[5] = new DayEvent(10, 20, "Lunch", 10, 50);
-        Activity1[6] = new DayEvent(10, 55, Settings.periodNames.period5, 11, 35);
-        Activity1[7] = new DayEvent(11, 40, "Homeroom", 12, 45);
-        Activity1[8] = new DayEvent(12, 50, Settings.periodNames.period6, 13, 30);
-        Activity1[9] = new DayEvent(13, 35, Settings.periodNames.period7, 14, 20);
-        Activity1[10] = new DayEvent(14, 20, "Dismissal", 14, 25);
-        Activity1[11] = new DayEvent(14, 25, "After School", 23, 59);
-        Activity1[12] = new DayEvent(23, 59, "End", 23, 59);
-
-        let Activity2 = new Array(13);
-        Activity2[0] = new DayEvent(1, 0, "Morning", 7, 20);
-        Activity2[1] = new DayEvent(7, 20, Settings.periodNames.period1, 8, 5);
-        Activity2[2] = new DayEvent(8, 10, Settings.periodNames.period2, 8, 50);
-        Activity2[3] = new DayEvent(8, 55, Settings.periodNames.period3, 9, 35);
-        Activity2[4] = new DayEvent(9, 40, Settings.periodNames.period4, 10, 20);
-        Activity2[5] = new DayEvent(10, 25, Settings.periodNames.period5, 11, 5);
-        Activity2[6] = new DayEvent(11, 5, "Lunch", 11, 35);
-        Activity2[7] = new DayEvent(11, 40, "Homeroom", 12, 45);
-        Activity2[8] = new DayEvent(12, 50, Settings.periodNames.period6, 13, 30);
-        Activity2[9] = new DayEvent(13, 35, Settings.periodNames.period7, 14, 20);
-        Activity2[10] = new DayEvent(14, 20, "Dismissal", 14, 25);
-        Activity2[11] = new DayEvent(14, 25, "After School", 23, 59);
-        Activity2[12] = new DayEvent(23, 59, "End", 23, 59);
+        let Friday = new Array(9);
+        Friday[0] = new DayEvent(1, 0, "Morning", 7, 20);
+        Friday[1] = new DayEvent(7, 20, Settings.periodNames.period6, 9, 25);
+        Friday[2] = new DayEvent(9, 25, "Break", 9, 40);
+        Friday[5] = new DayEvent(9, 45, Settings.periodNames.period7, 11, 45);
+        Friday[6] = new DayEvent(11, 45, "Dismissal", 11, 50);
+        Friday[7] = new DayEvent(11, 50, "After School", 23, 59);
+        Friday[8] = new DayEvent(23, 59, "End", 23, 59);
 
 
 
@@ -456,28 +409,17 @@ PIXI.Assets.loadBundle('fonts').then(() => {
             let date = now.getDate();
             if (current_lunch === 1) {
                 if (day === 1) {currentDay = Monday1; Periodmsg = "Today is a Normal Day.";}
-                else if (day === 2) {currentDay = Monday1; Periodmsg = "Today is a Normal Day.";}
-                else if (day === 3) {currentDay = Wednesday1; Periodmsg = "Today is an EVEN Block Day.";}
-                else if (day === 4) {currentDay = Thursday1; Periodmsg = "Today is an ODD Block Day.";}
-                else if (day === 5) {currentDay = Monday1; Periodmsg = "Today is a Normal Day.";}
+                else if (day === 2) {currentDay = Monday1; Periodmsg = "Today is a Normal Exam Day.";}
+                else if (day === 3) {currentDay = Wednesday; Periodmsg = "Today is a 2 & 3 Short Day.";}
+                else if (day === 4) {currentDay = Thursday; Periodmsg = "Today is a 4 & 5 Short Day.";}
+                else if (day === 5) {currentDay = Friday; Periodmsg = "Today is a 6 & 7 Short Day.";}
             } else if (current_lunch === 2) {
                 if (day === 1) {currentDay = Monday2; Periodmsg = "Today is a Normal Day.";}
-                else if (day === 2) {currentDay = Monday2; Periodmsg = "Today is a Normal Day.";}
-                else if (day === 3) {currentDay = Wednesday2; Periodmsg = "Today is an EVEN Block Day.";}
-                else if (day === 4) {currentDay = Thursday2; Periodmsg = "Today is an ODD Block Day.";}
-                else if (day === 5) {currentDay = Monday2; Periodmsg = "Today is a Normal Day.";}
+                else if (day === 2) {currentDay = Monday2; Periodmsg = "Today is a Normal Exam Day.";}
+                else if (day === 3) {currentDay = Wednesday; Periodmsg = "Today is a 2 & 3 Short Day.";}
+                else if (day === 4) {currentDay = Thursday; Periodmsg = "Today is a 4 & 5 Short Day.";}
+                else if (day === 5) {currentDay = Friday; Periodmsg = "Today is a 6 & 7 Short Day.";}
             } else {current_lunch = 1}
-
-            month++;
-            if (month === 3 && date === 12 && current_lunch === 1) {currentDay = Thursday1; Periodmsg = "Today is an ODD Block Day."}
-            else if (month === 3 && date === 12 && current_lunch === 2) {currentDay = Thursday2; Periodmsg = "Today is an ODD Block Day."}
-            else if (month === 3 && date === 14) {currentDay = TechFest; Periodmsg = "Today is TechFest Day."}
-            else if (month === 3 && date === 15) {currentDay = CroomsCon; Periodmsg = "CroomsCon today!"}
-            else if (month === 4 && date === 26) {
-                Periodmsg = "Today is an Activity Schedule Day.";
-                if (current_lunch === 1) {currentDay = Activity1}
-                else if (current_lunch === 2) {currentDay = Activity2}
-            }
 
             let currentEvent = currentDay[eventNumber - 1];
 
