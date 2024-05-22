@@ -127,19 +127,19 @@ PIXI.Assets.loadBundle('fonts').then(() => {
         Thursday[0] = new DayEvent(1, 0, "Morning", 7, 20);
         Thursday[1] = new DayEvent(7, 20, Settings.periodNames.period4, 9, 25);
         Thursday[2] = new DayEvent(9, 25, "Break", 9, 40);
-        Thursday[5] = new DayEvent(9, 45, Settings.periodNames.period5, 11, 45);
-        Thursday[6] = new DayEvent(11, 45, "Dismissal", 11, 50);
-        Thursday[7] = new DayEvent(11, 50, "After School", 23, 59);
-        Thursday[8] = new DayEvent(23, 59, "End", 23, 59);
+        Thursday[3] = new DayEvent(9, 45, Settings.periodNames.period5, 11, 45);
+        Thursday[4] = new DayEvent(11, 45, "Dismissal", 11, 50);
+        Thursday[5] = new DayEvent(11, 50, "After School", 23, 59);
+        Thursday[6] = new DayEvent(23, 59, "End", 23, 59);
 
         let Friday = new Array(9);
         Friday[0] = new DayEvent(1, 0, "Morning", 7, 20);
         Friday[1] = new DayEvent(7, 20, Settings.periodNames.period6, 9, 25);
         Friday[2] = new DayEvent(9, 25, "Break", 9, 40);
-        Friday[5] = new DayEvent(9, 45, Settings.periodNames.period7, 11, 45);
-        Friday[6] = new DayEvent(11, 45, "Dismissal", 11, 50);
-        Friday[7] = new DayEvent(11, 50, "After School", 23, 59);
-        Friday[8] = new DayEvent(23, 59, "End", 23, 59);
+        Friday[3] = new DayEvent(9, 45, Settings.periodNames.period7, 11, 45);
+        Friday[4] = new DayEvent(11, 45, "Dismissal", 11, 50);
+        Friday[5] = new DayEvent(11, 50, "After School", 23, 59);
+        Friday[6] = new DayEvent(23, 59, "End", 23, 59);
 
 
 
