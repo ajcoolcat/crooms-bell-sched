@@ -1,0 +1,278 @@
+body {
+    overflow: hidden;
+}
+
+main {
+    margin-top: 49px;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+#widget-board ol, #widget-board ul {
+    padding-inline-end: 1em;
+}
+
+#widget-board {
+    transition: all 0.2s;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "lunch lunch weather"
+                         "quickbits feed weather";
+}
+
+.widget {
+    margin: 10px;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #eeeeee;
+    transition: all 0.2s;
+}
+
+.navbutton a, .mininavbutton a {
+    transition: all 0.2s;
+}
+
+div.widget h3 {
+    margin-top: 0;
+}
+
+#lunch {
+    grid-area: lunch;
+}
+
+#weather {
+    grid-area: weather;
+}
+
+#quickbits {
+    grid-area: quickbits;
+}
+
+#feed {
+    grid-area: feed;
+}
+
+#forecast {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+#toosmall {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#DailyLunchImage {
+    max-width: 65%;
+    height: fit-content;
+    float: right;
+    border-radius: 10px;
+}
+
+#lunchContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'text graphic';
+}
+
+#graphicast {
+    display: block;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1080px) {
+    #widget-board {
+        display: block;
+    }
+
+    #graphicast, #track {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    #DailyLunchImageContainer {
+        display: none;
+    }
+
+    #lunchContainer {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    main {
+        margin-top: 45px;
+    }
+
+    li.navbutton {
+        float: left;
+    }
+
+    li.navbutton a {
+        display: block;
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+    }
+
+    #navbutton1, #navbutton6, #pd4, #githubLogo {
+        display: none;
+    }
+
+    #forecast {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    #graphicast, #track {
+        display: block;
+    }
+
+    #control-center {
+        top: 37px;
+        width: 100%;
+        left: -110%;
+        height: calc(100vh - 20px - 37px - 37px);
+    }
+}
+
+@media screen and (max-width: 429px) {
+    clippy, #pd3, #settings-link, #control-center, #navbutton4 {
+        display: none;
+    }
+
+    #forecast {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 349px) {
+    footer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 335px) {
+    #pd2 {
+        display: none;
+    }
+
+    #forecast {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 249px) {
+    #navbutton5 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 239px) {
+    #pd1 {
+        display: none;
+    }
+
+    #forecast {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 199px) {
+    header, main {
+        display: none;
+    }
+
+    #toosmall {
+        display: block;
+    }
+}
+
+@media screen and (max-height: 124px) {
+    header, main, footer {
+        display: none;
+    }
+
+    #toosmall {
+        display: block;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    .widget {
+        background-color: #111111;
+    }
+}
+
+.urgent {
+    animation: urgent-fade 2s infinite;
+}
+
+.important {
+    animation: important-fade 5s infinite;
+}
+
+.urgent::marker, .important::marker {
+    color: black;
+}
+
+@keyframes urgent-fade {
+    0% {
+        color: black;
+    }
+    50% {
+        color: var(--accent-color);
+    }
+    100% {
+        color: black;
+    }
+}
+
+@keyframes important-fade {
+    0% {
+        color: black;
+    }
+    50% {
+        color: darkorange;
+    }
+    100% {
+        color: black;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    main {
+        scrollbar-color: #555 #333;
+    }
+
+    @keyframes urgent-fade {
+        0% {
+            color: white;
+        }
+        50% {
+            color: var(--accent-color);
+        }
+        100% {
+            color: white;
+        }
+    }
+
+    @keyframes important-fade {
+        0% {
+            color: white;
+        }
+        50% {
+            color: orange;
+        }
+        100% {
+            color: white;
+        }
+    }
+
+    .urgent::marker, .important::marker {
+        color: white;
+    }
+}
