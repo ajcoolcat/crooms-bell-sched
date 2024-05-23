@@ -17,7 +17,7 @@ function setInfo(information) {
     let day = dates.getDay();
     if (0 < day && day < 6) {document.getElementById("DailyLunchImage").src = information.lunch[day].image;}
     //document.getElementById("track").src = information.tropicalLink;
-    document.getElementById("senseless").innerHTML = "\"" + information.senseless + "\"";
+    document.getElementById("senseless").innerHTML = information.senseless;
     document.getElementById("quickbit1").innerHTML = information.quickBits[1];
     document.getElementById("quickbit2").innerHTML = information.quickBits[2];
     document.getElementById("quickbit3").innerHTML = information.quickBits[3];
@@ -150,3 +150,8 @@ const getAlerts = () => {
     art.send();
     art.onload = () => {loadAlerts(JSON.parse(JSON.stringify(art.response.features)))}
 }
+
+getInfo(); setInterval(getInfo, 60000);
+getAlerts(); setInterval(getAlerts, 60000);
+getFeed(); setInterval(getFeed, 30000);
+getForecast(); setInterval(getForecast, 60000);

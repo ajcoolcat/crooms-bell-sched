@@ -66,7 +66,12 @@ header, main, section, article, aside, footer {
     display: block;
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6 {
+    color: var(--accent-color);
+    margin: 0;
+}
+
+a:link, a.links {
     color: var(--link);
 }
 
@@ -80,50 +85,59 @@ header {
     left: 0; top: 0;
     user-select: none;
     z-index: 9;
+    box-shadow: black 0 0 10px;
 }
 
 nav {
     display: flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 nav > div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+nav > div > div {
     padding: 15px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
 }
 
-nav div:not(.submenu):hover {
+nav > div div:not(.submenu):hover {
     background: var(--sec);
 }
 
-nav div:not(.submenu):active {
+nav > div div:not(.submenu):active {
     background: var(--tri);
 }
 
-nav div.with-app-logo {
+nav > div div.with-app-logo {
     padding: 8px 15px 8px 8px;
 }
 
-nav div > img.app-logo {
+nav > div div > img.app-logo {
     width: 28px;
     height: 28px;
     margin-right: 8px;
 }
 
-nav > div > div.submenu {
+nav > div > div > div.submenu {
     display: none;
     position: absolute;
     transform: translate(-15px, 100%);
     background: var(--pri);
+    box-shadow: black 0 10px 10px;
+    z-index: 10;
 
     div {
         padding: 15px;
     }
 }
 
-nav div:hover > div.submenu {
+nav > div div:hover > div.submenu {
     display: block;
 }
 
@@ -139,6 +153,7 @@ footer {
     width: 100%;
     user-select: none;
     z-index: 9;
+    box-shadow: black 0 0 10px;
 }
 
 footer > div > span {
@@ -153,6 +168,7 @@ footer > div > div {
     transform: translateY(calc(-100% - 37px));
     background: var(--pri);
     display: none;
+    box-shadow: black 0 -10px 10px;
 
     h3, h4 {margin: 0;}
     p {margin: 0;}
@@ -162,4 +178,38 @@ footer > div > div {
 footer > div:hover {
     span {background: var(--sec);}
     div {display: block;}
+}
+
+#alert-floater {
+    position: fixed;
+    left: 50%; top: 60px;
+    transform: translate(-50%, -50%);
+}
+
+#alert-floater > * {
+    margin-bottom: 10px;
+    background: var(--sec);
+    display: flex;
+    flex-flow: row nowrap;
+    border-radius: 10px;
+    box-shadow: black 0 0 10px;
+}
+
+#alert-floater > .alert {
+    background: var(--alert);
+    color: white;
+}
+
+#alert-floater > .warn {
+    background: var(--warn);
+    color: black;
+}
+
+#alert-floater > .info {
+    background: var(--info);
+    color: white;
+}
+
+main {
+    margin: 8px 8px 45px;
 }

@@ -1,38 +1,9 @@
 function skipTask() {}
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const monthnames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const d = new Date();
-let year = d.getFullYear();
-let month = d.getMonth();
-let date = d.getDate();
 let day = weekday[d.getDay()];
-let hour = d.getHours();
-let minutes = d.getMinutes();
-let seconds = d.getSeconds();
-if (0 < d.getDay() && d.getDay() < 6) {document.getElementById(day + "Lunch").className += " active";}
-
-let x = setInterval(function() {
-  const ds = new Date();
-  let year = ds.getFullYear();
-  let month = ds.getMonth();
-  let date = ds.getDate();
-  let hour = ds.getHours();
-  let minutes = ds.getMinutes();
-  let hourshort; let apm;
-  if (hour >= 13) {hourshort = hour - 12; apm = "PM";}
-  else if (hour === 12) {hourshort = hour; apm = "PM";}
-  else if (hour === 0) {hourshort = 12; apm = "AM";}
-  else {hourshort = hour; apm = "AM";}
-
-  // CLOCK //
-  if (minutes < 10) {minutes = "0" + minutes;}
-  document.getElementById("datetime").innerHTML = (month+1) + "/" + date + "/" + year + " " + hourshort + ":" + minutes + " " + apm
-}, 1000);
-
-hoverListener("#time-shell-dialog-trigger", "#time-shell-dialog");
-hoverListener("#navbutton6", "#dp-shell-dialog");
-hoverListener("#copyrights", "#copy-shell-dialog")
+if (0 < d.getDay() && d.getDay() < 6) {document.getElementById(day + "Lunch").classList.add("active");}
 
 if (month < 10) {month = "0"+month;}
 if (date < 10) {date = "0"+date;}
@@ -43,24 +14,9 @@ function alertClient(title, text) {
   document.getElementById("alert").style.display = "block";
 }
 
-const welcomeExperience = () => {
-  document.getElementById("alert").innerHTML = '' +
-      '<div class="details">' +
-        '<p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Welcome</p>' +
-        '<p style="text-align: center; font-size: 0.8em;">You made it to the new hosting site for the Crooms Bell Schedule! <br> The bell schedule is now <a class="links" href="https://github.com/ajcoolcat/croomssched" target="_blank">open-source</a>, so if there\'s any bugs, make an "issue" (or a <a class="links" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests" target="_blank">pull-request</a> if you think you can fix it yourself) on the GitHub repository. ' +
-        '<br><br>You also might want to update your bookmarks for the site. <br><br> Anyways, welcome, and enjoy the uninterrupted experience of the new Crooms Bell Schedule website.</p>' +
-        '<p style="text-align:center;">' +
-          '<button onclick="alertClient(false,null,null)">Close</button>' +
-        '</p>' +
-      '</div>'
-  document.getElementById("alert").style.display = "block";
-}
-
 document.body.onload = () => {
   let params = new URL(document.location).searchParams;
-  if (params.get("welcomeExperience") === "true") {
-    welcomeExperience();
-  } else if (params.get("goto") === "gradecalc") {
+  if (params.get("goto") === "gradecalc") {
     gradecalc();
   }
   resizeGradeCalc();
@@ -76,7 +32,6 @@ function randomWindow() {
   const urls = [
     "/bob",
     "/teacher",
-    "//croomssched.glitch.me/poll",
     "//google.com",
     "//bing.com",
     "//catsinsinks.com",
@@ -89,8 +44,7 @@ function randomWindow() {
     "//pcjs.org",
   ];
 
-  let window_to_open = urls[getRandomInt(1, 13)];
-  window.open(window_to_open);
+  window.open(urls[getRandomInt(1, 13)]);
 }
 
 function clippyFact() {
@@ -181,7 +135,7 @@ document.addEventListener('contextmenu', (e) => {
 });
 document.addEventListener('DOMContentLoaded', () => {
   setRightClick(document.querySelector("main"), document.querySelector("[menu-id=main]"));
-  setRightClick(document.querySelector("ul.navbar"), document.querySelector("[menu-id=random]"));
+  setRightClick(document.querySelector("header"), document.querySelector("[menu-id=random]"));
   document.querySelectorAll("window").forEach((window) => {
     setRightClick(
         document.querySelector("window[windowid='"+ window.attributes.windowid.value + "'] header"),
@@ -206,12 +160,5 @@ document.addEventListener('DOMContentLoaded', () => {
       clippyAgent.speak("Class has started.")
     }
   };
-
-  resizeGradeCalc();
-  getInfo(); setInterval(getInfo, 60000);
-  getAlerts(); setInterval(getAlerts, 60000);
-  getFeed(); setInterval(getFeed, 30000);
-  getForecast(); setInterval(getForecast, 60000);
 });
 document.body.click();
-main();

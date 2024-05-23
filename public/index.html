@@ -28,31 +28,161 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7615151731467786"
             crossorigin="anonymous"></script>
     <!-- End AdSense -- DO NOT REMOVE -->
-    <link rel="stylesheet" type="text/css" href="/styles/master.css">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
 </head>
 <body>
 <header>
     <nav>
-        <div class="with-app-logo">
-            <img src="/favicon.ico" alt="Logo" draggable="false" class="app-logo">
-            Crooms Bell Schedule
-        </div>
-        <div id="tools-tab">
-            Tools
-            <div class="submenu" id="tools-list">
-                <div>Grade Calculator</div>
+        <div>
+            <div class="with-app-logo">
+                <img src="/favicon.ico" alt="Logo" draggable="false" class="app-logo">
+                Crooms Bell Schedule
+            </div>
+            <div id="tools-tab">
+                Tools
+                <div class="submenu" id="tools-list">
+                    <div>Grade Calculator</div>
+                </div>
+            </div>
+            <div id="games-tab">
+                Games
+                <div class="submenu" id="games-list">
+                    <div>Derpy Bird!</div>
+                </div>
             </div>
         </div>
-        <div id="games-tab">
-            Games
-            <div class="submenu" id="games-list">
-                <div>Derpy Bird!</div>
+        <div>
+            <div onclick="app.download()">
+                Download the App
             </div>
         </div>
     </nav>
 </header>
 <main>
-
+    <div id="widget-board">
+        <div id="lunch" class="widget">
+            <h3 class="no-bottom" style="margin:0; padding:0; user-select: none;">What&apos;s for lunch?</h3>
+            <div id="lunchContainer">
+                <div style="grid-area: text;">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td id="MondayLunch" class="lunch border">Monday</td>
+                            <td class="lunch" id="MondayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="TuesdayLunch" class="lunch border">Tuesday</td>
+                            <td class="lunch" id="TuesdayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="WednesdayLunch" class="lunch border">Wednesday</td>
+                            <td class="lunch" id="WednesdayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="ThursdayLunch" class="lunch border">Thursday</td>
+                            <td class="lunch" id="ThursdayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="FridayLunch" class="lunch border">Friday</td>
+                            <td class="lunch" id="FridayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td class="lunch border">Each Day</td>
+                            <td class="lunch" id="AllLunchItem"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="DailyLunchImageContainer" style="grid-area: graphic; user-select: none;">
+                    <img id="DailyLunchImage" src="https://img.icons8.com/?size=196&id=kHG4p2DyB85t&format=png"
+                         alt="Daily lunch item" draggable="false">
+                </div>
+            </div>
+        </div>
+        <div id="weather" class="widget" style="user-select:none;" data-nosnippet>
+            <h3 style="margin-bottom: 10px;">Weather</h3>
+            <div id="wapi-container">
+                <table hidden id="alerts"
+                       style="border:1px solid var(--accent-color); width:100%; margin: 0 0 20px 0; border-radius: 10px;">
+                    <tbody style="display: block; width: 100%;">
+                    <tr style="background-color: var(--accent-color); display: flex; justify-content: center; border-radius: 9px 9px 0 0;">
+                        <td style="text-align: center; color: #ffffff; padding: 2px;">Active Alerts</td>
+                    </tr>
+                    <tr>
+                        <td class="alerts">
+                            <ul id="alert-list" style="text-align: left;">
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="forecast" style="display: grid;">
+                    <div id="pd0">
+                        <h4 id="0-name"></h4>
+                        <img src="/spinner-86.svg" id="0-icon" draggable="false" alt="Period 0 forecast image">
+                        <h6><span id="0-temp"></span>°F | <span id="0-windd"></span> at <span id="0-winds"></span>
+                        </h6>
+                        <p id="0-desc"></p>
+                    </div>
+                    <div id="pd1">
+                        <h4 id="1-name"></h4>
+                        <img src="/spinner-86.svg" id="1-icon" draggable="false" alt="Period 1 forecast image">
+                        <h6><span id="1-temp"></span>°F | <span id="1-windd"></span> at <span id="1-winds"></span>
+                        </h6>
+                        <p id="1-desc"></p>
+                    </div>
+                    <div id="pd2">
+                        <h4 id="2-name"></h4>
+                        <img src="/spinner-86.svg" id="2-icon" draggable="false" alt="Period 2 forecast image">
+                        <h6><span id="2-temp"></span>°F | <span id="2-windd"></span> at <span id="2-winds"></span>
+                        </h6>
+                        <p id="2-desc"></p>
+                    </div>
+                    <div id="pd3">
+                        <h4 id="3-name"></h4>
+                        <img src="/spinner-86.svg" id="3-icon" draggable="false" alt="Period 3 forecast image">
+                        <h6><span id="3-temp"></span>°F | <span id="3-windd"></span> at <span id="3-winds"></span>
+                        </h6>
+                        <p id="3-desc"></p>
+                    </div>
+                    <div id="pd4">
+                        <h4 id="4-name"></h4>
+                        <img src="/spinner-86.svg" id="4-icon" draggable="false" alt="Period 4 forecast image">
+                        <h6><span id="4-temp"></span>°F | <span id="4-windd"></span> at <span id="4-winds"></span>
+                        </h6>
+                        <p id="4-desc"></p>
+                    </div>
+                </div>
+            </div>
+            <img id="graphicast" src="https://www.weather.gov/images/mlb/graphicast/image1.png" alt="Graphicast"
+                 draggable="false" style="margin-top: 20px; width: 100%; height: fit-content;">
+            <img id="track" src="https://img.icons8.com/?size=96&id=kHG4p2DyB85t&format=png" width="100%"
+                 height="100%" alt="Tropical Cyclone Track" draggable="false" style="display: none;">
+        </div>
+        <div id="quickbits" class="widget">
+            <h3 class="no-bottom">Quick Bits</h3>
+            <div>
+                <ol>
+                    <li id="quickbit1"></li>
+                    <li id="quickbit2"></li>
+                    <li id="quickbit3"></li>
+                    <li id="quickbit4"></li>
+                    <li id="quickbit5"></li>
+                </ol>
+            </div>
+        </div>
+        <div id="feed" class="widget">
+            <h3 class="no-bottom">Feed</h3>
+            <p style="margin-top: 0; margin-bottom: 0; user-select: none;">
+                <a class="links"
+                   href="https://docs.google.com/forms/d/e/1FAIpQLScratc1T2cd1OX88lpWDPLQD3bmngYh_ZsFHFFPhJCV_OEInw/viewform"
+                   target="_blank">Submit a Feed Update</a>
+            </p>
+            <div>
+                <ul id="feed-updates">There are no Feed Updates.</ul>
+            </div>
+        </div>
+    </div>
 </main>
 <footer>
     <div>
@@ -65,6 +195,9 @@
                 <a href="//github.com/ajcoolcat/crooms-bell-sched/" target="_blank">GitHub Repository</a>.</p>
         </div>
     </div>
+    <span>Today's random and senseless quip is...
+        <i><q id="senseless"></q></i>
+    </span>
     <div>
         <span id="feed-and-updates">Please wait...</span>
         <div class="popout">
@@ -72,5 +205,13 @@
         </div>
     </div>
 </footer>
+<div id="alert-floater">
+    <noscript class="alert">
+
+    </noscript>
+</div>
+<script src="/scripts/index.js"></script>
+<script src="/scripts/commons.js"></script>
+<script src="/scripts/fetch.js"></script>
 </body>
 </html>

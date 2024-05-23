@@ -1,13 +1,3 @@
-let root = document.querySelector(":root");
-let rootStyles = getComputedStyle(root);
-
-const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-if (darkThemeMq.matches) {
-    root.style.setProperty("--theme", "dark");
-} else {
-    root.style.setProperty("--theme", "light");
-}
-
 console.load = (value) => {
     window.$value = value;
 };
@@ -18,35 +8,10 @@ function feedback() {
     );
 }
 
-function poll() {
-    window.open(
-        "https://croomssched.glitch.me/poll",
-        "poll",
-        "status=0,toolbar=0,location=0,width=560,height=650",
-    );
-}
-
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-}
-
-function ad() {
-    let id = getRandomInt(1, 3);
-    if (id === 1) {
-        window.open(
-            "/ads/softram/",
-            "ad",
-            "status=0,toolbar=0,location=0,width=400,height=300,popup=true",
-        );
-    } else if (id === 2) {
-        window.open(
-            "//ads.google.com/",
-            "ad",
-            "status=0,toolbar=0,location=0,width=400,height=300,popup=true",
-        );
-    }
 }
 
 function share(triggerElement) {
@@ -70,6 +35,9 @@ function share(triggerElement) {
 async function attemptCopyShare() {
     try {
         await navigator.clipboard.writeText(window.location.href);
+        let clipboardNote = document.createElement("div");
+        clipboardNote.id = "share-clipboard-note";
+        clipboardNote.innerText = "Link was copied to the clipboard."
         document.getElementById("share-clipboard-note").style.display = "block";
         document.getElementById("share-clipboard-note").style.opacity = "1";
         document.getElementById("share-clipboard-note").style.animation =
@@ -263,16 +231,6 @@ function objectLength(obj) {
     for(let prop in obj) {
         if (obj.hasOwnProperty(prop)) {result++;}
     } return result;
-}
-
-const hoverListener = (trigger, target) => {
-    // The function will try to locate an element with the required CSS selector and use it.
-    const triggerElement =  document.querySelector(trigger);
-    const targetElement = document.querySelector(target);
-    triggerElement.onmouseover = () => {targetElement.style.display = "block";}
-    targetElement.onmouseover = () => {targetElement.style.display = "block";}
-    triggerElement.onmouseout = () => {targetElement.style.display = "none";}
-    targetElement.onmouseout = () => {targetElement.style.display = "none";}
 }
 
 function dragElement(elmnt) {
