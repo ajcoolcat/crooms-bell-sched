@@ -1,12 +1,4 @@
-body {
-    overflow: hidden;
-}
-
-main {
-    margin-top: 49px;
-    overflow: auto;
-    scrollbar-width: thin;
-}
+@import url("/styles/master.css");
 
 #widget-board ol, #widget-board ul {
     padding-inline-end: 1em;
@@ -25,7 +17,7 @@ main {
     margin: 10px;
     border-radius: 10px;
     padding: 15px;
-    background-color: #eeeeee;
+    background-color: var(--pri);
     transition: all 0.2s;
 }
 
@@ -67,15 +59,15 @@ div.widget h3 {
 
 #DailyLunchImage {
     max-width: 65%;
-    height: fit-content;
+    max-height: min-content;
     float: right;
     border-radius: 10px;
 }
 
 #lunchContainer {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: 'text graphic';
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: space-between;
 }
 
 #graphicast {
@@ -94,10 +86,6 @@ div.widget h3 {
 }
 
 @media screen and (max-width: 1440px) {
-    #DailyLunchImageContainer {
-        display: none;
-    }
-
     #lunchContainer {
         display: block;
     }
@@ -140,7 +128,7 @@ div.widget h3 {
 }
 
 @media screen and (max-width: 429px) {
-    clippy, #pd3, #settings-link, #control-center, #navbutton4 {
+    #pd3, #settings-link, #control-center, #navbutton4 {
         display: none;
     }
 
@@ -201,12 +189,6 @@ div.widget h3 {
     }
 }
 
-@media screen and (prefers-color-scheme: dark) {
-    .widget {
-        background-color: #111111;
-    }
-}
-
 .urgent {
     animation: urgent-fade 2s infinite;
 }
@@ -216,63 +198,43 @@ div.widget h3 {
 }
 
 .urgent::marker, .important::marker {
-    color: black;
+    color: var(--main);
 }
 
 @keyframes urgent-fade {
     0% {
-        color: black;
+        color: var(--main);
     }
     50% {
         color: var(--accent-color);
     }
     100% {
-        color: black;
+        color: var(--main);
     }
 }
 
 @keyframes important-fade {
     0% {
-        color: black;
+        color: var(--main);
     }
     50% {
         color: darkorange;
     }
     100% {
-        color: black;
+        color: var(--main);
     }
 }
 
 @media screen and (prefers-color-scheme: dark) {
-    main {
-        scrollbar-color: #555 #333;
-    }
-
-    @keyframes urgent-fade {
-        0% {
-            color: white;
-        }
-        50% {
-            color: var(--accent-color);
-        }
-        100% {
-            color: white;
-        }
-    }
-
     @keyframes important-fade {
         0% {
-            color: white;
+            color: var(--main);
         }
         50% {
             color: orange;
         }
         100% {
-            color: white;
+            color: var(--main);
         }
-    }
-
-    .urgent::marker, .important::marker {
-        color: white;
     }
 }
