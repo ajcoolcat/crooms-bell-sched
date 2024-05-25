@@ -57,6 +57,37 @@
     src: url("https://cdn.croomssched.tech/fonts/SegUIVar.woff2");
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+    border: 1px solid var(--qua);
+}
+
+:not(body)::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--pri);
+    border-left: 1px solid var(--qua);
+}
+
+:not(body)::-webkit-scrollbar-track {
+    border: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sec);
+    border: 1px solid var(--qua);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--tri);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--qua);
+}
+
 body {
     height: 100vh;
     margin: 0;
@@ -71,8 +102,8 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-a:link, a.links {
-    color: var(--link);
+a:any-link, a.links {
+    color: var(--link) !important;
 }
 
 a:hover {
@@ -81,11 +112,12 @@ a:hover {
 
 header {
     background: var(--pri);
-    position: sticky;
+    position: fixed;
     left: 0; top: 0;
     user-select: none;
     z-index: 9;
     box-shadow: black 0 0 10px;
+    width: 100%;
 }
 
 nav {
@@ -127,7 +159,8 @@ nav > div div > img.app-logo {
 nav > div > div > div.submenu {
     display: none;
     position: absolute;
-    transform: translate(-15px, 100%);
+    top: 51px;
+    transform: translateX(-15px);
     background: var(--pri);
     box-shadow: black 0 10px 10px;
     z-index: 10;
@@ -211,5 +244,5 @@ footer > div:hover {
 }
 
 main {
-    margin: 8px 8px 45px;
+    padding: 8px;
 }

@@ -31,7 +31,7 @@ const getFeed = () => {
     feed.responseType = 'json';
     feed.send();
     feed.onload = function() {
-        loadFeed(JSON.parse(JSON.stringify(feed.response)));
+        loadFeed(JSON.parse(JSON.stringify(feed.response.feeds)));
     }
 }
 
@@ -39,14 +39,11 @@ const loadFeed = (feeds) => {
     let amnt = objectLength(feeds);
     if (amnt !== 0) {
         document.getElementById("feed-updates").innerHTML = null;
-        let index = 1;
-        let item = [];
-        while (index <= amnt) {
-            item[index] = document.createElement("li");
-            item[index].innerHTML = feeds[index];
-            document.getElementById("feed-updates").innerHTML += "<li>"+ item[index].innerHTML +"</li>";
-            index++;
-        }
+        feeds.forEach((update) => {
+            let fu = document.createElement("li");
+            fu.innerHTML = update;
+            document.getElementById("feed-updates").appendChild(fu);
+        });
     }
 }
 

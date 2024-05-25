@@ -1,5 +1,10 @@
 @import url("/styles/master.css");
 
+main {
+    padding-top: 59px;
+    padding-bottom: 45px;
+}
+
 #widget-board ol, #widget-board ul {
     padding-inline-end: 1em;
 }
@@ -33,8 +38,29 @@ div.widget h3 {
     grid-area: lunch;
 }
 
+#lunch h3, #lunch img {
+    user-select: none;
+}
+
+#lunchContainer > div > table > tbody > tr > td {
+    padding: 5px 8px;
+}
+
+#lunchContainer > div > table > tbody > tr > td.border {
+    border: var(--accent-color) 1px solid;
+    color: var(--accent-color);
+    border-radius: 0.5rem;
+    user-select: none;
+    text-align: center;
+}
+
 #weather {
     grid-area: weather;
+    user-select: none;
+}
+
+#weather > h3 {
+    margin-bottom: 10px;
 }
 
 #quickbits {
@@ -46,7 +72,21 @@ div.widget h3 {
 }
 
 #forecast {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-flow: row nowrap;
+    text-align: center;
+}
+
+#forecast > div {
+    flex: 1;
+}
+
+#forecast p {
+    display: none;
+}
+
+#forecast img {
+    border-radius: 0.5rem;
 }
 
 #toosmall {
@@ -55,13 +95,18 @@ div.widget h3 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#toosmall * {
+    margin: 0;
 }
 
 #DailyLunchImage {
     max-width: 65%;
-    max-height: min-content;
+    height: fit-content;
     float: right;
-    border-radius: 10px;
+    border-radius: 0.5rem;
 }
 
 #lunchContainer {
@@ -71,11 +116,40 @@ div.widget h3 {
 }
 
 #graphicast {
-    display: block;
-    border-radius: 10px;
+    border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 1080px) {
+#feed > div {
+    margin-block-start: 1em;
+    overflow-y: scroll;
+    height: calc(100% - 70px);
+    max-height: 228px;
+}
+
+#feed-updates {
+    margin: 0;
+}
+
+@media screen and (max-width: 1440px) {
+    #lunchContainer {
+        flex-flow: column-reverse;
+    }
+
+    #DailyLunchImageContainer {
+        display: none;
+        justify-content: center;
+    }
+
+    #random {
+        display: none;
+    }
+
+    #feed > div {
+        max-height: 260px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
     #widget-board {
         display: block;
     }
@@ -83,38 +157,13 @@ div.widget h3 {
     #graphicast, #track {
         display: none;
     }
-}
 
-@media screen and (max-width: 1440px) {
-    #lunchContainer {
-        display: block;
+    #feed > div {
+        max-height: 100%;
     }
 }
 
 @media screen and (max-width: 740px) {
-    main {
-        margin-top: 45px;
-    }
-
-    li.navbutton {
-        float: left;
-    }
-
-    li.navbutton a {
-        display: block;
-        text-align: center;
-        padding: 8px 10px;
-        text-decoration: none;
-    }
-
-    #navbutton1, #navbutton6, #pd4, #githubLogo {
-        display: none;
-    }
-
-    #forecast {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
     #graphicast, #track {
         display: block;
     }
@@ -127,13 +176,29 @@ div.widget h3 {
     }
 }
 
-@media screen and (max-width: 429px) {
-    #pd3, #settings-link, #control-center, #navbutton4 {
+@media screen and (max-width: 615px) {
+    #pd4, nav > div.right {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    nav > div > div.with-app-logo {
+        padding-right: 8px;
+    }
+
+    nav > div > div.with-app-logo > span {
         display: none;
     }
 
-    #forecast {
-        grid-template-columns: 1fr 1fr 1fr;
+    nav > div > div.with-app-logo > img {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 429px) {
+    #pd3, #settings-link, #control-center {
+        display: none;
     }
 }
 
@@ -154,22 +219,6 @@ div.widget h3 {
 }
 
 @media screen and (max-width: 249px) {
-    #navbutton5 {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 239px) {
-    #pd1 {
-        display: none;
-    }
-
-    #forecast {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (max-width: 199px) {
     header, main {
         display: none;
     }
