@@ -50,11 +50,22 @@ let Settings = {
     "periodNames": {}
 };
 
+let Schedules = {};
+
 function loadSettings() {
+    let sxhr = new XMLHttpRequest();
+    sxhr.open("GET", "/schedule/sched.json");
+    sxhr.responseType = "json";
+    sxhr.send();
+    sxhr.onload = function() {
+        Schedules = sxhr.response;
+        console.log(sxhr.response);
+    }
+
     if (window.localStorage.getItem("settings") === null) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', '/defaultSettings.json');
-        xhr.responseType = 'json';
+        xhr.open("GET", "/schedule/defaultSettings.json");
+        xhr.responseType = "json";
         xhr.send();
         xhr.onload = function () {
             Settings = xhr.response;
@@ -85,7 +96,8 @@ function startSched(element) {
 
     const DateAndTime = document.createElement("p");
     const SchoolDayType = document.createElement("p");
-    const CurrentPeriod = document.createElement("p");
+    const CurrentPeriodMain = document.createElement("p");
+    const CurrentPeriod = document.createElement("span");
     const CurrentPeriodSeconds = document.createElement("span");
 
     DateAndTime.innerText = "Loading..."
@@ -95,16 +107,13 @@ function startSched(element) {
 
     application.appendChild(DateAndTime);
     application.appendChild(SchoolDayType);
-    application.appendChild(CurrentPeriod);
-    CurrentPeriod.appendChild(CurrentPeriodSeconds)
+    application.appendChild(CurrentPeriodMain);
+    CurrentPeriodMain.appendChild(CurrentPeriod);
+    CurrentPeriodMain.appendChild(CurrentPeriodSeconds);
 
     CurrentPeriodSeconds.style.display = Settings.showSeconds;
 
-
-    let ringBGColor = "grey";
-    let ringColor = "white";
-
-
+    /*
     const CurrentPeriodProgressRingContainer = new PIXI.Container();
 
 
@@ -141,11 +150,11 @@ function startSched(element) {
     CurrentPeriodProgressRingContainer.rotation = -Math.PI / 2;
     CurrentPeriodProgressRingContainer.scale.x = 0.7;
     CurrentPeriodProgressRingContainer.scale.y = -0.7;
-
+    */
 
     class Button {
         constructor(text, textColor, BGcolor, width, height, bgHighlightColor) {
-            const buttonBG = new PIXI.Graphics();
+            /*const buttonBG = new PIXI.Graphics();
             buttonBG.beginFill(BGcolor);
             buttonBG.drawRoundedRect(0, 0, width, height, 2);
             const buttonText = new PIXI.Text(text, {fontFamily: Settings.font.value, fontSize: 15, fill: textColor});
@@ -165,16 +174,17 @@ function startSched(element) {
                 buttonBG.drawRoundedRect(0, 0, width, height, 2);
             })
             buttonBG.cursor = 'pointer';
-            return buttonBG;
+            return buttonBG;*/
         }
     }
 
+    /*
     let PrimaryColor = "#e0991d";
     let PrimaryColorHighlight = "#f7ab28";
     let SecondaryColor = "#640024";
     let SecondaryColorHighlight = "#740034";
     let width = 65;
-    let height = 20;
+    let height = 20;*/
 
     let isALunch;
     let isBLunch;
@@ -189,15 +199,17 @@ function startSched(element) {
         current_lunch = 1;
     }
 
+    /*
     const ALunchButton = new Button("A Lunch", "white", isALunch ? PrimaryColor : SecondaryColor, width, height, isALunch ? PrimaryColorHighlight : SecondaryColorHighlight);
     ALunchButton.x = window.innerWidth - 80;
     const BLunchButton = new Button("B Lunch", "white", isBLunch ? PrimaryColor : SecondaryColor, width, height, isBLunch ? PrimaryColorHighlight : SecondaryColorHighlight);
     BLunchButton.x = window.innerWidth - 80;
     BLunchButton.y = 20 + 2;
     app.stage.addChild(ALunchButton);
-    app.stage.addChild(BLunchButton);
+    app.stage.addChild(BLunchButton);*/
     let eventNumber = 1;
 
+    /*
     ALunchButton.on("click", aButtonClick);
     ALunchButton.on("touchstart", aButtonClick);
 
@@ -266,7 +278,7 @@ function startSched(element) {
             ALunchButton.beginFill(SecondaryColor);
             ALunchButton.drawRoundedRect(0, 0, width, height, 2);
         })
-    }
+    }*/
 
     //main loop is called twice before being used in setInterval so that the text doesn't say "Loading..." or the current period text isn't wrong for 2 seconds.
     mainLoop();
@@ -276,7 +288,7 @@ function startSched(element) {
         setInterval(mainLoop, 1000);
     }, new Date().getMilliseconds());
 
-
+    /*
     const SettingsButton = new Button("Settings", "white", SecondaryColor, 65, 20, SecondaryColorHighlight);
     SettingsButton.x = window.innerWidth - 80;
     SettingsButton.y = 42 + 2;
@@ -303,51 +315,16 @@ function startSched(element) {
         ALunchButton.x = window.innerWidth - 80;
     });
 
+     */
+
     function mainLoop() {
         let Periodmsg = "";
         drawDateTime();
-        let currentDay = Monday1;
         let now = new Date();
         let day = now.getDay();
         let month = now.getMonth();
         let date = now.getDate();
-        if (current_lunch === 1) {
-            if (day === 1) {
-                currentDay = Monday1;
-                Periodmsg = "Today is a Normal Day.";
-            } else if (day === 2) {
-                currentDay = Monday1;
-                Periodmsg = "Today is a Normal Exam Day.";
-            } else if (day === 3) {
-                currentDay = Wednesday;
-                Periodmsg = "Today is a 2 & 3 Short Day.";
-            } else if (day === 4) {
-                currentDay = Thursday;
-                Periodmsg = "Today is a 4 & 5 Short Day.";
-            } else if (day === 5) {
-                currentDay = Friday;
-                Periodmsg = "Today is a 6 & 7 Short Day.";
-            }
-        } else if (current_lunch === 2) {
-            if (day === 1) {
-                currentDay = Monday2;
-                Periodmsg = "Today is a Normal Day.";
-            } else if (day === 2) {
-                currentDay = Monday2;
-                Periodmsg = "Today is a Normal Exam Day.";
-            } else if (day === 3) {
-                currentDay = Wednesday;
-                Periodmsg = "Today is a 2 & 3 Short Day.";
-            } else if (day === 4) {
-                currentDay = Thursday;
-                Periodmsg = "Today is a 4 & 5 Short Day.";
-            } else if (day === 5) {
-                currentDay = Friday;
-                Periodmsg = "Today is a 6 & 7 Short Day.";
-            }
-        } else {
-            current_lunch = 1
-        }
+
 
         let currentEvent = currentDay[eventNumber - 1];
 
@@ -429,11 +406,11 @@ function startSched(element) {
         let date = now.getDate()
         let year = now.getFullYear()
         let time12h = now.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true})
-        DateAndTime.text = dayname + "  " + month + "/" + date + "/" + year + "  " + time12h;
+        DateAndTime.innerText = dayname + "  " + month + "/" + date + "/" + year + "  " + time12h;
     }
 
     function drawPeriodMsg(Periodmsg) {
-        SchoolDayType.text = Periodmsg
+        SchoolDayType.innerText = Periodmsg
     }
 
     function drawEventCountDown(currentEvent) {
