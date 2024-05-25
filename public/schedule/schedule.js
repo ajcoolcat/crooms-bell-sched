@@ -94,6 +94,11 @@ function startSched(element) {
     application.id = "cbsh-application";
     element.appendChild(application);
 
+    const statusDiv = document.createElement("div");
+    application.appendChild(statusDiv);
+    const buttonDiv = document.createElement("div");
+    application.appendChild(buttonDiv);
+
     const DateAndTime = document.createElement("p");
     const SchoolDayType = document.createElement("p");
     const CurrentPeriodMain = document.createElement("p");
@@ -105,9 +110,9 @@ function startSched(element) {
     CurrentPeriod.innerText = "Loading..."
     CurrentPeriodSeconds.innerText = "Loading..."
 
-    application.appendChild(DateAndTime);
-    application.appendChild(SchoolDayType);
-    application.appendChild(CurrentPeriodMain);
+    statusDiv.appendChild(DateAndTime);
+    statusDiv.appendChild(SchoolDayType);
+    statusDiv.appendChild(CurrentPeriodMain);
     CurrentPeriodMain.appendChild(CurrentPeriod);
     CurrentPeriodMain.appendChild(CurrentPeriodSeconds);
 

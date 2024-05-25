@@ -1,4 +1,10 @@
-#cbsh-application > p {
+#cbsh-application {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+#cbsh-application p {
     margin: 0;
     font-size: 17px;
 }
