@@ -26,12 +26,9 @@ main {
     transition: all 0.2s;
 }
 
-.navbutton a, .mininavbutton a {
-    transition: all 0.2s;
-}
-
 div.widget h3 {
     margin-top: 0;
+    user-select: none;
 }
 
 #lunch {
