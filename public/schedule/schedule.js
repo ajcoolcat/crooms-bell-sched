@@ -80,7 +80,7 @@ function startSched(element) {
     }
 
     const application = document.createElement("div");
-    application.id = "application";
+    application.id = "cbsh-application";
     element.appendChild(application);
 
     const DateAndTime = document.createElement("p");
