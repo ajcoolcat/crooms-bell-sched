@@ -1,9 +1,30 @@
 const schedMessenger = new BroadcastChannel("sched-messenger");
+const appStyles = document.createElement("link");
+appStyles.rel = "stylesheet";
+appStyles.type = "text/css";
+appStyles.href = "/sched/app.css";
+document.head.appendChild(appStyles);
+
+function createCBSHSched(element) {
+    const application = document.createElement("div");
+    application.id = "cbsh-application";
+    element.appendChild(application);
+
+    fetch("/sched/sched.json").then((res) => {
+        return res.text();
+    }).then((res) => {
+        return JSON.parse(res);
+    }).then((res) => {
+        Schedules = res;
+    }).finally(() => {
+        fixMissingSettings();
+    });
+}
 
 function fixMissingSettings() {
     let Settings = {}
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/schedule/defaultSettings.json');
+    xhr.open('GET', '/sched/defaultSettings.json');
     xhr.responseType = 'json';
     xhr.send();
     xhr.onload = function () {
@@ -31,13 +52,6 @@ function fixMissingSettings() {
     }
 }
 
-fixMissingSettings();
-const appStyles = document.createElement("link");
-appStyles.rel = "stylesheet";
-appStyles.type = "text/css";
-appStyles.href = "https://croomssched.tech/schedule/app.css";
-document.head.appendChild(appStyles);
-
 const inIframe = () => {
     try {
         return window.self !== window.top;
@@ -50,20 +64,13 @@ let Settings = {
     "periodNames": {}
 };
 
-let Schedules = {};
+let Schedules = {
+    "days": {}
+};
 
 function loadSettings() {
-    let sxhr = new XMLHttpRequest();
-    sxhr.open("GET", "/schedule/sched.json");
-    sxhr.responseType = "json";
-    sxhr.send();
-    sxhr.onload = function() {
-        Schedules = sxhr.response;
-        console.log(sxhr.response);
-    }
-
     if (window.localStorage.getItem("settings") === null) {
-        let xhr = new XMLHttpRequest();
+        xhr = new XMLHttpRequest();
         xhr.open("GET", "/schedule/defaultSettings.json");
         xhr.responseType = "json";
         xhr.send();
@@ -71,14 +78,16 @@ function loadSettings() {
             Settings = xhr.response;
             window.localStorage.setItem("settings", JSON.stringify(Settings));
         }
+        startSched();
     } else {
         Settings = JSON.parse(window.localStorage.getItem("settings"));
+        startSched();
     }
 }
 
-function startSched(element) {
-    let current_lunch = 1;
+let current_lunch = 1;
 
+function startSched(element) {
     let inAnIframe = inIframe();
 
     try {
@@ -90,9 +99,22 @@ function startSched(element) {
         inIframe()
     }
 
-    const application = document.createElement("div");
-    application.id = "cbsh-application";
-    element.appendChild(application);
+    let isALunch;
+    let isBLunch;
+
+    if (Settings.defaultLunch === "B Lunch") {
+        isALunch = false;
+        isBLunch = true;
+        current_lunch = 2;
+    } else {
+        isALunch = true;
+        isBLunch = false;
+        current_lunch = 1;
+    }
+
+    let eventNumber = 1;
+
+    const application = document.getElementById("cbsh-application");
 
     const statusDiv = document.createElement("div");
     application.appendChild(statusDiv);
@@ -116,7 +138,25 @@ function startSched(element) {
     CurrentPeriodMain.appendChild(CurrentPeriod);
     CurrentPeriodMain.appendChild(CurrentPeriodSeconds);
 
-    CurrentPeriodSeconds.style.display = Settings.showSeconds;
+    const ALunchButton = document.createElement("button");
+    const BLunchButton = document.createElement("button");
+    const SettingsButton = document.createElement("button");
+
+    isALunch ? ALunchButton.className = "active" : ALunchButton.click();
+    isBLunch ? BLunchButton.className = "active" : BLunchButton.click();
+
+    ALunchButton.innerText = "A Lunch";
+    ALunchButton.title = "Switch to A Lunch.";
+
+    BLunchButton.innerText = "B Lunch";
+    BLunchButton.title = "Switch to B Lunch.";
+
+    SettingsButton.innerText = "Settings";
+    SettingsButton.title = "Open the Bell Schedule settings.";
+
+    buttonDiv.appendChild(ALunchButton);
+    buttonDiv.appendChild(BLunchButton);
+    buttonDiv.appendChild(SettingsButton);
 
     /*
     const CurrentPeriodProgressRingContainer = new PIXI.Container();
@@ -157,53 +197,6 @@ function startSched(element) {
     CurrentPeriodProgressRingContainer.scale.y = -0.7;
     */
 
-    class Button {
-        constructor(text, textColor, BGcolor, width, height, bgHighlightColor) {
-            /*const buttonBG = new PIXI.Graphics();
-            buttonBG.beginFill(BGcolor);
-            buttonBG.drawRoundedRect(0, 0, width, height, 2);
-            const buttonText = new PIXI.Text(text, {fontFamily: Settings.font.value, fontSize: 15, fill: textColor});
-            buttonText.x = (width / 2) - (buttonText.width / 2);
-            buttonText.y = (height / 2) - (buttonText.height / 2);
-            buttonText.resolution = 3;
-            buttonBG.addChild(buttonText);
-            buttonBG.eventMode = "static";
-            buttonBG.on("pointerover", () => {
-                buttonBG.clear();
-                buttonBG.beginFill(bgHighlightColor);
-                buttonBG.drawRoundedRect(0, 0, width, height, 2);
-            });
-            buttonBG.on("pointerout", () => {
-                buttonBG.clear();
-                buttonBG.beginFill(BGcolor);
-                buttonBG.drawRoundedRect(0, 0, width, height, 2);
-            })
-            buttonBG.cursor = 'pointer';
-            return buttonBG;*/
-        }
-    }
-
-    /*
-    let PrimaryColor = "#e0991d";
-    let PrimaryColorHighlight = "#f7ab28";
-    let SecondaryColor = "#640024";
-    let SecondaryColorHighlight = "#740034";
-    let width = 65;
-    let height = 20;*/
-
-    let isALunch;
-    let isBLunch;
-
-    if (Settings.defaultLunch === "B Lunch") {
-        isALunch = false;
-        isBLunch = true;
-        current_lunch = 2;
-    } else {
-        isALunch = true;
-        isBLunch = false;
-        current_lunch = 1;
-    }
-
     /*
     const ALunchButton = new Button("A Lunch", "white", isALunch ? PrimaryColor : SecondaryColor, width, height, isALunch ? PrimaryColorHighlight : SecondaryColorHighlight);
     ALunchButton.x = window.innerWidth - 80;
@@ -212,7 +205,6 @@ function startSched(element) {
     BLunchButton.y = 20 + 2;
     app.stage.addChild(ALunchButton);
     app.stage.addChild(BLunchButton);*/
-    let eventNumber = 1;
 
     /*
     ALunchButton.on("click", aButtonClick);
@@ -285,14 +277,6 @@ function startSched(element) {
         })
     }*/
 
-    //main loop is called twice before being used in setInterval so that the text doesn't say "Loading..." or the current period text isn't wrong for 2 seconds.
-    mainLoop();
-    mainLoop();
-
-    setTimeout(() => {
-        setInterval(mainLoop, 1000);
-    }, new Date().getMilliseconds());
-
     /*
     const SettingsButton = new Button("Settings", "white", SecondaryColor, 65, 20, SecondaryColorHighlight);
     SettingsButton.x = window.innerWidth - 80;
@@ -312,15 +296,17 @@ function startSched(element) {
             }
         }, 50);
     }
-
-    window.addEventListener("resize", () => {
-        app.renderer.resize(window.innerWidth, window.innerHeight);
-        SettingsButton.x = window.innerWidth - 80;
-        BLunchButton.x = window.innerWidth - 80;
-        ALunchButton.x = window.innerWidth - 80;
-    });
-
      */
+
+    let currentDay = null;
+
+    //main loop is called twice before being used in setInterval so that the text doesn't say "Loading..." or the current period text isn't wrong for 2 seconds.
+    mainLoop();
+    mainLoop();
+
+    setTimeout(() => {
+        setInterval(mainLoop, 1000);
+    }, new Date().getMilliseconds());
 
     function mainLoop() {
         let Periodmsg = "";
@@ -330,11 +316,30 @@ function startSched(element) {
         let month = now.getMonth();
         let date = now.getDate();
 
+        if (day === 1) {
+            currentDay = Schedules.normal.sched[current_lunch - 1];
+            Periodmsg = Schedules.normal.msg;
+        } else if (day === 2) {
+            currentDay = Schedules.normal.sched[current_lunch - 1];
+            Periodmsg = Schedules.normal.msg;
+        } else if (day === 3) {
+            currentDay = Schedules.evenBlock.sched[current_lunch - 1];
+            Periodmsg = Schedules.evenBlock.msg;
+        } else if (day === 4) {
+            currentDay = Schedules.oddBlock.sched[current_lunch - 1];
+            Periodmsg = Schedules.oddBlock.msg;
+        } else if (day === 5) {
+            currentDay = Schedules.normal.sched[current_lunch - 1];
+            Periodmsg = Schedules.normal.msg;
+        } else {
+            currentDay = Schedules.normal.sched[current_lunch - 1];
+            Periodmsg = Schedules.normal.msg;
+        }
 
         let currentEvent = currentDay[eventNumber - 1];
 
         for (let i = 0; i < currentDay.length; i++) {
-            let event_sec = hms2sec(currentDay[i].endHour, currentDay[i].endMin, 0);
+            let event_sec = hms2sec(currentDay[i][3], currentDay[i][4], 0);
             let now_sec = hms2sec(now.getHours(), now.getMinutes(), now.getSeconds());
             //console.log(event_sec - now_sec < 0);
             if (event_sec - now_sec < 0) {
@@ -383,14 +388,14 @@ function startSched(element) {
 
     function difTime(currentEvent) {
         let now = new Date();
-        let event_sec = hms2sec(currentEvent.endHour, currentEvent.endMin, 0);
+        let event_sec = hms2sec(currentEvent[3], currentEvent[4], 0);
         let now_sec = hms2sec(now.getHours(), now.getMinutes(), now.getSeconds());
         return sec2hms(event_sec - now_sec);
     }
 
     function diffTimeNum(currentEvent) {
         let now = new Date();
-        let event_sec = hms2sec(currentEvent.endHour, currentEvent.endMin, 0);
+        let event_sec = hms2sec(currentEvent[3], currentEvent[4], 0);
         let now_sec = hms2sec(now.getHours(), now.getMinutes(), now.getSeconds());
         return (event_sec - now_sec);
     }
@@ -398,14 +403,7 @@ function startSched(element) {
     function drawDateTime() {
         let now = new Date();
         let day = now.getDay();
-        let weekday = new Array(7);
-        weekday[0] = "Sunday";
-        weekday[1] = "Monday";
-        weekday[2] = "Tuesday";
-        weekday[3] = "Wednesday";
-        weekday[4] = "Thursday";
-        weekday[5] = "Friday";
-        weekday[6] = "Saturday";
+        let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let dayname = weekday[day];
         let month = now.getMonth() + 1
         let date = now.getDate()
@@ -415,17 +413,19 @@ function startSched(element) {
     }
 
     function drawPeriodMsg(Periodmsg) {
-        SchoolDayType.innerText = Periodmsg
+        SchoolDayType.innerText = Periodmsg;
     }
 
     function drawEventCountDown(currentEvent) {
-        CurrentPeriod.style.fill = textColor;
-        CurrentPeriodSeconds.style.fill = "grey";
-        CurrentPeriodSeconds.visible = Settings.showSeconds;
+        CurrentPeriodSeconds.style.color = "grey";
+
+        if (Settings.showSeconds === true) {CurrentPeriodSeconds.style.display = "inline";}
+        else {CurrentPeriodSeconds.style.display = "none";}
+
         let now = new Date();
-        let EventName = currentEvent.name;
-        let hours = currentEvent.endHour - now.getHours();
-        let minutes = currentEvent.endMin - now.getMinutes() - 1;
+        let EventName = currentEvent[2];
+        let hours = currentEvent[3] - now.getHours();
+        let minutes = currentEvent[4] - now.getMinutes() - 1;
         let seconds = 60 - now.getSeconds();
         if (seconds === 60) seconds = 0;
         if (seconds < 10) seconds = "0" + seconds;
@@ -436,16 +436,18 @@ function startSched(element) {
         if (minutes < 10) {
             minutes = "0" + minutes;
         }
-        let event_sec = hms2sec(currentEvent.endHour, currentEvent.endMin, 0);
-        let start_event_sec = hms2sec(currentEvent.startHour, currentEvent.startMin, 0);
+        let event_sec = hms2sec(currentEvent[3], currentEvent[4], 0);
+        let start_event_sec = hms2sec(currentEvent[0], currentEvent[1], 0);
         let now_sec = hms2sec(now.getHours(), now.getMinutes(), now.getSeconds());
         let count_down = sec2hms(event_sec - now_sec);
         if (now_sec - event_sec === 300) {
             schedMessenger.postMessage("startClass")
         }
         if (event_sec - now_sec <= 600) {
-            CurrentPeriod.style.text = "rgb(255,100,100)";
-            CurrentPeriodSeconds.style.fill = "rgb(255, 150, 150)";
+            CurrentPeriod.style.color = "rgb(255,100,100)";
+            CurrentPeriodSeconds.style.color = "rgb(255, 150, 150)";
+        } else {
+            CurrentPeriod.style.color = "unset";
         }
         if (event_sec - now_sec === 600) {
             schedMessenger.postMessage("lessThan10Minutes");
@@ -454,25 +456,22 @@ function startSched(element) {
             schedMessenger.postMessage("oneMinute");
         }
         if (event_sec - now_sec <= 60 && now_sec % 2 === 1) {
-            CurrentPeriod.style.fill = textColor;
-            CurrentPeriodSeconds.style.fill = "grey";
+            CurrentPeriod.style.color = "unset";
+            CurrentPeriodSeconds.style.color = "grey";
         }
 
-        CurrentPeriod.text = EventName + ", Time Left: " + count_down.toString();
+        CurrentPeriod.innerText = EventName + ", Time Left: " + count_down.toString();
 
-        CurrentPeriodSeconds.x = CurrentPeriod.width;
-        CurrentPeriodSeconds.text = ":" + seconds;
-        if (Settings.showSeconds) {
-            CurrentPeriodProgressRingContainer.x = CurrentPeriodSeconds.x + CurrentPeriodSeconds.width + (CurrentPeriodProgressRingBG.width / 2);
-        } else {
-            CurrentPeriodProgressRingContainer.x = CurrentPeriodSeconds.x + (CurrentPeriodProgressRingBG.width / 2);
-        }
+        CurrentPeriodSeconds.innerText = ":" + seconds;
 
-        percent = ((event_sec - now_sec) / (event_sec - start_event_sec)) * 100;
 
+        let percent = ((event_sec - now_sec) / (event_sec - start_event_sec)) * 100;
+
+        /*
         CurrentPeriodProgressRing.clear();
         CurrentPeriodProgressRing.lineStyle(50, ringColor, 1);
         CurrentPeriodProgressRing.arc(0, 0, 100, -((Math.PI / 100) * percent), (Math.PI / 100) * percent);
         CurrentPeriodProgressRing.rotation = ((Math.PI / 100) * percent);
+     */
     }
 }

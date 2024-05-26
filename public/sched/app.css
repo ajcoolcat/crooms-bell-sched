@@ -1,0 +1,55 @@
+#cbsh-application {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    user-select: none;
+
+    --primary-color: #e0991d;
+    --primary-color-highlight: #f7ab28;
+    --secondary-color: #690D22;
+    --secondary-color-highlight: #890F32;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    #cbsh-application {
+        --secondary-color: #dc1010;
+        --secondary-color-highlight: #cc1010;
+    }
+}
+
+#cbsh-application > div > p {
+    margin: 0;
+    font-size: 17px;
+}
+
+#cbsh-application > div > p > span {
+    background: revert !important;
+    transition: none;
+}
+
+#cbsh-application > div > button {
+    display: block;
+    background: var(--secondary-color);
+    border-radius: 0.25rem;
+    border: none;
+    padding: 2px 8px;
+    font-family: var(--font), system-ui;
+    width: 65px;
+}
+
+#cbsh-application > div > button:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+#cbsh-application > div > button:hover {
+    background: var(--secondary-color-highlight);
+}
+
+#cbsh-application > div > button.active {
+    background: var(--primary-color);
+    color: black;
+}
+
+#cbsh-application > div > button.active:hover {
+    background: var(--primary-color-highlight);
+}

@@ -1,6 +1,7 @@
 :root {
     --background: #eeeeee;
     --main: black;
+    --rev: white;
 
     --pri: #dddddd;
     --sec: #cccccc;
@@ -30,6 +31,7 @@
     :root {
         --background: #111111;
         --main: white;
+        --rev: black;
 
         --pri: #222222;
         --sec: #333333;
@@ -241,6 +243,26 @@ footer > div:hover {
 #alert-floater > .info {
     background: var(--info);
     color: white;
+}
+
+button, a.button {
+    padding: 8px 10px;
+    background: var(--accent-color);
+    color: var(--rev);
+    border: none;
+    border-radius: 0.5rem;
+}
+
+button:hover, a.button:hover {
+    opacity: 0.75;
+}
+
+button:active, a.button:active {
+    opacity: 0.6;
+}
+
+button:disabled, a.button:disabled {
+    opacity: 0.5;
 }
 
 main {
