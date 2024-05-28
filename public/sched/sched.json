@@ -596,5 +596,22 @@
         ]
       ]
     ]
+  },
+  "days":{
+    "monday" : {
+      "type": "normal"
+    },
+    "tuesday" : {
+      "type": "normal"
+    },
+    "wednesday" : {
+      "type": "evenBlock"
+    },
+    "thursday" : {
+      "type": "oddBlock"
+    },
+    "friday" : {
+      "type": "activity"
+    }
   }
 }
