@@ -424,6 +424,12 @@ function startSched(element) {
 
         let now = new Date();
         let EventName = currentEvent[2];
+
+        if (EventName === 1 || EventName === 2 || EventName === 3 || EventName === 4 || EventName === 5
+            || EventName === 6 || EventName === 7) {
+            EventName = Settings.periodNames[EventName];
+        }
+
         let hours = currentEvent[3] - now.getHours();
         let minutes = currentEvent[4] - now.getMinutes() - 1;
         let seconds = 60 - now.getSeconds();

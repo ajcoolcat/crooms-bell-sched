@@ -140,11 +140,11 @@ nav > div > div {
     align-items: center;
 }
 
-nav > div div:not(.submenu):hover {
+nav > div div:not(.submenu):not(.nolink):hover {
     background: var(--sec);
 }
 
-nav > div div:not(.submenu):active {
+nav > div div:not(.submenu):not(.nolink):active {
     background: var(--tri);
 }
 

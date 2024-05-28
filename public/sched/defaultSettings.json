@@ -1,14 +1,15 @@
 {
   "showSeconds":true,
-  "periodNames":{
-    "period1":"1st Period",
-    "period2":"2nd Period",
-    "period3":"3rd Period",
-    "period4":"4th Period",
-    "period5":"5th Period",
-    "period6":"6th Period",
-    "period7":"7th Period"
-  },
+  "periodNames": [
+    null,
+    "1st Period",
+    "2nd Period",
+    "3rd Period",
+    "4th Period",
+    "5th Period",
+    "6th Period",
+    "7th Period"
+  ],
   "defaultLunch": "A Lunch",
   "showTimeRemainingRing": true,
   "font": {
