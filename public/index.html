@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2">
     <meta name="referrer" content="origin-when-cross-origin">
+    <title>Crooms Bell Schedule</title>
     <meta name="application-name" content="Crooms Bell Schedule">
     <meta name="description"
           content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period.">
     <meta name="keywords"
-          content="Crooms, bell schedule, CAIT, bell, schedule, CAoIT, Crooms Bell Schedule, Crooms Academy Bell Schedule, Crooms Academy, Crooms Academy of Information Technology">
+          content="Crooms, CAIT, CAoIT, Crooms Bell Schedule, Crooms Academy Bell Schedule, Crooms Academy, Crooms Schedule">
     <meta name="author" content="Andrew Jennings">
-    <link rel="manifest" href="/manifest.json">
+    <!--<link rel="manifest" href="/manifest.json">-->
     <meta name="theme-color" content="#690D22">
     <!-- OpenGraph/Social Media Sharing -->
     <meta name="og:description"
@@ -27,375 +28,200 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7615151731467786"
             crossorigin="anonymous"></script>
     <!-- End AdSense -- DO NOT REMOVE -->
-    <!-- Clippy -->
-    <script src="https://unpkg.com/jquery@3.2.1"></script>
-    <script src="clippy.js"></script>
-    <!-- End Clippy -->
-    <title>Crooms Bell Schedule</title>
-    <link rel="stylesheet" type="text/css" href="style-root.css">
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
 </head>
-<body id="body" onload="main()" style="margin: 0;">
-<header data-nosnippet style="user-select:none;">
-    <nav style="margin-top: 0; margin-left: 0; margin-right: 0;">
-        <ul class="navbar">
-            <li id="navbutton1" class="navbutton"><a class="nolink">Crooms Bell Schedule</a></li>
-            <li id="navbutton2" class="navbutton" onclick="main()"><a id="nav2">Home</a></li>
-            <li id="navbutton4" class="navbutton" onclick="gradecalc()"><a id="link2">Grade Calculator</a></li>
-            <li id="navbutton5" class="navbutton" onclick="poll()"><a id="link3">Daily Poll</a></li>
-            <li id="navbutton6" class="navbutton" style="float:right"><a onclick="window.location.href = '/download/'">Schedule
-                App</a></li>
-        </ul>
-        <div id="dp-shell-dialog" class="top-shell-dialog" style="width: 158px; padding: 0;" hidden>
-            <ul class="winbar">
-                <li class="navbutton"><a
-                        onclick="window.open('/sched/','bellschwin','status=0,toolbar=0,location=0,height=65,width=350')">Not
-                    on Windows?</a></li>
-            </ul>
+<body>
+<header>
+    <nav>
+        <div>
+            <div class="with-app-logo" tabindex="1">
+                <img src="/favicon.ico" alt="Logo" draggable="false" class="app-logo">
+                <span>Crooms Bell Schedule</span>
+            </div>
+            <div id="tools-tab" tabindex="1">
+                Tools
+                <div class="submenu" id="tools-list">
+                    <div tabindex="1">Grade Calculator</div>
+                </div>
+            </div>
+            <div id="games-tab" tabindex="1">
+                Games
+                <div class="submenu" id="games-list">
+                    <div tabindex="1">Derpy Bird!</div>
+                </div>
+            </div>
+            <div id="daily-poll" tabindex="1"
+                 onclick="window.open('https://poll.croomssched.tech', 'cbsh-daily-poll', 'width=560, height=650');">
+                Daily Poll
+            </div>
+        </div>
+        <div class="right">
+            <div onclick="app.download()" tabindex="1">
+                Download the App
+            </div>
         </div>
     </nav>
 </header>
-<div id="toosmall" data-nosnippet>
-    <h3>Your device's screen is too small.</h3>
-    <p>To use our website, please browse on a larger display.</p>
-</div>
-<main style="height: calc(100vh - 86px);">
-    <div id="loading" data-nosnippet
-         style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); user-select: none;">
-        <img src="/spinner.svg" alt="Loading" draggable="false">
-    </div>
-    <div id="host" style="margin: 8px; display: none;">
-        <p style="margin: 0; user-select: none;"><span id="random"
-           onclick="document.getElementById('senseless').removeAttribute('hidden'); document.getElementById('random').className = 'noactive';">
-                Today's random and senseless quip is...</span>
-            <i><span id="senseless" hidden><i class="fa-solid fa-spinner fa-spin loader"></i></span></i>
-        </p>
-        <div id="widget-board">
-            <div id="lunch" class="widget">
-                <h3 class="no-bottom" style="margin:0; padding:0; user-select: none;">What&apos;s for lunch?</h3>
-                <div id="lunchContainer">
-                    <div style="grid-area: text;">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td id="MondayLunch" class="lunch border">Monday</td>
-                                <td class="lunch" id="MondayLunchItem"></td>
-                            </tr>
-                            <tr>
-                                <td id="TuesdayLunch" class="lunch border">Tuesday</td>
-                                <td class="lunch" id="TuesdayLunchItem"></td>
-                            </tr>
-                            <tr>
-                                <td id="WednesdayLunch" class="lunch border">Wednesday</td>
-                                <td class="lunch" id="WednesdayLunchItem"></td>
-                            </tr>
-                            <tr>
-                                <td id="ThursdayLunch" class="lunch border">Thursday</td>
-                                <td class="lunch" id="ThursdayLunchItem"></td>
-                            </tr>
-                            <tr>
-                                <td id="FridayLunch" class="lunch border">Friday</td>
-                                <td class="lunch" id="FridayLunchItem"></td>
-                            </tr>
-                            <tr>
-                                <td class="lunch border">Each Day</td>
-                                <td class="lunch" id="AllLunchItem"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="DailyLunchImageContainer" style="grid-area: graphic; user-select: none;">
-                        <img id="DailyLunchImage" src="https://img.icons8.com/?size=196&id=kHG4p2DyB85t&format=png"
-                             alt="Daily lunch item" draggable="false">
-                    </div>
+<main>
+    <div id="widget-board">
+        <div id="lunch" class="widget">
+            <div id="lunchContainer">
+                <div id="DailyLunchImageContainer">
+                    <img id="DailyLunchImage" src="https://img.icons8.com/?size=196&id=kHG4p2DyB85t&format=png"
+                         alt="Daily lunch item" draggable="false">
                 </div>
-            </div>
-            <div id="weather" class="widget" style="user-select:none;" data-nosnippet>
-                <h3 style="margin-bottom: 10px;">Weather</h3>
-                <div id="wapi-container">
-                    <table hidden id="alerts"
-                           style="border:1px solid var(--accent-color); width:100%; margin: 0 0 20px 0; border-radius: 10px;">
-                        <tbody style="display: block; width: 100%;">
-                        <tr style="background-color: var(--accent-color); display: flex; justify-content: center; border-radius: 9px 9px 0 0;">
-                            <td style="text-align: center; color: #ffffff; padding: 2px;">Active Alerts</td>
+                <div>
+                    <h3>What&apos;s for lunch?</h3>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td id="MondayLunch" class="lunch border">Monday</td>
+                            <td class="lunch" id="MondayLunchItem"></td>
                         </tr>
                         <tr>
-                            <td class="alerts">
-                                <ul id="alert-list" style="text-align: left;">
-                                </ul>
-                            </td>
+                            <td id="TuesdayLunch" class="lunch border">Tuesday</td>
+                            <td class="lunch" id="TuesdayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="WednesdayLunch" class="lunch border">Wednesday</td>
+                            <td class="lunch" id="WednesdayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="ThursdayLunch" class="lunch border">Thursday</td>
+                            <td class="lunch" id="ThursdayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td id="FridayLunch" class="lunch border">Friday</td>
+                            <td class="lunch" id="FridayLunchItem"></td>
+                        </tr>
+                        <tr>
+                            <td class="lunch border">Each Day</td>
+                            <td class="lunch" id="AllLunchItem"></td>
                         </tr>
                         </tbody>
                     </table>
-                    <div id="forecast" style="display: grid;">
-                        <div id="pd0">
-                            <h4 id="0-name"></h4>
-                            <img src="https://img.icons8.com/?size=86&id=kHG4p2DyB85t&format=png" id="0-icon"
-                                 draggable="false" alt="Period 0 forecast image">
-                            <h6><span id="0-temp"></span>°F | <span id="0-windd"></span> at <span id="0-winds"></span>
-                            </h6>
-                            <p id="0-desc"></p>
-                        </div>
-                        <div id="pd1">
-                            <h4 id="1-name"></h4>
-                            <img src="https://img.icons8.com/?size=86&id=kHG4p2DyB85t&format=png" id="1-icon"
-                                 draggable="false" alt="Period 1 forecast image">
-                            <h6><span id="1-temp"></span>°F | <span id="1-windd"></span> at <span id="1-winds"></span>
-                            </h6>
-                            <p id="1-desc"></p>
-                        </div>
-                        <div id="pd2">
-                            <h4 id="2-name"></h4>
-                            <img src="https://img.icons8.com/?size=86&id=kHG4p2DyB85t&format=png" id="2-icon"
-                                 draggable="false" alt="Period 2 forecast image">
-                            <h6><span id="2-temp"></span>°F | <span id="2-windd"></span> at <span id="2-winds"></span>
-                            </h6>
-                            <p id="2-desc"></p>
-                        </div>
-                        <div id="pd3">
-                            <h4 id="3-name"></h4>
-                            <img src="https://img.icons8.com/?size=86&id=kHG4p2DyB85t&format=png" id="3-icon"
-                                 draggable="false" alt="Period 3 forecast image">
-                            <h6><span id="3-temp"></span>°F | <span id="3-windd"></span> at <span id="3-winds"></span>
-                            </h6>
-                            <p id="3-desc"></p>
-                        </div>
-                        <div id="pd4">
-                            <h4 id="4-name"></h4>
-                            <img src="https://img.icons8.com/?size=86&id=kHG4p2DyB85t&format=png" id="4-icon"
-                                 draggable="false" alt="Period 4 forecast image">
-                            <h6><span id="4-temp"></span>°F | <span id="4-windd"></span> at <span id="4-winds"></span>
-                            </h6>
-                            <p id="4-desc"></p>
-                        </div>
+                </div>
+            </div>
+        </div>
+        <div id="weather" class="widget" data-nosnippet>
+            <h3>Weather</h3>
+            <div id="wapi-container">
+                <table hidden id="alerts"
+                       style="border:1px solid var(--accent-color); width:100%; margin: 0 0 20px 0; border-radius: 10px;">
+                    <tbody style="display: block; width: 100%;">
+                    <tr style="background-color: var(--accent-color); display: flex; justify-content: center; border-radius: 9px 9px 0 0;">
+                        <td style="text-align: center; color: #ffffff; padding: 2px;">Active Alerts</td>
+                    </tr>
+                    <tr>
+                        <td class="alerts">
+                            <ul id="alert-list" style="text-align: left;">
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="forecast">
+                    <div id="pd0">
+                        <h4 id="0-name"></h4>
+                        <img src="/spinner-86.svg" id="0-icon" draggable="false" alt="Period 0 forecast image">
+                        <h6><span id="0-temp"></span>°F | <span id="0-windd"></span> at <span id="0-winds"></span>
+                        </h6>
+                        <p id="0-desc"></p>
+                    </div>
+                    <div id="pd1">
+                        <h4 id="1-name"></h4>
+                        <img src="/spinner-86.svg" id="1-icon" draggable="false" alt="Period 1 forecast image">
+                        <h6><span id="1-temp"></span>°F | <span id="1-windd"></span> at <span id="1-winds"></span>
+                        </h6>
+                        <p id="1-desc"></p>
+                    </div>
+                    <div id="pd2">
+                        <h4 id="2-name"></h4>
+                        <img src="/spinner-86.svg" id="2-icon" draggable="false" alt="Period 2 forecast image">
+                        <h6><span id="2-temp"></span>°F | <span id="2-windd"></span> at <span id="2-winds"></span>
+                        </h6>
+                        <p id="2-desc"></p>
+                    </div>
+                    <div id="pd3">
+                        <h4 id="3-name"></h4>
+                        <img src="/spinner-86.svg" id="3-icon" draggable="false" alt="Period 3 forecast image">
+                        <h6><span id="3-temp"></span>°F | <span id="3-windd"></span> at <span id="3-winds"></span>
+                        </h6>
+                        <p id="3-desc"></p>
+                    </div>
+                    <div id="pd4">
+                        <h4 id="4-name"></h4>
+                        <img src="/spinner-86.svg" id="4-icon" draggable="false" alt="Period 4 forecast image">
+                        <h6><span id="4-temp"></span>°F | <span id="4-windd"></span> at <span id="4-winds"></span>
+                        </h6>
+                        <p id="4-desc"></p>
                     </div>
                 </div>
-                <img id="graphicast" src="https://www.weather.gov/images/mlb/graphicast/image1.png" alt="Graphicast"
-                     draggable="false" style="margin-top: 20px; width: 100%; height: fit-content;">
-                <img id="track" src="https://img.icons8.com/?size=96&id=kHG4p2DyB85t&format=png" width="100%"
-                     height="100%" alt="Tropical Cyclone Track" draggable="false" style="display: none;">
             </div>
-            <div id="quickbits" class="widget">
-                <h3 class="no-bottom">Quick Bits</h3>
-                <div>
-                    <ol>
-                        <li id="quickbit1"></li>
-                        <li id="quickbit2"></li>
-                        <li id="quickbit3"></li>
-                        <li id="quickbit4"></li>
-                        <li id="quickbit5"></li>
-                    </ol>
-                </div>
-            </div>
-            <div id="feed" class="widget">
-                <h3 class="no-bottom">Feed</h3>
-                <p style="margin-top: 0; margin-bottom: 0; user-select: none;">
-                    <a class="links"
-                       href="https://docs.google.com/forms/d/e/1FAIpQLScratc1T2cd1OX88lpWDPLQD3bmngYh_ZsFHFFPhJCV_OEInw/viewform"
-                       target="_blank">Submit a Feed Update</a>
-                </p>
-                <div>
-                    <ul id="feed-updates">
-                        <span style="margin-top: 0; margin-bottom: 0; user-select: none;">There seems to be a problem loading the Feed Updates.</span>
-                    </ul>
-                </div>
+            <img id="graphicast" src="https://www.weather.gov/images/mlb/graphicast/image1.png" alt="Graphicast"
+                 draggable="false" style="margin-top: 20px; width: 100%; height: fit-content;">
+            <img id="track" src="https://img.icons8.com/?size=96&id=kHG4p2DyB85t&format=png" width="100%"
+                 height="100%" alt="Tropical Cyclone Track" draggable="false" style="display: none;">
+        </div>
+        <div id="quickbits" class="widget">
+            <h3 class="no-bottom">Quick Bits</h3>
+            <div>
+                <ol>
+                    <li id="quickbit1"></li>
+                    <li id="quickbit2"></li>
+                    <li id="quickbit3"></li>
+                    <li id="quickbit4"></li>
+                    <li id="quickbit5"></li>
+                </ol>
             </div>
         </div>
-    </div>
-    <div id="gradecalc" style="user-select: none; display: none;" data-nosnippet>
-        <iframe id="gradeCalcMasterFrame" src="https://gradecalc.kones.tech" width="100%"
-                style="margin: 0; padding: 0; border: 0; height: calc(100vh - 90px)">
-            <i class="fa-solid fa-spinner fa-spin loader"></i>
-        </iframe>
-    </div>
-    <div id="special" style="display: none;" data-nosnippet>
-
+        <div id="feed" class="widget">
+            <h3 class="no-bottom">Feed</h3>
+            <p style="margin-top: 0; margin-bottom: 0; user-select: none;">
+                <a class="links"
+                   href="https://docs.google.com/forms/d/e/1FAIpQLScratc1T2cd1OX88lpWDPLQD3bmngYh_ZsFHFFPhJCV_OEInw/viewform"
+                   target="_blank">Submit a Feed Update</a>
+            </p>
+            <div>
+                <ul id="feed-updates">There are no Feed Updates.</ul>
+            </div>
+        </div>
     </div>
 </main>
-<footer style="user-select: none;" data-nosnippet>
-    <ul class="footbar">
-        <li id="copyrights" class="mininavbutton"><a onclick="if (settings_enabled === true) {toggleSettingsPanel()}"
-        >Copyleft Andrew Jennings</a></li>
-        <li id="settings-link" class="mininavbutton" onclick="toggleSettingsPanel()" title="Hub Settings"><a>
-            <i class="fa-solid fa-gear"></i>
-        </a></li>
-        <li id="github-link" class="mininavbutton" onclick="window.open('https://github.com/ajcoolcat/crooms-bell-sched')"
-            title="View on GitHub"><a id="githubLogo"><i class="fa-brands fa-github"></i></a>
-        </li>
-        <li id="time-shell-dialog-trigger" class="mininavbutton" style="float:right"><a id="datetime"></a></li>
-    </ul>
-    <div hidden id="time-shell-dialog" class="shell-dialog" style="width: 355px;">
-        <iframe src="sched/" width="100%" height="70" style="overflow: hidden; margin: 0; border: 0;"></iframe>
-        <p style="font-size: 8pt;">
-            <a class="links" onclick="feedback()">Submit Feedback</a>
-            <a class="links" href="/download/">Download App</a>
-        </p>
+<footer>
+    <div>
+        <span>About Crooms Bell Schedule</span>
+        <div class="popout">
+            <h3>Crooms Bell Schedule</h3>
+            <p>Designed and maintained by Andrew Jennings.</p>
+            <h4>Join the team!</h4>
+            <p>Join the development team on our
+                <a href="//github.com/ajcoolcat/crooms-bell-sched/" target="_blank">GitHub Repository</a>.</p>
+        </div>
     </div>
-    <div hidden id="copy-shell-dialog" class="copy-shell-dialog" style="width:400px;">
-        <h3>Crooms Bell Schedule Website</h3>
-        <p>Homepage developed by Andrew Jennings.</p>
-        <p>Bell schedule applet developed by Andrew Jennings and Suvan Mangamuri.</p>
-        <h4 style="margin-top:8px;">Terms of Service</h4>
-        <p><a class="links" href="terms/">Terms of Service</a></p>
-        <p><a class="links" href="terms/acg/">Acceptable Content Guidelines</a></p>
-        <p><a class="links" href="terms/feed/">Feed Guidelines</a></p>
+    <span id="random">Today's random and senseless quip is...
+        <i><q id="senseless"></q></i>
+    </span>
+    <div>
+        <span id="feed-and-updates">Please wait...</span>
+        <div class="popout" style="width: 350px; right: 0;">
+            <div id="sched"></div>
+        </div>
     </div>
 </footer>
-<div id="alert" class="modal" style="display: none; user-select: none" data-nosnippet>
-    <div class="alert-box" style="user-select: none;">
-        <div class="details">
-            <p style="text-align: center; font-size: 1.3em; font-weight: 600;" title-content></p>
-            <p style="text-align: center; font-size: 0.8em;" text-content></p>
-            <p style="text-align:center;">
-                <button onclick="document.getElementById('alert').style.display = 'none'">OK</button>
-            </p>
-        </div>
-    </div>
+<div id="alert-floater">
+    <noscript class="alert">
+
+    </noscript>
 </div>
-<div id="control-center">
-    <h1 style="margin-bottom: 5px;">Hub Settings</h1>
-    <div hidden>
-        <h3 style="margin-top: 10px;">Accent Color</h3>
-        <input type="radio" id="accent-color-1" name="accent-color"><label for="accent-color-1">Default</label><br>
-        <input type="radio" id="accent-color-2" name="accent-color"><label for="accent-color-2">Custom</label>
-    </div>
-    <div>
-        <h3 style="margin-bottom: 5px;">Clippy</h3>
-        <div id="clippy-hidden" style="display: none">
-            <button id="show-clippy" onclick="showClippy(); allowClippyStartup();">Show Clippy</button>
-        </div>
-        <div id="clippy-shown">
-            <button id="hide-clippy" onclick="hideClippy(); blockClippyStartup();">Hide Clippy</button>
-            <button id="anim-clippy" onclick="animateClippy()">Animate Clippy</button>
-        </div>
-    </div>
-    <div style="margin-top: 15px;">
-        <h3>Grade Calculator</h3>
-        <p style="margin-top: 0; margin-bottom: 5px">This setting will sign you out of your current session of Kone's
-            Grade Calculator.</p>
-        <button onclick="document.querySelector('#gradeCalcMasterFrame').src = 'https://gradecalc.kones.tech/'">Clear
-            Session</button>
-    </div>
-    <div style="margin-top: 15px;">
-        <h3>Beta Testing</h3>
-        <h6 style="margin: 0">Test out new features coming to the Crooms Bell Schedule website.</h6>
-        <p style="margin: 0;">Currently, there are no new features to test out. Once new features get prepared for
-            testing, we'll tell you here.</p>
-    </div>
-    <div style="position: absolute; bottom: 10px">
-        <h4 style="margin-bottom: 5px">Looking for the Bell Schedule Settings?</h4>
-        <button onclick="settings()">Here they are!</button>
-    </div>
+<div id="toosmall">
+    <h3>Your screen is too small.</h3>
+    <p>To use our website, you'll need to use a larger display.</p>
 </div>
-<noscript>
-    <div class="modal" style="user-select: none; z-index: 9;" data-nosnippet>
-        <div class="alert-box" style="user-select: none;">
-            <div class="details">
-                <p style="text-align: center; font-size: 1.3em; font-weight: 600;">JavaScript Disabled</p>
-                <p style="text-align: center; font-size: 0.8em;">
-                    You might not know this, but your JavaScript is disabled for this site. That means that we can't
-                    load our page, because it needs JavaScript to work properly.<br><br>
-                    To fix this, go to your browser settings, and check that JavaScript is enabled for <span
-                        style="user-select: all;">croomssched.tech</span>. If that doesn't work, make sure
-                    that there aren't any extensions that prohibit JavaScript from running on this site.
-                </p>
-            </div>
-        </div>
-    </div>
-</noscript>
-<context-menu menu-id="main" data-nosnippet>
-    <menu-item role="back" onclick="document.querySelector('[menu-id=main]').style.display = 'none'; history.back()"><i
-            class="fa-solid fa-arrow-left"></i>Back
-    </menu-item>
-    <menu-item role="forward"
-               onclick="document.querySelector('[menu-id=main]').style.display = 'none'; history.forward()"><i
-            class="fa-solid fa-arrow-right"></i>Forward
-    </menu-item>
-    <menu-item role="reload"
-               onclick="document.querySelector('[menu-id=main]').style.display = 'none'; location.reload()"><i
-            class="fa-solid fa-arrow-rotate-right"></i>Reload
-    </menu-item>
-    <hr style="margin: 5px 10px;">
-    <menu-item role="copy" onclick="document.querySelector('[menu-id=main]').style.display = 'none'; copyText();"><i
-            class="fa-solid fa-clipboard"></i>Copy
-    </menu-item>
-    <menu-item role="share" onclick='share(document.querySelector("[menu-id=main]"))'><i class="fa-solid fa-share"></i>Share
-    </menu-item>
-    <menu-item role="more" onclick="openWindowLink(); document.querySelector('[menu-id=main]').style.display = 'none';">
-        <i class="fa-solid fa-circle-plus"></i>View More Info
-    </menu-item>
-</context-menu>
-<context-menu menu-id="random" style="z-index: 7;" data-nosnippet>
-    <menu-item role="new-tab"
-               onclick="document.querySelector('[menu-id=random]').style.display = 'none'; randomWindow();"><i
-            class="fa-solid fa-rectangle-history-circle-plus"></i>Open Random Website
-    </menu-item>
-    <menu-item role="forward" onclick="document.querySelector('[menu-id=random]').style.display = 'none'; poll()"><i
-            class="fa-solid fa-poll-people"></i>Daily Poll
-    </menu-item>
-    <menu-item role="reload" onclick="document.querySelector('[menu-id=random]').style.display = 'none'; ad()"><i
-            class="fa-solid fa-rectangle-ad"></i>Show Ad
-    </menu-item>
-</context-menu>
-<context-menu menu-id="dialog-controls" style="z-index: 7;" data-nosnippet>
-    <menu-item role="close"
-               onclick="document.querySelector('[menu-id=dialog-controls]').style.display = 'none'; windows.close('FeedbackWave100');">
-        <i class="fa-solid fa-xmark"></i>Close
-    </menu-item>
-</context-menu>
-<context-menu menu-id="clippy" style="z-index: 7; position: fixed;" data-nosnippet>
-    <menu-item onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyFact();">
-        <i class="fa-solid fa-lightbulb-exclamation"></i>Facts
-    </menu-item>
-    <hr style="margin: 5px 10px">
-    <menu-item role="animate"
-               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyAgent.animate();">
-        <i class="fa-solid fa-face-awesome fa-spin"></i>Animate
-    </menu-item>
-    <menu-item role="close"
-               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; hideClippy();"><i
-            class="fa-solid fa-xmark"></i>Hide Assistant
-    </menu-item>
-</context-menu>
-<context-menu menu-id="clippy-debug" style="z-index: 7; position: fixed;" data-nosnippet>
-    <menu-item role="animations"
-               onclick="document.querySelector('[menu-id=clippy-debug]').style.display = 'none'; alertClient('Animations', `Here's all the animations available.<br><br>` + clippyAgent.animations())">
-        Animations
-    </menu-item>
-    <hr style="margin: 5px 10px;"
-    <menu-item role="animate"
-               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyFact();"><i
-            class="fa-solid fa-lightbulb-exclamation"></i>Facts
-    </menu-item>
-    <hr style="margin: 5px 10px">
-    <menu-item role="animate"
-               onclick="document.querySelector('[menu-id=clippy]').style.display = 'none'; clippyAgent.animate();"><i
-            class="fa-solid fa-face-awesome fa-spin"></i>Animate
-    </menu-item>
-    <menu-item role="close"
-               onclick="document.querySelector('[menu-id=clippy-debug]').style.display = 'none'; hideClippy();"><i
-            class="fa-solid fa-xmark"></i>Hide Assistant
-    </menu-item>
-</context-menu>
-<note id="share-clipboard-note" data-nosnippet>Link was copied to the clipboard.</note>
-<clippy></clippy>
-<ul hidden>
-    <li class="urgent">Urgent Message</li>
-</ul>
-<!-- Status Pages -->
-<script src="https://croomssched.statuspage.io/embed/script.js"></script>
-<!-- Main JS Files -->
-<script src="commons.js"></script>
-<script src="navigator.js"></script>
-<script src="index.js"></script>
-<script src="fetch.js"></script>
-<script src="control.js"></script>
-<!-- Vercel Analytics -->
-<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-<script defer src="/_vercel/insights/script.js"></script>
+<script src="/scripts/index.js"></script>
+<script src="/scripts/commons.js"></script>
+<script src="/scripts/fetch.js"></script>
+<script src="/sched/schedule.js"></script>
+<script>createCBSHSched(document.getElementById("sched"))</script>
 </body>
 </html>

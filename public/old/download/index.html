@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=3">
+    <meta name="application-name" content="Crooms Bell Schedule App">
+    <meta name="description" content="Download the Crooms Bell Schedule app to keep track of time during the school day.">
+    <meta name="keywords" content="crooms, bell schedule, CAIT, bell, schedule, CAoIT, Crooms Academy, Crooms Academy of Information Technology">
+    <!-- OpenGraph/Social Media Sharing -->
+    <meta name="og:description" content="Download the Crooms Bell Schedule app to keep track of time during the school day.">
+    <meta property="og:image" content="/favicon.ico">
+    <meta property="og:title" content="Crooms Bell Schedule">
+    <meta name="twitter:card" content="summary">
+    <!-- End OpenGraph -->
+    <title>Crooms Bell Schedule</title>
+    <link rel="stylesheet" type="text/css" href="/style-root.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <style>
+      @media screen and (max-width: 740px) {
+        li.navbutton {float: left;}
+        li.navbutton a {display: block; text-align: center; padding: 8px 10px; text-decoration: none;}
+        #navbutton1, #navbutton6 {display: none;}
+      }
+    </style>
+  </head>
+  <body id="body" onload="main()">
+    <header style="user-select:none;">
+      <nav style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
+        <ul class="navbar">
+          <li id="navbutton1" class="navbutton"><a class="nolink">Crooms Bell Schedule</a></li>
+          <li id="navbutton2" class="navbutton"><a href="/" id="nav2">Home</a></li>
+          <li id="navbutton4" class="navbutton"><a href="/gradecalc">Grade Calculator</a></li>
+          <li id="navbutton5" class="navbutton" onclick="poll()"><a id="link3">Daily Poll</a></li>
+          <li id="navbutton6" class="navbutton" style="float:right"><a class="active">Schedule App</a></li>
+        </ul>
+        <div id="dp-shell-dialog" class="top-shell-dialog" height="300" style="width: 350px;" hidden>
+          <h3 style="margin-top:0;margin-bottom:0;">We have an app now.</h3>
+          <p style="margin-top:0;margin-bottom:0;">Please use the button above to download the app.</p>
+          <p style="margin-top:0;margin-bottom:0;"><a class="links" onclick="window.open('/sched/','bellschwin','status=0,toolbar=0,location=0,height=65,width=350')">Not on Windows?</a></p>
+        </div>
+      </nav><br>
+    </header>
+    <main style="padding: 8px 8px 50px; user-select: none;">
+      <div id="loading" style="position: fixed; top: 50%; left: 50%; transform: translateY(-50%); padding: 10px ;">
+        <i class="fa-solid fa-spinner fa-spin" id="loader"></i>
+      </div>
+      <div id="host" hidden>
+        <h1 style="margin-bottom: 0px;">Download the Crooms Bell Schedule App</h1>
+        <h3 style="margin-top: 0%;">Thank you for downloading the Crooms Bell Schedule App.</h3>
+        <p>Your download <span id="countdown">will begin shortly</span>.</p>
+        <p>If you don't see it yet, check in the downloads folder. If it isn't there, <a class="links" href="https://update.croomssched.tech/download/win32/">restart the download</a>.</p>
+        <h2 style="margin-bottom: 0px;">SmartScreen</h2>
+        <p style="margin-top: 0px;">If you receive a popup from Windows SmartScreen, you must click the "more info" link in the middle of the window, and then click "run anyways" to start the installation process.</p>
+        <h4 style="margin-bottom: 0px;">Why the hassle?</h4>
+        <p style="margin-top: 0px;">For the nerdy developers <em style="font-size: 6px;">(like us)</em> that wonder why this occurs, it is because we are unable to sign the installer with a certificate.</p>
+      </div>
+    </main>
+    <footer style="user-select:none;">
+      <ul class="footbar">
+        <li id="copyrights" class="mininavbutton"><a class="nolink">Copyleft Andrew Jennings</a></li>
+        <li id="github-link" class="mininavbutton" onclick="window.open('https://github.com/ajcoolcat/croomssched')" title="View on GitHub">
+        <a class="links" id="githubLogo"  style="padding-left: 30px;padding-right: 7.5px;padding-top: 21px;padding-bottom: 17px;background-image: url(/github-mark.svg);background-repeat: no-repeat;background-size: 16px;background-position: center;"></a></li>
+        <li id="time-shell-dialog-trigger" class="mininavbutton" style="float:right"><a id="datetime"></a></li>
+      </ul>
+      <div hidden id="time-shell-dialog" class="shell-dialog" height="300" style="width: 335px;">
+        <iframe src="/sched/" style="width: 100%; height: 70px; margin: 0; border: 0;"></iframe>
+        <p style="font-size: 8pt;"><a class="links" onclick="feedback()">Submit Feedback</a></p>
+      </div>
+      <div hidden id="copy-shell-dialog" class="copy-shell-dialog" style="width:400px;">
+        <h3>Crooms Bell Schedule Website</h3>
+        <p>Homepage developed by Andrew Jennings.</p>
+        <p>Bell schedule applet developed by Andrew Jennings and Suvan Mangamuri.</p>
+        <h4 style="margin-top:8px;">Terms of Service</h4>
+        <p><a class="links" href="/terms/">Terms of Service</a></p>
+        <p><a class="links" href="/terms/acg/">Acceptable Content Guidelines</a></p>
+        <p><a class="links" href="/terms/feed/">Feed Guidelines</a></p>
+      </div>
+    </footer>
+    <div id="alert-bkg" class="modal" style="user-select:none;" hidden></div>
+    <div id="alert" class="alert-box" style="user-select:none;" hidden></div>
+    <script src="index.js"></script>
+    <script src="/commons.js"></script>
+  </body>
+</html>

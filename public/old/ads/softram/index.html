@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico">
+    <title>SoftRAM - Ad</title>
+    <style>
+      @font-face {font-family: "SegUI"; src: url("/SegUIVar.ttf");}
+      body, .accordion {font-family: "SegUI";}
+    </style>
+    <link rel="stylesheet" type="text/css" href="/style-root.css">
+  </head>
+  <body>
+    <main>
+      <h1><img style="float:none;" src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/SoftRam95l.png/120px-SoftRam95l.png"></h1>
+      <h3>RAM DOUBLING CAPABILITIES</h3>
+      <p>Ever wanted to double your RAM? Well, now you can. With SoftRAM, there's no need to purchase physical RAM, because SoftRAM gets the work done, and you spend less of your money.</p>
+      <input type="button" value="Download SoftRAM" onclick="window.location.href = 'https://cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/softramsetup.exe'" />
+    </main>
+    <footer>
+      <ul class="footbar">
+        <li id="copyrights" class="mininavbutton"><a class="nolink">Copyleft Andrew Jennings</a></li>
+        <li id="time-shell-dialog-trigger" class="mininavbutton" style="float:right"><a id="datetime"></a></li>
+      </ul>
+      <div hidden id="time-shell-dialog" class="shell-dialog" height="300" style="width: 335px;">
+        <iframe src="/sched/legacy/" width="100%" height="70" scrolling="no" marginwidth="0" frameborder="0"></iframe>
+        <p style="font-size: 8pt;"><a class="links" onclick="feedback()">Submit Feedback</a></p>
+      </div>
+      <div hidden id="copy-shell-dialog" class="copy-shell-dialog" style="width:400px;">
+        <h3>Crooms Bell Schedule Website</h3>
+        <p>Homepage developed by Andrew Jennings.</p>
+        <p>Bell schedule applet developed by Suvan Mangamuri.</p>
+        <h4 style="margin-top:8px;">Terms of Service</h4>
+        <p><a class="links" href="/terms/">Terms of Service</a></p>
+        <p><a class="links" href="/terms/acg/">Acceptable Content Guidelines</a></p>
+        <p><a class="links" href="/terms/feed/">Feed Guidelines</a></p>
+      </div>
+      <p> </p>
+    </footer>
+  </body>
+  <script>
+    var x = setInterval(function() {
+      const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      const monthnames = ["January","Febuary","March","April","May","June","July","August","September","October","November","December"];
+      const d = new Date();
+      let year = d.getFullYear();
+      let month = d.getMonth();
+      let monthname = monthnames[d.getMonth()];
+      let date = d.getDate();
+      let day = weekday[d.getDay()];
+      let hour = d.getHours();
+      let minutes = d.getMinutes();
+      let seconds = d.getSeconds();
+      if (hour >= 13) {
+        var hourshort = hour - 12
+        var apm = "PM"
+      } else {
+        var hourshort = hour
+        var apm = "AM"
+      }
+      
+      // CLOCK //
+      if (minutes < 10) {
+        minutes = "0"+minutes
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds
+      }
+      document.getElementById("datetime").innerHTML = (month+1) + "/" + date + "/" + year + " " + hourshort + ":" + minutes + " " + apm
+    }, 1000);
+  </script>
+  <script>
+    var timeshelltrigger = document.getElementById("time-shell-dialog-trigger");
+    var timeshell = document.getElementById("time-shell-dialog");
+    timeshelltrigger.addEventListener("mouseover", timeshow, false);
+    timeshell.addEventListener("mouseover", timeshow, false);
+    timeshelltrigger.addEventListener("mouseout", timehide, false);
+    timeshell.addEventListener("mouseout", timehide, false);
+
+    function timeshow() { 
+      var timeshell = document.getElementById("time-shell-dialog"); 
+      timeshell.removeAttribute("hidden");
+    }
+
+    function timehide() {  
+      var timeshell = document.getElementById("time-shell-dialog"); 
+      timeshell.setAttribute("hidden", "true");
+    }
+    
+    var cpshelltrigger = document.getElementById("copyrights");
+    var cpshell = document.getElementById("copy-shell-dialog");
+    cpshelltrigger.addEventListener("mouseover", cpshow, false);
+    cpshell.addEventListener("mouseover", cpshow, false);
+    cpshelltrigger.addEventListener("mouseout", cphide, false);
+    cpshell.addEventListener("mouseout", cphide, false);
+
+    function cpshow() { 
+      document.getElementById("copy-shell-dialog").removeAttribute("hidden");
+    }
+
+    function cphide() {  
+      document.getElementById("copy-shell-dialog").setAttribute("hidden", "true");
+    }
+
+    if (navigator.platform == "Android" || navigator.platform == "Linux armv7l" || navigator.platform == "undefined" || navigator.platform == "null" || navigator.platform == "iPhone" || navigator.platform == "iPod" || navigator.platform == "BlackBerry" || navigator.platform == "Linux armv8l" || navigator.platform == "WinCE" || navigator.platform == "Pocket PC" || navigator.platform == "PSP" || navigator.platform == "Linux armv6l" || navigator.platform == "Linux armv81") {
+      var topnavbar1 = document.getElementById("navbutton1");
+      topnavbar1.setAttribute("class","mininavbutton");
+      var topnavbar2 = document.getElementById("navbutton2");
+      topnavbar2.setAttribute("class","mininavbutton");
+      var topnavbar3 = document.getElementById("navbutton3");
+      topnavbar3.setAttribute("class","mininavbutton");
+      var topnavbar4 = document.getElementById("navbutton4");
+      topnavbar4.setAttribute("class","mininavbutton");
+      var topnavbar5 = document.getElementById("navbutton5");
+      topnavbar5.setAttribute("class","mininavbutton");
+      var topnavbar6 = document.getElementById("navbutton6");
+      topnavbar6.setAttribute("class","mininavbutton");
+      topnavbar1.setAttribute("hidden", "true");
+      topnavbar6.setAttribute("hidden", "true");
+    }
+  </script>
+</html>

@@ -7,236 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico">
   <title>Schedule Settings</title>
-  <link href="/style-root.css" rel="stylesheet">
+  <link href="/styles/master.css" rel="stylesheet">
   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
   <style>
-    @font-face {font-family: "SegUI";src: url("/SegUIVar.woff2");}
-    body {font-family: "SegUI",sans-serif;overflow: hidden;user-select:none;}
-    .modal {position:fixed;z-index:1;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4);}
-    .alert-box {font-size:16px;width:80vw;max-width:25em;padding:3em 1.8em;border-radius:0.5em;box-shadow:1.6em 2.2em 4em rgba(0,0,0,0.5);background-color:#eeeeee;position:absolute;transform:translate(-50%,-50%);top:50%;left:50%;z-index:2;}
-    #footer {background-color: #eeeeee;} #toosmall {display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);}
-    @media (prefers-color-scheme: dark) {.alert-box{background-color:#111111;box-shadow:1.6em 2.2em 4em rgba(50,50,50,0.5);} #footer {background-color: #222222 !important;}}
-    button {font-family: "SegUI",sans-serif;}
-    @media screen and (max-width: 307px) {#wrapper {display: none;} #toosmall {display: block;}}
-    @media screen and (max-height: 449px) {#wrapper {display: none;} #toosmall {display: block;}}
+    #toosmall {display: none}
+    @media screen and (max-width: 307px) {header, main, footer {display: none;} #toosmall {display: block;}}
+    @media screen and (max-height: 449px) {header, main, footer {display: none;} #toosmall {display: block;}}
 
-    #footer {display: none;} /* Remove line to restore original "Done" button */
+    #footer {display: none;}
   </style>
-  <script>
-
-    let saveSettings = () => {}
-      document.addEventListener("DOMContentLoaded", () => {
-        function fixMissingSettings() {
-          let Settings = {}
-          let xhr = new XMLHttpRequest();
-          xhr.open('GET', '/defaultSettings.json');
-          xhr.responseType = 'json';
-          xhr.send();
-          xhr.onload = function () {
-            Settings = xhr.response;
-            let SavedSettings = JSON.parse(window.localStorage.getItem("settings"));
-            if (SavedSettings){
-              for (const obj in Settings) {
-                
-                if (SavedSettings[obj] === undefined){
-                  console.log(obj, " is missing!");
-                  SavedSettings[obj] = Settings[obj];
-                }
-                
-              }
-
-              SavedSettings.font.values = Settings.font.values;
-            }
-            else {
-                SavedSettings = Settings;
-            }
-            window.localStorage.setItem("settings", JSON.stringify(SavedSettings));
-            console.log("Fixed possible missing settings!");
-            start();
-          }
-        }
-
-        fixMissingSettings(); 
-
-        function start() {
-        
-        let periodNameElements = [];
-        for (let i = 1; i < 8; i++){
-          periodNameElements.push(document.querySelector("#period"+i+"Name"));
-        }
-        
-        let Settings = {};
-
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', '/defaultSettings.json');
-        xhr.responseType = 'json';
-        xhr.send();
-
-        xhr.onload = function () {
-          Settings = xhr.response;
-          document.querySelector("#ThemeDropdown").addEventListener("change", () => {
-            saveSettings();
-          });
-          document.querySelector("#showSeconds").addEventListener("change", () => {
-            saveSettings();
-          });
-          for (let i = 0; i < periodNameElements.length; i++){
-            periodNameElements[i].addEventListener("change", () => {
-              saveSettings();
-            });
-          }
-          document.querySelector("#DefaultLunchDropdown").addEventListener("change", () => {
-            saveSettings();
-          });
-          
-          document.querySelector("#showRing").addEventListener("change", () => {
-            saveSettings();
-          });
-          
-          
-          
-        }
-
-        saveSettings = () => {
-          
-          Settings.theme = document.querySelector("#ThemeDropdown").value;
-          Settings.showSeconds = document.querySelector("#showSeconds").checked;
-          Settings.periodNames.period1 = periodNameElements[0].value;
-          Settings.periodNames.period2 = periodNameElements[1].value;
-          Settings.periodNames.period3 = periodNameElements[2].value; 
-          Settings.periodNames.period4 = periodNameElements[3].value;
-          Settings.periodNames.period5 = periodNameElements[4].value;
-          Settings.periodNames.period6 = periodNameElements[5].value;
-          Settings.periodNames.period7 = periodNameElements[6].value;
-          Settings.defaultLunch = document.querySelector("#DefaultLunchDropdown").value;
-          Settings.showTimeRemainingRing = document.querySelector("#showRing").checked;
-          Settings.font.value = document.querySelector("#font").value;
-          window.localStorage.setItem("settings", JSON.stringify(Settings));
-          
-        }
-      
-        let loadedSettings = {};
-        if (window.localStorage.getItem("settings") === null) {
-          let xhr2 = new XMLHttpRequest();
-          xhr2.open('GET', '/defaultSettings.json');
-          xhr2.responseType = 'json';
-          xhr2.send();
-          xhr2.onload = function () {
-            loadedSettings = xhr2.response;
-            loadSettings(loadedSettings);
-          }
-        }
-        else {
-          loadedSettings = JSON.parse(window.localStorage.getItem("settings"));
-          loadSettings(loadedSettings);
-        }
-
-        function loadSettings(LoadSettings) {
-          let fontDropdown = document.getElementById("font");
-          for (let i = 0; i < LoadSettings.font.values.length; i++){
-            let fontOption = document.createElement("option");
-            fontOption.innerText = LoadSettings.font.values[i].name;
-            fontOption.value = LoadSettings.font.values[i].id;
-            fontDropdown.appendChild(fontOption);
-          }
-
-          // theme
-          switch (LoadSettings.theme) {
-            case "light":
-              document.querySelector("#ThemeDropdown").selectedIndex = 0;
-              break;
-            case "dark":
-              document.querySelector("#ThemeDropdown").selectedIndex = 1;
-              break;
-          }
-          // showSeconds
-          switch (LoadSettings.showSeconds){
-            case true:
-              document.querySelector("#showSeconds").checked = true;
-              break;
-            case false:
-              document.querySelector("#showSeconds").checked = false;
-              break;
-          }
-          
-          
-          periodNameElements[0].value = LoadSettings.periodNames.period1;
-          periodNameElements[1].value = LoadSettings.periodNames.period2;
-          periodNameElements[2].value = LoadSettings.periodNames.period3;
-          periodNameElements[3].value = LoadSettings.periodNames.period4;
-          periodNameElements[4].value = LoadSettings.periodNames.period5;
-          periodNameElements[5].value = LoadSettings.periodNames.period6;
-          periodNameElements[6].value = LoadSettings.periodNames.period7;
-          
-          switch (LoadSettings.defaultLunch) {
-            case "A Lunch":
-              document.querySelector("#DefaultLunchDropdown").selectedIndex = 0;
-              break;
-            case "B Lunch":
-              document.querySelector("#DefaultLunchDropdown").selectedIndex = 1;
-              break;
-          }
-          
-          // showRing
-          switch (LoadSettings.showTimeRemainingRing){
-            case true:
-              document.querySelector("#showRing").checked = true;
-              break;
-            case false:
-              document.querySelector("#showRing").checked = false;
-              break;
-          }
-
-          for (let i = 0; i < LoadSettings.font.values.length; i++){
-            if (LoadSettings.font.values[i].id === LoadSettings.font.value){
-              
-                document.getElementById("font").selectedIndex = i;
-              break;
-              
-              
-            }
-          }
-
-        }
-      
-      }
-
-
-      });
-
-    function resetSettings(alert) {
-      if (alert === false) {
-        window.localStorage.removeItem("settings");
-        resetSettings("wait");
-      } else if (alert === "cancel") {
-        document.getElementById("alert").setAttribute("hidden","true");
-      } else if (alert === "wait") {
-        document.getElementById("alert-content").innerHTML = '<p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p><p style="text-align: center; font-size: 0.8em;">Resetting settings...</p>';
-        window.location.reload();
-      } else {
-        document.getElementById("alert").removeAttribute("hidden");
-      }
-    }
-    function onDone() {
-      saveSettings();
-      try {
-        window.close();
-      } catch (e) {
-        console.warn(e);
-      }
-    }
-  </script>
+  <script src="/sched/settings/settings.js"></script>
 </head>
 
-<body style="margin: 0px;">
-  <div id="wrapper">
+<body>
     <header>
-      <nav style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
-        <ul class="navbar">
-          <li id="navbutton1" class="navbutton"><a class="nolink" style="border:0;">Schedule Settings</a></li>
-          <li class="navbutton" style="float:right">
-          <a onclick="onDone()">Done</a></li>
-        </ul>
+      <nav>
+        <div>
+          <div class="nolink">Schedule Settings</div>
+        </div>
+        <div>
+            <div onclick="onDone()">Done</div>
+        </div>
       </nav>
     </header><br>
     <main style="position: fixed; top: 49px;">
@@ -290,32 +81,31 @@
       <button id="done" style=" position:fixed; left: 50vw; transform: translate(-55%, 14%);"
         onclick="saveSettings();window.close();">Done</button>
     </footer>
-  </div>
-  <div id="toosmall">
-    <h3>Your device's screen is too small.</h3>
-    <p>To use the settings page, please make your window larger, or use a larger display.</p>
-  </div>
-  <div id="alert" class="modal" hidden>
-    <div class="alert-box">
-      <div id="alert-content" class="details">
-        <p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p>
-        <p style="text-align: center; font-size: 0.8em;">
-          You have requested to reset your settings. If you continue, your theme and bell schedule settings will be removed. Are you sure you want to reset your settings?
-        </p>
-        <p style="text-align:center;"><button onclick="resetSettings(false)">Yes</button> <button onclick="resetSettings('cancel')">No</button></p>
-      </div>
+    <div id="toosmall">
+        <h3>Your device's screen is too small.</h3>
+        <p>To use the settings page, please make your window larger, or use a larger display.</p>
     </div>
-  </div>
-  <context-menu menu-id="settings">
-    <menu-item role="reload" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i>Reload</menu-item>
-    <menu-item role="back" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; saveSettings(); window.close();"><i class="fa-solid fa-floppy-disk"></i>Save and Close</menu-item>
-    <menu-item role="forward" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; resetSettings(true);"><i class="fa-solid fa-trash-can-xmark"></i>Reset Settings</menu-item>
-  </context-menu>
+    <div id="alert" class="modal" hidden>
+        <div class="alert-box">
+            <div id="alert-content" class="details">
+                <p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p>
+                <p style="text-align: center; font-size: 0.8em;">
+                    You have requested to reset your settings. If you continue, your theme and bell schedule settings will be removed. Are you sure you want to reset your settings?
+                </p>
+                <p style="text-align:center;"><button onclick="resetSettings(false)">Yes</button> <button onclick="resetSettings('cancel')">No</button></p>
+            </div>
+        </div>
+    </div>
+    <context-menu menu-id="settings">
+        <menu-item role="reload" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i>Reload</menu-item>
+        <menu-item role="back" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; saveSettings(); window.close();"><i class="fa-solid fa-floppy-disk"></i>Save and Close</menu-item>
+        <menu-item role="forward" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; resetSettings(true);"><i class="fa-solid fa-trash-can-xmark"></i>Reset Settings</menu-item>
+    </context-menu>
 </body>
 
 <script src="/commons.js"></script>
 <script>
-  setRightClick(document.querySelector("body"), document.querySelector("[menu-id=settings]"));
+    setRightClick(document.querySelector("body"), document.querySelector("[menu-id=settings]"));
 </script>
 
 </html>

@@ -1,0 +1,270 @@
+:root {
+    --background: #eeeeee;
+    --main: black;
+    --rev: white;
+
+    --pri: #dddddd;
+    --sec: #cccccc;
+    --tri: #bbbbbb;
+    --qua: #aaaaaa;
+
+    --default-accent: #690D22;
+    --sucess: darkgreen;
+    --warn: goldenrod;
+    --alert: darkred;
+    --info: #0078D4;
+
+    --link: var(--accent-color);
+    --accent-color: var(--default-accent);
+    --font: var(--default-font);
+    --transition: var(--default-transition);
+
+    --default-transition: all 0.1s ease-in-out;
+    --default-font: "SegoeUI", "Segoe UI Variable", "Segoe UI", system-ui;
+
+    background: var(--background);
+    color: var(--main);
+    font-family: var(--font), system-ui;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --background: #111111;
+        --main: white;
+        --rev: black;
+
+        --pri: #222222;
+        --sec: #333333;
+        --tri: #444444;
+        --qua: #555555;
+
+        --default-accent: #FF1010;
+        --sucess: green;
+        --warn: gold;
+        --alert: red;
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    --transition: none;
+}
+
+* {
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+
+@font-face {
+    font-family: "SegoeUI";
+    src: url("https://cdn.croomssched.tech/fonts/SegUIVar.woff2");
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    border: 1px solid var(--qua);
+}
+
+:not(body)::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--pri);
+    border-left: 1px solid var(--qua);
+}
+
+:not(body)::-webkit-scrollbar-track {
+    border: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sec);
+    border: 1px solid var(--qua);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--tri);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--qua);
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+header, main, section, article, aside, footer {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--accent-color);
+    margin: 0;
+}
+
+a:any-link, a.links {
+    color: var(--link) !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+header {
+    background: var(--pri);
+    position: fixed;
+    left: 0; top: 0;
+    user-select: none;
+    z-index: 9;
+    box-shadow: black 0 0 10px;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+nav > div {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+nav > div > div {
+    padding: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+nav > div div:not(.submenu):not(.nolink):hover {
+    background: var(--sec);
+}
+
+nav > div div:not(.submenu):not(.nolink):active {
+    background: var(--tri);
+}
+
+nav > div div.with-app-logo {
+    padding: 8px 15px 8px 8px;
+}
+
+nav > div div > img.app-logo {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+}
+
+nav > div > div > div.submenu {
+    display: none;
+    position: absolute;
+    top: 51px;
+    transform: translateX(-15px);
+    background: var(--pri);
+    box-shadow: black 0 10px 10px;
+    z-index: 10;
+
+    div {
+        padding: 15px;
+    }
+}
+
+nav > div div:hover > div.submenu {
+    display: block;
+}
+
+footer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: var(--pri);
+    width: 100%;
+    user-select: none;
+    z-index: 9;
+    box-shadow: black 0 0 10px;
+}
+
+footer > div > span {
+    display: inline-block;
+    padding: 8px;
+}
+
+footer > div > div {
+    padding: 10px;
+    position: absolute;
+    z-index: 10;
+    transform: translateY(calc(-100% - 37px));
+    background: var(--pri);
+    display: none;
+    box-shadow: black 0 -10px 10px;
+
+    h3, h4 {margin: 0;}
+    p {margin: 0;}
+    p:not(:last-child) {margin-bottom: 0.75rem;}
+}
+
+footer > div:hover {
+    span {background: var(--sec);}
+    div {display: block;}
+}
+
+#alert-floater {
+    position: fixed;
+    left: 50%; top: 60px;
+    transform: translate(-50%, -50%);
+}
+
+#alert-floater > * {
+    margin-bottom: 10px;
+    background: var(--sec);
+    display: flex;
+    flex-flow: row nowrap;
+    border-radius: 10px;
+    box-shadow: black 0 0 10px;
+}
+
+#alert-floater > .alert {
+    background: var(--alert);
+    color: white;
+}
+
+#alert-floater > .warn {
+    background: var(--warn);
+    color: black;
+}
+
+#alert-floater > .info {
+    background: var(--info);
+    color: white;
+}
+
+button, a.button {
+    padding: 8px 10px;
+    background: var(--accent-color);
+    color: var(--rev);
+    border: none;
+    border-radius: 0.5rem;
+}
+
+button:hover, a.button:hover {
+    opacity: 0.75;
+}
+
+button:active, a.button:active {
+    opacity: 0.6;
+}
+
+button:disabled, a.button:disabled {
+    opacity: 0.5;
+}
+
+main {
+    padding: 8px;
+}

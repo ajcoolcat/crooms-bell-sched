@@ -1,0 +1,24 @@
+{
+  "showSeconds":true,
+  "periodNames": [
+    null,
+    "1st Period",
+    "2nd Period",
+    "3rd Period",
+    "4th Period",
+    "5th Period",
+    "6th Period",
+    "7th Period"
+  ],
+  "defaultLunch": "A Lunch",
+  "showTimeRemainingRing": true,
+  "font": {
+    "type": "list",
+    "value": "SegUI",
+    "values": [
+      {"id": "SegUI", "name": "Segoe UI"},
+      {"id": "Torus", "name": "Torus Notched"},
+      {"id": "CACula", "name": "CA Cula"}
+    ]
+  }
+}

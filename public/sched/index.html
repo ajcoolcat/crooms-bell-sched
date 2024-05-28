@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/favicon.ico">
-    <script src="/pixi.js"></script>
+<head>
+    <meta charset="UTF-8">
     <title>Crooms Bell Schedule</title>
-    <style>
-      @font-face {font-family: "SegUI";src: url("/SegUIVar.woff2");}
-      body {font-family: "SegUI", system-ui; overflow: hidden; margin-bottom: 0;}
-    </style>
-  </head>
-  <body style="overflow: hidden;">
-    <script src="./sched.js"></script>
-  </body>
+    <link rel="stylesheet" type="text/css" href="/sched/main.css">
+</head>
+<body>
+<script src="/sched/schedule.js"></script>
+<script>createCBSHSched(document.body)</script>
+</body>
 </html>
