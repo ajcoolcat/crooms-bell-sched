@@ -4,19 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
-    <script src="/pixi.js"></script>
+    <script src="/sched/legacy/pixi.js"></script>
     <title>Crooms Bell Schedule</title>
     <style>
-      @font-face {font-family: "SegUI"; src: url("/SegUIVar.woff2");}
-      body {font-family: "SegUI", system-ui; overflow: hidden; margin-bottom: 0;}
+      body {overflow: hidden; margin-bottom: 0;}
     </style>
   </head>
   <body style="overflow: hidden;">
     <script>
-      PIXI.Assets.addBundle('fonts', {
-        'SegUI': '/SegUIVar.woff2',
-        'Torus': '/fonts/Torus.woff2',
-        'CACula':'/fonts/CACula.woff2'
+     PIXI.Assets.addBundle('fonts', {
+        'SegUI': 'https://cdn.croomssched.tech/fonts/SegUIVar.woff2',
+        'Torus': 'https://cdn.croomssched.tech/fonts/Torus.woff2',
+        'CACula':'https://cdn.croomssched.tech/fonts/CACula.woff2'
       });
 
       PIXI.Assets.loadBundle('fonts').then(() => {
@@ -24,7 +23,7 @@
         function fixMissingSettings() {
             let Settings = {}
             let xhr = new XMLHttpRequest();
-            xhr.open('GET', '/defaultSettings.json');
+            xhr.open('GET', '/sched/defaultSettings.json');
             xhr.responseType = 'json';
             xhr.send();
             xhr.onload = function () {
@@ -227,13 +226,13 @@
 
           let AppBgColor = "white";
 
-          if (theme == "dark") {
+          if (theme === "dark") {
             AppBgColor = "rgb(40,40,40)";
           }
           document.body.style.backgroundColor = AppBgColor;
 
           let textColor = "black";
-          if (theme == "dark") {
+          if (theme === "dark") {
             textColor = "white";
           }
 
@@ -343,8 +342,8 @@
           let width = 65;
           let height = 20;
 
-          let isALunch = true;
-          let isBLunch = false;
+          let isALunch;
+          let isBLunch;
 
           if(Settings.defaultLunch === "B Lunch"){
             isALunch = false;
@@ -520,8 +519,7 @@
             drawEventCountDown(currentEvent);
           }
           function hms2sec(hours, minutes, seconds) {
-            let sec = (hours * 3600) + (minutes * 60) + seconds;
-            return sec;
+              return (hours * 3600) + (minutes * 60) + seconds;
           }
           function sec2hms(sec) {
             let remaining = sec;
@@ -549,15 +547,13 @@
             let now = new Date();
             let event_sec = hms2sec(currentEvent.endHour, currentEvent.endMin, 0);
             let now_sec = hms2sec(now.getHours(), now.getMinutes(), now.getSeconds());
-            let remaining = sec2hms(event_sec - now_sec);
-            return remaining;
+              return sec2hms(event_sec - now_sec);
           }
           function diffTimeNum(currentEvent) {
             let now = new Date();
             let event_sec = hms2sec(currentEvent.endHour, currentEvent.endMin, 0);
             let now_sec = hms2sec(now.getHours(), now.getMinutes(), now.getSeconds());
-            let remaining = (event_sec - now_sec)
-            return remaining;
+              return (event_sec - now_sec);
           }
           function drawDateTime() {
             let now = new Date();

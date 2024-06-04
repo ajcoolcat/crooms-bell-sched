@@ -99,6 +99,10 @@ header, main, section, article, aside, footer {
     display: block;
 }
 
+.hidden {
+    display: none !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--accent-color);
     margin: 0;
@@ -106,13 +110,15 @@ h1, h2, h3, h4, h5, h6 {
 
 a:any-link, a.links {
     color: var(--link) !important;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 a:hover {
     text-decoration: none;
 }
 
-header {
+body > header {
     background: var(--pri);
     position: fixed;
     left: 0; top: 0;
@@ -176,7 +182,7 @@ nav > div div:hover > div.submenu {
     display: block;
 }
 
-footer {
+body > footer {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -191,12 +197,12 @@ footer {
     box-shadow: black 0 0 10px;
 }
 
-footer > div > span {
+body > footer > div > span {
     display: inline-block;
     padding: 8px;
 }
 
-footer > div > div {
+body > footer > div > div {
     padding: 10px;
     position: absolute;
     z-index: 10;
@@ -210,7 +216,7 @@ footer > div > div {
     p:not(:last-child) {margin-bottom: 0.75rem;}
 }
 
-footer > div:hover {
+body > footer > div:hover {
     span {background: var(--sec);}
     div {display: block;}
 }
@@ -218,11 +224,13 @@ footer > div:hover {
 #alert-floater {
     position: fixed;
     left: 50%; top: 60px;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    user-select: none;
 }
 
 #alert-floater > * {
     margin-bottom: 10px;
+    padding: 10px;
     background: var(--sec);
     display: flex;
     flex-flow: row nowrap;
@@ -245,10 +253,82 @@ footer > div:hover {
     color: white;
 }
 
+#alert-floater > * > div > * {
+    margin: 0;
+}
+
+#alert-floater > * h3 {
+    color: inherit;
+}
+
+#alert-floater > * > .icon {
+    font-size: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+#alert-floater > .alert > .icon:before {
+    content: "error";
+}
+
+#alert-floater > .warn > .icon:before {
+    content: "warning";
+}
+
+#alert-floater > .info > .icon:before {
+    content: "info";
+}
+
+#alert-floater > * > .close {
+    font-family: "MatIcons", system-ui;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+#alert-floater > * > .close > *:after {
+    content: "close";
+}
+
+#alert-floater > * > .close > * {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+#alert-floater > * > .close > *:hover {
+    background: #fff4;
+}
+
+#alert-floater > * > .close > *:active {
+    background: #fff5;
+}
+
+input {
+    font-family: var(--font), system-ui;
+    background: transparent !important;
+    color: var(--main);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--tri);
+}
+
+input:hover {
+    border-bottom-color: var(--qua);
+}
+
+input:focus {
+    border-bottom-color: var(--accent-color);
+}
+
 button, a.button {
     padding: 8px 10px;
     background: var(--accent-color);
     color: var(--rev);
+    font-family: var(--font), system-ui;
     border: none;
     border-radius: 0.5rem;
 }
@@ -265,6 +345,65 @@ button:disabled, a.button:disabled {
     opacity: 0.5;
 }
 
-main {
+body > main {
     padding: 8px;
+}
+
+div.dialog {
+    background: var(--pri);
+    padding: 1rem;
+    border-radius: 1rem;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: black 0 0 10px;
+    z-index: 13;
+    min-width: 400px;
+    max-width: 40vw !important;
+}
+
+div.dialog > header {
+    text-align: center;
+    user-select: none;
+}
+
+div.dialog > header > h1.small {
+    font-size: 1.75rem;
+}
+
+div.dialog > footer {
+    margin-top: 1rem;
+    text-align: center;
+    user-select: none;
+}
+
+div.modal {
+    background: var(--pri);
+    opacity: 0.7;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 12;
+}
+
+iframe {
+    width: 100%;
+    border: none;
+}
+
+@media screen and (max-width: 500px) {
+    div.dialog {
+        min-width: 100vw;
+        border-radius: 0;
+    }
+
+    #alert-floater {
+        top: 51px;
+    }
+
+    #alert-floater > * {
+        width: 100vw;
+        border-radius: 0;
+    }
 }

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>oreoreo</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon"
+          href="https://cdn.glitch.com/bcceb827-280e-44e9-b17c-241a930aac3a%2Ffavicon.ico?1546456236134"
+          type="image/x-icon">
+    <link rel="icon" href="https://cdn.glitch.com/bcceb827-280e-44e9-b17c-241a930aac3a%2Ffavicon.ico?1546456236134"
+          type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
+    <style>
+        :not(body)::-webkit-scrollbar {
+            border-radius: 0 10px 10px 0;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 0 10px 10px 0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 0 10px 10px 0;
+        }
+
+        *, *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            height: revert;
+            margin: 2rem;
+            user-select: none;
+        }
+
+        h1 {
+            font-style: italic;
+        }
+
+        a {
+            color: #7cc6f2;
+        }
+
+        #oreo-parent {
+            background: var(--sec);
+            border-radius: 10px;
+            padding: 84px 42px 42px;
+            width: 200px;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            max-height: calc(100vh - 5rem - 66px);
+            overflow-y: auto;
+        }
+
+        #oreo {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        .o {
+            background: #2b1d0e;
+            border: 10px double #181008;
+            width: 100px;
+            height: 50px;
+            margin-top: -37px;
+            border-radius: 100%;
+            position: relative;
+        }
+
+        .o:last-child::after {
+            content: 'oreo';
+            color: #181008;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: rotate3d(1, 0, 0, 45deg) translateX(-50%) translateY(-80%);
+        }
+
+
+        .re {
+            position: relative;
+            background: #FDF9F9;
+            border: 2px solid #E3E0E0;
+            width: 75px;
+            height: 25px;
+            margin-top: -22px;
+            border-radius: 100%;
+        }
+
+        .space {
+            background: transparent;
+            width: 100px;
+            height: 75px;
+            margin-top: -37px;
+            border-radius: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+<body style="overflow-x: hidden;">
+
+<h1 id="title">oreoreo</h1>
+
+<label>
+    give me an
+    <input id="input" type="text" value="oreoreo" />
+</label>
+
+<div id="oreo-parent">
+    <div id="oreo">
+        <div class="o"></div>
+        <div class="re"></div>
+        <div class="o"></div>
+        <div class="re"></div>
+        <div class="o"></div>
+    </div>
+</div>
+
+<script>
+    let title = document.querySelector('#title')
+    let input = document.querySelector('#input')
+    let oreo = document.querySelector('#oreo')
+
+    input.addEventListener('keyup', (e) => {
+        createCookie(e.target.value)
+    })
+
+    function createCookie(value) {
+        let val = value.toLowerCase()
+        title.textContent = val
+        oreo.innerHTML = ''
+        document.title = val
+
+        let chars = val.split('')
+        let tokens = []
+
+        chars.forEach((ch, i, chars) => {
+            if (ch === 'o' || ch === 'オ') {
+                tokens.push('o')
+            }
+
+            if (ch === 'r' || ch === 'レ') {
+                if (chars[i + 1] === 'e' || ch === 'レ') {
+                    tokens.push('re')
+                }
+            }
+
+            if (ch === '&' || ch === 'と') {
+                tokens.push('space')
+            }
+        })
+
+        tokens.reverse()
+
+        tokens.forEach(token => {
+            let el = document.createElement('div')
+            el.classList.add(token)
+            oreo.appendChild(el)
+        })
+
+    }
+
+    /*
+    let pathname = window.decodeURI(document.location.pathname.replace(/\//g, ' ').trim())
+
+    if (pathname.length) {
+      createCookie(pathname)
+      input.value = pathname
+    }*/
+</script>
+</body>
+</html>

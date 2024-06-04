@@ -2,105 +2,149 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.ico">
-  <title>Schedule Settings</title>
-  <link href="/styles/master.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
-  <style>
-    #toosmall {display: none}
-    @media screen and (max-width: 307px) {header, main, footer {display: none;} #toosmall {display: block;}}
-    @media screen and (max-height: 449px) {header, main, footer {display: none;} #toosmall {display: block;}}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <title>Schedule Settings</title>
+    <link href="/styles/master.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <style>
+        #toosmall {
+            display: none
+        }
 
-    #footer {display: none;}
-  </style>
-  <script src="/sched/settings/settings.js"></script>
+        @media screen and (max-width: 307px) {
+            header, main, footer {
+                display: none;
+            }
+
+            #toosmall {
+                display: block;
+            }
+        }
+
+        @media screen and (max-height: 449px) {
+            header, main, footer {
+                display: none;
+            }
+
+            #toosmall {
+                display: block;
+            }
+        }
+
+        #footer {
+            display: none;
+        }
+    </style>
+    <script src="/sched/settings/settings.js"></script>
 </head>
 
 <body>
-    <header>
-      <nav>
+<header>
+    <nav>
         <div>
-          <div class="nolink">Schedule Settings</div>
+            <div class="nolink">Schedule Settings</div>
         </div>
         <div>
             <div onclick="onDone()">Done</div>
         </div>
-      </nav>
-    </header><br>
-    <main style="position: fixed; top: 49px;">
-      <div style="margin-bottom: 40px; height: 91vh; overflow-y: scroll; width: 100vw;">
+    </nav>
+</header>
+<br>
+<main style="position: fixed; top: 49px;">
+    <div style="margin-bottom: 40px; height: 91vh; overflow-y: scroll; width: 100vw;">
         <div style="margin: 8px;">
-          <h2 style="margin-top: 10px; margin-bottom: 10px;">Display</h2>
-          <h3 style="margin-top: 0; margin-bottom: 0;">Theme</h3>
-          <select name="Theme" id="ThemeDropdown" style="width:100px; height:30px; text-align: center; font-size:15px;">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-          <div>
-            <p style="margin-top:0px; margin-bottom: 10px; font-weight: 900;"><label for="showSeconds">Show Seconds</label> 
-            <input style="margin-left: 1px; width:15px; height:15px; float: left; margin-right: 10px; margin-top: 3px;" id="showSeconds" type="checkbox"></p>
-          </div>
-          <div>
-            <p style="margin-top:10px; margin-bottom: 10px;  font-weight: 900;"><label for="showRing">Show Time Ring</label> 
-            <input style="margin-left: 1px; width:15px; height:15px; float: left; margin-right: 10px; margin-top: 3px;" id="showRing" type="checkbox"></p>
-          </div>
-          <h3 style="margin-top:10px; margin-bottom: 10px;">Font</h3>
-          <select name="Font" id="font" style="width:100px; height:30px; text-align: center; font-size:15px;">
-          </select>
-          <h2 style="margin-top:10px; margin-bottom: 10px;">Period Names</h2>
-          <label for="period1Name">Period 1:</label>
-          <input type="text" id="period1Name" placeholder="Period 1"><br>
-          <label for="period2Name">Period 2:</label>
-          <input type="text" id="period2Name" placeholder="Period 2"><br>
-          <label for="period3Name">Period 3:</label>
-          <input type="text" id="period3Name" placeholder="Period 3"><br>
-          <label for="period4Name">Period 4:</label>
-          <input type="text" id="period4Name" placeholder="Period 4"><br>
-          <label for="period5Name">Period 5:</label>
-          <input type="text" id="period5Name" placeholder="Period 5"><br>
-          <label for="period6Name">Period 6:</label>
-          <input type="text" id="period6Name" placeholder="Period 6"><br>
-          <label for="period7Name">Period 7:</label>
-          <input type="text" id="period7Name" placeholder="Period 7"><br>
-          <h2 style="margin-top:10px; margin-bottom: 10px;">Default Lunch</h2>
-          <select name="Default Lunch" id="DefaultLunchDropdown" style="width:100px; height:30px; text-align: center; font-size:15px;">
-            <option>A Lunch</option>
-            <option>B Lunch</option>
-          </select>
-          <h2 style="margin-bottom: 0px;">Danger Zone</h2>
-          <h5 style="margin-top: 0px;">Using these settings may drastically change the look of the bell schedule.</h5>
-          <button onclick="resetSettings(true);">Reset Settings</button>
-        </div>
-      </div>
-    </main>
-    <div id="padding" style="width: 100vw; height: 100px;"></div>
-    <footer style="position: fixed; bottom: 0; left:0; width: 100vw; height: 40px;" id="footer">
-      <button id="done" style=" position:fixed; left: 50vw; transform: translate(-55%, 14%);"
-        onclick="saveSettings();window.close();">Done</button>
-    </footer>
-    <div id="toosmall">
-        <h3>Your device's screen is too small.</h3>
-        <p>To use the settings page, please make your window larger, or use a larger display.</p>
-    </div>
-    <div id="alert" class="modal" hidden>
-        <div class="alert-box">
-            <div id="alert-content" class="details">
-                <p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p>
-                <p style="text-align: center; font-size: 0.8em;">
-                    You have requested to reset your settings. If you continue, your theme and bell schedule settings will be removed. Are you sure you want to reset your settings?
-                </p>
-                <p style="text-align:center;"><button onclick="resetSettings(false)">Yes</button> <button onclick="resetSettings('cancel')">No</button></p>
+            <h2 style="margin-top: 10px; margin-bottom: 10px;">Display</h2>
+            <h3 style="margin-top: 0; margin-bottom: 0;">Theme</h3>
+            <select name="Theme" id="ThemeDropdown"
+                    style="width:100px; height:30px; text-align: center; font-size:15px;">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <div>
+                <p style="margin-top:0px; margin-bottom: 10px; font-weight: 900;"><label for="showSeconds">Show
+                    Seconds</label>
+                    <input style="margin-left: 1px; width:15px; height:15px; float: left; margin-right: 10px; margin-top: 3px;"
+                           id="showSeconds" type="checkbox"></p>
             </div>
+            <div>
+                <p style="margin-top:10px; margin-bottom: 10px;  font-weight: 900;"><label for="showRing">Show Time
+                    Ring</label>
+                    <input style="margin-left: 1px; width:15px; height:15px; float: left; margin-right: 10px; margin-top: 3px;"
+                           id="showRing" type="checkbox"></p>
+            </div>
+            <h3 style="margin-top:10px; margin-bottom: 10px;">Font</h3>
+            <label class="hidden" for="font">Font:</label>
+            <select name="Font" id="font" style="width:100px; height:30px; text-align: center; font-size:15px;"></select>
+            <h2 style="margin-top:10px; margin-bottom: 10px;">Period Names</h2>
+            <label for="period1Name">Period 1:</label>
+            <input type="text" id="period1Name" placeholder="Period 1"><br>
+            <label for="period2Name">Period 2:</label>
+            <input type="text" id="period2Name" placeholder="Period 2"><br>
+            <label for="period3Name">Period 3:</label>
+            <input type="text" id="period3Name" placeholder="Period 3"><br>
+            <label for="period4Name">Period 4:</label>
+            <input type="text" id="period4Name" placeholder="Period 4"><br>
+            <label for="period5Name">Period 5:</label>
+            <input type="text" id="period5Name" placeholder="Period 5"><br>
+            <label for="period6Name">Period 6:</label>
+            <input type="text" id="period6Name" placeholder="Period 6"><br>
+            <label for="period7Name">Period 7:</label>
+            <input type="text" id="period7Name" placeholder="Period 7"><br>
+            <h2 style="margin-top:10px; margin-bottom: 10px;">Default Lunch</h2>
+            <label class="hidden" for="DefaultLunchDropdown">Default Lunch:</label>
+            <select name="Default Lunch" id="DefaultLunchDropdown"
+                    style="width:100px; height:30px; text-align: center; font-size:15px;">
+                <option>A Lunch</option>
+                <option>B Lunch</option>
+            </select>
+            <h2 style="margin-bottom: 0px;">Danger Zone</h2>
+            <h5 style="margin-top: 0px;">Using these settings may drastically change the look of the bell schedule.</h5>
+            <button onclick="resetSettings(true);">Reset Settings</button>
         </div>
     </div>
-    <context-menu menu-id="settings">
-        <menu-item role="reload" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i>Reload</menu-item>
-        <menu-item role="back" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; saveSettings(); window.close();"><i class="fa-solid fa-floppy-disk"></i>Save and Close</menu-item>
-        <menu-item role="forward" onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; resetSettings(true);"><i class="fa-solid fa-trash-can-xmark"></i>Reset Settings</menu-item>
-    </context-menu>
+</main>
+<div id="padding" style="width: 100vw; height: 100px;"></div>
+<footer style="position: fixed; bottom: 0; left:0; width: 100vw; height: 40px;" id="footer">
+    <button id="done" style=" position:fixed; left: 50vw; transform: translate(-55%, 14%);"
+            onclick="saveSettings();window.close();">Done
+    </button>
+</footer>
+<div id="toosmall">
+    <h3>Your device's screen is too small.</h3>
+    <p>To use the settings page, please make your window larger, or use a larger display.</p>
+</div>
+<div id="alert" class="modal" hidden>
+    <div class="alert-box">
+        <div id="alert-content" class="details">
+            <p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p>
+            <p style="text-align: center; font-size: 0.8em;">
+                You have requested to reset your settings. If you continue, your theme and bell schedule settings will
+                be removed. Are you sure you want to reset your settings?
+            </p>
+            <p style="text-align:center;">
+                <button onclick="resetSettings(false)">Yes</button>
+                <button onclick="resetSettings('cancel')">No</button>
+            </p>
+        </div>
+    </div>
+</div>
+<context-menu menu-id="settings">
+    <menu-item role="reload"
+               onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; location.reload()"><i
+            class="fa-solid fa-arrow-rotate-right"></i>Reload
+    </menu-item>
+    <menu-item role="back"
+               onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; saveSettings(); window.close();">
+        <i class="fa-solid fa-floppy-disk"></i>Save and Close
+    </menu-item>
+    <menu-item role="forward"
+               onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; resetSettings(true);"><i
+            class="fa-solid fa-trash-can-xmark"></i>Reset Settings
+    </menu-item>
+</context-menu>
 </body>
 
 <script src="/commons.js"></script>

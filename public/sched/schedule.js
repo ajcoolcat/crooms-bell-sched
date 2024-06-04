@@ -23,33 +23,31 @@ function createCBSHSched(element) {
 
 function fixMissingSettings() {
     let Settings = {}
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/sched/defaultSettings.json');
-    xhr.responseType = 'json';
-    xhr.send();
-    xhr.onload = function () {
-        try {
-            Settings = xhr.response;
-            let SavedSettings = JSON.parse(window.localStorage.getItem("settings"));
-            if (SavedSettings) {
-                for (const obj in Settings) {
 
-                    if (SavedSettings[obj] === undefined) {
-                        console.log(obj, " is missing!");
-                        SavedSettings[obj] = Settings[obj];
-                    }
+    fetch("/sched/defaultSettings.json").then((res) => {
+        return res.text();
+    }).then((res) => {
+        return JSON.parse(res);
+    }).then((Settings) => {
+        let SavedSettings = JSON.parse(window.localStorage.getItem("settings"));
+        if (SavedSettings) {
+            for (const obj in Settings) {
 
+                if (SavedSettings[obj] === undefined) {
+                    console.log(obj, " is missing!");
+                    SavedSettings[obj] = Settings[obj];
                 }
-                SavedSettings.font.values = Settings.font.values;
-            } else {
-                SavedSettings = Settings;
+
             }
-            window.localStorage.setItem("settings", JSON.stringify(SavedSettings));
-            loadSettings();
-        } catch (e) {
-            console.error(e.message);
+            SavedSettings.font.values = Settings.font.values;
+        } else {
+            SavedSettings = Settings;
         }
-    }
+        window.localStorage.setItem("settings", JSON.stringify(SavedSettings));
+        loadSettings();
+    }).catch((e) => {
+        console.error(e);
+    });
 }
 
 const inIframe = () => {
@@ -158,6 +156,36 @@ function startSched(element) {
     buttonDiv.appendChild(BLunchButton);
     buttonDiv.appendChild(SettingsButton);
 
+    ALunchButton.addEventListener("click", () => {
+        ALunchButton.classList.add("active")
+        BLunchButton.classList.remove("active");
+        CurrentPeriod.innerText = "Please wait...";
+        CurrentPeriodSeconds.innerText = "";
+
+        current_lunch = 1;
+    }, false);
+
+    BLunchButton.addEventListener("click", () => {
+        ALunchButton.classList.remove("active")
+        BLunchButton.classList.add("active");
+        CurrentPeriod.innerText = "Please wait...";
+        CurrentPeriodSeconds.innerText = "";
+
+        current_lunch = 2;
+    }, false);
+
+    SettingsButton.addEventListener("click", () => {
+        let x = (screen.width / 2) - 200;
+        let y = (screen.height / 2) - 420;
+        let settingsWindow = window.open("/sched/settings/", "cbsh-settings", "status=0,toolbar=0,location=0,width=400,height=720,screenX=" + x + ",screenY=" + y + ",popup=true");
+        let isClosedInterval = setInterval(() => {
+            if (settingsWindow.closed) {
+                clearInterval(isClosedInterval);
+                window.location.reload();
+            }
+        }, 50);
+    }, false);
+
     /*
     const CurrentPeriodProgressRingContainer = new PIXI.Container();
 
@@ -197,107 +225,6 @@ function startSched(element) {
     CurrentPeriodProgressRingContainer.scale.y = -0.7;
     */
 
-    /*
-    const ALunchButton = new Button("A Lunch", "white", isALunch ? PrimaryColor : SecondaryColor, width, height, isALunch ? PrimaryColorHighlight : SecondaryColorHighlight);
-    ALunchButton.x = window.innerWidth - 80;
-    const BLunchButton = new Button("B Lunch", "white", isBLunch ? PrimaryColor : SecondaryColor, width, height, isBLunch ? PrimaryColorHighlight : SecondaryColorHighlight);
-    BLunchButton.x = window.innerWidth - 80;
-    BLunchButton.y = 20 + 2;
-    app.stage.addChild(ALunchButton);
-    app.stage.addChild(BLunchButton);*/
-
-    /*
-    ALunchButton.on("click", aButtonClick);
-    ALunchButton.on("touchstart", aButtonClick);
-
-    function aButtonClick() {
-        current_lunch = 1;
-        mainLoop();
-        mainLoop();
-        ALunchButton.clear();
-        ALunchButton.beginFill(PrimaryColorHighlight);
-        ALunchButton.drawRoundedRect(0, 0, width, height, 2);
-        ALunchButton.on("pointerover", () => {
-            ALunchButton.clear();
-            ALunchButton.beginFill(PrimaryColorHighlight);
-            ALunchButton.drawRoundedRect(0, 0, width, height, 2);
-        });
-        ALunchButton.on("pointerout", () => {
-            ALunchButton.clear();
-            ALunchButton.beginFill(PrimaryColor);
-            ALunchButton.drawRoundedRect(0, 0, width, height, 2);
-        })
-        BLunchButton.clear();
-        BLunchButton.beginFill(SecondaryColor);
-        BLunchButton.drawRoundedRect(0, 0, width, height, 2);
-        BLunchButton.on("pointerover", () => {
-            BLunchButton.clear();
-            BLunchButton.beginFill(SecondaryColorHighlight);
-            BLunchButton.drawRoundedRect(0, 0, width, height, 2);
-        });
-        BLunchButton.on("pointerout", () => {
-            BLunchButton.clear();
-            BLunchButton.beginFill(SecondaryColor);
-            BLunchButton.drawRoundedRect(0, 0, width, height, 2);
-        })
-    }
-
-    BLunchButton.on("click", bButtonClick);
-    BLunchButton.on("touchstart", bButtonClick);
-
-    function bButtonClick() {
-        current_lunch = 2;
-        mainLoop();
-        mainLoop();
-        BLunchButton.clear();
-        BLunchButton.beginFill(PrimaryColorHighlight);
-        BLunchButton.drawRoundedRect(0, 0, width, height, 2);
-        BLunchButton.on("pointerover", () => {
-            BLunchButton.clear();
-            BLunchButton.beginFill(PrimaryColorHighlight);
-            BLunchButton.drawRoundedRect(0, 0, width, height, 2);
-        });
-        BLunchButton.on("pointerout", () => {
-            BLunchButton.clear();
-            BLunchButton.beginFill(PrimaryColor);
-            BLunchButton.drawRoundedRect(0, 0, width, height, 2);
-        })
-        ALunchButton.clear();
-        ALunchButton.beginFill(SecondaryColor);
-        ALunchButton.drawRoundedRect(0, 0, width, height, 2);
-        ALunchButton.on("pointerover", () => {
-            ALunchButton.clear();
-            ALunchButton.beginFill(SecondaryColorHighlight);
-            ALunchButton.drawRoundedRect(0, 0, width, height, 2);
-        });
-        ALunchButton.on("pointerout", () => {
-            ALunchButton.clear();
-            ALunchButton.beginFill(SecondaryColor);
-            ALunchButton.drawRoundedRect(0, 0, width, height, 2);
-        })
-    }*/
-
-    /*
-    const SettingsButton = new Button("Settings", "white", SecondaryColor, 65, 20, SecondaryColorHighlight);
-    SettingsButton.x = window.innerWidth - 80;
-    SettingsButton.y = 42 + 2;
-    app.stage.addChild(SettingsButton);
-    SettingsButton.on("click", settingsClick);
-    SettingsButton.on("touchstart", settingsClick);
-
-    function settingsClick() {
-        let x = (screen.width / 2) - 200;
-        let y = (screen.height / 2) - 420;
-        let settingsWindow = window.open("./settings/", "settings", "status=0,toolbar=0,location=0,width=400,height=720,screenX=" + x + ",screenY=" + y + ",popup=true");
-        let isClosedInterval = setInterval(() => {
-            if (settingsWindow.closed) {
-                clearInterval(isClosedInterval);
-                window.location.href = "./";
-            }
-        }, 50);
-    }
-     */
-
     let currentDay = null;
 
     //main loop is called twice before being used in setInterval so that the text doesn't say "Loading..." or the current period text isn't wrong for 2 seconds.
@@ -309,7 +236,7 @@ function startSched(element) {
     }, new Date().getMilliseconds());
 
     function mainLoop() {
-        let Periodmsg = "";
+        let Periodmsg;
         drawDateTime();
         let now = new Date();
         let day = now.getDay();
@@ -428,6 +355,26 @@ function startSched(element) {
         if (EventName === 1 || EventName === 2 || EventName === 3 || EventName === 4 || EventName === 5
             || EventName === 6 || EventName === 7) {
             EventName = Settings.periodNames[EventName];
+        } else if (EventName === 100) {
+            EventName = "Morning";
+        } else if (EventName === 101) {
+            EventName = "Welcome";
+        } else if (EventName === 102) {
+            EventName = "Lunch";
+        } else if (EventName === 103) {
+            EventName = "Homeroom";
+        } else if (EventName === 104) {
+            EventName = "Dismissal";
+        } else if (EventName === 105) {
+            EventName = "After School";
+        } else if (EventName === 106) {
+            EventName = "End";
+        } else {
+            EventName = "Unknown Event";
+        }
+
+        if (EventName === undefined) {
+            EventName = "Unknown Event";
         }
 
         let hours = currentEvent[3] - now.getHours();

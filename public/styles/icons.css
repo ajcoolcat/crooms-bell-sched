@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "MatIcons";
+    src: url("https://cdn.croomssched.tech/fonts/MaterialSymbolsRounded.ttf");
+}
+
+.icon {
+    font-family: "MatIcons", system-ui;
+}

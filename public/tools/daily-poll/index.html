@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Poll Loader</title>
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
+</head>
+<body>
+<div id="start">
+    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; user-select: none;">
+        <img src="/spinner.svg" alt="Loading.." draggable="false">
+        <h3 style="margin-top: revert;">Loading Daily Poll...</h3>
+        <p style="margin: 0;">Impaitent? Use <a href="https://poll.croomssched.tech">this link</a>.</p>
+    </div>
+</div>
+<script>
+    setTimeout(() => {
+        window.location.href = "https://poll.croomssched.tech";
+    }, 2000)
+</script>
+</body>
+</html>

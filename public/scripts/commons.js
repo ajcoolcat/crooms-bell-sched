@@ -1,6 +1,58 @@
+setInterval(() => {
+    const d = new Date();
+}, 1000);
+
 console.load = (value) => {
     window.$value = value;
 };
+
+function alertClient(title, content, severity) {
+    document.body.style.userSelect = "none";
+
+    let dialog = document.createElement("div");
+    dialog.className = "dialog";
+
+    let dialogHeader = document.createElement("header");
+    let dialogTitle = document.createElement("h1");
+    dialogHeader.appendChild(dialogTitle);
+    dialogTitle.className = "small";
+    dialogTitle.innerText = title;
+    dialog.appendChild(dialogHeader);
+
+    let dialogBody = document.createElement("main");
+    dialogBody.innerHTML = content;
+    dialog.appendChild(dialogBody);
+
+    let dialogFooter = document.createElement("footer");
+    let dialogClose = document.createElement("button");
+    dialogClose.innerText = "Close";
+    dialogClose.addEventListener("click", () => {
+        dialog.remove();
+        document.body.style.userSelect = null;
+    }, false);
+
+    dialogFooter.appendChild(dialogClose);
+    dialog.appendChild(dialogFooter);
+
+    document.body.appendChild(dialog);
+
+    if (severity === 1) {
+        dialogClose.innerText = "Okay";
+    } else if (severity === 2) {
+        dialogClose.innerText = "Okay";
+        modalize();
+    }
+
+    function modalize() {
+        let modal = document.createElement("div");
+        modal.className = "modal";
+        document.body.appendChild(modal);
+
+        dialogClose.addEventListener("click", () => {
+            modal.remove();
+        }, false);
+    }
+}
 
 function feedback() {
     window.open(

@@ -44,6 +44,11 @@ const loadFeed = (feeds) => {
             fu.innerHTML = update;
             document.getElementById("feed-updates").appendChild(fu);
         });
+    } else {
+        let noFeed = document.createElement("span");
+        noFeed.innerHTML = "There are no Feed Updates. <a class='links' onclick='submitFeedUpdate()'>Submit one.</a>";
+        noFeed.style.userSelect = "none";
+        document.getElementById("feed-updates").innerHTML = noFeed.outerHTML;
     }
 }
 

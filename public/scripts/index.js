@@ -1,12 +1,9 @@
 function skipTask() {}
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const d = new Date();
-let day = weekday[d.getDay()];
-if (0 < d.getDay() && d.getDay() < 6) {document.getElementById(day + "Lunch").classList.add("active");}
-
-if (month < 10) {month = "0"+month;}
-if (date < 10) {date = "0"+date;}
+const today = new Date();
+let day = weekday[today.getDay()];
+if (0 < today.getDay() && today.getDay() < 6) {document.getElementById(day + "Lunch").classList.add("active");}
 
 function alertClient(title, text) {
   document.querySelector("#alert [title-content]").innerText = title;

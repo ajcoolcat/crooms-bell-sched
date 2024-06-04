@@ -1,8 +1,20 @@
 @import url("/styles/master.css");
 
-main {
-    padding-top: 59px;
-    padding-bottom: 45px;
+body > main {
+    padding: 51px 0 37px;
+}
+
+#others > div {
+    display: none;
+    height: calc(100vh - 51px - 37px);
+}
+
+#others > div > iframe {
+    height: calc(100vh - 51px - 37px);
+}
+
+#others > div.active {
+    display: block;
 }
 
 #widget-board ol, #widget-board ul {
@@ -10,6 +22,7 @@ main {
 }
 
 #widget-board {
+    padding: 8px;
     transition: all 0.2s;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -100,8 +113,7 @@ div.widget h3 {
 }
 
 #DailyLunchImage {
-    max-width: 65%;
-    height: fit-content;
+    max-height: 298px;
     float: right;
     border-radius: 0.5rem;
 }
@@ -118,7 +130,7 @@ div.widget h3 {
 
 #feed > div {
     margin-block-start: 1em;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: calc(100% - 70px);
     max-height: 228px;
 }
@@ -200,7 +212,7 @@ div.widget h3 {
 }
 
 @media screen and (max-width: 349px) {
-    footer {
+    body > footer {
         display: none;
     }
 }
@@ -216,7 +228,7 @@ div.widget h3 {
 }
 
 @media screen and (max-width: 249px) {
-    header, main {
+    header, main, footer, div.dialog, div.modal  {
         display: none;
     }
 
@@ -226,8 +238,8 @@ div.widget h3 {
 }
 
 @media screen and (max-height: 124px) {
-    header, main, footer {
-        display: none;
+    header, main, footer, div.dialog, div.modal {
+        display: none !important;
     }
 
     #toosmall {

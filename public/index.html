@@ -29,20 +29,19 @@
             crossorigin="anonymous"></script>
     <!-- End AdSense -- DO NOT REMOVE -->
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/styles/icons.css">
 </head>
 <body>
 <header>
     <nav>
         <div>
-            <div class="with-app-logo" tabindex="1">
+            <div class="with-app-logo" tabindex="1" onclick="home()">
                 <img src="/favicon.ico" alt="Logo" draggable="false" class="app-logo">
                 <span>Crooms Bell Schedule</span>
             </div>
             <div id="tools-tab" tabindex="1">
                 Tools
-                <div class="submenu" id="tools-list">
-                    <div tabindex="1">Grade Calculator</div>
-                </div>
+                <div class="submenu" id="tools-list"></div>
             </div>
             <div id="games-tab" tabindex="1">
                 Games
@@ -51,7 +50,7 @@
                 </div>
             </div>
             <div id="daily-poll" tabindex="1"
-                 onclick="window.open('https://poll.croomssched.tech', 'cbsh-daily-poll', 'width=560, height=650');">
+                 onclick="loadTool('poll-viewer', 'https://poll.croomssched.tech/', false);">
                 Daily Poll
             </div>
         </div>
@@ -183,8 +182,13 @@
                    target="_blank">Submit a Feed Update</a>
             </p>
             <div>
-                <ul id="feed-updates">There are no Feed Updates.</ul>
+                <ul id="feed-updates">Loading Feed Updates...</ul>
             </div>
+        </div>
+    </div>
+    <div id="others" class="hidden">
+        <div id="gradecalc">
+            <iframe src="https://gradecalc.kones.tech"></iframe>
         </div>
     </div>
 </main>
@@ -211,7 +215,15 @@
 </footer>
 <div id="alert-floater">
     <noscript class="alert">
-
+        <span class="icon"></span>
+        <div>
+            <h3>JavaScript is not enabled!</h3>
+            <p>
+                This will prevent almost everything on this site from working.
+                Please enable JavaScript first, or switch to a browser that supports or allows JavaScript.
+            </p>
+        </div>
+        <span class="close" style="visibility: hidden"><span></span></span>
     </noscript>
 </div>
 <div id="toosmall">
@@ -222,6 +234,12 @@
 <script src="/scripts/commons.js"></script>
 <script src="/scripts/fetch.js"></script>
 <script src="/sched/schedule.js"></script>
-<script>createCBSHSched(document.getElementById("sched"))</script>
+<script src="/scripts/tools-tab.js"></script>
+<script>createCBSHSched(document.getElementById("sched"));</script>
+<script src="https://croomssched.statuspage.io/embed/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

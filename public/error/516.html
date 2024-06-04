@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
     <title>Crooms Bell Schedule</title>
-    <link rel="stylesheet" type="text/css" href="/style-root.css">
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
     <style>
         body {
             user-select: none;
@@ -41,8 +41,8 @@
     <div id="content">
         <img src="//cdn.croomssched.tech/data/7291ef48-5f58-4f73-a79d-23f146afd471/clippy.png"
              style="width: 200px; height: 200px;" draggable="false" alt="Clippy">
-        <h1 style="margin-bottom: 0;">It looks like he's dead.</h1>
-        <h3>Why'd you kill him?</h3>
+        <h1>It looks like he's dead.</h1>
+        <h3 style="margin-bottom: revert;">Why'd you kill him?</h3>
         <button onclick="window.location.href = '/'">I dunno</button>
         <button onclick="window.location.href = 'https://derpybird.glitch.me/derpyderpyderpyderp'">Nope</button>
         <button onclick="learn()">Learn More</button>
@@ -52,21 +52,25 @@
     <h1 style="margin-bottom: 0px;">Why is Bob dead?</h1>
     <h3 style="margin-top: 0px;">Let me explain.</h3>
     <p>
-        Bob was killed on September 18th, 1965 at 2:38 AM by involuntary manslaghter. The one who committed the act died
-        7 days later and his name will not be released for security reasons. A second person was there on the scenes
-        with the one who committed the act. His name will not be released because a privacy request form was filled out.
-        Four friends of Bob were with him at the time of his death. Their names will also be kept private for security
+        Bob was killed on September 18th, 1965 at 2:38 AM by involuntary manslaughter.
+        The one who committed the act died
+        7 days later, and his name will not be released for security reasons.
+        A second person was there on the scenes
+        with the one who committed the act.
+        His name will not be released because a privacy request form was filled out.
+        Four friends of Bob were with him at the time of his death.
+        Their names will also be kept private for security
         reasons.
     </p>
     <p>
-        Bob also had a girlfriend that wasn't on the scene on the night of his death, however she was involved with the
+        Bob also had a girlfriend not on the scene on the night of his death, however, she was involved with the
         killer and his friend<a id="crush" hidden> (and might also have a crush on him)</a> at a local movie theater.
     </p>
     <div id="cant-do-that">
         <img width="51" height="51" src="https://cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/107.png"
-             style="float: left; margin-right: 10px;"/>
-        <h3 style="margin-bottom: 0px;">Sorry</h3>
-        <p style="margin-top: 0px;">We can't tell you more.</p>
+             style="float: left; margin-right: 10px; " alt="warning"/>
+        <h3 style="margin-bottom: 0;">Sorry</h3>
+        <p style="margin-top: 0;">We can't tell you more.</p>
     </div>
     <div id="enemy1whokilled" hidden>
         <p>Love your enemies.</p>
@@ -103,8 +107,8 @@
             </tbody>
         </table>
         <br></div>
-    <input type="button" value="More" onclick="location.href = '/bob#tellmemore'"/> <input type="button" value="Back"
-                                                                                           onclick="main();"/>
+    <button onclick="location.href = '#tellmemore'">More</button>
+    <button onclick="main();">Back</button>
 </div>
 <script>
     const mainElement = document.getElementById("main");
