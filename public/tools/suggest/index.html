@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggest a Feature</title>
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
+    <style>
+        :root, body, #form, #form > iframe {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #form > div {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--pri);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: black 0 0 0.75rem;
+            user-select: none;
+        }
+
+        #form > div:hover {
+            background: var(--sec);
+        }
+
+        #form > div:active {
+            background: var(--tri);
+        }
+
+        div.dialog {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="base"
+     style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); user-select: none; max-width: 300px;">
+    <h2>Suggest a Feature</h2>
+    <p style="margin-top: 0">Welcome to the place to suggest something for the Crooms Bell Schedule website!</p>
+    <p>
+        If you would like to submit general feedback, <a class="links" onclick="feedback()">please use this link</a>.
+    </p>
+    <h3>Things to suggest</h3>
+    <ul style="margin-top: 0;">
+        <li>Tools</li>
+        <li>Games</li>
+        <li>Daily Poll Questions</li>
+    </ul>
+    <div style="text-align: center;">
+        <button onclick="showForm()">Suggest Something</button>
+    </div>
+</div>
+<div id="form" style="display: none;">
+    <div id="issue">Issues?</div>
+    <div id="back" style="left: 1.5rem; right: unset;">Back</div>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScratc1T2cd1OX88lpWDPLQD3bmngYh_ZsFHFFPhJCV_OEInw/viewform">
+    </iframe>
+</div>
+<script src="/scripts/commons.js"></script>
+<script>
+    const showForm = () => {
+        document.getElementById("base").style.display = "none";
+        document.getElementById("form").removeAttribute("style");
+    }
+
+    document.getElementById("issue").addEventListener("click", () => {
+        alertClient("Having Problems?", "Try <a class='links' onclick='window.location.reload()'>reloading the page</a>" +
+                " or allowing third-party cookies for Google Forms to authenticate you.", 2)
+    }, false);
+
+    document.getElementById("back").addEventListener("click", () => {
+        document.getElementById("form").style.display = "none";
+        document.getElementById("base").style.display = "block";
+    }, false);
+</script>
+</body>
+</html>

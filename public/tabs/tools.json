@@ -5,6 +5,12 @@
       "name": "Grade Calculator",
       "link": "https://gradecalc.kones.tech",
       "check": true
+    },
+    {
+      "id": "suggestion",
+      "name": "Suggest a Tool",
+      "link": "/tools/suggest/",
+      "check": false
     }
   ]
 }

@@ -46,7 +46,7 @@ const loadFeed = (feeds) => {
         });
     } else {
         let noFeed = document.createElement("span");
-        noFeed.innerHTML = "There are no Feed Updates. <a class='links' onclick='submitFeedUpdate()'>Submit one.</a>";
+        noFeed.innerHTML = "There are no Feed Updates. <a class='links' onclick='loadTool(`new-feed`, `/tools/feed-updates`, false)'>Submit one.</a>";
         noFeed.style.userSelect = "none";
         document.getElementById("feed-updates").innerHTML = noFeed.outerHTML;
     }

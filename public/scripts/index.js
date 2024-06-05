@@ -16,14 +16,14 @@ document.body.onload = () => {
   if (params.get("goto") === "gradecalc") {
     gradecalc();
   }
-  resizeGradeCalc();
+  //resizeGradeCalc();
 }
-
+/*
 window.addEventListener("resize", resizeGradeCalc);
 
 function resizeGradeCalc() {
   document.querySelector(":root").style.setProperty("--window-height",  window.innerHeight - (document.querySelector("ul.navbar").clientHeight + document.querySelector("ul.footbar").clientHeight) + 1 + "px");
-}
+}*/
 
 function randomWindow() {
   const urls = [
@@ -118,7 +118,7 @@ function allowClippyStartup() {
 function blockClippyStartup() {
   localStorage.setItem("clippyStart", "blocked");
 }
-
+/*
 if (window.history.length > 1) {
   document.querySelector("[menu-id=main] [role=back]").style.display = "block";
   document.querySelector("[menu-id=main] [role=forward]").style.display = "block";
@@ -126,7 +126,7 @@ if (window.history.length > 1) {
   document.querySelector("[menu-id=main] [role=back]").style.display = "none";
   document.querySelector("[menu-id=main] [role=forward]").style.display = "none";
 }
-
+/*
 document.addEventListener('contextmenu', (e) => {
   e.preventDefault();
 });
@@ -158,4 +158,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 });
-document.body.click();
+*/
