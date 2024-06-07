@@ -29,6 +29,11 @@ body > main {
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "lunch lunch weather"
                          "quickbits feed weather";
+    user-select: none;
+}
+
+#widget-board.active {
+    user-select: revert;
 }
 
 .widget {
@@ -137,6 +142,16 @@ div.widget h3 {
 
 #feed-updates {
     margin: 0;
+}
+
+#download {
+    position: fixed;
+    top: 51px; left: -100%;
+    padding: 1rem;
+    background: var(--pri);
+    width: 100%;
+    height: calc(100% - 2rem - 56px);
+    user-select: none;
 }
 
 @media screen and (max-width: 1440px) {

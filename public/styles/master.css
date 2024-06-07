@@ -174,7 +174,7 @@ nav > div > div > div.submenu {
     z-index: 10;
 
     div {
-        padding: 15px;
+        padding: 10px 15px;
     }
 }
 

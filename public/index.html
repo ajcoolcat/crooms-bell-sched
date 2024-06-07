@@ -55,14 +55,14 @@
             </div>
         </div>
         <div class="right">
-            <div onclick="app.download()" tabindex="1">
+            <div onclick="downloadApp()" tabindex="1">
                 Download the App
             </div>
         </div>
     </nav>
 </header>
 <main>
-    <div id="widget-board">
+    <div id="widget-board" class="active">
         <div id="lunch" class="widget">
             <div id="lunchContainer">
                 <div id="DailyLunchImageContainer">
@@ -224,6 +224,26 @@
         <span class="close" style="visibility: hidden"><span></span></span>
     </noscript>
 </div>
+<div id="download">
+    <h1>Download the Crooms Bell Schedule App.</h1>
+    <h3 style="color: white; font-weight: normal;">Use our app for an always-on-top widget experience.</h3>
+    <p>
+        Your download <span id="countdown">will begin shortly</span>.
+        If you don't see it yet, check in the downloads folder or press <kbd>CTRL</kbd> + <kbd>J</kbd> to check your
+        list of downloads.
+        If it isn't there,
+        <a class="links" href="https://app.croomssched.tech/download/win32/">restart the download</a>.
+    </p>
+    <h2>Windows SmartScreen</h2>
+    <p style="margin-top: 0;">If you receive a popup from Windows SmartScreen, you must click the "more info" link in
+        the middle of the window, and then click "run anyways" to start the installation process.</p>
+    <h4>Why the hassle?</h4>
+    <p style="margin-top: 0;">
+        For those who wonder why you have to deal with Windows SmartScreen,
+        it is because we are unable to sign the installer with a certificate,
+        because we are not paying Microsoft for one.
+    </p>
+</div>
 <div id="toosmall">
     <h3>Your screen is too small.</h3>
     <p>To use our website, you'll need to use a larger display.</p>
@@ -231,13 +251,18 @@
 <script src="/scripts/index.js"></script>
 <script src="/scripts/commons.js"></script>
 <script src="/scripts/fetch.js"></script>
+<script src="/scripts/downloader.js"></script>
 <script src="/sched/schedule.js"></script>
 <script src="/scripts/tools-tab.js"></script>
 <script>createCBSHSched(document.getElementById("sched"));</script>
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
-<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script>window.si = window.si || function () {
+    (window.siq = window.siq || []).push(arguments);
+};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
-<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script>window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

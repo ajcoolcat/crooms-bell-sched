@@ -18,6 +18,8 @@ fetch("/tabs/tools.json").then((res) => {
 });
 
 const loadTool = (id, path, check) => {
+    document.getElementById("widget-board").classList.remove("active");
+    quitDownloader();
     let tools = document.getElementById("others").children;
 
     if (check === true) {
@@ -57,6 +59,7 @@ const loadTool = (id, path, check) => {
 }
 
 const home = () => {
+    quitDownloader();
     document.getElementById("others").classList.add("hidden");
     let tools = document.getElementById("others").children;
 
@@ -65,4 +68,5 @@ const home = () => {
     }
 
     document.getElementById("widget-board").classList.remove("hidden");
+    document.getElementById("widget-board").classList.add("active");
 }

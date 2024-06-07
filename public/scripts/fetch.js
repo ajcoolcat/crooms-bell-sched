@@ -111,12 +111,12 @@ const loadAlerts = (wxalert) => {
         document.getElementById("alert-list").innerHTML = null
         while (index <= amnt - 1) {
             let endtime = new Date(wxalert[index].properties.ends);
-            let currentday = d.getDay();
+            let currentday = new Date().getDay();
             if (endtime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {endtime = "further notice"}
             else {
                 let endday = endtime.getDay();
                 if (endday === currentday) {endday = " "}
-                else {endday = weekdays[endday] + " at "}
+                else {endday = weekday[endday] + " at "}
 
                 let endhour = endtime.getHours();
                 if (endhour > 12) {endhour -= 12; apm = "PM"}
