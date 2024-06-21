@@ -152,6 +152,13 @@ div.widget h3 {
     width: 100%;
     height: calc(100% - 2rem - 56px);
     user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#download > div {
+    max-width: 40vw;
 }
 
 @media screen and (max-width: 1440px) {
@@ -197,6 +204,10 @@ div.widget h3 {
         width: 100%;
         left: -110%;
         height: calc(100vh - 20px - 37px - 37px);
+    }
+
+    #download > div {
+        max-width: 80vw;
     }
 }
 

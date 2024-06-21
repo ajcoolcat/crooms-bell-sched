@@ -91,7 +91,7 @@ const getForecast = () => {
         index = 0;
         while (index <= 4) {
             document.getElementById(index+"-name").innerHTML = forecasts[index].dayName;
-            document.getElementById(index+"-icon").src = forecasts[index].icon;
+            document.getElementById(index+"-icon").src = "https://api.weather.gov" + forecasts[index].icon;
             document.getElementById(index+"-desc").innerHTML = forecasts[index].desc;
             document.getElementById(index+"-temp").innerHTML = forecasts[index].temp;
             document.getElementById(index+"-windd").innerHTML = forecasts[index].windDir;
