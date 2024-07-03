@@ -1,6 +1,7 @@
 @import url("/styles/master.css");
 
-body {
+:root, body {
     height: revert !important;
     margin: revert !important;
+    overflow: hidden;
 }
