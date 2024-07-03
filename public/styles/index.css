@@ -41,7 +41,6 @@ body > main {
     border-radius: 10px;
     padding: 15px;
     background-color: var(--pri);
-    transition: all 0.2s;
 }
 
 div.widget h3 {
@@ -161,7 +160,23 @@ div.widget h3 {
     max-width: 40vw;
 }
 
-@media screen and (max-width: 1440px) {
+#random {
+    background: var(--pri);
+    user-select: none;
+    margin: 18px 18px 0;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#feed-and-updates > span {
+    display: none;
+}
+
+#feed-and-updates > span.active {
+    display: unset;
+}
+
+@media (max-width: 1440px) {
     #lunchContainer {
         flex-flow: column-reverse;
     }
@@ -171,16 +186,12 @@ div.widget h3 {
         justify-content: center;
     }
 
-    #random {
-        display: none;
-    }
-
     #feed > div {
         max-height: 260px;
     }
 }
 
-@media screen and (max-width: 1280px) {
+@media (max-width: 1280px) {
     #widget-board {
         display: block;
     }
@@ -194,7 +205,7 @@ div.widget h3 {
     }
 }
 
-@media screen and (max-width: 740px) {
+@media (max-width: 740px) {
     #graphicast, #track {
         display: block;
     }
@@ -211,13 +222,13 @@ div.widget h3 {
     }
 }
 
-@media screen and (max-width: 615px) {
+@media (max-width: 615px) {
     #pd4, nav > div.right {
         display: none;
     }
 }
 
-@media screen and (max-width: 450px) {
+@media (max-width: 450px) {
     nav > div > div.with-app-logo {
         padding-right: 8px;
     }
@@ -231,7 +242,7 @@ div.widget h3 {
     }
 }
 
-@media screen and (max-width: 429px) {
+@media (max-width: 429px) {
     #pd3, #settings-link, #control-center {
         display: none;
     }
@@ -243,7 +254,7 @@ div.widget h3 {
     }
 }
 
-@media screen and (max-width: 335px) {
+@media (max-width: 335px) {
     #pd2 {
         display: none;
     }
@@ -320,5 +331,23 @@ div.widget h3 {
         100% {
             color: var(--main);
         }
+    }
+}
+
+@media print {
+    :root, body {
+        background: transparent;
+    }
+
+    #widget-board {
+        display: block;
+    }
+
+    body > header, body > footer {
+        display: none !important;
+    }
+
+    body > main {
+        padding: 0;
     }
 }

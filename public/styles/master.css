@@ -1,3 +1,5 @@
+@import url("/styles/fonts.css");
+
 :root {
     --background: #eeeeee;
     --main: black;
@@ -17,14 +19,16 @@
     --link: var(--accent-color);
     --accent-color: var(--default-accent);
     --font: var(--default-font);
-    --transition: var(--default-transition);
+    --transition: none; /* var(--default-transition); */
 
-    --default-transition: all 0.1s ease-in-out;
+    --default-transition: all 0.1s;
     --default-font: "SegoeUI", "Segoe UI Variable", "Segoe UI", system-ui;
 
     background: var(--background);
     color: var(--main);
     font-family: var(--font), system-ui;
+
+    line-height: 1.3;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -276,6 +280,7 @@ body > footer > div:hover {
     background: var(--sec);
     display: flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
     border-radius: 10px;
     box-shadow: black 0 0 10px;
 }
@@ -295,15 +300,21 @@ body > footer > div:hover {
     color: white;
 }
 
-#alert-floater > * > div > * {
+#alert-floater > * > div {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+#alert-floater > * > div > div > * {
     margin: 0;
 }
 
-#alert-floater > * h3 {
+#alert-floater > * > div h3 {
     color: inherit;
 }
 
-#alert-floater > * > .icon {
+#alert-floater > * > div > .icon {
     font-size: 2rem;
     display: flex;
     flex-flow: column nowrap;
@@ -311,15 +322,15 @@ body > footer > div:hover {
     margin-right: 10px;
 }
 
-#alert-floater > .alert > .icon:before {
+#alert-floater > .alert > div > .icon:before {
     content: "error";
 }
 
-#alert-floater > .warn > .icon:before {
+#alert-floater > .warn > div > .icon:before {
     content: "warning";
 }
 
-#alert-floater > .info > .icon:before {
+#alert-floater > .info > div > .icon:before {
     content: "info";
 }
 
@@ -349,21 +360,30 @@ body > footer > div:hover {
     background: #fff5;
 }
 
-input {
+input, select {
     font-family: var(--font), system-ui;
     background: transparent !important;
     color: var(--main);
     border: none;
     outline: none;
     border-bottom: 2px solid var(--tri);
+    padding: 5px;
+    accent-color: var(--accent-color);
+    text-align: center;
 }
 
-input:hover {
+input:hover, select:hover {
     border-bottom-color: var(--qua);
 }
 
-input:focus {
+input:focus, select:focus {
     border-bottom-color: var(--accent-color);
+}
+
+option {
+    background: var(--pri);
+    color: var(--main);
+    accent-color: var(--accent-color);
 }
 
 button, a.button {

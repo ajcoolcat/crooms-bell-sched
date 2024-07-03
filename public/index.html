@@ -62,6 +62,9 @@
     </nav>
 </header>
 <main>
+    <div id="random">Today's random and senseless quip is...
+        <i><q id="senseless"></q></i>
+    </div>
     <div id="widget-board" class="active">
         <div id="lunch" class="widget">
             <div id="lunchContainer">
@@ -201,11 +204,12 @@
                 <a href="//github.com/ajcoolcat/crooms-bell-sched/" target="_blank">GitHub Repository</a>.</p>
         </div>
     </div>
-    <span id="random">Today's random and senseless quip is...
-        <i><q id="senseless"></q></i>
-    </span>
     <div>
-        <span id="feed-and-updates">Please wait...</span>
+        <span id="feed-and-updates">
+            <span id="date-time"></span>
+            <span id="current-period"></span>
+            <span id="next-period"></span>
+        </span>
         <div class="popout" style="width: 350px; right: 0;">
             <div id="sched"></div>
         </div>
@@ -250,13 +254,13 @@
     <h3>Your screen is too small.</h3>
     <p>To use our website, you'll need to use a larger display.</p>
 </div>
+<script src="/scripts/alert-manager.js"></script>
 <script src="/scripts/index.js"></script>
 <script src="/scripts/commons.js"></script>
 <script src="/scripts/fetch.js"></script>
 <script src="/scripts/downloader.js"></script>
 <script src="/sched/schedule.js"></script>
 <script src="/scripts/tools-tab.js"></script>
-<script>createCBSHSched(document.getElementById("sched"));</script>
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
 <script>window.si = window.si || function () {
     (window.siq = window.siq || []).push(arguments);

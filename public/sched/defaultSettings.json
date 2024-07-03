@@ -1,5 +1,6 @@
 {
-  "showSeconds":true,
+  "showSeconds": true,
+  "theme": "light",
   "periodNames": [
     null,
     "1st Period",
@@ -13,11 +14,12 @@
   "defaultLunch": "A Lunch",
   "showTimeRemainingRing": true,
   "font": {
-    "type": "list",
-    "value": "SegUI",
+    "value": "SegoeUI",
     "values": [
-      {"id": "SegUI", "name": "Segoe UI"},
+      {"id": "SegoeUI", "name": "Segoe UI"},
       {"id": "Torus", "name": "Torus Notched"},
+      {"id": "StudySans", "name": "CBSH Study"},
+      {"id": "Avenir", "name": "Avenir Next LT Pro"},
       {"id": "CACula", "name": "CA Cula"}
     ]
   }

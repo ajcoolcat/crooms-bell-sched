@@ -1,9 +1,9 @@
 let saveSettings = () => {}
+let Settings = {}
 document.addEventListener("DOMContentLoaded", () => {
     function fixMissingSettings() {
-        let Settings = {}
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', '/defaultSettings.json');
+        xhr.open('GET', '/sched/defaultSettings.json');
         xhr.responseType = 'json';
         xhr.send();
         xhr.onload = function () {
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let Settings = {};
 
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', '/defaultSettings.json');
+        xhr.open('GET', '/sched/defaultSettings.json');
         xhr.responseType = 'json';
         xhr.send();
 
@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         saveSettings = () => {
-
             Settings.theme = document.querySelector("#ThemeDropdown").value;
             Settings.showSeconds = document.querySelector("#showSeconds").checked;
             Settings.periodNames.period1 = periodNameElements[0].value;
@@ -86,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
             Settings.showTimeRemainingRing = document.querySelector("#showRing").checked;
             Settings.font.value = document.querySelector("#font").value;
             window.localStorage.setItem("settings", JSON.stringify(Settings));
-
         }
 
         let loadedSettings = {};

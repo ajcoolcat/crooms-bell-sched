@@ -4,6 +4,26 @@ appStyles.rel = "stylesheet";
 appStyles.type = "text/css";
 appStyles.href = "/sched/app.css";
 document.head.appendChild(appStyles);
+let CBSHSched = {
+    "time": {
+        "date": "1/1/2024",
+        "time": "12:00 AM"
+    },
+    "day": "Today is a day.",
+    "period": {
+        "current": "Current Period",
+        "next": "Next Period",
+        "remainingTime": "2:00:00"
+    }
+}
+
+let Settings = {
+    "periodNames": {}
+};
+
+let Schedules = {
+    "days": {}
+};
 
 function createCBSHSched(element) {
     const application = document.createElement("div");
@@ -22,8 +42,6 @@ function createCBSHSched(element) {
 }
 
 function fixMissingSettings() {
-    let Settings = {}
-
     fetch("/sched/defaultSettings.json").then((res) => {
         return res.text();
     }).then((res) => {
@@ -57,14 +75,6 @@ const inIframe = () => {
         return true;
     }
 }
-
-let Settings = {
-    "periodNames": {}
-};
-
-let Schedules = {
-    "days": {}
-};
 
 function loadSettings() {
     if (window.localStorage.getItem("settings") === null) {
@@ -264,6 +274,7 @@ function startSched(element) {
         }
 
         let currentEvent = currentDay[eventNumber - 1];
+        let nextEvent = currentDay[eventNumber];
 
         for (let i = 0; i < currentDay.length; i++) {
             let event_sec = hms2sec(currentDay[i][3], currentDay[i][4], 0);
@@ -286,6 +297,7 @@ function startSched(element) {
 
         drawPeriodMsg(Periodmsg);
         drawEventCountDown(currentEvent);
+        getNextPeriod(nextEvent);
     }
 
     function hms2sec(hours, minutes, seconds) {
@@ -299,15 +311,17 @@ function startSched(element) {
         remaining -= hours * 3600;
         let minutes = Math.floor(remaining / 60);
         remaining -= minutes * 60;
-        if (sec >= 36000) {
-            hms = hours.toString() + ":";
+        if (sec < 3600) {
+          hms = "";
         } else {
-            hms = "0" + hours.toString() + ":";
+            hms = hours.toString() + ":";
         }
         if (minutes >= 10) {
             hms += minutes.toString();
-        } else {
+        } else if (sec >= 3600 && minutes <= 10) {
             hms += "0" + minutes.toString();
+        } else {
+            hms += minutes.toString();
         }
         return hms;
 
@@ -337,10 +351,14 @@ function startSched(element) {
         let year = now.getFullYear()
         let time12h = now.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true})
         DateAndTime.innerText = dayname + "  " + month + "/" + date + "/" + year + "  " + time12h;
+
+        CBSHSched.time.time = time12h;
+        CBSHSched.time.date = month + "/" + date + "/" + year;
     }
 
     function drawPeriodMsg(Periodmsg) {
         SchoolDayType.innerText = Periodmsg;
+        CBSHSched.day = Periodmsg;
     }
 
     function drawEventCountDown(currentEvent) {
@@ -352,41 +370,20 @@ function startSched(element) {
         let now = new Date();
         let EventName = currentEvent[2];
 
-        if (EventName === 1 || EventName === 2 || EventName === 3 || EventName === 4 || EventName === 5
-            || EventName === 6 || EventName === 7) {
-            EventName = Settings.periodNames[EventName];
-        } else if (EventName === 100) {
-            EventName = "Morning";
-        } else if (EventName === 101) {
-            EventName = "Welcome";
-        } else if (EventName === 102) {
-            EventName = "Lunch";
-        } else if (EventName === 103) {
-            EventName = "Homeroom";
-        } else if (EventName === 104) {
-            EventName = "Dismissal";
-        } else if (EventName === 105) {
-            EventName = "After School";
-        } else if (EventName === 106) {
-            EventName = "End";
-        } else {
-            EventName = "Unknown Event";
-        }
-
-        if (EventName === undefined) {
-            EventName = "Unknown Event";
-        }
+        EventName = getEventName(EventName);
 
         let hours = currentEvent[3] - now.getHours();
         let minutes = currentEvent[4] - now.getMinutes() - 1;
         let seconds = 60 - now.getSeconds();
         if (seconds === 60) seconds = 0;
-        if (seconds < 10) seconds = "0" + seconds;
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
         let remaining = (hours * 3600) + (minutes * 60) + seconds;
         if (hours < 10) {
             hours = "0" + hours;
         }
-        if (minutes < 10) {
+        if (minutes < 10 && hours > 0) {
             minutes = "0" + minutes;
         }
         let event_sec = hms2sec(currentEvent[3], currentEvent[4], 0);
@@ -417,6 +414,8 @@ function startSched(element) {
 
         CurrentPeriodSeconds.innerText = ":" + seconds;
 
+        CBSHSched.period.current = EventName;
+        CBSHSched.period.remainingTime = count_down.toString() + ":" + seconds;
 
         let percent = ((event_sec - now_sec) / (event_sec - start_event_sec)) * 100;
 
@@ -426,5 +425,38 @@ function startSched(element) {
         CurrentPeriodProgressRing.arc(0, 0, 100, -((Math.PI / 100) * percent), (Math.PI / 100) * percent);
         CurrentPeriodProgressRing.rotation = ((Math.PI / 100) * percent);
      */
+    }
+
+    function getEventName(EventName) {
+        if (EventName === 1 || EventName === 2 || EventName === 3 || EventName === 4 || EventName === 5
+            || EventName === 6 || EventName === 7) {
+            EventName = Settings.periodNames[EventName];
+        } else if (EventName === 100) {
+            EventName = "Morning";
+        } else if (EventName === 101) {
+            EventName = "Welcome";
+        } else if (EventName === 102) {
+            EventName = "Lunch";
+        } else if (EventName === 103) {
+            EventName = "Homeroom";
+        } else if (EventName === 104) {
+            EventName = "Dismissal";
+        } else if (EventName === 105) {
+            EventName = "After School";
+        } else if (EventName === 106) {
+            EventName = "End";
+        } else {
+            EventName = "Unknown Event";
+        }
+
+        if (EventName === undefined) {
+            EventName = "Unknown Event";
+        }
+
+        return EventName;
+    }
+
+    function getNextPeriod(Event) {
+        CBSHSched.period.next = getEventName(Event[2]);
     }
 }

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "Torus";
+    src: url("https://cdn.croomssched.tech/fonts/Torus.woff2");
+}
+
+@font-face {
+    font-family: "CACula";
+    src: url("https://cdn.croomssched.tech/fonts/CACula.woff2");
+}
+
+@font-face {
+    font-family: "StudySans";
+    src: url("https://cdn.croomssched.tech/fonts/CroomsschedSans/regular.eot")format("embedded-opentype"),
+    url("https://cdn.croomssched.tech/fonts/CroomsschedSans/regular.woff2")format("woff2"),
+    url("https://cdn.croomssched.tech/fonts/CroomsschedSans/regular.woff")format("woff"),
+    url("https://cdn.croomssched.tech/fonts/CroomsschedSans/regular.ttf")format("truetype"),
+    url("https://cdn.croomssched.tech/fonts/CroomsschedSans/regular.svg")format("svg");
+}
+
+@font-face {
+    font-family: "Avenir";
+    src: url("https://cdn.croomssched.tech/fonts/AvenirNextLTPro.woff")format("woff"),
+    url("https://cdn.croomssched.tech/fonts/AvenirNextLTPro.ttf")format("truetype");
+}

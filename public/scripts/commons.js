@@ -1,7 +1,3 @@
-setInterval(() => {
-    const d = new Date();
-}, 1000);
-
 console.load = (value) => {
     window.$value = value;
 };
@@ -252,9 +248,9 @@ function mouseY(e) {
     }
 }
 
-function showMoreInfo(newlink) {
+function showMoreInfo(newLink) {
     document.querySelector("[menu-id=main] [role=more]").style.display = "block";
-    return newlink;
+    return newLink;
 }
 
 let link;

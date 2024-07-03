@@ -10,8 +10,25 @@
     <link href="/styles/master.css" rel="stylesheet">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
     <style>
-        #toosmall {
+        #toosmall, #footer, #padding {
             display: none
+        }
+
+        main {
+            padding-top: 47px !important;
+        }
+
+        input[type="checkbox"] {
+            margin-left: 1px;
+            width: 15px;
+            height: 15px;
+            float: left;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        label[for="showSeconds"], label[for="showRing"] {
+            font-weight: 900;
         }
 
         @media screen and (max-width: 307px) {
@@ -33,10 +50,6 @@
                 display: block;
             }
         }
-
-        #footer {
-            display: none;
-        }
     </style>
     <script src="/sched/settings/settings.js"></script>
 </head>
@@ -52,64 +65,58 @@
         </div>
     </nav>
 </header>
-<br>
-<main style="position: fixed; top: 49px;">
-    <div style="margin-bottom: 40px; height: 91vh; overflow-y: scroll; width: 100vw;">
-        <div style="margin: 8px;">
-            <h2 style="margin-top: 10px; margin-bottom: 10px;">Display</h2>
-            <h3 style="margin-top: 0; margin-bottom: 0;">Theme</h3>
-            <select name="Theme" id="ThemeDropdown"
-                    style="width:100px; height:30px; text-align: center; font-size:15px;">
+<main>
+    <div>
+        <div style="padding: 16px 8px;">
+            <h2>Display</h2>
+            <h3>Theme</h3>
+            <label for="ThemeDropdown" style="display: none;">Theme</label>
+            <select name="Theme" id="ThemeDropdown" style="width: 100px; height: 30px; margin-bottom: 10px;">
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
             </select>
-            <div>
-                <p style="margin-top:0px; margin-bottom: 10px; font-weight: 900;"><label for="showSeconds">Show
-                    Seconds</label>
-                    <input style="margin-left: 1px; width:15px; height:15px; float: left; margin-right: 10px; margin-top: 3px;"
-                           id="showSeconds" type="checkbox"></p>
-            </div>
-            <div>
-                <p style="margin-top:10px; margin-bottom: 10px;  font-weight: 900;"><label for="showRing">Show Time
-                    Ring</label>
-                    <input style="margin-left: 1px; width:15px; height:15px; float: left; margin-right: 10px; margin-top: 3px;"
-                           id="showRing" type="checkbox"></p>
-            </div>
-            <h3 style="margin-top:10px; margin-bottom: 10px;">Font</h3>
+            <h3>Font</h3>
             <label class="hidden" for="font">Font:</label>
-            <select name="Font" id="font" style="width:100px; height:30px; text-align: center; font-size:15px;"></select>
-            <h2 style="margin-top:10px; margin-bottom: 10px;">Period Names</h2>
+            <select name="Font" id="font" style="width: 100px; height:30px; margin-bottom: 10px;"></select>
+            <div hidden>
+                <label for="showSeconds">Show Seconds</label>
+                <input id="showSeconds" type="checkbox">
+            </div>
+            <div>
+                <label for="showRing">Show Time Ring</label>
+                <input id="showRing" type="checkbox">
+            </div>
+            <h2 style="margin-top: revert;">Period Names</h2>
             <label for="period1Name">Period 1:</label>
-            <input type="text" id="period1Name" placeholder="Period 1"><br>
+            <input type="text" id="period1Name" placeholder="1st Period"><br>
             <label for="period2Name">Period 2:</label>
-            <input type="text" id="period2Name" placeholder="Period 2"><br>
+            <input type="text" id="period2Name" placeholder="2nd Period"><br>
             <label for="period3Name">Period 3:</label>
-            <input type="text" id="period3Name" placeholder="Period 3"><br>
+            <input type="text" id="period3Name" placeholder="3rd Period"><br>
             <label for="period4Name">Period 4:</label>
-            <input type="text" id="period4Name" placeholder="Period 4"><br>
+            <input type="text" id="period4Name" placeholder="4th Period"><br>
             <label for="period5Name">Period 5:</label>
-            <input type="text" id="period5Name" placeholder="Period 5"><br>
+            <input type="text" id="period5Name" placeholder="5th Period"><br>
             <label for="period6Name">Period 6:</label>
-            <input type="text" id="period6Name" placeholder="Period 6"><br>
+            <input type="text" id="period6Name" placeholder="6th Period"><br>
             <label for="period7Name">Period 7:</label>
-            <input type="text" id="period7Name" placeholder="Period 7"><br>
-            <h2 style="margin-top:10px; margin-bottom: 10px;">Default Lunch</h2>
+            <input type="text" id="period7Name" placeholder="7th Period"><br>
+            <h2 style="margin-top: revert;">Default Lunch</h2>
             <label class="hidden" for="DefaultLunchDropdown">Default Lunch:</label>
-            <select name="Default Lunch" id="DefaultLunchDropdown"
-                    style="width:100px; height:30px; text-align: center; font-size:15px;">
+            <select name="Default Lunch" id="DefaultLunchDropdown" style="width: 100px; height: 30px;">
                 <option>A Lunch</option>
                 <option>B Lunch</option>
             </select>
-            <h2 style="margin-bottom: 0px;">Danger Zone</h2>
-            <h5 style="margin-top: 0px;">Using these settings may drastically change the look of the bell schedule.</h5>
+            <h2 style="margin-top: revert;">Danger Zone</h2>
+            <h5 style="margin-bottom: 8px;">Using these settings may drastically change the look of the bell schedule.</h5>
             <button onclick="resetSettings(true);">Reset Settings</button>
         </div>
     </div>
 </main>
 <div id="padding" style="width: 100vw; height: 100px;"></div>
 <footer style="position: fixed; bottom: 0; left:0; width: 100vw; height: 40px;" id="footer">
-    <button id="done" style=" position:fixed; left: 50vw; transform: translate(-55%, 14%);"
-            onclick="saveSettings();window.close();">Done
+    <button id="done" onclick="saveSettings(); window.close();"
+            style="position:fixed; left: 50vw; transform: translate(-55%, 14%);">Done
     </button>
 </footer>
 <div id="toosmall">
@@ -131,25 +138,8 @@
         </div>
     </div>
 </div>
-<context-menu menu-id="settings">
-    <menu-item role="reload"
-               onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; location.reload()"><i
-            class="fa-solid fa-arrow-rotate-right"></i>Reload
-    </menu-item>
-    <menu-item role="back"
-               onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; saveSettings(); window.close();">
-        <i class="fa-solid fa-floppy-disk"></i>Save and Close
-    </menu-item>
-    <menu-item role="forward"
-               onclick="document.querySelector('[menu-id=settings]').style.display = 'none'; resetSettings(true);"><i
-            class="fa-solid fa-trash-can-xmark"></i>Reset Settings
-    </menu-item>
-</context-menu>
 </body>
 
-<script src="/commons.js"></script>
-<script>
-    setRightClick(document.querySelector("body"), document.querySelector("[menu-id=settings]"));
-</script>
+<script src="/scripts/commons.js"></script>
 
 </html>
