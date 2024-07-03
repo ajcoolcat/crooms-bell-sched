@@ -99,9 +99,15 @@ function startSched(element) {
     let inAnIframe = inIframe();
 
     try {
-        if (inAnIframe === true && window.top.location.hostname === "croomssched.tech") {
+        if (inAnIframe && window.top.location.hostname === "croomssched.tech") {
             document.body.style.margin = "0";
             schedMessenger.postMessage("initialized");
+        }
+
+        if (inAnIframe && Settings.theme === "light") {
+            document.body.backgroundColor = "white";
+        } else if (inAnIframe && Settings.theme === "dark") {
+            document.documentElement.backgroundColor = "#282828";
         }
     } catch {
         inIframe()
