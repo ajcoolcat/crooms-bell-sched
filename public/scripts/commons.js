@@ -155,11 +155,13 @@ function objectLength(obj) {
     } return result;
 }
 
-const currentTheme = JSON.parse(localStorage.getItem("settings")).theme ? JSON.parse(localStorage.getItem("settings")).theme : null;
+document.addEventListener("DOMContentLoaded", () => {
+    const currentTheme = JSON.parse(localStorage.getItem("settings")).theme ? JSON.parse(localStorage.getItem("settings")).theme : null;
 
-if (currentTheme) {
-    document.documentElement.classList.add(currentTheme);
-}
+    if (currentTheme) {
+        document.documentElement.classList.add(currentTheme);
+    }
+}, false);
 
 const currentFont = JSON.parse(localStorage.getItem("settings")).font.value ? JSON.parse(localStorage.getItem("settings")).font.value : null;
 document.documentElement.style.setProperty("--font", currentFont);
