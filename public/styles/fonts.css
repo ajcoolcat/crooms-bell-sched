@@ -1,4 +1,9 @@
 @font-face {
+    font-family: "GoogleEmoji";
+    src: url("https://cdn.croomssched.tech/fonts/NotoColorEmoji.ttf");
+}
+
+@font-face {
     font-family: "Torus";
     src: url("https://cdn.croomssched.tech/fonts/Torus.woff2");
 }

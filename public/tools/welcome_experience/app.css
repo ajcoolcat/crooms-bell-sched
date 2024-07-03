@@ -1,0 +1,124 @@
+@import url("/styles/master.css");
+
+:root {
+    scroll-snap-type: y mandatory !important;
+    overflow: hidden;
+}
+
+* {
+    scroll-behavior: smooth;
+    transition: all 0.1s;
+}
+
+*.no-color {
+    color: var(--main);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: revert !important;
+        transition: none !important;
+    }
+}
+
+#feed-and-updates > span {
+    display: none;
+}
+
+#feed-and-updates > span.active {
+    display: unset;
+}
+
+#root > div {
+    scroll-snap-align: start;
+    height: 100vh;
+    padding: 5rem;
+    overflow-y: auto;
+}
+
+#root > div h1 {
+    font-size: 3rem;
+}
+
+#root > div h2 {
+    font-size: 2rem;
+}
+
+#root > div h3 {
+    font-size: 1.5rem;
+}
+
+#root > div h4 {
+    font-size: 1.25rem;
+}
+
+header {
+    transform: translateY(-200%);
+}
+
+footer {
+    transform: translateY(200%);
+}
+
+header.active, footer.active {
+    transform: translate(0);
+}
+
+[data-slide="2"] {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+#accent-color-smart-selector > div,
+#accent-color-smart-selector > div > svg,
+#font-smart-selector > div,
+#font-smart-selector > div > svg {
+    border-radius: 15px;
+}
+
+#accent-color-smart-selector > div,
+#font-smart-selector > div {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+#font-smart-selector > div > svg {
+    background: var(--pri);
+}
+
+#font-smart-selector > div > svg > text {
+    fill: var(--main);
+    font-size: 2rem;
+}
+
+#root > div select {
+    min-width: 10vw;
+}
+
+@media screen and (max-width: 768px) {
+    #root > div {
+        padding: 2rem;
+    }
+
+    #root > div h1 {
+        font-size: 2.5rem;
+    }
+
+    #root > div h2 {
+        font-size: 1.5rem;
+    }
+
+    #root > div h3 {
+        font-size: 1.25rem;
+    }
+
+    #root > div h4 {
+        font-size: 1.125rem;
+    }
+
+    #root > div select {
+
+    }
+}

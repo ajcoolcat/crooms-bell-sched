@@ -50,12 +50,15 @@ function fixMissingSettings() {
         let SavedSettings = JSON.parse(window.localStorage.getItem("settings"));
         if (SavedSettings) {
             for (const obj in Settings) {
-
                 if (SavedSettings[obj] === undefined) {
                     console.log(obj, " is missing!");
-                    SavedSettings[obj] = Settings[obj];
-                }
 
+                    if (obj === "theme" && window.matchMedia("screen and (prefers-color-scheme: dark)")) {
+                        SavedSettings[obj] = "dark";
+                    } else {
+                        SavedSettings[obj] = Settings[obj];
+                    }
+                }
             }
             SavedSettings.font.values = Settings.font.values;
         } else {

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow, nositelinkssearchbox">
+    <title>CBSH Welcome Experience App</title>
+    <link rel="stylesheet" type="text/css" href="/tools/welcome_experience/app.css">
+</head>
+<body>
+<div id="root">
+    <div data-slide="1">
+        <h1>Welcome to the Crooms Bell Schedule!</h1>
+        <h3 class="no-color">Hello! <span class="emoji">👋</span></h3>
+        <p>It's nice to meet you! Let's get you ready to experience the Crooms Bell Schedule at its best.</p>
+        <p>
+            If you already know your way around, or don't want to know how to use this site in much detail,
+            select <q>Skip Welcome Experience</q>. If not, select <q>Get Started</q>.
+        </p>
+        <button>Skip Welcome Experience</button>
+        <button onclick="slideMgr.nextSlide(); slideMgr.activateBars();">Get Started</button>
+    </div>
+    <div data-slide="2">
+        <div>
+            <h2>Check out the header.</h2>
+            <h4 class="no-color">Get anywhere with the header.</h4>
+            <p>
+                Look up! Do you see the header? That is the place to go if you want to use one of the tools, access a
+                game, or do the Daily Poll. You can always get back to your home widgets with the logo button.
+            </p>
+        </div>
+        <div>
+            <h2>Don't forget the footer!</h2>
+            <p style="margin-top: 0;">
+                The footer has the bell schedule embedded right into it. Take a look and see. The schedule will also
+                regularly show up in the time tray (where the time is).
+            </p>
+            <button onclick="slideMgr.nextSlide(); slideMgr.deleteBars();">Next</button>
+        </div>
+    </div>
+    <div data-slide="3">
+        <h1>Express yourself with themes.</h1>
+        <h4 class="no-color">
+            Feel free to select the style that you like. Once you're ready, we'll keep moving on.
+        </h4>
+        <div id="color-settings-app" style="margin-top: 1em;">
+            <h3>Theme</h3>
+            <label for="themeSelector" style="font-weight: bold; display: none;">Theme</label>
+            <select id="themeSelector" name="themeSelector">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <h3 style="margin-top: revert;">Accent Color</h3>
+            <div id="accent-color-smart-selector" style="padding: 5px;">
+                <div onclick="setAccent('default-accent')" title="Default Colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#690D24"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#FF1010"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('windows')" title="Windows Blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <rect height="50" width="50" fill="#0078D4"></rect>
+                    </svg>
+                </div>
+                <div onclick="setAccent('gold')" title="Sunrise Gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#DAA520"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#FFD700"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('nature')" title="Nature Green">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#006400"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#008000"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('halloween')" title="Halloween">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#4B0082"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#FF8C00"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('christmas')" title="Christmas">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#8B0000"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#228B22"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('winter')" title="Winter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#1E90FF"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#87CEEB"></polygon>
+                    </svg>
+                </div>
+            </div>
+            <h3 style="margin-top: revert;">Font</h3>
+            <div id="font-smart-selector" style="padding: 5px;">
+                <div onclick="setFont('SegoeUI')" title="Segoe UI">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <text x="7" y="34" style="font-family: var(--default-font), system-ui;">Aa</text>
+                    </svg>
+                </div>
+                <div onclick="setFont('Torus')" title="Torus Notched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <text x="6" y="34" style="font-family: Torus, var(--default-font), system-ui;">Aa</text>
+                    </svg>
+                </div>
+                <div onclick="setAccent('gold')" title="Sunrise Gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#DAA520"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#FFD700"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('nature')" title="Nature Green">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#006400"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#008000"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('halloween')" title="Halloween">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#4B0082"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#FF8C00"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('christmas')" title="Christmas">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#8B0000"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#228B22"></polygon>
+                    </svg>
+                </div>
+                <div onclick="setAccent('winter')" title="Winter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                        <polygon points="0,0 50,0 0,50" fill="#1E90FF"></polygon>
+                        <polygon points="50,50 50,0 0,50" fill="#87CEEB"></polygon>
+                    </svg>
+                </div>
+            </div>
+            <label for="fontSelector" style="font-weight: bold; display: none;">Font</label>
+            <select id="fontSelector" name="fontSelector"></select>
+        </div>
+    </div>
+</div>
+<script src="/scripts/commons.js"></script>
+<script src="/sched/schedule.js"></script>
+<script src="/tools/welcome_experience/slide-mgr.js"></script>
+<script src="/tools/welcome_experience/theme-mgr.js"></script>
+<script src="/tools/welcome_experience/injector.js"></script>
+</body>
+</html>

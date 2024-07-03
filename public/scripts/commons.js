@@ -157,6 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentTheme) {
         document.documentElement.classList.add(currentTheme);
     }
+
+    const accentColor = JSON.parse(localStorage.getItem("settings")).accentColor ? JSON.parse(localStorage.getItem("settings")).accentColor : null;
+    document.documentElement.style.setProperty("--accent-color", "var(--" + accentColor + ")");
 }, false);
 
 const currentFont = JSON.parse(localStorage.getItem("settings")).font.value ? JSON.parse(localStorage.getItem("settings")).font.value : null;

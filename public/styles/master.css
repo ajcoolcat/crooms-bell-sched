@@ -1,4 +1,5 @@
 @import url("/styles/fonts.css");
+@import url("/styles/themes.css");
 
 :root {
     --background: #eeeeee;
@@ -147,6 +148,10 @@ header, main, section, article, aside, footer {
 
 .hidden {
     display: none !important;
+}
+
+.emoji {
+    font-family: "GoogleEmoji", system-ui;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -396,15 +401,15 @@ button, a.button {
 }
 
 button:hover, a.button:hover {
-    opacity: 0.75;
+    opacity: 0.8;
 }
 
 button:active, a.button:active {
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 button:disabled, a.button:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 body > main {

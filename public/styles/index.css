@@ -68,6 +68,11 @@ div.widget h3 {
     text-align: center;
 }
 
+.lunch.active {
+    color: var(--pri) !important;
+    background: var(--accent-color);
+}
+
 #weather {
     grid-area: weather;
     user-select: none;

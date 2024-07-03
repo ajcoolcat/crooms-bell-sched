@@ -1,0 +1,34 @@
+:root {
+    --windows: #0078D4;
+    --gold: #DAA520;
+    --nature: #006400;
+    --halloween: #4B0082;
+    --christmas: #8B0000;
+    --winter: #1E90FF;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --gold: #FFD700;
+        --nature: #008000;
+        --halloween: #FF8C00;
+        --christmas: #228B22;
+        --winter: #87CEEB;
+    }
+}
+
+:root.light {
+    --gold: #DAA520 !important;
+    --nature: #006400 !important;
+    --halloween: #4B0082 !important;
+    --christmas: #8B0000 !important;
+    --winter: #1E90FF !important;
+}
+
+:root.dark {
+    --gold: #FFD700 !important;
+    --nature: #008000 !important;
+    --halloween: #FF8C00 !important;
+    --christmas: #228B22 !important;
+    --winter: #87CEEB !important;
+}

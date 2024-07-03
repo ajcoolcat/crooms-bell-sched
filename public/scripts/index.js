@@ -40,7 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 newBalloon.remove();
-            }, 10000)
+            }, 10000);
+        } else if (event.data === "oneMinute") {
+            let newBalloon = alertBalloon("Almost time!", "You have less than a minute left in " +
+                CBSHSched.period.current + ". You might want to start getting ready to go.", 1);
+
+            setTimeout(() => {
+                newBalloon.remove();
+            }, 10000);
         }
     };
 
