@@ -90,6 +90,35 @@ div.widget h3 {
     grid-area: feed;
 }
 
+#alert-list {
+    text-align: left;
+}
+
+#alerts {
+    border: 1px solid var(--accent-color);
+    width: 100%;
+    margin: 0 0 20px 0;
+    border-radius: 10px;
+}
+
+#alerts > tbody {
+    display: block;
+    width: 100%;
+}
+
+#alerts > tbody > tr:first-child {
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: center;
+    border-radius: 9px 9px 0 0;
+}
+
+#alerts > tbody > tr:first-child > td {
+    text-align: center;
+    color: white;
+    padding: 2px;
+}
+
 #forecast {
     display: flex;
     flex-flow: row nowrap;
@@ -135,6 +164,14 @@ div.widget h3 {
 
 #graphicast {
     border-radius: 0.5rem;
+    margin-top: 20px;
+    width: 100%;
+    height: fit-content;
+}
+
+#feed > p {
+    margin: 0;
+    user-select: none;
 }
 
 #feed > div {
@@ -150,7 +187,8 @@ div.widget h3 {
 
 #download {
     position: fixed;
-    top: 51px; left: -100%;
+    top: 51px;
+    left: -100%;
     padding: 1rem;
     background: var(--pri);
     width: 100%;
@@ -270,7 +308,7 @@ div.widget h3 {
 }
 
 @media screen and (max-width: 249px) {
-    header, main, footer, div.dialog, div.modal  {
+    header, main, footer, div.dialog, div.modal {
         display: none;
     }
 

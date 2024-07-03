@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="X-Content-Type-Options" content="nosniff">
     <title>Crooms Bell Schedule</title>
     <meta name="application-name" content="Crooms Bell Schedule">
     <meta name="description"
@@ -109,16 +108,12 @@
         <div id="weather" class="widget" data-nosnippet>
             <h3>Weather</h3>
             <div id="wapi-container">
-                <table hidden id="alerts"
-                       style="border:1px solid var(--accent-color); width:100%; margin: 0 0 20px 0; border-radius: 10px;">
-                    <tbody style="display: block; width: 100%;">
-                    <tr style="background-color: var(--accent-color); display: flex; justify-content: center; border-radius: 9px 9px 0 0;">
-                        <td style="text-align: center; color: #ffffff; padding: 2px;">Active Alerts</td>
-                    </tr>
+                <table hidden id="alerts">
+                    <tbody>
+                    <tr><td>Active Alerts</td></tr>
                     <tr>
                         <td class="alerts">
-                            <ul id="alert-list" style="text-align: left;">
-                            </ul>
+                            <ul id="alert-list"></ul>
                         </td>
                     </tr>
                     </tbody>
@@ -162,9 +157,9 @@
                 </div>
             </div>
             <img id="graphicast" src="https://www.weather.gov/images/mlb/graphicast/image1.png" alt="Graphicast"
-                 draggable="false" style="margin-top: 20px; width: 100%; height: fit-content;">
+                 draggable="false">
             <img id="track" src="https://img.icons8.com/?size=96&id=kHG4p2DyB85t&format=png" width="100%"
-                 height="100%" alt="Tropical Cyclone Track" draggable="false" style="display: none;">
+                 height="100%" alt="Tropical Cyclone Track" draggable="false" hidden="hidden">
         </div>
         <div id="quickbits" class="widget">
             <h3 class="no-bottom">Quick Bits</h3>
@@ -180,7 +175,7 @@
         </div>
         <div id="feed" class="widget">
             <h3 class="no-bottom">Feed</h3>
-            <p style="margin-top: 0; margin-bottom: 0; user-select: none;">
+            <p>
                 <a onclick="loadTool('new-feed', '/tools/feed-updates', false)" class="links">Submit a Feed Update</a>
             </p>
             <div>
@@ -241,7 +236,8 @@
             <a class="links" href="https://app.croomssched.tech/download/win32/">restart the download</a>.
         </p>
         <h2>Windows SmartScreen</h2>
-        <p style="margin-top: 0;">If you receive a popup from Windows SmartScreen, you must click the "more info" link in
+        <p style="margin-top: 0;">If you receive a popup from Windows SmartScreen, you must click the "more info" link
+            in
             the middle of the window, and then click "run anyways" to start the installation process.</p>
         <h4>Why the hassle?</h4>
         <p style="margin-top: 0;">
