@@ -56,12 +56,3 @@ document.addEventListener('DOMContentLoaded', () => {
     createCBSHSched(document.getElementById("sched"));
     createRotatingInfo();
 });
-
-const currentTheme = JSON.parse(localStorage.getItem("settings")).theme ? JSON.parse(localStorage.getItem("settings")).theme : null;
-
-if (currentTheme) {
-    document.body.classList.add(currentTheme);
-}
-
-const currentFont = JSON.parse(localStorage.getItem("settings")).font.value ? JSON.parse(localStorage.getItem("settings")).font.value : null;
-document.documentElement.style.setProperty("--font", currentFont);

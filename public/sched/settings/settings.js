@@ -1,5 +1,6 @@
 let saveSettings = () => {}
 let Settings = {}
+let periodNameElements = [];
 document.addEventListener("DOMContentLoaded", () => {
     function fixMissingSettings() {
         let xhr = new XMLHttpRequest();
@@ -33,8 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fixMissingSettings();
 
     function start() {
-
-        let periodNameElements = [];
         for (let i = 1; i < 8; i++){
             periodNameElements.push(document.querySelector("#period"+i+"Name"));
         }

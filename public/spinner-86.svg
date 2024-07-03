@@ -3,6 +3,8 @@
         <style type="text/css"><![CDATA[
       :root {--body-color: #690d22;}
       @media screen and (prefers-color-scheme: dark) {:root {--body-color: #ff1010;}}
+      :root.light {--body-color: #690d22 !important;}
+      :root.dark {--body-color: #ff1010 !important;}
     ]]></style>
     </defs>
     <g>

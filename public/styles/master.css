@@ -49,7 +49,7 @@
     }
 }
 
-body.light {
+:root.light {
     --background: #eeeeee !important;
     --main: black !important;
     --rev: white !important;
@@ -70,7 +70,7 @@ body.light {
     color: var(--main);
 }
 
-body.dark {
+:root.dark {
     --background: #111111 !important;
     --main: white !important;
     --rev: black !important;

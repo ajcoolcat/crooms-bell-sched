@@ -3,18 +3,10 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     user-select: none;
+    overflow: hidden;
 
     --primary-color: #e0991d;
-    --primary-color-highlight: #f7ab28;
-    --secondary-color: #690D22;
-    --secondary-color-highlight: #890F32;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    #cbsh-application {
-        --secondary-color: #dc1010;
-        --secondary-color-highlight: #cc1010;
-    }
+    --secondary-color: var(--accent-color);
 }
 
 #cbsh-application > div > p {
@@ -42,14 +34,18 @@
 }
 
 #cbsh-application > div > button:hover {
-    background: var(--secondary-color-highlight);
+    opacity: 0.9;
+}
+
+#cbsh-application > div > button:active {
+    opacity: 0.7;
+}
+
+#cbsh-application > div > button:disabled {
+    opacity: 0.5;
 }
 
 #cbsh-application > div > button.active {
     background: var(--primary-color);
     color: black;
-}
-
-#cbsh-application > div > button.active:hover {
-    background: var(--primary-color-highlight);
 }
