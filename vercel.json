@@ -13,7 +13,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' *.croomssched.tech; img-src *; media-src *; script-src 'self' *.croomssched.tech pagead2.googlesyndication.com; frame-src: 'self' *.croomssched.tech *.kones.tech"
+          "value": "default-src 'self' *.croomssched.tech; img-src *; media-src *; script-src 'self' *.croomssched.tech pagead2.googlesyndication.com; frame-src: 'self' *.croomssched.tech *.kones.tech *.doubleclick.net *.google.com"
         }
       ]
     }
