@@ -18,29 +18,22 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "handle": "filesystem"
+      "source": "/teacher",
+      "destination": "/error/200.html"
     },
     {
-      "src": "/teacher",
-      "status": 200,
-      "dest": "/error/200.html"
+      "source": "/derp",
+      "destination": "/error/418.html"
     },
     {
-      "src": "/derp",
-      "status": 418,
-      "dest": "/error/418.html"
+      "source": "/bob",
+      "destination": "/error/516.html"
     },
     {
-      "src": "/bob",
-      "status": 516,
-      "dest": "/error/516.html"
-    },
-    {
-      "src": "/(.*)",
-      "status": 404,
-      "dest": "/error/404.html"
+      "source": "/(.*)",
+      "destination": "/error/404.html"
     }
   ]
 }
