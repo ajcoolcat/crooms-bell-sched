@@ -1,7 +1,3 @@
-console.load = (value) => {
-    window.$value = value;
-};
-
 function alertClient(title, content, severity) {
     document.body.style.userSelect = "none";
 
