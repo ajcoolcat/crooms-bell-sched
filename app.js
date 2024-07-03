@@ -28,3 +28,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;
+
+// CSP //
+/*
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' *.croomssched.tech croomssched.glitch.me *.weather.gov *.statuspage.io googleads.g.doubleclick.net; img-src *; media-src *; script-src 'self' *.croomssched.tech pagead2.googlesyndication.com croomssched.statuspage.io unsafe-inline; style-src: 'self' *.croomssched.tech unsafe-inline; frame-src: 'self' *.croomssched.tech *.kones.tech *.google.com; connect-src: pagead2.googlesyndication.com"
+        }*/
