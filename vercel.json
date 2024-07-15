@@ -1,14 +1,6 @@
 {
   "routes": [
     {
-      "src": "/(.*)",
-      "status": 200,
-      "headers": {
-        "X-Content-Type-Options": "nosniff",
-        "Referrer-Policy": "strict-origin-when-cross-origin"
-      }
-    },
-    {
       "src": "/bob(*)",
       "status": 516,
       "dest": "/error/516.html"
