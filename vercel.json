@@ -12,7 +12,8 @@
     },
     {
       "src": "/(.*)",
-      "status": 404
+      "status": 404,
+      "dest": "/error/404.html"
     }
   ]
 }
