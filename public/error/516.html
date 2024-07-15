@@ -41,16 +41,16 @@
     <div id="content">
         <img src="//cdn.croomssched.tech/data/7291ef48-5f58-4f73-a79d-23f146afd471/clippy.png"
              style="width: 200px; height: 200px;" draggable="false" alt="Clippy">
-        <h1>It looks like he's dead.</h1>
-        <h3 style="margin-bottom: revert;">Why'd you kill him?</h3>
-        <button onclick="window.location.href = '/'">I dunno</button>
-        <button onclick="window.location.href = 'https://derpybird.glitch.me/derpyderpyderpyderp'">Nope</button>
+        <h1>It looks like Bob is dead.</h1>
+        <h3>Why did you kill him?</h3>
+        <a class="button" href="/" style="margin-top: 1rem;">I dunno</a>
+        <a class="button" href="/derp?redirect=true" style="margin-top: 1rem;">Nope</a>
         <button onclick="learn()">Learn More</button>
     </div>
 </div>
 <div id="learn" hidden>
-    <h1 style="margin-bottom: 0px;">Why is Bob dead?</h1>
-    <h3 style="margin-top: 0px;">Let me explain.</h3>
+    <h1>Why is Bob dead?</h1>
+    <h3>Let me explain.</h3>
     <p>
         Bob was killed on September 18th, 1965 at 2:38 AM by involuntary manslaughter.
         The one who committed the act died
@@ -138,7 +138,7 @@
             document.getElementById("revealing").removeAttribute("hidden");
             document.getElementById("crush").setAttribute("hidden", "true");
             document.getElementById("cant-do-that").setAttribute("hidden", "true");
-        } else if (url.hash === "#Enemy%20(One%20who%20killed)" || url.hash == "#Enemy") {
+        } else if (url.hash === "#Enemy%20(One%20who%20killed)" || url.hash === "#Enemy") {
             document.getElementById("enemy1whokilled").removeAttribute("hidden");
             document.getElementById("revealing").setAttribute("hidden", "true");
             document.getElementById("crush").setAttribute("hidden", "true");

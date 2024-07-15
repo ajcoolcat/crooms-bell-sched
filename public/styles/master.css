@@ -391,13 +391,19 @@ option {
     accent-color: var(--accent-color);
 }
 
+a.button {
+    display: inline-block;
+}
+
 button, a.button {
     padding: 8px 10px;
     background: var(--accent-color);
-    color: var(--rev);
+    color: var(--rev) !important;
+    text-decoration: none;
     font-family: var(--font), system-ui;
     border: none;
     border-radius: 0.5rem;
+    font-size: 0.8rem;
 }
 
 button:hover, a.button:hover {

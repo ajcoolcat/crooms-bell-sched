@@ -6,12 +6,11 @@
     <meta http-equiv="refresh" content="5, url=/">
     <link rel="icon" href="/favicon.ico">
     <title>Crooms Bell Schedule</title>
-    <link rel="stylesheet" type="text/css" href="/style-root.css">
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
     <style>
         body {user-select: none;}
         div#content {position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;}
         div#content img {padding: 10px; border-radius: 10px; background-color: #dddddd;}
-        button {font-family: var(--fonts)}
         @media (prefers-color-scheme: dark) {div#content img {background-color: #222222;}}
     </style>
 </head>
@@ -21,8 +20,8 @@
     <h1 style="margin-bottom: 0;">It looks like this page has a new home.</h1>
     <h3>I'll take you there...</h3>
     <p>I'll automatically redirect you in 5 seconds.</p>
-    <button onclick="window.location.href = '/'">Hurry up you useless paperclip!</button>
+    <a class="button" href="/" style="margin-top: 1rem;">Hurry up you useless paperclip!</a>
 </div>
 </body>
-<script src="/commons.js"></script>
+<script src="/scripts/commons.js"></script>
 </html>

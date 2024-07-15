@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
     <title>Crooms Bell Schedule</title>
-    <link rel="stylesheet" type="text/css" href="/style-root.css">
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
     <style>
         body {
             user-select: none;
@@ -25,10 +25,6 @@
             background-color: #dddddd;
         }
 
-        button {
-            font-family: var(--fonts)
-        }
-
         @media (prefers-color-scheme: dark) {
             div#content img {
                 background-color: #222222;
@@ -41,10 +37,10 @@
     <img src="//cdn.glitch.global/f5277dbc-e2bd-47cf-a2a4-4962cf44a8be/Derpy%20Bird1.png"
          style="width: 200px; height: 200px;" draggable="false" alt="Derpy Bird">
     <h1 style="margin-bottom: 0;">It looks like you're a Derpy Bird!</h1>
-    <h3>Would you like to be bashed over the head?</h3>
-    <button onclick="window.location.href = '//derpybird.glitch.me/derpyderpyderpyderp/'">Yes</button>
-    <button onclick="window.location.href = '/'">No</button>
+    <h3>Would you like your head to be bashed with a rock?</h3>
+    <a class="button" href="//derpybird.glitch.me/derpyderpyderpyderp/" style="margin-top: 1rem;">Yes</a>
+    <a class="button" href="/" style="margin-top: 1rem;">No</a>
 </div>
 </body>
-<script src="/commons.js"></script>
+<script src="/scripts/commons.js"></script>
 </html>
