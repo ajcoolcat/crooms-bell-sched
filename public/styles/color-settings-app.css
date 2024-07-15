@@ -1,0 +1,34 @@
+#accent-color-smart-selector, #font-smart-selector {
+    user-select: none;
+}
+
+#accent-color-smart-selector > div,
+#accent-color-smart-selector > div > svg,
+#font-smart-selector > div,
+#font-smart-selector > div > svg {
+    border-radius: 15px;
+}
+
+#accent-color-smart-selector > div,
+#font-smart-selector > div {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+#font-smart-selector > div.active > svg {
+    background: var(--accent-color);
+}
+
+#font-smart-selector > div > svg {
+    background: var(--pri);
+}
+
+#font-smart-selector > div > svg > text {
+    fill: var(--main);
+    font-size: 2rem;
+}
+
+#font-smart-selector > div.active > svg > text {
+    fill: white;
+}

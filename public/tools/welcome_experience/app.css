@@ -1,4 +1,5 @@
 @import url("/styles/master.css");
+@import url("/styles/color-settings-app.css");
 
 :root {
     scroll-snap-type: y mandatory !important;
@@ -68,29 +69,6 @@ header.active, footer.active {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
-}
-
-#accent-color-smart-selector > div,
-#accent-color-smart-selector > div > svg,
-#font-smart-selector > div,
-#font-smart-selector > div > svg {
-    border-radius: 15px;
-}
-
-#accent-color-smart-selector > div,
-#font-smart-selector > div {
-    display: inline-block;
-    height: 50px;
-    width: 50px;
-}
-
-#font-smart-selector > div > svg {
-    background: var(--pri);
-}
-
-#font-smart-selector > div > svg > text {
-    fill: var(--main);
-    font-size: 2rem;
 }
 
 #root > div select {

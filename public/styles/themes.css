@@ -9,7 +9,6 @@
 
 @media screen and (prefers-color-scheme: dark) {
     :root {
-        --gold: #FFD700;
         --nature: #008000;
         --halloween: #FF8C00;
         --christmas: #228B22;
@@ -26,7 +25,6 @@
 }
 
 :root.dark {
-    --gold: #FFD700 !important;
     --nature: #008000 !important;
     --halloween: #FF8C00 !important;
     --christmas: #228B22 !important;

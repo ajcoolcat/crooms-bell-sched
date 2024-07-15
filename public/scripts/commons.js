@@ -33,6 +33,9 @@ function alertClient(title, content, severity) {
     } else if (severity === 2) {
         dialogClose.innerText = "Okay";
         createModal();
+    } else if (severity === 3) {
+        createModal();
+        dialogFooter.remove();
     }
 
     function createModal() {
@@ -100,6 +103,7 @@ async function attemptCopyShare() {
             "There seems to be an issue sharing the link. Please copy this link manually with CTRL+C: <br>" +
             "<span style='user-select: all'>https://croomssched.tech</span><br><br>Details: " +
             e,
+            0
         );
     }
 }
@@ -139,7 +143,7 @@ async function copyText() {
         alertClient(
             "Copy Error",
             "There seems to be a problem copying text. Please use CTRL+C for now.<br><br>Details: " + e,
-            2
+            0
         );
     }
 }

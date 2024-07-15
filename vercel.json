@@ -1,35 +1,26 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/teacher",
-      "destination": "/error/200.html"
+      "src": "/(.*)",
+      "status": 200,
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+      }
     },
     {
-      "source": "/derp",
-      "destination": "/error/418.html"
+      "src": "/bob(*)",
+      "status": 516,
+      "dest": "/error/516.html"
     },
     {
-      "source": "/bob",
-      "destination": "/error/516.html"
+      "src": "/derp",
+      "status": 418,
+      "dest": "/error/418.html"
     },
     {
-      "source": "/(.*)",
-      "destination": "/error/404.html"
+      "src": "/(.*)",
+      "status": 404
     }
   ]
 }

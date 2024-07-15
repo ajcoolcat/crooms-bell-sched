@@ -66,8 +66,7 @@
                 </div>
                 <div onclick="setAccent('gold')" title="Sunrise Gold">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                        <polygon points="0,0 50,0 0,50" fill="#DAA520"></polygon>
-                        <polygon points="50,50 50,0 0,50" fill="#FFD700"></polygon>
+                        <rect height="50" width="50" fill="#DAA520"></rect>
                     </svg>
                 </div>
                 <div onclick="setAccent('nature')" title="Nature Green">
@@ -107,44 +106,30 @@
                         <text x="6" y="34" style="font-family: Torus, var(--default-font), system-ui;">Aa</text>
                     </svg>
                 </div>
-                <div onclick="setAccent('gold')" title="Sunrise Gold">
+                <div onclick="setFont('StudySans')" title="CBSH Study">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                        <polygon points="0,0 50,0 0,50" fill="#DAA520"></polygon>
-                        <polygon points="50,50 50,0 0,50" fill="#FFD700"></polygon>
+                        <text x="7.5" y="35" style="font-family: StudySans, var(--default-font), system-ui;">Aa</text>
                     </svg>
                 </div>
-                <div onclick="setAccent('nature')" title="Nature Green">
+                <div onclick="setFont('Avenir')" title="Avenir Next LT Pro">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                        <polygon points="0,0 50,0 0,50" fill="#006400"></polygon>
-                        <polygon points="50,50 50,0 0,50" fill="#008000"></polygon>
+                        <text x="5.5" y="35" style="font-family: Avenir, var(--default-font), system-ui;">Aa</text>
                     </svg>
                 </div>
-                <div onclick="setAccent('halloween')" title="Halloween">
+                <div onclick="setFont('CACula')" title="CA Cula">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                        <polygon points="0,0 50,0 0,50" fill="#4B0082"></polygon>
-                        <polygon points="50,50 50,0 0,50" fill="#FF8C00"></polygon>
-                    </svg>
-                </div>
-                <div onclick="setAccent('christmas')" title="Christmas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                        <polygon points="0,0 50,0 0,50" fill="#8B0000"></polygon>
-                        <polygon points="50,50 50,0 0,50" fill="#228B22"></polygon>
-                    </svg>
-                </div>
-                <div onclick="setAccent('winter')" title="Winter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                        <polygon points="0,0 50,0 0,50" fill="#1E90FF"></polygon>
-                        <polygon points="50,50 50,0 0,50" fill="#87CEEB"></polygon>
+                        <text x="10" y="35" style="font-family: CACula, var(--default-font), system-ui;">Aa</text>
                     </svg>
                 </div>
             </div>
             <label for="fontSelector" style="font-weight: bold; display: none;">Font</label>
-            <select id="fontSelector" name="fontSelector"></select>
+            <select id="fontSelector" name="fontSelector" hidden="hidden"></select>
         </div>
     </div>
 </div>
 <script src="/scripts/commons.js"></script>
 <script src="/sched/schedule.js"></script>
+<script src="/scripts/theme-settings.js"></script>
 <script src="/tools/welcome_experience/slide-mgr.js"></script>
 <script src="/tools/welcome_experience/theme-mgr.js"></script>
 <script src="/tools/welcome_experience/injector.js"></script>

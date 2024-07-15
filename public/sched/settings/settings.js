@@ -1,39 +1,34 @@
-let saveSettings = () => {
-}
-let Settings = {}
+let saveSettings = () => {}
+let Settings, DefaultSettings = {};
 let periodNameElements = [];
 
 function fixMissingSettings() {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/sched/defaultSettings.json');
-    xhr.responseType = 'json';
-    xhr.send();
-    xhr.onload = function () {
-        Settings = xhr.response;
-        let SavedSettings = JSON.parse(window.localStorage.getItem("settings"));
-        if (SavedSettings) {
-            for (const obj in Settings) {
+    fetch("/sched/defaultSettings.json").then(async (res) => {
+        return JSON.parse(await res.text());
+    }).then((res) => {
+        DefaultSettings = res;
+        Settings = JSON.parse(localStorage.getItem("settings"));
 
-                if (SavedSettings[obj] === undefined) {
-                    console.log(obj, " is missing!");
-
-                    if (obj === "theme" && window.matchMedia("screen and (prefers-color-scheme: dark)")) {
-                        SavedSettings[obj] = "dark";
+        for (let setting in Settings) {
+            if (Settings[setting] === undefined || Settings[setting] === null) {
+                try {
+                    if (setting === "theme" && window.matchMedia("screen and (prefers-color-scheme: dark)")) {
+                        Settings[setting] = "dark";
                     } else {
-                        SavedSettings[obj] = Settings[obj];
+                        Settings[setting] = DefaultSettings[setting];
                     }
+
+                    console.warn(setting + " was not found, so we reset it to the default.");
+                } catch (e) {
+                    console.error(setting + " could not be found, and was not reset because of an error.\n\nDetails: " +
+                        e.message);
                 }
-
             }
-
-            SavedSettings.font.values = Settings.font.values;
-        } else {
-            SavedSettings = Settings;
         }
-        window.localStorage.setItem("settings", JSON.stringify(SavedSettings));
-        console.log("Fixed possible missing settings!");
+
+        localStorage.setItem("settings", JSON.stringify(Settings));
         start();
-    }
+    });
 }
 
 function start() {
@@ -41,146 +36,52 @@ function start() {
         periodNameElements.push(document.querySelector("#period" + i + "Name"));
     }
 
-    let Settings = {};
-
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/sched/defaultSettings.json');
-    xhr.responseType = 'json';
-    xhr.send();
-
-    xhr.onload = function () {
-        Settings = xhr.response;
-        document.querySelector("#ThemeDropdown").addEventListener("change", () => {
-            saveSettings();
-        });
-        document.querySelector("#showSeconds").addEventListener("change", () => {
-            saveSettings();
-        });
-        for (let i = 0; i < periodNameElements.length; i++) {
-            periodNameElements[i].addEventListener("change", () => {
-                saveSettings();
-            });
-        }
-        document.querySelector("#DefaultLunchDropdown").addEventListener("change", () => {
-            saveSettings();
-        });
-
-        document.querySelector("#showRing").addEventListener("change", () => {
-            saveSettings();
-        });
-    }
-
     saveSettings = () => {
-        Settings.theme = document.querySelector("#ThemeDropdown").value;
+        Settings.theme = document.querySelector("#themeSelector").value;
         Settings.showSeconds = document.querySelector("#showSeconds").checked;
-        Settings.periodNames.period1 = periodNameElements[0].value;
-        Settings.periodNames.period2 = periodNameElements[1].value;
-        Settings.periodNames.period3 = periodNameElements[2].value;
-        Settings.periodNames.period4 = periodNameElements[3].value;
-        Settings.periodNames.period5 = periodNameElements[4].value;
-        Settings.periodNames.period6 = periodNameElements[5].value;
-        Settings.periodNames.period7 = periodNameElements[6].value;
-        Settings.defaultLunch = document.querySelector("#DefaultLunchDropdown").value;
         Settings.showTimeRemainingRing = document.querySelector("#showRing").checked;
-        Settings.font.value = document.querySelector("#font").value;
-        window.localStorage.setItem("settings", JSON.stringify(Settings));
+        Settings.defaultLunch = document.getElementById("DefaultLunchDropdown").value;
+        Settings.periodNames[1] = periodNameElements[0].value;
+        Settings.periodNames[2] = periodNameElements[1].value;
+        Settings.periodNames[3] = periodNameElements[2].value;
+        Settings.periodNames[4] = periodNameElements[3].value;
+        Settings.periodNames[5] = periodNameElements[4].value;
+        Settings.periodNames[6] = periodNameElements[5].value;
+        Settings.periodNames[7] = periodNameElements[6].value;
+        localStorage.setItem("settings", JSON.stringify(Settings));
     }
 
-    let loadedSettings = {};
-    if (window.localStorage.getItem("settings") === null) {
-        let xhr2 = new XMLHttpRequest();
-        xhr2.open('GET', '/defaultSettings.json');
-        xhr2.responseType = 'json';
-        xhr2.send();
-        xhr2.onload = function () {
-            loadedSettings = xhr2.response;
-            loadSettings(loadedSettings);
-        }
+    document.getElementById("themeSelector").addEventListener("change", saveSettings);
+    document.getElementById("showSeconds").addEventListener("change", saveSettings);
+    document.getElementById("showRing").addEventListener("change", saveSettings);
+    document.getElementById("DefaultLunchDropdown").addEventListener("change", saveSettings);
+    for (let i = 0; i < periodNameElements.length; i++) {
+        periodNameElements[i].addEventListener("change", saveSettings);
+    }
+
+    if (Settings.theme === "dark") {
+        document.getElementById("themeSelector").value = "dark";
     } else {
-        loadedSettings = JSON.parse(window.localStorage.getItem("settings"));
-        loadSettings(loadedSettings);
+        document.getElementById("themeSelector").value = "light";
     }
 
-    function loadSettings(LoadSettings) {
-        let fontDropdown = document.getElementById("font");
-        for (let i = 0; i < LoadSettings.font.values.length; i++) {
-            let fontOption = document.createElement("option");
-            fontOption.innerText = LoadSettings.font.values[i].name;
-            fontOption.value = LoadSettings.font.values[i].id;
-            fontDropdown.appendChild(fontOption);
-        }
+    document.querySelector(`div[onclick="setFont('`+ Settings.font.value +`')"]`).className = "active";
 
-        // theme
-        switch (LoadSettings.theme) {
-            case "light":
-                document.querySelector("#ThemeDropdown").selectedIndex = 0;
-                break;
-            case "dark":
-                document.querySelector("#ThemeDropdown").selectedIndex = 1;
-                break;
-        }
-        // showSeconds
-        switch (LoadSettings.showSeconds) {
-            case true:
-                document.querySelector("#showSeconds").checked = true;
-                break;
-            case false:
-                document.querySelector("#showSeconds").checked = false;
-                break;
-        }
+    document.getElementById("showSeconds").checked = Settings.showSeconds === true;
+    document.getElementById("showRing").checked = Settings.showTimeRemainingRing === true;
 
+    periodNameElements[0].value = Settings.periodNames[1];
+    periodNameElements[1].value = Settings.periodNames[2];
+    periodNameElements[2].value = Settings.periodNames[3];
+    periodNameElements[3].value = Settings.periodNames[4];
+    periodNameElements[4].value = Settings.periodNames[5];
+    periodNameElements[5].value = Settings.periodNames[6];
+    periodNameElements[6].value = Settings.periodNames[7];
 
-        periodNameElements[0].value = LoadSettings.periodNames.period1;
-        periodNameElements[1].value = LoadSettings.periodNames.period2;
-        periodNameElements[2].value = LoadSettings.periodNames.period3;
-        periodNameElements[3].value = LoadSettings.periodNames.period4;
-        periodNameElements[4].value = LoadSettings.periodNames.period5;
-        periodNameElements[5].value = LoadSettings.periodNames.period6;
-        periodNameElements[6].value = LoadSettings.periodNames.period7;
-
-        switch (LoadSettings.defaultLunch) {
-            case "A Lunch":
-                document.querySelector("#DefaultLunchDropdown").selectedIndex = 0;
-                break;
-            case "B Lunch":
-                document.querySelector("#DefaultLunchDropdown").selectedIndex = 1;
-                break;
-        }
-
-        // showRing
-        switch (LoadSettings.showTimeRemainingRing) {
-            case true:
-                document.querySelector("#showRing").checked = true;
-                break;
-            case false:
-                document.querySelector("#showRing").checked = false;
-                break;
-        }
-
-        for (let i = 0; i < LoadSettings.font.values.length; i++) {
-            if (LoadSettings.font.values[i].id === LoadSettings.font.value) {
-                document.getElementById("font").selectedIndex = i;
-                break;
-            }
-        }
-    }
+    document.getElementById("DefaultLunchDropdown").value = Settings.defaultLunch;
 }
 
 document.addEventListener("DOMContentLoaded", fixMissingSettings);
-
-function resetSettings(alert) {
-    if (alert === false) {
-        window.localStorage.removeItem("settings");
-        resetSettings("wait");
-    } else if (alert === "cancel") {
-        document.getElementById("alert").setAttribute("hidden", "true");
-    } else if (alert === "wait") {
-        document.getElementById("alert-content").innerHTML = '<p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p><p style="text-align: center; font-size: 0.8em;">Resetting settings...</p>';
-        window.location.reload();
-    } else {
-        document.getElementById("alert").removeAttribute("hidden");
-    }
-}
 
 function onDone() {
     saveSettings();
@@ -188,5 +89,20 @@ function onDone() {
         window.close();
     } catch (e) {
         console.warn(e);
+    }
+}
+
+function resetSettings(answer) {
+    if (answer === true) {
+        localStorage.setItem("settings", JSON.stringify(DefaultSettings)); location.reload();
+    } else if (answer === false) {
+        document.querySelector(".modal").remove();
+        document.querySelector(".dialog").remove();
+    } else {
+        alertClient("Reset Settings?",
+            "Resetting your settings will require you to set it all up again. Are you sure you want to do this?" +
+            '<br><footer style="text-align: center; margin-top: 1rem;"><button onclick="resetSettings(true)">Yes</button>' +
+            '&nbsp;<button onclick="resetSettings(false)">No</button></footer>',
+            3);
     }
 }

@@ -10,11 +10,13 @@
     <link href="/styles/master.css" rel="stylesheet">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
     <style>
+        @import url("/styles/color-settings-app.css");
+
         #toosmall, #footer, #padding {
             display: none
         }
 
-        main {
+        body > main {
             padding-top: 47px !important;
         }
 
@@ -69,15 +71,87 @@
     <div>
         <div style="padding: 16px 8px 8px; user-select: none;">
             <h2>Display</h2>
-            <h3>Theme</h3>
-            <label for="ThemeDropdown" style="display: none;">Theme</label>
-            <select name="Theme" id="ThemeDropdown" style="width: 100px; height: 30px; margin-bottom: 10px;">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-            </select>
-            <h3>Font</h3>
-            <label class="hidden" for="font">Font:</label>
-            <select name="Font" id="font" style="width: 100px; height:30px; margin-bottom: 10px;"></select>
+            <div id="color-settings-app" style="margin-top: 1em;">
+                <h3>Theme</h3>
+                <label for="themeSelector" style="font-weight: bold; display: none;">Theme</label>
+                <select id="themeSelector" name="themeSelector" style="width: 100px; height: 30px;">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+                <h3 style="margin-top: revert;">Accent Color</h3>
+                <div id="accent-color-smart-selector" style="padding: 5px;">
+                    <div onclick="setAccent('default-accent')" title="Default Colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <polygon points="0,0 50,0 0,50" fill="#690D24"></polygon>
+                            <polygon points="50,50 50,0 0,50" fill="#FF1010"></polygon>
+                        </svg>
+                    </div>
+                    <div onclick="setAccent('windows')" title="Windows Blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <rect height="50" width="50" fill="#0078D4"></rect>
+                        </svg>
+                    </div>
+                    <div onclick="setAccent('gold')" title="Sunrise Gold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <rect height="50" width="50" fill="#DAA520"></rect>
+                        </svg>
+                    </div>
+                    <div onclick="setAccent('nature')" title="Nature Green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <polygon points="0,0 50,0 0,50" fill="#006400"></polygon>
+                            <polygon points="50,50 50,0 0,50" fill="#008000"></polygon>
+                        </svg>
+                    </div>
+                    <div onclick="setAccent('halloween')" title="Halloween">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <polygon points="0,0 50,0 0,50" fill="#4B0082"></polygon>
+                            <polygon points="50,50 50,0 0,50" fill="#FF8C00"></polygon>
+                        </svg>
+                    </div>
+                    <div onclick="setAccent('christmas')" title="Christmas">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <polygon points="0,0 50,0 0,50" fill="#8B0000"></polygon>
+                            <polygon points="50,50 50,0 0,50" fill="#228B22"></polygon>
+                        </svg>
+                    </div>
+                    <div onclick="setAccent('winter')" title="Winter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <polygon points="0,0 50,0 0,50" fill="#1E90FF"></polygon>
+                            <polygon points="50,50 50,0 0,50" fill="#87CEEB"></polygon>
+                        </svg>
+                    </div>
+                </div>
+                <h3 style="margin-top: revert;">Font</h3>
+                <div id="font-smart-selector" style="padding: 5px;">
+                    <div onclick="setFont('SegoeUI')" title="Segoe UI">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <text x="7" y="34" style="font-family: var(--default-font), system-ui;">Aa</text>
+                        </svg>
+                    </div>
+                    <div onclick="setFont('Torus')" title="Torus Notched">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <text x="6" y="34" style="font-family: Torus, var(--default-font), system-ui;">Aa</text>
+                        </svg>
+                    </div>
+                    <div onclick="setFont('StudySans')" title="CBSH Study">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <text x="7.5" y="35" style="font-family: StudySans, var(--default-font), system-ui;">Aa</text>
+                        </svg>
+                    </div>
+                    <div onclick="setFont('Avenir')" title="Avenir Next LT Pro">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <text x="5.5" y="35" style="font-family: Avenir, var(--default-font), system-ui;">Aa</text>
+                        </svg>
+                    </div>
+                    <div onclick="setFont('CACula')" title="CA Cula">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+                            <text x="10" y="35" style="font-family: CACula, var(--default-font), system-ui;">Aa</text>
+                        </svg>
+                    </div>
+                </div>
+                <label for="fontSelector" style="font-weight: bold; display: none;">Font</label>
+                <select id="fontSelector" name="fontSelector" hidden="hidden"></select>
+            </div>
             <div hidden>
                 <label for="showSeconds">Show Seconds</label>
                 <input id="showSeconds" type="checkbox">
@@ -109,7 +183,7 @@
             </select>
             <h2 style="margin-top: revert;">Danger Zone</h2>
             <h5 style="margin-bottom: 8px;">Using these settings may drastically change the look of the bell schedule.</h5>
-            <button onclick="resetSettings(true);">Reset Settings</button>
+            <button onclick="resetSettings();">Reset Settings</button>
         </div>
     </div>
 </main>
@@ -123,23 +197,8 @@
     <h3>Your device's screen is too small.</h3>
     <p>To use the settings page, please make your window larger, or use a larger display.</p>
 </div>
-<div id="alert" class="modal" hidden>
-    <div class="alert-box">
-        <div id="alert-content" class="details">
-            <p style="text-align: center; font-size: 1.3em; font-weight: 600; letter-spacing: 0.3px;">Reset Settings</p>
-            <p style="text-align: center; font-size: 0.8em;">
-                You have requested to reset your settings. If you continue, your theme and bell schedule settings will
-                be removed. Are you sure you want to reset your settings?
-            </p>
-            <p style="text-align:center;">
-                <button onclick="resetSettings(false)">Yes</button>
-                <button onclick="resetSettings('cancel')">No</button>
-            </p>
-        </div>
-    </div>
-</div>
 </body>
 
 <script src="/scripts/commons.js"></script>
-
+<script src="/scripts/theme-settings.js"></script>
 </html>
