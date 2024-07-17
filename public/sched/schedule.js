@@ -2,7 +2,7 @@ const schedMessenger = new BroadcastChannel("sched-messenger");
 const appStyles = document.createElement("link");
 appStyles.rel = "stylesheet";
 appStyles.type = "text/css";
-appStyles.href = "/sched/app.css";
+appStyles.href = "https://croomsched.tech/sched/app.css";
 document.head.appendChild(appStyles);
 let CBSHSched = {
     "time": {
@@ -42,7 +42,7 @@ function createCBSHSched(element) {
 }
 
 function fixMissingSettings() {
-    fetch("/sched/defaultSettings.json").then((res) => {
+    fetch("https://croomsched.tech/sched/defaultSettings.json").then((res) => {
         return res.text();
     }).then((res) => {
         return JSON.parse(res);
@@ -82,7 +82,7 @@ const inIframe = () => {
 function loadSettings() {
     if (window.localStorage.getItem("settings") === null) {
         xhr = new XMLHttpRequest();
-        xhr.open("GET", "/schedule/defaultSettings.json");
+        xhr.open("GET", "https://croomsched.tech/schedule/defaultSettings.json");
         xhr.responseType = "json";
         xhr.send();
         xhr.onload = function () {
@@ -196,7 +196,8 @@ function startSched(element) {
     SettingsButton.addEventListener("click", () => {
         let x = (screen.width / 2) - 200;
         let y = (screen.height / 2) - 420;
-        let settingsWindow = window.open("/sched/settings/", "cbsh-settings", "status=0,toolbar=0,location=0,width=400,height=720,screenX=" + x + ",screenY=" + y + ",popup=true");
+        let settingsWindow = window.open("https://croomsched.tech/sched/settings/", "cbsh-settings",
+            "status=0,toolbar=0,location=0,width=400,height=720,screenX=" + x + ",screenY=" + y + ",popup=true");
         let isClosedInterval = setInterval(() => {
             if (settingsWindow.closed) {
                 clearInterval(isClosedInterval);
