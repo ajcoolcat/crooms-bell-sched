@@ -185,12 +185,101 @@ div.widget h3 {
     margin: 0;
 }
 
+#wx-alert-panel {
+    position: fixed;
+    top: 51px;
+    right: -100%;
+    box-shadow: black 0 0 10px;
+    background-color: var(--pri);
+    height: calc(100% - 2rem - 56px);
+    width: 600px;
+    padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    user-select: none;
+}
+
+#wx-alert-panel > h3 {
+    color: var(--main);
+}
+
+#wx-alert-panel > h4 {
+    text-align: center;
+    background: var(--pri);
+}
+
+#wx-alert-panel > h4:has(span.marquee) {
+    mask-image: linear-gradient(
+        var(--mask-direction, to right),
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / 1) 18%,
+        hsl(0 0% 0% / 1) 82%,
+        hsl(0 0% 0% / 0)
+    );
+}
+
+#wx-alert-panel > h4 > span.marquee {
+    display: inline-block;
+    width: max-content;
+}
+
+#wx-alert-panel > ul {
+    list-style: none;
+    padding: 0;
+}
+
+#wx-alert-panel > pre {
+    max-height: calc(100% - 118px - 4em);
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 0;
+}
+
+#wx-alert-panel > pre::-webkit-scrollbar {
+    border-radius: 0 1rem 1rem 0;
+    border-top: 1px solid var(--tri);
+    border-bottom: 1px solid var(--tri);
+}
+
+#wx-alert-panel > pre::-webkit-scrollbar-track {
+    border-radius: 0 1rem 1rem 0;
+    border-top: 1px solid var(--tri);
+    border-bottom: 1px solid var(--tri);
+}
+
+#wx-alert-panel > pre::-webkit-scrollbar-thumb {
+    border-radius: 0 1rem 1rem 0;
+}
+
+#wx-alert-panel > div.icon {
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.5rem;
+    user-select: none;
+    border-radius: 0.5rem;
+}
+
+#wx-alert-panel > div.icon:hover {
+    background-color: var(--sec);
+}
+
+#wx-alert-panel > div.icon:active {
+    background-color: var(--tri);
+}
+
+#wx-alert-panel.active {
+    right: 0;
+}
+
 #download {
     position: fixed;
     top: 51px;
     left: -100%;
     padding: 1rem;
     background: var(--pri);
+    box-shadow: black 0 0 10px;
     width: 100%;
     height: calc(100% - 2rem - 56px);
     user-select: none;
@@ -217,6 +306,19 @@ div.widget h3 {
 
 #feed-and-updates > span.active {
     display: unset;
+}
+
+#others > div > .tool-warning {
+    user-select: none;
+    padding: 1rem;
+}
+
+#others > div > .tool-warning > p {
+    margin: 0;
+}
+
+#others > div > .tool-warning > p:last-child {
+    margin-top: revert;
 }
 
 @media (max-width: 1440px) {
@@ -268,6 +370,12 @@ div.widget h3 {
 @media (max-width: 615px) {
     #pd4, nav > div.right {
         display: none;
+    }
+}
+
+@media (max-width: 599px) {
+    #wx-alert-panel {
+        width: 100vw;
     }
 }
 
@@ -393,4 +501,8 @@ div.widget h3 {
     body > main {
         padding: 0;
     }
+}
+
+#the-useless-web {
+    background-color: white;
 }

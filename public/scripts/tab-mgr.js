@@ -17,6 +17,25 @@ fetch("/tabs/tools.json").then((res) => {
     });
 });
 
+fetch("/tabs/toys.json").then((res) => {
+    return res.text();
+}).then((res) => {
+    return JSON.parse(res);
+}).then((res) => {
+    return res.tools;
+}).then((toys) => {
+    toys.forEach((toy) => {
+        const item = document.createElement("div");
+        item.tabIndex = 1;
+        item.addEventListener("click", () => {
+            loadTool(toy.id, toy.link, toy.check);
+        });
+        item.innerText = toy.name;
+
+        document.getElementById("toys-list").appendChild(item);
+    });
+});
+
 const loadTool = (id, path, check) => {
     document.getElementById("widget-board").classList.remove("active");
     quitDownloader();

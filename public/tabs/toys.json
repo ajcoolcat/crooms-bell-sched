@@ -1,0 +1,22 @@
+{
+  "tools": [
+    {
+      "id": "oreo-toy",
+      "name": "Oreo",
+      "link": "/oreo/",
+      "check": false
+    },
+    {
+      "id": "the-useless-web",
+      "name": "The Useless Web",
+      "link": "https://theuselessweb.com",
+      "check": false
+    },
+    {
+      "id": "suggestion",
+      "name": "Suggest a Toy",
+      "link": "/tools/suggest/",
+      "check": false
+    }
+  ]
+}

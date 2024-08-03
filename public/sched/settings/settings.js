@@ -12,12 +12,7 @@ function fixMissingSettings() {
         for (let setting in Settings) {
             if (Settings[setting] === undefined || Settings[setting] === null) {
                 try {
-                    if (setting === "theme" && window.matchMedia("screen and (prefers-color-scheme: dark)")) {
-                        Settings[setting] = "dark";
-                    } else {
-                        Settings[setting] = DefaultSettings[setting];
-                    }
-
+                    Settings[setting] = DefaultSettings[setting];
                     console.warn(setting + " was not found, so we reset it to the default.");
                 } catch (e) {
                     console.error(setting + " could not be found, and was not reset because of an error.\n\nDetails: " +
@@ -59,14 +54,9 @@ function start() {
         periodNameElements[i].addEventListener("change", saveSettings);
     }
 
-    if (Settings.theme === "dark") {
-        document.getElementById("themeSelector").value = "dark";
-    } else {
-        document.getElementById("themeSelector").value = "light";
-    }
-
     document.querySelector(`div[onclick="setFont('`+ Settings.font.value +`')"]`).className = "active";
 
+    document.getElementById("themeSelector").value = Settings.theme;
     document.getElementById("showSeconds").checked = Settings.showSeconds === true;
     document.getElementById("showRing").checked = Settings.showTimeRemainingRing === true;
 
@@ -99,6 +89,7 @@ function resetSettings(answer) {
         document.querySelector(".modal").remove();
         document.querySelector(".dialog").remove();
     } else {
+        playAudio("Confirmation");
         alertClient("Reset Settings?",
             "Resetting your settings will require you to set it all up again. Are you sure you want to do this?" +
             '<br><footer style="text-align: center; margin-top: 1rem;"><button onclick="resetSettings(true)">Yes</button>' +

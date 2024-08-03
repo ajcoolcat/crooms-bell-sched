@@ -16,13 +16,14 @@ function setInfo(information) {
     const dates = new Date;
     let day = dates.getDay();
     if (0 < day && day < 6) {document.getElementById("DailyLunchImage").src = information.lunch[day].image;}
-    //document.getElementById("track").src = information.tropicalLink;
+    document.getElementById("track").src = information.tropicalLink;
     document.getElementById("senseless").innerHTML = information.senseless;
-    document.getElementById("quickbit1").innerHTML = information.quickBits[1];
-    document.getElementById("quickbit2").innerHTML = information.quickBits[2];
-    document.getElementById("quickbit3").innerHTML = information.quickBits[3];
-    document.getElementById("quickbit4").innerHTML = information.quickBits[4];
-    document.getElementById("quickbit5").innerHTML = information.quickBits[5];
+    document.querySelector("#quickbits > div > ol").innerHTML = "";
+    information.quickBits.forEach((quickBit) => {
+        let bitQuick = document.createElement("li");
+        bitQuick.innerText = quickBit;
+        document.querySelector("#quickbits > div > ol").appendChild(bitQuick);
+    });
 }
 
 const getFeed = () => {
@@ -107,13 +108,21 @@ const loadAlerts = (wxalert) => {
         let index = 0;
         let apm;
         let isUrgent;
-        let item = []
         document.getElementById("alert-list").innerHTML = null
         while (index <= amnt - 1) {
             let endtime = new Date(wxalert[index].properties.ends);
+            let expiretime = new Date(wxalert[index].properties.expires);
             let currentday = new Date().getDay();
-            if (endtime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {endtime = "further notice"}
-            else {
+            if (endtime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)" &&
+                expiretime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {
+                endtime = "further notice"
+            } else if (endtime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {
+                endtime = parseTime(expiretime);
+            } else {
+                endtime = parseTime(endtime);
+            }
+
+            function parseTime(endtime) {
                 let endday = endtime.getDay();
                 if (endday === currentday) {endday = " "}
                 else {endday = weekday[endday] + " at "}
@@ -126,24 +135,27 @@ const loadAlerts = (wxalert) => {
                 let endminute = endtime.getMinutes();
                 if (endminute < 10) {endminute = "0"+endminute}
 
-                endtime = endday + endhour + ":" + endminute + " " + apm;
+                return endday + endhour + ":" + endminute + " " + apm;
             }
-            
-            if (wxalert[index].properties.severity === "Extreme" && wxalert[index].properties.event.endsWith("Warning") || wxalert[index].properties.event.endsWith("Emergency"))
-            {isUrgent = 'class="urgent"'}
-            else if (wxalert[index].properties.severity === "Extreme" && wxalert[index].properties.event.endsWith("Watch"))
-            {isUrgent = 'class="important"'}
-            else {isUrgent = null}
 
-            item[index] = document.createElement("li");
-            item[index].innerHTML = wxalert[index].properties.event + " until " + endtime;
-            document.getElementById("alert-list").innerHTML += "<li " + isUrgent + ">"+ item[index].innerHTML +"</li>";
+            let alertItem = document.createElement("li");
+            alertItem.innerHTML = wxalert[index].properties.event + " until " + endtime;
+            alertItem.dataset.id = wxalert[index].properties.id;
+            alertItem.addEventListener("click", () => {viewAlert(alertItem.dataset.id)}, false);
+
+            if (wxalert[index].properties.severity === "Extreme" && wxalert[index].properties.event.endsWith("Warning") || wxalert[index].properties.event.endsWith("Emergency"))
+            {alertItem.classList.add("urgent")}
+            else if (wxalert[index].properties.severity === "Extreme" && wxalert[index].properties.event.endsWith("Watch"))
+            {alertItem.classList.add("important")}
+
+            document.getElementById("alert-list").appendChild(alertItem);
             index++;
         } document.getElementById("alerts").style.display = "block";
     }
 }
 
-let altloc = "https://api.weather.gov/alerts/active?zone=FLC117"; //"https://api.weather.gov/alerts/active?area=FL"
+let altloc = "https://api.weather.gov/alerts/active?zone=FLC117";
+//altloc = "https://api.weather.gov/alerts/active?area=FL";
 
 const getAlerts = () => {
     let art = new XMLHttpRequest();

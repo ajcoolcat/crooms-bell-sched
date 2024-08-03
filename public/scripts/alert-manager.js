@@ -39,5 +39,9 @@ function alertBalloon(title, content, severity) {
 
     document.getElementById("alert-floater").appendChild(balloon);
 
+    setTimeout(() => {
+        balloon.remove();
+    }, 10000);
+
     return balloon;
 }

@@ -1,6 +1,6 @@
 {
   "showSeconds": true,
-  "theme": "light",
+  "theme": "system",
   "accentColor": "default-accent",
   "periodNames": [
     null,

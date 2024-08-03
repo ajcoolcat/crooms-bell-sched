@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:https="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2">
@@ -44,10 +44,8 @@
                 <div class="submenu" id="tools-list"></div>
             </div>
             <div id="games-tab" tabindex="1">
-                Games
-                <div class="submenu" id="games-list">
-                    <div tabindex="1">Derpy Bird!</div>
-                </div>
+                Toys
+                <div class="submenu" id="toys-list"></div>
             </div>
             <div id="daily-poll" tabindex="1"
                  onclick="loadTool('poll-viewer', 'https://poll.croomssched.tech/', false);">
@@ -110,7 +108,9 @@
             <div id="wapi-container">
                 <table hidden id="alerts">
                     <tbody>
-                    <tr><td>Active Alerts</td></tr>
+                    <tr>
+                        <td>Active Alerts</td>
+                    </tr>
                     <tr>
                         <td class="alerts">
                             <ul id="alert-list"></ul>
@@ -163,15 +163,7 @@
         </div>
         <div id="quickbits" class="widget">
             <h3 class="no-bottom">Quick Bits</h3>
-            <div>
-                <ol>
-                    <li id="quickbit1"></li>
-                    <li id="quickbit2"></li>
-                    <li id="quickbit3"></li>
-                    <li id="quickbit4"></li>
-                    <li id="quickbit5"></li>
-                </ol>
-            </div>
+            <div><ol></ol></div>
         </div>
         <div id="feed" class="widget">
             <h3 class="no-bottom">Feed</h3>
@@ -185,26 +177,52 @@
     </div>
     <div id="others" class="hidden">
         <div id="gradecalc">
+            <div class="tool-warning" style="padding: 1rem; user-select: none;">
+                <h3>⚠️ Warning!</h3>
+                <p>
+                    This version of the Grade Calculator does not support SSO.
+                    You may run into issues trying to retrieve your grades.
+                </p>
+                <p>
+                    <button onclick="document.querySelector('#gradecalc > div').style.transform = 'translateY(-100%)';
+                                    setTimeout(() => {document.querySelector('#gradecalc > div').remove()}, 100);">
+                        I understand.
+                    </button>
+                </p>
+            </div>
             <iframe src="https://gradecalc.kones.tech"></iframe>
         </div>
     </div>
 </main>
 <footer>
-    <div>
-        <span>About Crooms Bell Schedule</span>
-        <div class="popout">
-            <h3>Crooms Bell Schedule</h3>
-            <p>Designed and maintained by Andrew Jennings.</p>
-            <h4>Join the team!</h4>
-            <p>Join the development team on our
-                <a href="//github.com/ajcoolcat/crooms-bell-sched/" target="_blank">GitHub Repository</a>.</p>
+    <div class="icon-chain">
+        <div>
+            <span class="icon">info</span>
+            <div class="popout">
+                <h3>Crooms Bell Schedule</h3>
+                <p>Designed and maintained by Andrew Jennings.</p>
+                <h4>Join the team!</h4>
+                <p>Join the development team on our
+                    <a href="//github.com/ajcoolcat/crooms-bell-sched/" target="CBSH_GitRepos">GitHub Repository</a>.
+                </p>
+                <h4>Support our development.</h4>
+                <p>
+                    <a href="//buymeacoffee.com/croomssched" target="CBSH_buyUsACoffee">Buy us coffee</a>
+                    to help us keep our domain.
+                </p>
+            </div>
+        </div>
+        <div onclick="openSettings()">
+            <span class="icon">settings</span>
+            <div class="popout" style="font-size: 0.75rem;">
+                <span style="background: transparent;">Settings</span>
+            </div>
         </div>
     </div>
     <div>
         <span id="feed-and-updates">
-            <span id="date-time"></span>
-            <span id="current-period"></span>
-            <span id="next-period"></span>
+            <span id="date-time"><span class="icon">schedule</span></span>
+            <span id="current-period"><span class="icon"></span></span>
         </span>
         <div class="popout" style="width: 350px; right: 0;">
             <div id="sched"></div>
@@ -247,17 +265,43 @@
         </p>
     </div>
 </div>
+<div id="wx-alert-panel">
+    <h2>More Details</h2>
+    <h3>Event Name</h3>
+    <ul>
+        <li><b>Issued by:</b> <span></span></li>
+        <li><b>Expires:</b> <span></span></li>
+    </ul>
+    <h4><span></span></h4>
+    <pre tabindex="-1"></pre>
+    <div class="icon">close</div>
+</div>
 <div id="toosmall">
     <h3>Your screen is too small.</h3>
     <p>To use our website, you'll need to use a larger display.</p>
 </div>
+<script>
+    function openSettings() {
+        let x = (screen.width / 2) - 200;
+        let y = (screen.height / 2) - 420;
+        let settingsWindow = window.open('/sched/settings/', 'cbsh-settings',
+                'status=0,toolbar=0,location=0,width=400,height=720,screenX=' + x + ',screenY=' + y + ',popup=true');
+        let isClosedInterval = setInterval(() => {
+            if (settingsWindow.closed) {
+                clearInterval(isClosedInterval);
+                window.location.reload();
+            }
+        }, 50);
+    }
+</script>
 <script src="/scripts/alert-manager.js"></script>
 <script src="/scripts/index.js"></script>
 <script src="/scripts/commons.js"></script>
 <script src="/scripts/fetch.js"></script>
 <script src="/scripts/downloader.js"></script>
 <script src="/sched/schedule.js"></script>
-<script src="/scripts/tools-tab.js"></script>
+<script src="/scripts/tab-mgr.js"></script>
+<script src="/scripts/alert-viewer.js"></script>
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
 <script>window.si = window.si || function () {
     (window.siq = window.siq || []).push(arguments);

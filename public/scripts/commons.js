@@ -30,12 +30,18 @@ function alertClient(title, content, severity) {
 
     if (severity === 1) {
         dialogClose.innerText = "Okay";
+        playAudio("Background");
     } else if (severity === 2) {
         dialogClose.innerText = "Okay";
+        playAudio("Background");
         createModal();
     } else if (severity === 3) {
         createModal();
         dialogFooter.remove();
+    } else if (severity === 4) {
+        dialogClose.innerText = "Okay";
+        playAudio("Foreground");
+        createModal();
     }
 
     function createModal() {
@@ -98,6 +104,7 @@ async function attemptCopyShare() {
             }, 500);
         }, 5000);
     } catch (e) {
+        playAudio("Foreground");
         alertClient(
             "Sharing Error",
             "There seems to be an issue sharing the link. Please copy this link manually with CTRL+C: <br>" +
@@ -168,3 +175,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const currentFont = JSON.parse(localStorage.getItem("settings")).font.value ? JSON.parse(localStorage.getItem("settings")).font.value : null;
 document.documentElement.style.setProperty("--font", currentFont);
+
+const audio = document.createElement("audio");
+document.body.appendChild(audio);
+
+audio.src = "https://cdn.croomssched.tech/data/79b63214-ebc7-4f01-8802-9e2e3a2b436a/Background.wav";
+audio.src = "https://cdn.croomssched.tech/data/79b63214-ebc7-4f01-8802-9e2e3a2b436a/Foreground.wav";
+audio.src = "https://cdn.croomssched.tech/data/79b63214-ebc7-4f01-8802-9e2e3a2b436a/Confirmation.wav";
+
+function playAudio(soundName) {
+    audio.src = "https://cdn.croomssched.tech/data/79b63214-ebc7-4f01-8802-9e2e3a2b436a/" + soundName + ".wav";
+    audio.play().then(r => audio.currentTime = 0);
+}
