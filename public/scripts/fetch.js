@@ -112,7 +112,6 @@ const loadAlerts = (wxalert) => {
         while (index <= amnt - 1) {
             let endtime = new Date(wxalert[index].properties.ends);
             let expiretime = new Date(wxalert[index].properties.expires);
-            let currentday = new Date().getDay();
             if (endtime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)" &&
                 expiretime.toString() === "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {
                 endtime = "further notice"
@@ -120,22 +119,6 @@ const loadAlerts = (wxalert) => {
                 endtime = parseTime(expiretime);
             } else {
                 endtime = parseTime(endtime);
-            }
-
-            function parseTime(endtime) {
-                let endday = endtime.getDay();
-                if (endday === currentday) {endday = " "}
-                else {endday = weekday[endday] + " at "}
-
-                let endhour = endtime.getHours();
-                if (endhour > 12) {endhour -= 12; apm = "PM"}
-                else if (endhour === 12) {apm = "PM"}
-                else {apm = "AM"}
-
-                let endminute = endtime.getMinutes();
-                if (endminute < 10) {endminute = "0"+endminute}
-
-                return endday + endhour + ":" + endminute + " " + apm;
             }
 
             let alertItem = document.createElement("li");
@@ -163,6 +146,24 @@ const getAlerts = () => {
     art.responseType = 'json';
     art.send();
     art.onload = () => {loadAlerts(JSON.parse(JSON.stringify(art.response.features)))}
+}
+
+function parseTime(endtime) {
+    let apm;
+    let endday = endtime.getDay();
+    if (endday === new Date().getDay()) {endday = " "}
+    else {endday = weekday[endday] + " at "}
+
+    let endhour = endtime.getHours();
+    if (endhour > 12) {endhour -= 12; apm = "PM"}
+    else if (endhour === 12) {apm = "PM"}
+    else if (endhour === 0) {endhour = 12; apm = "AM"}
+    else {apm = "AM"}
+
+    let endminute = endtime.getMinutes();
+    if (endminute < 10) {endminute = "0"+endminute}
+
+    return endday + endhour + ":" + endminute + " " + apm;
 }
 
 getInfo(); setInterval(getInfo, 60000);

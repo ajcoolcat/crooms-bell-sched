@@ -235,22 +235,6 @@ div.widget h3 {
     margin-bottom: 0;
 }
 
-#wx-alert-panel > pre::-webkit-scrollbar {
-    border-radius: 0 1rem 1rem 0;
-    border-top: 1px solid var(--tri);
-    border-bottom: 1px solid var(--tri);
-}
-
-#wx-alert-panel > pre::-webkit-scrollbar-track {
-    border-radius: 0 1rem 1rem 0;
-    border-top: 1px solid var(--tri);
-    border-bottom: 1px solid var(--tri);
-}
-
-#wx-alert-panel > pre::-webkit-scrollbar-thumb {
-    border-radius: 0 1rem 1rem 0;
-}
-
 #wx-alert-panel > div.icon {
     font-size: 2rem;
     position: absolute;
@@ -376,6 +360,10 @@ div.widget h3 {
 @media (max-width: 599px) {
     #wx-alert-panel {
         width: 100vw;
+    }
+
+    #wx-alert-panel > pre {
+        overflow-x: auto;
     }
 }
 

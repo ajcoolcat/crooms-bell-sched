@@ -23,7 +23,117 @@
 }
 
 @font-face {
+    font-family: "SFPro";
+    src: url("https://cdn.croomssched.tech/fonts/SF-Pro.ttf");
+}
+
+@font-face {
     font-family: "Avenir";
     src: url("https://cdn.croomssched.tech/fonts/AvenirNextLTPro.woff")format("woff"),
     url("https://cdn.croomssched.tech/fonts/AvenirNextLTPro.ttf")format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir";
+    src: url("https://cdn.croomssched.tech/fonts/AvenirLTPro/45.otf") format("opentype")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 300;
+    src: url("https://cdn.croomssched.tech/fonts/AvenirLTPro/35.otf") format("opentype")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 500;
+    src: url("https://cdn.croomssched.tech/fonts/AvenirLTPro/65.otf") format("opentype")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 700;
+    src: url("https://cdn.croomssched.tech/fonts/AvenirLTPro/85.otf") format("opentype")
+}
+
+@font-face {
+    font-family: "Avenir";
+    font-weight: 900;
+    src: url("https://cdn.croomssched.tech/fonts/AvenirLTPro/95.otf") format("opentype")
+}
+
+@font-face {
+    font-family: "Aptos";
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 300;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 600;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 700;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 800;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 900;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 300;
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Light-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 600;
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-SemiBold-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 700;
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Bold-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 800;
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-ExtraBold-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aptos";
+    font-weight: 900;
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Black-Italic.ttf") format("truetype");
 }

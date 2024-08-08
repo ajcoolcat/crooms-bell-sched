@@ -115,35 +115,79 @@
     src: url("https://cdn.croomssched.tech/fonts/SegUIVar.woff2");
 }
 
-::-webkit-scrollbar {
-    width: 15px;
-    border: 1px solid var(--qua);
+@supports (scrollbar-color: auto) {
+    :root, body {
+        scrollbar-color: #A8A8A8 var(--pri);
+    }
+
+    :not(:root) {
+        scrollbar-width: thin;
+        scrollbar-color: #A8A8A8 transparent;
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+        :root, body {
+            scrollbar-color: #686868 var(--pri);
+        }
+
+        :not(:root) {
+            scrollbar-width: thin;
+            scrollbar-color: #686868 transparent;
+        }
+    }
+
+    :root.light {
+        scrollbar-color: #A8A8A8 var(--pri);
+    }
+
+    :root.light :not(:root) {
+        scrollbar-width: thin;
+        scrollbar-color: #A8A8A8 transparent;
+    }
+
+    :root.dark {
+        scrollbar-color: #686868 var(--pri);
+    }
+
+    :root.dark :not(:root) {
+        scrollbar-width: thin;
+        scrollbar-color: #686868 transparent;
+    }
 }
 
-:not(body)::-webkit-scrollbar {
-    width: 8px;
-}
+@supports selector(::-webkit-scrollbar) {
+    ::-webkit-scrollbar {
+        width: 15px;
+        height: 15px;
+        border: 1px solid var(--qua);
+    }
 
-::-webkit-scrollbar-track {
-    background: var(--pri);
-    border-left: 1px solid var(--qua);
-}
+    :not(body)::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
 
-:not(body)::-webkit-scrollbar-track {
-    border: none;
-}
+    ::-webkit-scrollbar-track {
+        background: var(--pri);
+        border-left: 1px solid var(--qua);
+    }
 
-::-webkit-scrollbar-thumb {
-    background: var(--sec);
-    border: 1px solid var(--qua);
-}
+    :not(body)::-webkit-scrollbar-track {
+        border: none;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--tri);
-}
+    ::-webkit-scrollbar-thumb {
+        background: var(--sec);
+        border: 1px solid var(--qua);
+    }
 
-::-webkit-scrollbar-thumb:active {
-    background: var(--qua);
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--tri);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: var(--qua);
+    }
 }
 
 body {
