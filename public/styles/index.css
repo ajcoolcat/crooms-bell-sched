@@ -119,6 +119,16 @@ div.widget h3 {
     padding: 2px;
 }
 
+#alerts > tbody > tr:last-child > td > ul > li {
+    width: fit-content;
+}
+
+#alerts > tbody > tr:last-child > td > ul > li:after {
+    font-family: "MatIcons", system-ui;
+    content: "open_in_new";
+    padding-left: 0.3rem;
+}
+
 #forecast {
     display: flex;
     flex-flow: row nowrap;
@@ -303,6 +313,45 @@ div.widget h3 {
 
 #others > div > .tool-warning > p:last-child {
     margin-top: revert;
+}
+
+.dialog.welcome {
+    padding: 0;
+}
+
+.dialog.welcome > header {
+    text-align: revert;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+}
+
+.dialog.welcome > header > *:not(.close) {
+    font-weight: 900;
+}
+
+.dialog.welcome > header > .close {
+    border-radius: 0.25rem;
+    padding: 0 2px;
+}
+
+.dialog.welcome > header > .close:hover {
+    background-color: var(--sec);
+}
+
+.dialog.welcome > header > .close:active {
+    background-color: var(--tri);
+}
+
+.dialog.welcome > main {
+    height: 600px;
+    min-width: 508px;
+}
+
+.dialog.welcome > main > iframe {
+    border-radius: 0 0 1rem 1rem;
+    height: 600px;
 }
 
 @media (max-width: 1440px) {

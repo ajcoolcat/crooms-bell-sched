@@ -9,7 +9,9 @@ if (0 < today.getDay() && today.getDay() < 6) {
 }
 
 function randomWindow() {
-    const urls = ["/bob", "/teacher", "//google.com", "//bing.com", "//catsinsinks.com", "//update.croomssched.tech", "//outlook.com", "//collegeboard.org", "//example.com", "//github.com", "//derpybird.glitch.me/error/404.html", "//pcjs.org",];
+    const urls = ["/bob", "/teacher", "//google.com", "//bing.com", "//catsinsinks.com", "//app.croomssched.tech",
+        "//outlook.com", "//collegeboard.org", "//example.com", "//github.com", "//derpybird.glitch.me/error/404.html",
+        "//pcjs.org",];
 
     window.open(urls[getRandomInt(1, 13)]);
 }
@@ -58,6 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
         loadTool("poll-viewer", "https://poll.croomssched.tech", false);
     } else if (goto === "download" || goto === "download-app" || goto === "app") {
         downloadApp();
+    }
+
+    let visitCounter = parseInt(localStorage.getItem("visitCounter"));
+    if (isNaN(visitCounter)) {
+        welcome();
+        localStorage.setItem("visitCounter", (1).toString());
+    } else {
+        visitCounter++;
+        localStorage.setItem("visitCounter", visitCounter.toString());
     }
 
     createCBSHSched(document.getElementById("sched"));
