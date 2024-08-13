@@ -1,0 +1,59 @@
+@import url("/styles/master.css");
+
+#app {
+    padding: 2rem;
+}
+
+#app .no-color {
+    color: var(--main);
+}
+
+#app > header {
+    position: revert;
+    user-select: none;
+}
+
+#app > main header {
+    margin-top: 1rem;
+    user-select: none;
+    margin-bottom: 0.5rem;
+}
+
+#app > main dl {
+    margin-top: 0;
+}
+
+#app > main dl > dt {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+#app > main dl > dd {
+    margin-inline-start: 30px;
+}
+
+#app > main div.flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#app > main div.flex > div.flex-child {
+    background-color: var(--pri);
+    border-radius: 1rem;
+    padding: 1rem;
+    flex: 1;
+}
+
+#app > main div.flex > div.flex-child p {
+    margin-top: 0;
+}
+
+#app > main div.flex > div.flex-child p:last-child {
+    margin-bottom: 0;
+}
+
+#app > main div.flex > div.flex-child.flex {
+    flex-flow: column;
+}
