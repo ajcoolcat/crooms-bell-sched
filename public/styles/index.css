@@ -195,6 +195,10 @@ div.widget h3 {
     margin: 0;
 }
 
+#feed-updates > li i {
+    user-select: none;
+}
+
 #wx-alert-panel {
     position: fixed;
     top: 51px;
