@@ -13,6 +13,12 @@
       "check": false
     },
     {
+      "id": "neal-fun-infinite",
+      "name": "Infinite Craft",
+      "link": "https://neal.fun/infinite-craft/",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Toy",
       "link": "/tools/suggest/",
