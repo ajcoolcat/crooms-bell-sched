@@ -39,21 +39,34 @@
     justify-content: center;
 }
 
-#app > main div.flex > div.flex-child {
+#app > main div.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: ;
+    align-items: center;
+    justify-content: center;
+}
+
+#app > main div.grid > div.grid-child {
+    margin-right: 0.5rem;
     background-color: var(--pri);
     border-radius: 1rem;
     padding: 1rem;
     flex: 1;
 }
 
-#app > main div.flex > div.flex-child p {
+#app > main div.grid > div.grid-child:last-child {
+    margin-right: 0;
+}
+
+#app > main div.grid > div.grid-child p {
     margin-top: 0;
 }
 
-#app > main div.flex > div.flex-child p:last-child {
+#app > main div.grid > div.grid-child p:last-child {
     margin-bottom: 0;
 }
 
-#app > main div.flex > div.flex-child.flex {
+#app > main div.grid > div.grid-child.flex {
     flex-flow: column;
 }
