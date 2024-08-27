@@ -256,7 +256,7 @@ function startSched(element) {
     }, new Date().getMilliseconds());
 
     function mainLoop() {
-        let Periodmsg;
+        let periodMsg, todaySchedule;
         drawDateTime();
         let now = new Date();
         let day = now.getDay();
@@ -264,24 +264,21 @@ function startSched(element) {
         let date = now.getDate();
 
         if (day === 1) {
-            currentDay = Schedules.normal.sched[current_lunch - 1];
-            Periodmsg = Schedules.normal.msg;
+            todaySchedule = Schedules.normal;
         } else if (day === 2) {
-            currentDay = Schedules.normal.sched[current_lunch - 1];
-            Periodmsg = Schedules.normal.msg;
+            todaySchedule = Schedules.normal;
         } else if (day === 3) {
-            currentDay = Schedules.evenBlock.sched[current_lunch - 1];
-            Periodmsg = Schedules.evenBlock.msg;
+            todaySchedule = Schedules.evenBlock;
         } else if (day === 4) {
-            currentDay = Schedules.oddBlock.sched[current_lunch - 1];
-            Periodmsg = Schedules.oddBlock.msg;
+            todaySchedule = Schedules.normal;
         } else if (day === 5) {
-            currentDay = Schedules.normal.sched[current_lunch - 1];
-            Periodmsg = Schedules.normal.msg;
+            todaySchedule = Schedules.normal;
         } else {
-            currentDay = Schedules.normal.sched[current_lunch - 1];
-            Periodmsg = Schedules.normal.msg;
+            todaySchedule = Schedules.normal;
         }
+
+        currentDay = todaySchedule.sched[current_lunch - 1];
+        periodMsg = todaySchedule.msg;
 
         let currentEvent = currentDay[eventNumber - 1];
         let nextEvent = currentDay[eventNumber];
@@ -305,7 +302,7 @@ function startSched(element) {
 
         }
 
-        drawPeriodMsg(Periodmsg);
+        drawPeriodMsg(periodMsg);
         drawEventCountDown(currentEvent);
         getNextPeriod(nextEvent);
     }

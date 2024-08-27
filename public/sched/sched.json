@@ -140,10 +140,10 @@
       "type": "evenBlock"
     },
     "thursday" : {
-      "type": "oddBlock"
+      "type": "normal"
     },
     "friday" : {
-      "type": "activity"
+      "type": "normal"
     }
   }
 }
