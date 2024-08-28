@@ -5,15 +5,49 @@
     <title>Add Custom Tool</title>
     <link rel="stylesheet" type="text/css" href="/styles/master.css">
 </head>
-<body>
+<body style="user-select: none;">
 <div id="base"
-     style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); user-select: none; max-width: 300px;">
+     style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 300px;">
     <h2>Add Custom Tool</h2>
-    <p style="margin-top: 0">Here you can load a custom tool for this session.</p>
+    <p style="margin-top: 0;">Here you can load a custom tool for this session.</p>
     <div>
+        <label for="custom-tool-list"></label>
         <input name="tool" id="custom-tool-list">
-        <button onclick="window.location.href = document.getElementById('custom-tool-list').value">Load Tool</button>
+        <button>Load Tool</button>
     </div>
 </div>
+<script>
+    document.getElementById("custom-tool-list").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {load()}
+    });
+
+    document.querySelector("#base > div > button").addEventListener("click", load);
+
+    function load() {
+        let rawURL = document.getElementById('custom-tool-list').value;
+
+        if (rawURL.startsWith("https://") || rawURL.startsWith("http://")) {
+            location.href = rawURL;
+        } else if (rawURL.startsWith("/") || rawURL.startsWith("./") || rawURL.startsWith("../")) {
+            location.href = rawURL;
+        } else {
+            document.querySelectorAll("#base > div").forEach((warning) => {
+                if (warning.innerText === 'URLs must start with "http(s)://", "(..)(.)/"') {
+                    warning.remove();
+                }
+            });
+
+            let error = document.createElement("div");
+            error.style.borderRadius = "0.5rem";
+            error.style.marginTop = "0.5rem";
+            error.style.padding = "0.5rem";
+            error.style.color = "white";
+            error.style.backgroundColor = "light-dark(darkred, firebrick)";
+            error.innerText = 'URLs must start with "http(s)://", "(..)(.)/"';
+            document.getElementById("base").appendChild(error);
+            setTimeout(() => {error.remove()}, 10000);
+        }
+    }
+</script>
 </body>
 </html>
