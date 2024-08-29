@@ -30,6 +30,7 @@
     font-family: var(--font), var(--default-font), system-ui;
 
     line-height: 1.3;
+    color-scheme: light dark;
 }
 
 @media screen and (prefers-color-scheme: dark) {
