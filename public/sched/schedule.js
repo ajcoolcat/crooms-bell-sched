@@ -182,6 +182,7 @@ function startSched(element) {
         CurrentPeriodSeconds.innerText = "";
 
         current_lunch = 1;
+        mainLoop();
     }, false);
 
     BLunchButton.addEventListener("click", () => {
@@ -191,6 +192,7 @@ function startSched(element) {
         CurrentPeriodSeconds.innerText = "";
 
         current_lunch = 2;
+        mainLoop();
     }, false);
 
     SettingsButton.addEventListener("click", () => {
