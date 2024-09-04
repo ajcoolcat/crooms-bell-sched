@@ -262,7 +262,7 @@ function startSched(element) {
         drawDateTime();
         let now = new Date();
         let day = now.getDay();
-        let month = now.getMonth();
+        let month = now.getMonth() + 1;
         let date = now.getDate();
 
         if (day === 1) {
@@ -272,11 +272,27 @@ function startSched(element) {
         } else if (day === 3) {
             todaySchedule = Schedules.evenBlock;
         } else if (day === 4) {
-            todaySchedule = Schedules.normal;
+            todaySchedule = Schedules.oddBlock;
         } else if (day === 5) {
             todaySchedule = Schedules.normal;
         } else {
             todaySchedule = Schedules.normal;
+        }
+
+        if (month === 9 && date === 13) {
+            todaySchedule = Schedules.activity;
+        } else if (month === 9 && date === 27) {
+            todaySchedule = Schedules.activity;
+        } else if (month === 11 && date === 15) {
+            todaySchedule = Schedules.activity;
+        } else if (month === 12 && date === 13) {
+            todaySchedule = Schedules.activity;
+        } else if (month === 2 && date === 7) {
+            todaySchedule = Schedules.activity;
+        } else if (month === 4 && date === 11) {
+            todaySchedule = Schedules.activity;
+        } else if (month === 4 && date === 25) {
+            todaySchedule = Schedules.activity;
         }
 
         currentDay = todaySchedule.sched[current_lunch - 1];

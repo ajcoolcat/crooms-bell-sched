@@ -21,7 +21,9 @@
       {"id": "Torus", "name": "Torus Notched"},
       {"id": "StudySans", "name": "CBSH Study"},
       {"id": "Avenir", "name": "Avenir Next LT Pro"},
-      {"id": "CACula", "name": "CA Cula"}
+      {"id": "CACula", "name": "CA Cula"},
+      {"id": "Aptos", "name": "Aptos"},
+      {"id": "SFPro", "name": "San Francisco Pro"}
     ]
   }
 }

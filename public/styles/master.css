@@ -482,7 +482,7 @@ body > footer > div.icon-chain > div:hover {
     background: #fff5;
 }
 
-input, select {
+input:not([type="file"]):not([type="button"]), select {
     font-family: var(--font), system-ui;
     background: transparent !important;
     color: var(--main);
@@ -494,12 +494,23 @@ input, select {
     text-align: center;
 }
 
-input:hover, select:hover {
+input:not([type="file"]):not([type="button"]):hover, select:hover {
     border-bottom-color: var(--qua);
 }
 
-input:focus, select:focus {
+input:not([type="file"]):not([type="button"]):focus, select:focus {
     border-bottom-color: var(--accent-color);
+}
+
+input[type="file"] {
+    font-family: var(--font), system-ui;
+    background: transparent !important;
+    color: var(--main);
+    border: none;
+    outline: none;
+    padding: 5px;
+    accent-color: var(--accent-color);
+    text-align: center;
 }
 
 option {
@@ -512,7 +523,7 @@ a.button {
     display: inline-block;
 }
 
-button, a.button {
+button, a.button, input[type="button"], input[type="submit"], input[type="reset"] {
     padding: 8px 10px;
     background: var(--accent-color);
     color: var(--rev) !important;
@@ -523,15 +534,15 @@ button, a.button {
     font-size: 0.8rem;
 }
 
-button:hover, a.button:hover {
+button:hover, a.button:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
     opacity: 0.8;
 }
 
-button:active, a.button:active {
+button:active, a.button:active, input[type="button"]:active, input[type="submit"]:active, input[type="reset"]:active {
     opacity: 0.7;
 }
 
-button:disabled, a.button:disabled {
+button:disabled, a.button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled, input[type="reset"]:disabled {
     opacity: 0.6;
 }
 
@@ -586,6 +597,7 @@ iframe {
     div.dialog {
         min-width: 100vw;
         border-radius: 0;
+        padding: 1rem 1.5rem;
     }
 
     #alert-floater {

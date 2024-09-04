@@ -42,6 +42,8 @@ function alertClient(title, content, severity) {
         dialogClose.innerText = "Okay";
         playAudio("Foreground");
         createModal();
+    } else if (severity === 5) {
+        createModal();
     }
 
     function createModal() {

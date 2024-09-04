@@ -21,6 +21,18 @@ function fixMissingSettings() {
             }
         }
 
+        for (let setting in Settings.font.values) {
+            if (Settings.font.value[setting] === undefined || Settings.font.value[setting] === null) {
+                try {
+                    Settings.font.value[setting] = DefaultSettings.font.value[setting];
+                    console.warn(setting.name + " was not found, so we added the font.");
+                } catch (e) {
+                    console.error(setting.name + " could not be found, and was not reset because of an error.\n\nDetails: " +
+                        e.message);
+                }
+            }
+        }
+
         localStorage.setItem("settings", JSON.stringify(Settings));
         start();
     });
@@ -50,6 +62,7 @@ function start() {
     document.getElementById("showSeconds").addEventListener("change", saveSettings);
     document.getElementById("showRing").addEventListener("change", saveSettings);
     document.getElementById("DefaultLunchDropdown").addEventListener("change", saveSettings);
+    document.getElementById("fontSelector").addEventListener("change", saveSettings);
     for (let i = 0; i < periodNameElements.length; i++) {
         periodNameElements[i].addEventListener("change", saveSettings);
     }
@@ -69,6 +82,13 @@ function start() {
     periodNameElements[6].value = Settings.periodNames[7];
 
     document.getElementById("DefaultLunchDropdown").value = Settings.defaultLunch;
+
+    Settings.font.values.forEach((font) => {
+        const option = document.createElement("option");
+        option.text = font.name;
+        option.value = font.value;
+        document.getElementById("fontSelector").appendChild(option);
+    })
 }
 
 document.addEventListener("DOMContentLoaded", fixMissingSettings);
