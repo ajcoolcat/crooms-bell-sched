@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <label for="fontSelector" style="font-weight: bold; display: none;">Font</label>
-                <select id="fontSelector" name="fontSelector" hidden="hidden"></select>
+                <select id="fontSelector" name="fontSelector" hidden></select>
             </div>
             <div hidden>
                 <label for="showSeconds">Show Seconds</label>
@@ -197,8 +197,11 @@
                 <option>A Lunch</option>
                 <option>B Lunch</option>
             </select>
+            <h2 style="margin-top: revert;">Move Your Settings</h2>
+            <button onclick="exportSettings()">Export Settings</button>
+            <button onclick="importSettings()">Import Settings</button>
             <h2 style="margin-top: revert;">Danger Zone</h2>
-            <h5 style="margin-bottom: 8px;">Using these settings may drastically change the look of the bell schedule.</h5>
+            <h5 style="margin-bottom: 0.75rem;">Using these settings may drastically change the look of the bell schedule.</h5>
             <button onclick="resetSettings();">Reset Settings</button>
         </div>
     </div>
@@ -216,5 +219,7 @@
 </body>
 
 <script src="/scripts/commons.js"></script>
+<script src="/sched/settings/export.js"></script>
+<script src="/sched/settings/import.js"></script>
 <script src="/scripts/theme-settings.js"></script>
 </html>
