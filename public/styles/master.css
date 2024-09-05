@@ -1,5 +1,6 @@
-@import url("/styles/fonts.css");
 @import url("/styles/themes.css");
+@import url("/styles/cursor.css");
+@import url("/styles/fonts.css");
 
 :root {
     --background: #eeeeee;
@@ -591,6 +592,10 @@ div.modal {
 iframe {
     width: 100%;
     border: none;
+}
+
+clippy * {
+    transition: none;
 }
 
 @media screen and (max-width: 500px) {

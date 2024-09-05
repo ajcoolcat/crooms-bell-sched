@@ -1,0 +1,49 @@
+:root * {
+    cursor: url("https://cdn.croomssched.tech/cursors/light/arrow.png") 5 5, auto;
+}
+
+:root a:link, :root .links {
+    cursor: url("https://cdn.croomssched.tech/cursors/light/link.png") 5 5, pointer;
+}
+
+:root .clippy {
+    cursor: url("https://cdn.croomssched.tech/cursors/light/move.cur") 5 5, move;
+}
+
+@media screen and (prefers-color-scheme: dark){
+    :root * {
+        cursor: url("https://cdn.croomssched.tech/cursors/dark/arrow.png") 5 5, auto;
+    }
+
+    :root a:link, :root .links {
+        cursor: url("https://cdn.croomssched.tech/cursors/dark/link.cur") 11 7, pointer;
+    }
+
+    :root .clippy {
+        cursor: url("https://cdn.croomssched.tech/cursors/dark/move.cur") 5 5, move;
+    }
+}
+
+:root.light * {
+    cursor: url("https://cdn.croomssched.tech/cursors/light/arrow.png") 5 5, auto;
+}
+
+:root.light a:link, :root.light .links {
+    cursor: url("https://cdn.croomssched.tech/cursors/light/link.png") 5 5, pointer;
+}
+
+:root.light .clippy {
+    cursor: url("https://cdn.croomssched.tech/cursors/light/move.cur") 5 5, move;
+}
+
+:root.dark * {
+    cursor: url("https://cdn.croomssched.tech/cursors/dark/arrow.png") 5 5, auto;
+}
+
+:root.dark a:link, :root.dark .links {
+    cursor: url("https://cdn.croomssched.tech/cursors/dark/link.cur") 11 7, pointer;
+}
+
+:root.dark .clippy {
+    cursor: url("https://cdn.croomssched.tech/cursors/dark/move.cur") 5 5, move;
+}

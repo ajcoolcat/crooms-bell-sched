@@ -1058,19 +1058,19 @@
 })));
 
 let firstload = window.localStorage.getItem("firstClippy");
-let allowed = window.localStorage.getItem("clippyStart");
 
 let clippyAgent;
-clippy.load('Clippy', function(agent) {
-    clippyAgent = agent;
-    if (allowed !== "blocked") {
-        agent.show();
-        agent.play("greeting");
-        if (firstload !== "false") {
-            agent.speak("Hello! I am Clippy, your personal assistant. Since Microsoft fired me back in 2007, I was " +
-                "looking for work to do, and found this place. So I applied and got the job! Just right click me to " +
-                "see what I can do.");
-            window.localStorage.setItem("firstClippy", "false");
+
+window.addEventListener("load", () => {
+    clippy.load('Clippy', function(agent) {
+        clippyAgent = agent;
+        if (Settings.clippy === true) {
+            agent.show();
+            agent.play("greeting");
+            if (firstload !== "false") {
+                agent.speak("Hello! I am Clippy, your personal assistant. It's so nice to meet you!");
+                window.localStorage.setItem("firstClippy", "false");
+            }
         }
-    }
+    });
 });

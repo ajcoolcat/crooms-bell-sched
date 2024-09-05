@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:https="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Crooms Bell Schedule</title>
+    <!-- Metadata -->
     <meta name="application-name" content="Crooms Bell Schedule">
     <meta name="description"
-          content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period.">
+          content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period. Stay up-to-date with information with Quick Bits and Weather, and connect with other students with the Feed.">
     <meta name="keywords"
-          content="Crooms, CAIT, CAoIT, Crooms Bell Schedule, Crooms Academy Bell Schedule, Crooms Academy, Crooms Schedule">
+          content="Crooms, CAIT, CAoIT, Crooms Bell Schedule, Crooms Academy Bell Schedule, Crooms Academy, Crooms Schedule, Schedule, Bell Schedule, 2024-2025">
     <meta name="author" content="Andrew Jennings">
+    <!-- End Metadata -->
+    <!-- Progressive Web App -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#690D22">
+    <!-- End Progressive Web App -->
     <!-- OpenGraph/Social Media Sharing -->
     <meta name="og:description"
-          content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period.">
+          content="The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period. Stay up-to-date with information with Quick Bits and Weather, and connect with other students with the Feed.">
     <meta property="og:image" content="/favicon.ico">
     <meta property="og:title" content="Crooms Bell Schedule">
     <meta name="twitter:card" content="summary">
@@ -28,6 +32,12 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7615151731467786"
             crossorigin="anonymous"></script>
     <!-- End AdSense -- DO NOT REMOVE -->
+    <!-- Clippy -->
+    <script src="https://unpkg.com/jquery@3.2.1"></script>
+    <script src="/scripts/clippy.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.croomssched.tech/data/a686c29b-4479-45e8-870f-077f6ec47c5f/assets/clippy.css">
+    <!-- End Clippy -->
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
     <link rel="stylesheet" type="text/css" href="/styles/icons.css">
 </head>
@@ -280,6 +290,7 @@
     <h3>Your screen is too small.</h3>
     <p>To use our website, you'll need to use a larger display.</p>
 </div>
+<clippy></clippy>
 <script>
     function openSettings() {
         let x = (screen.width / 2) - 200;

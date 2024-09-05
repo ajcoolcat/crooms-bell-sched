@@ -40,13 +40,14 @@ function fixMissingSettings() {
 
 function start() {
     for (let i = 1; i < 8; i++) {
-        periodNameElements.push(document.querySelector("#period" + i + "Name"));
+        periodNameElements.push(document.getElementById("period" + i + "Name"));
     }
 
     saveSettings = () => {
-        Settings.theme = document.querySelector("#themeSelector").value;
-        Settings.showSeconds = document.querySelector("#showSeconds").checked;
-        Settings.showTimeRemainingRing = document.querySelector("#showRing").checked;
+        Settings.clippy = document.getElementById("allowClippy").checked;
+        Settings.theme = document.getElementById("themeSelector").value;
+        Settings.showSeconds = document.getElementById("showSeconds").checked;
+        Settings.showTimeRemainingRing = document.getElementById("showRing").checked;
         Settings.defaultLunch = document.getElementById("DefaultLunchDropdown").value;
         Settings.periodNames[1] = periodNameElements[0].value;
         Settings.periodNames[2] = periodNameElements[1].value;
@@ -63,6 +64,7 @@ function start() {
     document.getElementById("showRing").addEventListener("change", saveSettings);
     document.getElementById("DefaultLunchDropdown").addEventListener("change", saveSettings);
     document.getElementById("fontSelector").addEventListener("change", saveSettings);
+    document.getElementById("allowClippy").addEventListener("change", saveSettings);
     for (let i = 0; i < periodNameElements.length; i++) {
         periodNameElements[i].addEventListener("change", saveSettings);
     }
@@ -72,6 +74,7 @@ function start() {
     document.getElementById("themeSelector").value = Settings.theme;
     document.getElementById("showSeconds").checked = Settings.showSeconds === true;
     document.getElementById("showRing").checked = Settings.showTimeRemainingRing === true;
+    document.getElementById("allowClippy").checked = Settings.clippy === true;
 
     periodNameElements[0].value = Settings.periodNames[1];
     periodNameElements[1].value = Settings.periodNames[2];

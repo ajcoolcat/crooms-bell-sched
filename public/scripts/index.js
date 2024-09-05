@@ -1,5 +1,4 @@
-function skipTask() {
-}
+function skipTask() {}
 
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const today = new Date();
@@ -9,9 +8,9 @@ if (0 < today.getDay() && today.getDay() < 6) {
 }
 
 function randomWindow() {
-    const urls = ["/bob", "/teacher", "//google.com", "//bing.com", "//catsinsinks.com", "//app.croomssched.tech",
-        "//outlook.com", "//collegeboard.org", "//example.com", "//github.com", "//derpybird.glitch.me/error/404.html",
-        "//pcjs.org",];
+    const urls = ["/bob", "/teacher", "https://google.com", "https://bing.com", "https://catsinsinks.com",
+        "https://app.croomssched.tech", "https://outlook.com", "https://collegeboard.org", "https://example.com",
+        "https://github.com", "https://derpybird.glitch.me/error/404.html", "https://pcjs.org",];
 
     window.open(urls[getRandomInt(1, 13)]);
 }

@@ -14,6 +14,7 @@
   ],
   "defaultLunch": "A Lunch",
   "showTimeRemainingRing": true,
+  "clippy": false,
   "font": {
     "value": "SegoeUI",
     "values": [

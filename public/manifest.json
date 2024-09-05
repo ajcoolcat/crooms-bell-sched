@@ -1,10 +1,10 @@
 {
   "background_color": "#eeeeee",
-  "description": "The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period.",
+  "description": "The Crooms Bell Schedule features an interactive bell schedule applet that keeps track of your periods and the time remaining in the period. Stay up-to-date with information with Quick Bits and Weather, and connect with other students with the Feed.",
   "dir": "ltr",
   "display": "standalone",
   "display_override": ["window-controls-overlay"],
-  "name": "Crooms Bell Schedule Hub",
+  "name": "Crooms Bell Schedule",
   "orientation": "portrait",
   "scope": "/",
   "short_name": "Crooms Bell Schedule",
@@ -19,8 +19,8 @@
   "prefer_related_applications": false,
   "protocol_handlers": [
     {
-      "protocol": "croomssched",
-      "url": "/redir.html?url=%s"
+      "protocol": "web+croomssched",
+      "url": "redir.html?url=%s"
     }
   ],
   "screenshots": [
@@ -719,7 +719,7 @@
     },
     {
       "name": "Open Daily Poll",
-      "url": "https://croomssched.glitch.me/poll",
+      "url": "/?goto=poll",
       "description": "Open the Daily Poll"
     }
   ]
