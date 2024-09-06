@@ -11,5 +11,8 @@
     <orderEntry type="library" name="script" level="application" />
     <orderEntry type="library" name="all" level="application" />
     <orderEntry type="library" name="script" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="clippy" level="application" />
+    <orderEntry type="library" name="script" level="application" />
   </component>
 </module>
