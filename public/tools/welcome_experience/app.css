@@ -60,3 +60,8 @@ main > section p {
 main > section > div > p:first-child {
     margin-top: 0;
 }
+
+main > section p .icon {
+    display: inline-block;
+    transform: translateY(20%);
+}
