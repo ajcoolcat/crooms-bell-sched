@@ -1,6 +1,12 @@
 {
   "tools": [
     {
+      "id": "working-grade-calc",
+      "name": "Grade Calculator (that works)",
+      "link": "https://www.calculator.net/grade-calculator.html",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Tool",
       "link": "/tools/suggest/",

@@ -19,6 +19,12 @@
       "check": false
     },
     {
+      "id": "neal",
+      "name": "Neal.fun",
+      "link": "https://neal.fun",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Toy",
       "link": "/tools/suggest/",
