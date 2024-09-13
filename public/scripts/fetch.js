@@ -18,6 +18,8 @@ function setInfo(information) {
     if (0 < day && day < 6) {document.getElementById("DailyLunchImage").src = information.lunch[day].image;}
     document.getElementById("track").src = information.tropicalLink;
     document.getElementById("senseless").innerHTML = information.senseless;
+    document.getElementById("quote").innerHTML = information.teacherquote.quote;
+    document.getElementById("teacher").innerHTML = information.teacherquote.teacher;
     document.querySelector("#quickbits > div > ol").innerHTML = "";
     information.quickBits.forEach((quickBit) => {
         let bitQuick = document.createElement("li");
