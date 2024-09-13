@@ -590,9 +590,57 @@ div.modal {
     z-index: 12;
 }
 
+div.context-menu {
+    background-color: var(--pri);
+    border-radius: 0.5rem;
+    box-shadow: black 0 0 10px;
+    user-select: none;
+    position: fixed;
+    z-index: 3;
+}
+
+div.context-menu > div {
+    padding: 0.5rem 0.75rem;
+}
+
+div.context-menu > div:hover {
+    background-color: var(--sec);
+}
+
+div.context-menu > div:active {
+    background-color: var(--tri);
+}
+
+div.context-menu > div:first-child {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+div.context-menu > div:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+div.context-menu > div:first-child:last-child {
+    border-radius: 0.5rem;
+}
+
+div.context-menu > div > span.icon {
+    font-size: 1.25rem;
+    max-height: 12px;
+    position: fixed;
+    display: inline-block;
+}
+
+div.context-menu > div > span:not(.icon) {
+    
+}
+
 iframe {
     width: 100%;
     border: none;
+}
+
+clippy .clippy {
+    z-index: 2;
 }
 
 clippy * {
