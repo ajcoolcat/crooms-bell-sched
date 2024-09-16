@@ -23,7 +23,7 @@ function setInfo(information) {
     document.querySelector("#quickbits > div > ol").innerHTML = "";
     information.quickBits.forEach((quickBit) => {
         let bitQuick = document.createElement("li");
-        bitQuick.innerText = quickBit;
+        bitQuick.innerHTML = quickBit;
         document.querySelector("#quickbits > div > ol").appendChild(bitQuick);
     });
 }
