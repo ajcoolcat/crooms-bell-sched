@@ -668,7 +668,7 @@ clippy * {
     }
 }
 
-@keyframes anim-rainbow {
+@keyframes bkg-rainbow {
     0% {
         background-color: hsla(0deg 100% 50%);
     }
