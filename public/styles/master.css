@@ -647,6 +647,34 @@ clippy * {
     transition: none;
 }
 
+.rainbow {
+    animation: anim-rainbow 5s infinite;
+}
+
+@keyframes anim-rainbow {
+    0% {
+        color: hsla(0deg 100% 50%);
+    }
+    16.67% {
+        color: hsla(60deg 100% 50%);
+    }
+    33.33% {
+        color: hsla(120deg 100% 50%);
+    }
+    50% {
+        color: hsla(180deg 100% 50%);
+    }
+    66.67% {
+        color: hsla(240deg 100% 50%);
+    }
+    83.33% {
+        color: hsla(300deg 100% 50%);
+    }
+    100% {
+        color: hsla(360deg 100% 50%);
+    }
+}
+
 @media screen and (max-width: 500px) {
     div.dialog {
         min-width: 100vw;
