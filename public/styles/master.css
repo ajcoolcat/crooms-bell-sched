@@ -642,6 +642,7 @@ clippy * {
 
 .rainbow::selection {
     animation: bkg-rainbow 5s infinite;
+    color: white;
 }
 
 @keyframes anim-rainbow {
