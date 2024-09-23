@@ -322,7 +322,8 @@ body > footer > div > span {
     padding: 8px;
 }
 
-body > footer > div > div {
+body > footer > div > div,
+body > footer > div.icon-chain > div > div {
     padding: 10px;
     position: absolute;
     z-index: 10;
@@ -368,19 +369,7 @@ body > footer > div.icon-chain > div > span {
     padding: 8px 10px;
 }
 
-body > footer > div.icon-chain > div > div {
-    padding: 10px;
-    position: absolute;
-    z-index: 10;
-    transform: translateY(calc(-100% - 37px));
-    background: var(--pri);
-    display: none;
-    box-shadow: black 0 -10px 10px;
 
-    h3, h4 {margin: 0;}
-    p {margin: 0;}
-    p:not(:last-child) {margin-bottom: 0.75rem;}
-}
 
 body > footer > div.icon-chain > div:first-child > div.popout {
     max-width: 400px;
@@ -647,6 +636,58 @@ clippy .clippy {
 
 clippy *:not(.context-menu) {
     transition: none;
+}
+
+.rainbow {
+    animation: anim-rainbow 5s infinite;
+}
+
+@keyframes anim-rainbow {
+    0% {
+        color: hsla(0deg 100% 50%);
+    }
+    16.67% {
+        color: hsla(60deg 100% 50%);
+    }
+    33.33% {
+        color: hsla(120deg 100% 50%);
+    }
+    50% {
+        color: hsla(180deg 100% 50%);
+    }
+    66.67% {
+        color: hsla(240deg 100% 50%);
+    }
+    83.33% {
+        color: hsla(300deg 100% 50%);
+    }
+    100% {
+        color: hsla(360deg 100% 50%);
+    }
+}
+
+@keyframes bkg-rainbow {
+    0% {
+        background-color: hsla(0deg 100% 50%);
+    }
+    16.67% {
+        background-color: hsla(60deg 100% 50%);
+    }
+    33.33% {
+        background-color: hsla(120deg 100% 50%);
+    }
+    50% {
+        background-color: hsla(180deg 100% 50%);
+    }
+    66.67% {
+        background-color: hsla(240deg 100% 50%);
+    }
+    83.33% {
+        background-color: hsla(300deg 100% 50%);
+    }
+    100% {
+        background-color: hsla(360deg 100% 50%);
+    }
 }
 
 @media screen and (max-width: 500px) {
