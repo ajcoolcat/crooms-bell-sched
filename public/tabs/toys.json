@@ -25,6 +25,12 @@
       "check": false
     },
     {
+      "id": "google-doodles",
+      "name": "Google Doodles",
+      "link": "https://doodles.google/",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Toy",
       "link": "/tools/suggest/",

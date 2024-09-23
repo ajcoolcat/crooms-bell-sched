@@ -37,19 +37,17 @@
 <body>
 <div id="base"
      style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); user-select: none; max-width: 300px;">
-    <h2>Suggest a Feature</h2>
-    <p style="margin-top: 0">Welcome to the place to suggest something for the Crooms Bell Schedule website!</p>
-    <p>
-        If you would like to submit general feedback, <a class="links" onclick="feedback()">please use this link</a>.
-    </p>
+    <h2>Send Feedback</h2>
+    <p style="margin-top: 0">Welcome to the place to send feedback or suggest something for the Crooms Bell Schedule website!</p>
     <h3>Things to suggest</h3>
     <ul style="margin-top: 0;">
         <li>Tools</li>
         <li>Games</li>
         <li>Daily Poll Questions</li>
+        <li>Feedback</li>
     </ul>
     <div style="text-align: center;">
-        <button onclick="showForm()">Suggest Something</button>
+        <button onclick="showForm()">Send Feedback</button>
     </div>
 </div>
 <div id="form" style="display: none;">
@@ -74,8 +72,6 @@
         document.getElementById("form").style.display = "none";
         document.getElementById("base").style.display = "block";
     }, false);
-
-    const messenger = new BroadcastChannel("sched-messenger");
 </script>
 </body>
 </html>
