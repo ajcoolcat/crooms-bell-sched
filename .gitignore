@@ -129,3 +129,4 @@ dist
 # Editor settings
 .vscode
 .idea
+.idea/runConfigurations/bin_www.xml

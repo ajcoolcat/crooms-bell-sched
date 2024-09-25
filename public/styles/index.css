@@ -366,6 +366,22 @@ div.widget h3 {
     height: 600px;
 }
 
+@media screen and (max-height: 640px) {
+    .dialog.welcome {
+        border-radius: 0;
+    }
+
+    .dialog.welcome > main, .dialog.welcome > main > iframe {
+        height: calc(100vh - 37px);
+    }
+}
+
+@media (max-width: 1269px) and (min-width: 500px) {
+    .dialog.welcome {
+        min-width: 508px;
+    }
+}
+
 @media (max-width: 1440px) {
     #lunchContainer {
         flex-flow: column-reverse;

@@ -1,4 +1,4 @@
-function welcome() {
+function welcome(file) {
     document.body.style.userSelect = "none";
     document.body.style.overflow = "hidden";
 
@@ -16,7 +16,7 @@ function welcome() {
     dialog.appendChild(dialogHeader);
 
     let dialogBody = document.createElement("main");
-    dialogBody.innerHTML = "<iframe src='/tools/welcome_experience/'></iframe>";
+    dialogBody.innerHTML = "<iframe src='/tools/welcome_experience/"+ file +"'></iframe>";
     dialog.appendChild(dialogBody);
 
     document.body.appendChild(dialog);
@@ -30,4 +30,8 @@ function welcome() {
         dialog.remove();
         modal.remove();
     }, false);
+
+    if (file === "hurricane.html") {
+        dialogTitle.innerText = "Hurricane Update #1";
+    }
 }

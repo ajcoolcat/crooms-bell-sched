@@ -63,11 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let visitCounter = parseInt(localStorage.getItem("visitCounter"));
     if (isNaN(visitCounter)) {
-        welcome();
+        welcome("index.html");
         localStorage.setItem("visitCounter", (1).toString());
     } else {
         visitCounter++;
         localStorage.setItem("visitCounter", visitCounter.toString());
+    }
+
+    let hurricaneCounter = parseInt(localStorage.getItem("hurricaneCounter"));
+    if (isNaN(hurricaneCounter)) {
+        welcome("hurricane.html");
+        localStorage.setItem("hurricaneCounter", (1).toString());
     }
 
     createCBSHSched(document.getElementById("sched"));

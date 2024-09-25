@@ -295,6 +295,10 @@ function startSched(element) {
             todaySchedule = Schedules.activity;
         }
 
+        if (month === 9 && date === 25) {
+            todaySchedule = Schedules.modWednesday;
+        }
+
         currentDay = todaySchedule.sched[current_lunch - 1];
         periodMsg = todaySchedule.msg;
 
