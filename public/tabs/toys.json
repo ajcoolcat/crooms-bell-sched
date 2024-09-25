@@ -31,6 +31,12 @@
       "check": false
     },
     {
+      "id": "self",
+      "name": "Crooms Bell Schedule",
+      "link": "https://croomssched.tech",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Toy",
       "link": "/tools/suggest/",
