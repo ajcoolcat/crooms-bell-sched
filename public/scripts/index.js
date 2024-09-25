@@ -15,6 +15,19 @@ function randomWindow() {
     window.open(urls[getRandomInt(1, 13)]);
 }
 
+function openSettings() {
+    let x = (screen.width / 2) - 200;
+    let y = (screen.height / 2) - 420;
+    let settingsWindow = window.open('/sched/settings/', 'cbsh-settings',
+        'status=0,toolbar=0,location=0,width=400,height=720,screenX=' + x + ',screenY=' + y + ',popup=true');
+    let isClosedInterval = setInterval(() => {
+        if (settingsWindow.closed) {
+            clearInterval(isClosedInterval);
+            window.location.reload();
+        }
+    }, 50);
+}
+
 function createRotatingInfo() {
     document.getElementById("date-time").classList.add("active");
     setInterval(() => {

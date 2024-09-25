@@ -277,6 +277,18 @@
         </p>
     </div>
 </div>
+<div id="pwa-installer">
+    <h2>Use our web app.</h2>
+    <p>
+        Your device supports our PWA, which will allow you to use the Crooms Bell Schedule website as if it was its own
+        app.
+    </p>
+    <p>Would you like to install the app?</p>
+    <div style="text-align: center;">
+        <button id="decline-pwa-installer">No thanks.</button>
+        <button id="accept-pwa-installer">Yes, let's go.</button>
+    </div>
+</div>
 <div id="wx-alert-panel">
     <h2>More Details</h2>
     <h3>Event Name</h3>
@@ -293,20 +305,6 @@
     <p>To use our website, you'll need to use a larger display.</p>
 </div>
 <clippy></clippy>
-<script>
-    function openSettings() {
-        let x = (screen.width / 2) - 200;
-        let y = (screen.height / 2) - 420;
-        let settingsWindow = window.open('/sched/settings/', 'cbsh-settings',
-                'status=0,toolbar=0,location=0,width=400,height=720,screenX=' + x + ',screenY=' + y + ',popup=true');
-        let isClosedInterval = setInterval(() => {
-            if (settingsWindow.closed) {
-                clearInterval(isClosedInterval);
-                window.location.reload();
-            }
-        }, 50);
-    }
-</script>
 <script src="/scripts/balloon.js"></script>
 <script src="/scripts/index.js"></script>
 <script src="/scripts/commons.js"></script>
@@ -319,6 +317,7 @@
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
 <script src="/scripts/clippy/context-menu.js" defer></script>
 <script src="/scripts/clippy/random.js"></script>
+<script src="/pwa/installer.js"></script>
 <script>window.si = window.si || function () {
     (window.siq = window.siq || []).push(arguments);
 };</script>

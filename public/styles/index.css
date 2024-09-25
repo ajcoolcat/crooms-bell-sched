@@ -571,3 +571,31 @@ div.widget h3 {
 #the-useless-web {
     background-color: white;
 }
+
+#pwa-installer {
+    user-select: none;
+    border-radius: 0 0.5rem 0 0;
+    background-color: var(--pri);
+    box-shadow: black 0 -7px 15px;
+    position: fixed;
+    padding: 1rem;
+    width: 450px;
+    bottom: -20%;
+    left: 0;
+}
+
+#pwa-installer.active {
+    bottom: 36.8px;
+}
+
+#pwa-installer > p {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 500px) {
+    #pwa-installer {
+        box-shadow: black 0 0 10px;
+        border-radius: 0;
+        width: 100vw;
+    }
+}
