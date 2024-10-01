@@ -8,6 +8,21 @@
 <body>
 <script src="/scripts/commons.js"></script>
 <script src="/sched/schedule.js"></script>
+<script>
+    try {
+        if (window.top.location.host !== "croomssched.tech") {
+            let style = document.createElement("style");
+            style.innerHTML = ":root * {cursor: auto;}" +
+                ":root a:link, :root .links {cursor: pointer;}";
+            document.head.appendChild(style);
+        }
+    } catch {
+        let style = document.createElement("style");
+        style.innerHTML = ":root * {cursor: auto;}" +
+            ":root a:link, :root .links {cursor: pointer;}";
+        document.head.appendChild(style);
+    }
+</script>
 <script>createCBSHSched(document.body)</script>
 </body>
 </html>
