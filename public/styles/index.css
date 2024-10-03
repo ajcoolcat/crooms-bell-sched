@@ -195,6 +195,11 @@ div.widget h3 {
     margin: 0;
 }
 
+#feed-updates > li:has(pin)::marker {
+    font-family: "GoogleEmoji", system-ui;
+    content: "📌";
+}
+
 #feed-updates > li i {
     user-select: none;
 }
