@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (goto === "gradecalc") {
         loadTool("gradecalc", "https://gradecalc.kones.tech", true);
     } else if (goto === "daily-poll" || goto === "poll") {
-        loadTool("poll-viewer", "https://poll.croomssched.tech", false);
+        loadTool("poll-viewer", "/tools/daily-poll/", false);
     } else if (goto === "download" || goto === "download-app" || goto === "app") {
         downloadApp();
     }
@@ -83,11 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem("visitCounter", visitCounter.toString());
     }
 
-    let hurricaneCounter = parseInt(localStorage.getItem("hurricaneCounter"));
-    if (isNaN(hurricaneCounter)) {
-        welcome("hurricane.html");
-        localStorage.setItem("hurricaneCounter", (1).toString());
-    }
+    localStorage.removeItem("hurricaneCounter");
 
     createCBSHSched(document.getElementById("sched"));
     createRotatingInfo();
