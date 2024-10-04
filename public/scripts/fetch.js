@@ -9,7 +9,7 @@ function getInfo() {
     fun.open('GET', 'https://g-chrome-dino.glitch.me/cbsh/fun.json');
     fun.responseType = 'json';
     fun.send();
-    fun.onload = () => {setFun(JSON.parse(JSON.stringify(info.response)));}
+    fun.onload = () => {setFun(JSON.parse(JSON.stringify(fun.response)));}
 }
 
 function setInfo(information) {
