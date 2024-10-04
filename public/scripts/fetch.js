@@ -4,6 +4,12 @@ function getInfo() {
     info.responseType = 'json';
     info.send();
     info.onload = () => {setInfo(JSON.parse(JSON.stringify(info.response)));}
+
+    let fun = new XMLHttpRequest();
+    fun.open('GET', 'https://g-chrome-dino.glitch.me/cbsh/fun.json');
+    fun.responseType = 'json';
+    fun.send();
+    fun.onload = () => {setFun(JSON.parse(JSON.stringify(info.response)));}
 }
 
 function setInfo(information) {
@@ -17,9 +23,6 @@ function setInfo(information) {
     let day = dates.getDay();
     if (0 < day && day < 6) {document.getElementById("DailyLunchImage").src = information.lunch[day].image;}
     document.getElementById("track").src = information.tropicalLink;
-    document.getElementById("senseless").innerHTML = information.senseless;
-    document.getElementById("quote").innerHTML = information.teacherquote.quote;
-    document.getElementById("teacher").innerHTML = information.teacherquote.teacher;
     document.querySelector("#quickbits > div > ol").innerHTML = "";
     information.quickBits.forEach((quickBit) => {
         let bitQuick = document.createElement("li");
@@ -28,9 +31,15 @@ function setInfo(information) {
     });
 }
 
+function setFun(information) {
+    document.getElementById("senseless").innerHTML = information.senseless;
+    document.getElementById("quote").innerHTML = information.teacherquote.quote;
+    document.getElementById("teacher").innerHTML = information.teacherquote.teacher;
+}
+
 const getFeed = () => {
     let feed = new XMLHttpRequest();
-    feed.open('GET',"https://croomssched.glitch.me/feed.json");
+    feed.open('GET',"https://g-chrome-dino.glitch.me/cbsh/feed.json");
     feed.responseType = 'json';
     feed.send();
     feed.onload = function() {
