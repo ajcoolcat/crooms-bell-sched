@@ -83,7 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem("visitCounter", visitCounter.toString());
     }
 
-    localStorage.removeItem("hurricaneCounter");
+    let hurricaneCounter = parseInt(localStorage.getItem("hurricaneCounter"));
+    if (isNaN(hurricaneCounter) && new Date().getDate() === 8) {
+        welcome("hurricane.html");
+        localStorage.setItem("hurricaneCounter", (1).toString());
+    }
 
     createCBSHSched(document.getElementById("sched"));
     createRotatingInfo();
