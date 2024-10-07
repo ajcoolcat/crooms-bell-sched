@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let hurricaneCounter = parseInt(localStorage.getItem("hurricaneCounter"));
-    if (isNaN(hurricaneCounter) && new Date().getDate() === 8) {
+    if (isNaN(hurricaneCounter) && new Date().getDate() === 7) {
         welcome("hurricane.html");
         localStorage.setItem("hurricaneCounter", (1).toString());
     }
