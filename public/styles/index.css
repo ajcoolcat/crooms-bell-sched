@@ -204,6 +204,14 @@ div.widget h3 {
     user-select: none;
 }
 
+#feed-updates > li emoji {
+    font-family: "GoogleEmoji", system-ui;
+}
+
+#feed-updates > li rainbow {
+    animation: anim-rainbow 5s infinite;
+}
+
 #wx-alert-panel {
     position: fixed;
     top: 51px;
@@ -442,6 +450,7 @@ div.widget h3 {
 @media (max-width: 599px) {
     #wx-alert-panel {
         width: 100vw;
+        right: 100vw;
     }
 
     #wx-alert-panel > pre {
@@ -585,7 +594,7 @@ div.widget h3 {
     position: fixed;
     padding: 1rem;
     width: 450px;
-    bottom: -191px;
+    bottom: -200px;
     left: 0;
 }
 
