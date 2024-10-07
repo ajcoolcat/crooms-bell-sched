@@ -531,7 +531,7 @@ div.widget h3 {
         color: var(--main);
     }
     50% {
-        color: var(--accent-color);
+        color: var(--default-accent);
     }
     100% {
         color: var(--main);
