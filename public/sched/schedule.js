@@ -424,6 +424,8 @@ function startSched(element) {
         if (EventName === 1 || EventName === 2 || EventName === 3 || EventName === 4 || EventName === 5
             || EventName === 6 || EventName === 7) {
             EventName = Settings.periodNames[EventName];
+        } else if (EventName === 0) {
+            EventName = "Nothing";
         } else if (EventName === 100) {
             EventName = "Morning";
         } else if (EventName === 101) {
