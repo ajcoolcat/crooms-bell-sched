@@ -30,11 +30,12 @@ function createCBSHSched(element) {
     application.id = "cbsh-application";
     element.appendChild(application);
 
-    fetch("https://croomssched.tech/sched/sched.json").then((res) => {
+    fetch("https://api.croomssched.tech/v1/today").then((res) => {
         return res.text();
     }).then((res) => {
-        return JSON.parse(res);
+        return JSON.parse(res).data;
     }).then((res) => {
+        console.log(res);
         Schedules = res;
     }).finally(() => {
         fixMissingSettings();
@@ -258,49 +259,12 @@ function startSched(element) {
     }, new Date().getMilliseconds());
 
     function mainLoop() {
-        let periodMsg, todaySchedule;
+        let periodMsg;
         drawDateTime();
         let now = new Date();
-        let day = now.getDay();
-        let month = now.getMonth() + 1;
-        let date = now.getDate();
 
-        if (day === 1) {
-            todaySchedule = Schedules.normal;
-        } else if (day === 2) {
-            todaySchedule = Schedules.normal;
-        } else if (day === 3) {
-            todaySchedule = Schedules.evenBlock;
-        } else if (day === 4) {
-            todaySchedule = Schedules.oddBlock;
-        } else if (day === 5) {
-            todaySchedule = Schedules.normal;
-        } else {
-            todaySchedule = Schedules.normal;
-        }
-
-        if (month === 9 && date === 13) {
-            todaySchedule = Schedules.activity;
-        } else if (month === 9 && date === 27) {
-            todaySchedule = Schedules.activity;
-        } else if (month === 11 && date === 15) {
-            todaySchedule = Schedules.activity;
-        } else if (month === 12 && date === 13) {
-            todaySchedule = Schedules.activity;
-        } else if (month === 2 && date === 7) {
-            todaySchedule = Schedules.activity;
-        } else if (month === 4 && date === 11) {
-            todaySchedule = Schedules.activity;
-        } else if (month === 4 && date === 25) {
-            todaySchedule = Schedules.activity;
-        }
-
-        if (month === 9 && date === 25) {
-            todaySchedule = Schedules.modWednesday;
-        }
-
-        currentDay = todaySchedule.sched[current_lunch - 1];
-        periodMsg = todaySchedule.msg;
+        currentDay = Schedules.schedule[current_lunch - 1];
+        periodMsg = Schedules.msg;
 
         let currentEvent = currentDay[eventNumber - 1];
         let nextEvent = currentDay[eventNumber];
