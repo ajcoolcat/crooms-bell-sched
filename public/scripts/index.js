@@ -66,9 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let goto = new URL(document.location).searchParams.get("goto");
-    if (goto === "gradecalc") {
-        loadTool("gradecalc", "https://gradecalc.kones.tech", true);
-    } else if (goto === "daily-poll" || goto === "poll") {
+    if (goto === "daily-poll" || goto === "poll") {
         loadTool("poll-viewer", "/tools/daily-poll/", false);
     } else if (goto === "download" || goto === "download-app" || goto === "app") {
         downloadApp();

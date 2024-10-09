@@ -22,7 +22,6 @@ function setInfo(information) {
     const dates = new Date;
     let day = dates.getDay();
     if (0 < day && day < 6) {document.getElementById("DailyLunchImage").src = information.lunch[day].image;}
-    document.getElementById("track").src = information.tropicalLink;
     document.querySelector("#quickbits > div > ol").innerHTML = "";
     information.quickBits.forEach((quickBit) => {
         let bitQuick = document.createElement("li");
@@ -54,6 +53,7 @@ const loadFeed = (feeds) => {
         feeds.forEach((update) => {
             let fu = document.createElement("li");
             fu.innerHTML = update;
+            console.log(update);
             document.getElementById("feed-updates").appendChild(fu);
         });
     } else {
@@ -159,6 +159,30 @@ const getAlerts = () => {
     art.onload = () => {loadAlerts(JSON.parse(JSON.stringify(art.response.features)))}
 }
 
+const getSurveys = () => {
+    fetch("https://api.croomssched.tech/surveys").then((res) => {
+        return res.text();
+    }).then((res) => {
+        return JSON.parse(res).forms;
+    }).then((data) => {
+        loadSurveys(data);
+    })
+}
+
+const loadSurveys = (surveys) => {
+    surveys.forEach((survey) => {
+        document.querySelector("#survey-list").innerHTML = ""
+        let link = document.createElement("a");
+        link.innerHTML = survey.name;
+        link.href = survey.link;
+        link.target = "CBSH-survey";
+
+        let container = document.createElement("li");
+        container.appendChild(link);
+        document.querySelector("#survey-list").appendChild(container);
+    })
+}
+
 function parseTime(endtime) {
     let apm;
     let endday = endtime.getDay();
@@ -181,3 +205,4 @@ getInfo(); setInterval(getInfo, 60000);
 getAlerts(); setInterval(getAlerts, 60000);
 getFeed(); setInterval(getFeed, 30000);
 getForecast(); setInterval(getForecast, 60000);
+getSurveys(); setInterval(getSurveys, 60000);

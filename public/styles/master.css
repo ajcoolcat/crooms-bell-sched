@@ -13,6 +13,8 @@
     --tri: #bbbbbb;
     --qua: #aaaaaa;
 
+    --mid-pri: #d0d0d0;
+
     --default-accent: #690D22;
     --sucess: darkgreen;
     --warn: goldenrod;
@@ -46,6 +48,8 @@
         --tri: #444444;
         --qua: #555555;
 
+        --mid-pri: #262626;
+
         --default-accent: #FF1010;
         --sucess: green;
         --warn: gold;
@@ -62,6 +66,8 @@
     --sec: #cccccc !important;
     --tri: #bbbbbb !important;
     --qua: #aaaaaa !important;
+
+    --mid-pri: #d0d0d0 !important;
 
     --default-accent: #690D22 !important;
     --sucess: darkgreen !important;
@@ -83,6 +89,8 @@
     --sec: #333333 !important;
     --tri: #444444 !important;
     --qua: #555555 !important;
+
+    --mid-pri: #262626 !important;
 
     --default-accent: #FF1010 !important;
     --sucess: green !important;
@@ -214,6 +222,10 @@ header, main, section, article, aside, footer {
 h1, h2, h3, h4, h5, h6 {
     color: var(--accent-color);
     margin: 0;
+}
+
+p {
+    margin-top: 0;
 }
 
 pre {

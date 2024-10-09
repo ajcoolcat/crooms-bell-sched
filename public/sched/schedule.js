@@ -30,7 +30,7 @@ function createCBSHSched(element) {
     application.id = "cbsh-application";
     element.appendChild(application);
 
-    fetch("https://api.croomssched.tech/v1/today").then((res) => {
+    fetch("https://api.croomssched.tech/today").then((res) => {
         return res.text();
     }).then((res) => {
         return JSON.parse(res).data;

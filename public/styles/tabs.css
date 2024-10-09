@@ -1,0 +1,41 @@
+div.widget.tabbed > div.tabs {
+    display: flex;
+    flex-flow: row nowrap;
+    user-select: none;
+}
+
+div.widget.tabbed > div.tabs > div {
+    padding: 10px;
+    min-width: 75px;
+    margin-right: 2px;
+    text-align: center;
+    background: var(--mid-pri);
+    border-radius: 10px 10px 0 0;
+}
+
+div.widget.tabbed > div.tabs > div:not(.active):hover {
+    background: var(--sec);
+}
+
+div.widget.tabbed > div.tabs > div:not(.active):active {
+    background: var(--tri);
+}
+
+div.widget.tabbed > div.tabs > div.active {
+    opacity: 1;
+    font-weight: bold;
+    background: var(--pri);
+    color: var(--accent-color);
+}
+
+div.widget.container.with-tabs {
+    height: calc(100% - 41px);
+}
+
+div.widget.container.with-tabs > div.content {
+    display: none;
+}
+
+div.widget.container.with-tabs > div.content.active {
+    display: revert;
+}
