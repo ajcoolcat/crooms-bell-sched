@@ -35,7 +35,6 @@ function createCBSHSched(element) {
     }).then((res) => {
         return JSON.parse(res).data;
     }).then((res) => {
-        console.log(res);
         Schedules = res;
     }).finally(() => {
         fixMissingSettings();
@@ -452,6 +451,10 @@ function startSched(element) {
     }
 
     function getNextPeriod(Event) {
-        CBSHSched.period.next = getEventName(Event[2]);
+        try {
+            CBSHSched.period.next = getEventName(Event[2]);
+        } catch {
+            CBSHSched.period.next = "None";
+        }
     }
 }
