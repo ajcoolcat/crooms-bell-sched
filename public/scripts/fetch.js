@@ -82,7 +82,6 @@ const getForecast = () => {
 
                 if (this.dayName.startsWith("This")) {this.dayName = this.dayName.substring(5);}
                 if (this.dayName.endsWith(" Night")) {this.dayName = "Night";}
-                if (this.dayName === "Washington's Birthday") {this.dayName = "Monday";}
             }
         }
 
@@ -162,9 +161,9 @@ const getSurveys = () => {
     fetch("https://api.croomssched.tech/surveys").then((res) => {
         return res.text();
     }).then((res) => {
-        return JSON.parse(res);
+        return JSON.parse(res).data;
     }).then((data) => {
-        loadSurveys(data.data);
+        loadSurveys(data);
     })
 }
 
