@@ -53,7 +53,6 @@ const loadFeed = (feeds) => {
         feeds.forEach((update) => {
             let fu = document.createElement("li");
             fu.innerHTML = update;
-            console.log(update);
             document.getElementById("feed-updates").appendChild(fu);
         });
     } else {
@@ -163,9 +162,9 @@ const getSurveys = () => {
     fetch("https://api.croomssched.tech/surveys").then((res) => {
         return res.text();
     }).then((res) => {
-        return JSON.parse(res).forms;
+        return JSON.parse(res);
     }).then((data) => {
-        loadSurveys(data);
+        loadSurveys(data.data);
     })
 }
 
