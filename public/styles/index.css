@@ -109,6 +109,7 @@ div.widget h3 {
 
 #quickbits-and-feed {
     grid-area: feed;
+    padding-bottom: 0;
 }
 
 #alert-list {
@@ -209,7 +210,7 @@ div.widget h3 {
     margin-block-start: 1em;
     overflow-y: auto;
     height: calc(100% - 70px);
-    max-height: 225px;
+    max-height: 196px;
 }
 
 #feed-updates {
