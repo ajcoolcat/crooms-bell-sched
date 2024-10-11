@@ -360,9 +360,7 @@ function startSched(element) {
         else {CurrentPeriodSeconds.style.display = "none";}
 
         let now = new Date();
-        let EventName = currentEvent[2];
-
-        EventName = getEventName(EventName);
+        let EventName = getEventName(currentEvent[2]);
 
         let hours = currentEvent[3] - now.getHours();
         let minutes = currentEvent[4] - now.getMinutes() - 1;

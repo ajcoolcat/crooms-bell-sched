@@ -168,8 +168,8 @@ const getSurveys = () => {
 }
 
 const loadSurveys = (surveys) => {
+    document.querySelector("#survey-list").innerHTML = ""
     surveys.forEach((survey) => {
-        document.querySelector("#survey-list").innerHTML = ""
         let link = document.createElement("a");
         link.innerHTML = survey.name;
         link.href = survey.link;

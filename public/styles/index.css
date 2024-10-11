@@ -233,6 +233,10 @@ div.widget h3 {
     animation: anim-rainbow 5s infinite;
 }
 
+#surveys {
+    user-select: none;
+}
+
 #wx-alert-panel {
     position: fixed;
     top: 51px;
