@@ -28,7 +28,7 @@ body > main {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "lunch lunch weather"
-                         "quickbits feed weather";
+                         "extras feed feed";
     user-select: none;
 }
 
@@ -41,6 +41,27 @@ body > main {
     border-radius: 10px;
     padding: 15px;
     background-color: var(--pri);
+}
+
+.widget.tabbed {
+    background: transparent;
+    padding: 0;
+}
+
+.widget.container {
+    margin: 0;
+}
+
+.widget.container.with-tabs {
+    border-radius: 0 10px 10px 10px;
+}
+
+.widget.container.with-tabs.full {
+    border-radius: 0 0 10px 10px;
+}
+
+.widget.container.with-tabs > .content#feed {
+    height: calc(100% - 10px);
 }
 
 div.widget h3 {
@@ -82,12 +103,13 @@ div.widget h3 {
     margin-bottom: 10px;
 }
 
-#quickbits {
-    grid-area: quickbits;
+#more {
+    grid-area: extras;
 }
 
-#feed {
+#quickbits-and-feed {
     grid-area: feed;
+    padding-bottom: 0;
 }
 
 #alert-list {
@@ -188,7 +210,7 @@ div.widget h3 {
     margin-block-start: 1em;
     overflow-y: auto;
     height: calc(100% - 70px);
-    max-height: 228px;
+    max-height: 196px;
 }
 
 #feed-updates {
@@ -210,6 +232,10 @@ div.widget h3 {
 
 #feed-updates > li rainbow {
     animation: anim-rainbow 5s infinite;
+}
+
+#surveys {
+    user-select: none;
 }
 
 #wx-alert-panel {
@@ -314,9 +340,14 @@ div.widget h3 {
 #teacherquote {
     background: var(--pri);
     user-select: none;
-    margin: 0 18px 18px;
+    margin: 0 18px;
     border-radius: 10px;
     padding: 15px;
+}
+
+#bottom-ad {
+    user-select: none;
+    margin: 18px;
 }
 
 #feed-and-updates > span {

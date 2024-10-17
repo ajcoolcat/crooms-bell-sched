@@ -48,6 +48,7 @@ const loadTool = (id, path, check) => {
             document.getElementById("random").classList.add("hidden");
             document.getElementById("teacherquote").classList.add("hidden");
             document.getElementById("widget-board").classList.add("hidden");
+            document.getElementById("bottom-ad").classList.add("hidden");
             document.getElementById("others").classList.remove("hidden");
             for (let i = 0; i < tools.length; i++) {
                 document.getElementById("others").children[i].classList.remove("active");
@@ -61,6 +62,7 @@ const loadTool = (id, path, check) => {
             document.getElementById("random").classList.add("hidden");
             document.getElementById("teacherquote").classList.add("hidden");
             document.getElementById("widget-board").classList.add("hidden");
+            document.getElementById("bottom-ad").classList.add("hidden");
             document.getElementById("others").classList.remove("hidden");
             for (let i = 0; i < tools.length; i++) {
                 document.getElementById("others").children[i].classList.remove("active");
@@ -93,5 +95,6 @@ const home = () => {
     document.getElementById("widget-board").classList.remove("hidden");
     document.getElementById("widget-board").classList.add("active");
     document.getElementById("random").classList.remove("hidden");
+    document.getElementById("bottom-ad").classList.remove("hidden");
     document.getElementById("teacherquote").classList.remove("hidden");
 }

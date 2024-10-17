@@ -22,7 +22,6 @@ function setInfo(information) {
     const dates = new Date;
     let day = dates.getDay();
     if (0 < day && day < 6) {document.getElementById("DailyLunchImage").src = information.lunch[day].image;}
-    document.getElementById("track").src = information.tropicalLink;
     document.querySelector("#quickbits > div > ol").innerHTML = "";
     information.quickBits.forEach((quickBit) => {
         let bitQuick = document.createElement("li");
@@ -83,7 +82,6 @@ const getForecast = () => {
 
                 if (this.dayName.startsWith("This")) {this.dayName = this.dayName.substring(5);}
                 if (this.dayName.endsWith(" Night")) {this.dayName = "Night";}
-                if (this.dayName === "Washington's Birthday") {this.dayName = "Monday";}
             }
         }
 
@@ -159,6 +157,30 @@ const getAlerts = () => {
     art.onload = () => {loadAlerts(JSON.parse(JSON.stringify(art.response.features)))}
 }
 
+const getSurveys = () => {
+    fetch("https://api.croomssched.tech/surveys").then((res) => {
+        return res.text();
+    }).then((res) => {
+        return JSON.parse(res).data;
+    }).then((data) => {
+        loadSurveys(data);
+    })
+}
+
+const loadSurveys = (surveys) => {
+    document.querySelector("#survey-list").innerHTML = ""
+    surveys.forEach((survey) => {
+        let link = document.createElement("a");
+        link.innerHTML = survey.name;
+        link.href = survey.link;
+        link.target = "CBSH-survey";
+
+        let container = document.createElement("li");
+        container.appendChild(link);
+        document.querySelector("#survey-list").appendChild(container);
+    })
+}
+
 function parseTime(endtime) {
     let apm;
     let endday = endtime.getDay();
@@ -181,3 +203,4 @@ getInfo(); setInterval(getInfo, 60000);
 getAlerts(); setInterval(getAlerts, 60000);
 getFeed(); setInterval(getFeed, 30000);
 getForecast(); setInterval(getForecast, 60000);
+getSurveys(); setInterval(getSurveys, 60000);

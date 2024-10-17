@@ -30,12 +30,11 @@ function createCBSHSched(element) {
     application.id = "cbsh-application";
     element.appendChild(application);
 
-    fetch("https://api.croomssched.tech/v1/today").then((res) => {
+    fetch("https://api.croomssched.tech/today").then((res) => {
         return res.text();
     }).then((res) => {
         return JSON.parse(res).data;
     }).then((res) => {
-        console.log(res);
         Schedules = res;
     }).finally(() => {
         fixMissingSettings();
@@ -361,9 +360,7 @@ function startSched(element) {
         else {CurrentPeriodSeconds.style.display = "none";}
 
         let now = new Date();
-        let EventName = currentEvent[2];
-
-        EventName = getEventName(EventName);
+        let EventName = getEventName(currentEvent[2]);
 
         let hours = currentEvent[3] - now.getHours();
         let minutes = currentEvent[4] - now.getMinutes() - 1;
@@ -440,6 +437,8 @@ function startSched(element) {
             EventName = "After School";
         } else if (EventName === 106) {
             EventName = "End";
+        } else if (EventName === 110) {
+            EventName = "PSAT/SAT";
         } else {
             EventName = "Unknown Event";
         }
@@ -452,6 +451,10 @@ function startSched(element) {
     }
 
     function getNextPeriod(Event) {
-        CBSHSched.period.next = getEventName(Event[2]);
+        try {
+            CBSHSched.period.next = getEventName(Event[2]);
+        } catch {
+            CBSHSched.period.next = "None";
+        }
     }
 }

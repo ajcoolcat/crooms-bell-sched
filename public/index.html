@@ -40,6 +40,7 @@
     <!-- End Clippy -->
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
     <link rel="stylesheet" type="text/css" href="/styles/icons.css">
+    <link rel="stylesheet" type="text/css" href="/styles/tabs.css">
 </head>
 <body>
 <header>
@@ -166,45 +167,70 @@
                     </div>
                 </div>
             </div>
-            <img id="graphicast" src="https://www.weather.gov/images/mlb/graphicast/image1.png" alt="Graphicast"
-                 draggable="false">
-            <img id="track" src="https://img.icons8.com/?size=96&id=kHG4p2DyB85t&format=png" width="100%"
-                 height="100%" alt="Tropical Cyclone Track" draggable="false" hidden="hidden">
         </div>
-        <div id="quickbits" class="widget">
-            <h3 class="no-bottom">Quick Bits</h3>
-            <div><ol></ol></div>
-        </div>
-        <div id="feed" class="widget">
-            <h3 class="no-bottom">Feed</h3>
-            <p>
-                <a onclick="loadTool('new-feed', '/tools/feed-updates', false)" class="links">Submit a Feed Update</a>
-            </p>
-            <div>
-                <ul id="feed-updates">Loading Feed Updates...</ul>
+        <div id="quickbits-and-feed" class="widget tabbed">
+            <div class="tabs">
+                <div data-launch="feed" class="active">Feed</div>
+                <div data-launch="quickbits">Quick Bits</div>
+                <div data-launch="surveys">Surveys</div>
             </div>
+            <div class="widget container with-tabs">
+                <div class="content active" id="feed">
+                    <h3 class="no-bottom">Feed</h3>
+                    <p>
+                        <a onclick="loadTool('new-feed', '/tools/feed-updates', false)" class="links">
+                            Submit a Feed Update
+                        </a>
+                    </p>
+                    <div>
+                        <ul id="feed-updates">
+                            <img src="/spinner.svg" alt="Loading..." style="height: 18px; width: auto;" draggable="false">
+                            Loading Feed Updates...</ul>
+                    </div>
+                </div>
+                <div class="content" id="quickbits">
+                    <h3 class="no-bottom">Quick Bits</h3>
+                    <div><ol></ol></div>
+                </div>
+                <div class="content" id="surveys">
+                    <h3 class="no-bottom">Surveys</h3>
+                    <p>
+                        Here's a list of available surveys. Surveys will be removed after being up for one week.
+                        <a class="links" onclick="loadTool('survey', 'https://api.croomssched.tech/survey', false)">
+                            Add a survey.
+                        </a>
+                    </p>
+                    <div>
+                        <ul id="survey-list">
+                            <img src="/spinner.svg" alt="Loading..." style="height: 18px; width: auto;" draggable="false">
+                            Please wait...
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="more" class="widget">
+            <!-- Temporary Ad Location -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7615151731467786"
+                 data-ad-slot="8739090285"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
         </div>
     </div>
     <div id="teacherquote">This week's teacher quote is...
         <i><q id="quote"></q> -<span id="teacher"></span></i>
     </div>
-    <div id="others" class="hidden">
-        <div id="gradecalc">
-            <div class="tool-warning" style="padding: 1rem; user-select: none;">
-                <h3>⚠️ Warning!</h3>
-                <p>
-                    This version of the Grade Calculator does not support SSO.
-                    You may run into issues trying to retrieve your grades.
-                </p>
-                <p>
-                    <button onclick="document.querySelector('#gradecalc > div.tool-warning').remove();">
-                        I understand.
-                    </button>
-                </p>
-            </div>
-            <iframe src="https://gradecalc.kones.tech"></iframe>
-        </div>
+    <div id="bottom-ad">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7615151731467786"
+             data-ad-slot="6793188458"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
     </div>
+    <div id="others" class="hidden"></div>
 </main>
 <footer>
     <div class="icon-chain">
@@ -243,13 +269,25 @@
 </footer>
 <div id="alert-floater">
     <noscript class="alert">
-        <span class="icon"></span>
         <div>
-            <h3>JavaScript is not enabled!</h3>
-            <p>
-                This will prevent almost everything on this site from working.
-                Please enable JavaScript first, or switch to a browser that supports or allows JavaScript.
-            </p>
+            <span class="icon"></span>
+            <div>
+                <h3>JavaScript is not enabled!</h3>
+                <p>
+                    This will prevent almost everything on this site from working.
+                    Please enable JavaScript first, or switch to a browser that supports or allows JavaScript.
+                </p>
+            </div>
+        </div>
+        <span class="close" style="visibility: hidden"><span></span></span>
+    </noscript>
+    <noscript class="warn">
+        <div>
+            <span class="icon"></span>
+            <div>
+                <h3>Bell Schedule failed to load.</h3>
+                <p>Please try again.</p>
+            </div>
         </div>
         <span class="close" style="visibility: hidden"><span></span></span>
     </noscript>
@@ -312,6 +350,7 @@
 <script src="/scripts/downloader.js"></script>
 <script src="/sched/schedule.js"></script>
 <script src="/scripts/tab-mgr.js"></script>
+<script src="/scripts/home-tabs.js"></script>
 <script src="/scripts/alerts/viewer.js"></script>
 <script src="/scripts/welcome.js"></script>
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
@@ -326,5 +365,8 @@
     (window.vaq = window.vaq || []).push(arguments);
 };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body>
 </html>
