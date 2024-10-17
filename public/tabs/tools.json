@@ -19,6 +19,12 @@
       "check": false
     },
     {
+      "id": "gpa-calc",
+      "name": "GPA Calculator",
+      "link": "https://www.calculator.net/gpa-calculator.html",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Tool",
       "link": "/tools/suggest/",
