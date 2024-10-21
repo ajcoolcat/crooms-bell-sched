@@ -217,11 +217,6 @@ div.widget h3 {
     margin: 0;
 }
 
-#feed-updates > li:has(pin)::marker {
-    font-family: "GoogleEmoji", system-ui;
-    content: "📌";
-}
-
 #feed-updates > li i {
     user-select: none;
 }
@@ -236,6 +231,12 @@ div.widget h3 {
 
 #surveys {
     user-select: none;
+}
+
+#surveys > div {
+    overflow-y: auto;
+    height: calc(100% - 70px);
+    max-height: 196px;
 }
 
 #wx-alert-panel {
@@ -450,8 +451,9 @@ div.widget h3 {
         display: none;
     }
 
-    #feed > div {
+    #feed > div, #surveys > div {
         max-height: 100%;
+        overflow: auto;
     }
 }
 
@@ -602,14 +604,23 @@ div.widget h3 {
 
     #widget-board {
         display: block;
+        margin-top: 0;
     }
 
-    body > header, body > footer {
+    body > header, body > footer,
+    #pwa-installer, #wx-alert-panel,
+    #alerts, #download, #alert-floater,
+    div.widget.tabbed > div.tabs {
         display: none !important;
     }
 
     body > main {
         padding: 0;
+    }
+
+    #random, #teacherquote {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
 

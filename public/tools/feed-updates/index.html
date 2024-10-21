@@ -10,53 +10,72 @@
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; user-select: none;
         }
 
-        :root, body, #feed-form, #feed-form > iframe {
+        :root, body {
             height: 100vh;
             overflow: hidden;
         }
 
-        #feed-form > div {
+        #feed-form {
             position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: var(--pri);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            box-shadow: black 0 0 0.75rem;
             user-select: none;
+            margin: auto;
+            max-width: 400px;
         }
 
-        #feed-form > div:hover {
-            background: var(--sec);
+        #feed-form > main > div > label {
+            margin-bottom: 0.3rem;
+            display: block;
         }
 
-        #feed-form > div:active {
-            background: var(--tri);
+        #feed-form > main > div > input {
+            font-size: inherit;
+            text-align: left;
+            width: 100%;
         }
 
-        div.dialog {
-            width: 300px;
+        #feed-form > footer {
+            text-align: center;
+        }
+
+        .error {
+            font-size: 10.5pt;
+            margin-bottom: 1rem;
+            color: var(--warn);
         }
     </style>
 </head>
 <body>
 <img src="/spinner.svg" alt="Loading..." draggable="false" id="loader">
 <div id="feed-form" style="display: none;">
-    <div>Issues?</div>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScratc1T2cd1OX88lpWDPLQD3bmngYh_ZsFHFFPhJCV_OEInw/viewform">
-    </iframe>
+    <header>
+        <h1>Feed</h1>
+        <p>By submitting a Feed Update, you agree to not club baby seals.</p>
+    </header>
+    <main>
+        <div>
+            <label for="feed-update" class="hidden">Feed Update</label>
+            <input id="feed-update" placeholder="Feed Update" autocomplete="off">
+        </div>
+        <div style="margin: 0.2rem 0 1rem;">
+            <label for="feed-link" class="hidden">Link</label>
+            <input id="feed-link" placeholder="Link (optional)" autocomplete="off">
+        </div>
+        <p class="hidden">You do not have to add a link.</p>
+    </main>
+    <footer>
+        <button>Submit Feed Update</button>
+    </footer>
 </div>
 <script src="/scripts/commons.js"></script>
+<script src="submission.js"></script>
 <script>
     document.body.onload = () => {
         document.getElementById("loader").style.display = "none";
         document.getElementById("feed-form").style.display = "block";
     }
-
-    document.querySelector("#feed-form > div").addEventListener("click", () => {
-        alertClient("Having Problems?", "Try <a class='links' onclick='window.location.reload()'>reloading the page</a>" +
-                " or allowing third-party cookies for Google Forms to authenticate you.", 2)
-    }, false);
 </script>
 </body>
 </html>
