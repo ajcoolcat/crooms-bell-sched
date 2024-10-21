@@ -53,7 +53,7 @@ const loadFeed = (feeds) => {
         feeds.forEach((update) => {
             if (update.store === "public") {
                 let fu = document.createElement("li");
-                fu.innerHTML = update;
+                fu.innerHTML = update.data;
                 document.getElementById("feed-updates").appendChild(fu);
             }
         });
