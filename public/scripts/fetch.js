@@ -6,7 +6,7 @@ function getInfo() {
     info.onload = () => {setInfo(JSON.parse(JSON.stringify(info.response)));}
 
     let fun = new XMLHttpRequest();
-    fun.open('GET', 'https://g-chrome-dino.glitch.me/cbsh/fun.json');
+    fun.open('GET', 'https://g-chrome-dino.glitch.me/cbsh.json');
     fun.responseType = 'json';
     fun.send();
     fun.onload = () => {setFun(JSON.parse(JSON.stringify(fun.response)));}
@@ -38,11 +38,11 @@ function setFun(information) {
 
 const getFeed = () => {
     let feed = new XMLHttpRequest();
-    feed.open('GET',"https://g-chrome-dino.glitch.me/cbsh/feed.json");
+    feed.open('GET',"https://api.croomssched.tech/feed");
     feed.responseType = 'json';
     feed.send();
     feed.onload = function() {
-        loadFeed(JSON.parse(JSON.stringify(feed.response.feeds)));
+        loadFeed(JSON.parse(JSON.stringify(feed.response.data)));
     }
 }
 
@@ -51,9 +51,11 @@ const loadFeed = (feeds) => {
     if (amnt !== 0) {
         document.getElementById("feed-updates").innerHTML = null;
         feeds.forEach((update) => {
-            let fu = document.createElement("li");
-            fu.innerHTML = update;
-            document.getElementById("feed-updates").appendChild(fu);
+            if (update.store === "public") {
+                let fu = document.createElement("li");
+                fu.innerHTML = update;
+                document.getElementById("feed-updates").appendChild(fu);
+            }
         });
     } else {
         let noFeed = document.createElement("span");
