@@ -26,7 +26,7 @@ document.querySelector("#feed-form > footer > button").addEventListener("click",
     let data = feed.value;
 
     if (link.value !== "") {
-        data = "<a target='CBSH-feed' href='"+ link.value +"'>"+ feed.value +"</a>";
+        data += " link: " + link.value;
     }
 
     const request = new Request("https://api.croomssched.tech/feed", {
