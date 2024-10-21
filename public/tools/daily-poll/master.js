@@ -1,6 +1,6 @@
 function poll() {
     let link;
-    fetch("https://g-chrome-dino.glitch.me/cbsh/fun.json").then((res) => {
+    fetch("https://g-chrome-dino.glitch.me/cbsh.json").then((res) => {
         return res.text();
     }).then((data) => {
         link = JSON.parse(data).dailypoll;

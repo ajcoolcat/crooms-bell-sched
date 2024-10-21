@@ -604,12 +604,30 @@ div.context-menu > div {
     padding: 0.5rem 0.75rem;
 }
 
+div.context-menu > div > span.icon {
+    font-size: 1.25rem;
+    max-height: 12px;
+    position: fixed;
+    display: inline-block;
+    transform: translate(-2px, -2px);
+}
+
+div.context-menu > div > span:not(.icon) {
+    display: inline-block;
+    padding-left: 1.5rem;
+}
+
 div.context-menu > div:hover {
     background-color: var(--sec);
 }
 
 div.context-menu > div:active {
     background-color: var(--tri);
+}
+
+div.context-menu > div.disabled {
+    background-color: var(--sec);
+    opacity: 0.4;
 }
 
 div.context-menu > div:first-child {
@@ -622,19 +640,6 @@ div.context-menu > div:last-child {
 
 div.context-menu > div:first-child:last-child {
     border-radius: 0.5rem;
-}
-
-div.context-menu > div > span.icon {
-    font-size: 1.25rem;
-    max-height: 12px;
-    position: fixed;
-    display: inline-block;
-    transform: translate(-1px, -2px);
-}
-
-div.context-menu > div > span:not(.icon) {
-    display: inline-block;
-    padding-left: 1.5rem;
 }
 
 iframe {

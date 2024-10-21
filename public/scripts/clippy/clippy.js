@@ -1057,7 +1057,7 @@
 
 })));
 
-let firstload = window.localStorage.getItem("firstClippy");
+let firstLoad = window.localStorage.getItem("firstClippy");
 
 let clippyAgent;
 
@@ -1067,10 +1067,12 @@ window.addEventListener("load", () => {
         if (Settings.clippy === true) {
             agent.show();
             agent.play("greeting");
-            if (firstload !== "false") {
+            if (firstLoad !== "false") {
                 agent.speak("Hello! I am Clippy, your personal assistant. It's so nice to meet you!");
                 window.localStorage.setItem("firstClippy", "false");
             }
+
+            setUpClippyContextMenu();
         }
     });
 });
