@@ -69,7 +69,17 @@ function start() {
         periodNameElements[i].addEventListener("change", saveSettings);
     }
 
-    document.querySelector(`div[onclick="setFont('`+ Settings.font.value +`')"]`).className = "active";
+
+    let fontName = Settings.font.values.find((font) => {if (font.id === Settings.font.value) {return font}});
+    document.querySelector(`div[data-isFontSetting="true"][title="${fontName.name}"]`).className = "active";
+
+    document.querySelectorAll(`div[data-isFontSetting="true"]`).forEach((elem) => {
+       elem.addEventListener("click", () => {
+          let fontName = elem.getAttribute("title");
+          let fontID = Settings.font.values.find((font) => {if (font.name === fontName) {return font}}).id;
+          setFont(fontID);
+       });
+    });
 
     document.getElementById("themeSelector").value = Settings.theme;
     document.getElementById("showSeconds").checked = Settings.showSeconds === true;

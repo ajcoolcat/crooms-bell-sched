@@ -11,9 +11,11 @@ function setAccent(scheme) {
 }
 
 function setFont(font) {
-    document.querySelector(`[onclick="setFont('` + Settings.font.value + `')"]`).classList.remove("active");
+    let fontName = Settings.font.values.find((font) => {if (font.id === Settings.font.value) {return font}});
+    document.querySelector(`div[data-isFontSetting="true"][title="${fontName.name}"]`).classList.remove("active");
     document.documentElement.style.setProperty("--font", font);
     Settings.font.value = font;
     localStorage.setItem("settings", JSON.stringify(Settings));
-    document.querySelector(`[onclick="setFont('` + font + `')"]`).classList.add("active");
+    let newFontName = Settings.font.values.find((font) => {if (font.id === Settings.font.value) {return font}});
+    document.querySelector(`div[data-isFontSetting="true"][title="${newFontName.name}"]`).classList.add("active");
 }
