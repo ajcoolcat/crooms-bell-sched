@@ -47,7 +47,7 @@ function fixMissingSettings() {
     }).then((res) => {
         return JSON.parse(res);
     }).then((Settings) => {
-        let SavedSettings = JSON.parse(window.localStorage.getItem("settings"));
+        let SavedSettings = JSON.parse(localStorage.getItem("settings"));
         if (SavedSettings) {
             for (const obj in Settings) {
                 if (SavedSettings[obj] === undefined) {
@@ -64,7 +64,7 @@ function fixMissingSettings() {
         } else {
             SavedSettings = Settings;
         }
-        window.localStorage.setItem("settings", JSON.stringify(SavedSettings));
+        localStorage.setItem("settings", JSON.stringify(SavedSettings));
         loadSettings();
     }).catch((e) => {
         console.error(e);
@@ -87,11 +87,11 @@ function loadSettings() {
         xhr.send();
         xhr.onload = function () {
             Settings = xhr.response;
-            window.localStorage.setItem("settings", JSON.stringify(Settings));
+            localStorage.setItem("settings", JSON.stringify(Settings));
         }
         startSched();
     } else {
-        Settings = JSON.parse(window.localStorage.getItem("settings"));
+        Settings = JSON.parse(localStorage.getItem("settings"));
         startSched();
     }
 }
@@ -356,8 +356,8 @@ function startSched(element) {
     function drawEventCountDown(currentEvent) {
         CurrentPeriodSeconds.style.color = "grey";
 
-        if (Settings.showSeconds === true) {CurrentPeriodSeconds.style.display = "inline";}
-        else {CurrentPeriodSeconds.style.display = "none";}
+        if (Settings.showSeconds !== true) {CurrentPeriodSeconds.style.display = "none";}
+        else {CurrentPeriodSeconds.style.display = "inline";}
 
         let now = new Date();
         let EventName = getEventName(currentEvent[2]);
