@@ -356,8 +356,8 @@ function startSched(element) {
     function drawEventCountDown(currentEvent) {
         CurrentPeriodSeconds.style.color = "grey";
 
-        if (Settings.showSeconds === true) {CurrentPeriodSeconds.style.display = "inline";}
-        else {CurrentPeriodSeconds.style.display = "none";}
+        if (Settings.showSeconds === false) {CurrentPeriodSeconds.style.display = "none";}
+        else {CurrentPeriodSeconds.style.display = "inline";}
 
         let now = new Date();
         let EventName = getEventName(currentEvent[2]);
