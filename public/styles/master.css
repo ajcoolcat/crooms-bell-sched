@@ -353,6 +353,21 @@ body > footer > div:first-child > div.popout {
     max-width: 400px;
 }
 
+body > footer > div > div > div.popout.submenu {
+    padding: 0;
+}
+
+body > footer > div > div > div.popout.submenu > a {
+    text-decoration: none !important;
+    color: var(--main) !important;
+    padding: 10px 15px;
+    display: block;
+}
+
+body > footer > div > div > div.popout.submenu > a:hover {
+    background-color: var(--sec);
+}
+
 body > footer > div:hover {
     span {background: var(--sec);}
     div {display: block;}
