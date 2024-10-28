@@ -49,6 +49,12 @@
             margin-bottom: 1rem;
             color: var(--warn);
         }
+
+        .footnote {
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +69,14 @@
             <label for="feed-update" class="hidden">Feed Update</label>
             <input id="feed-update" placeholder="Feed Update" autocomplete="off">
         </div>
+        <div style="padding: 0.2rem 0 0.4rem;">
+            <label for="feed-link" class="hidden">Feed Link</label>
+            <input id="feed-link" placeholder="Link (optional)" autocomplete="off">
+        </div>
+        <p class="footnote">
+            To add text styling, use [em][/em] for <em>italics</em>, [b][/b] for <b>bold</b>, and [rainbow][/rainbow]
+            for <span class="rainbow">rainbow</span>.
+        </p>
     </main>
     <footer>
         <button>Submit Feed Update</button>
@@ -72,8 +86,8 @@
 <script src="/tools/feed-updates/submission.js"></script>
 <script>
     document.body.onload = () => {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("feed-form").style.display = "block";
+        document.getElementById("loader").remove();
+        document.getElementById("feed-form").removeAttribute("style");
     }
 </script>
 </body>

@@ -37,6 +37,18 @@
       "check": false
     },
     {
+      "id": "petpet",
+      "name": "petpet Generator",
+      "link": "https://benisland.neocities.org/petpet/",
+      "check": false
+    },
+    {
+      "id": "ice-age-baby",
+      "name": "Kill Ice Age Baby",
+      "link": "https://kypello.itch.io/kill-the-ice-age-baby-adventure-the-game",
+      "check": true
+    },
+    {
       "id": "self",
       "name": "Crooms Bell Schedule",
       "link": "https://croomssched.tech",

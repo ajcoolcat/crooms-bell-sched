@@ -670,7 +670,7 @@ clippy *:not(.context-menu) {
     transition: none;
 }
 
-.rainbow {
+.rainbow, rainbow {
     animation: anim-rainbow 5s infinite;
 }
 

@@ -225,10 +225,6 @@ div.widget h3 {
     font-family: "GoogleEmoji", system-ui;
 }
 
-#feed-updates > li rainbow {
-    animation: anim-rainbow 5s infinite;
-}
-
 #surveys {
     user-select: none;
 }

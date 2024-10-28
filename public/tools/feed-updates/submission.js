@@ -1,5 +1,23 @@
 document.querySelector("#feed-form > footer > button").addEventListener("click", async () => {
     const feed = document.getElementById("feed-update");
+    const link = document.getElementById("feed-link");
+    const regex = /^https:?\/\/(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4])|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+[a-z\u00a1-\uffff]{2,}\.?)(?::\d{2,5})?(?:[\/?#]\S*)?$/i
+
+    function convertHTML(str) {
+        const htmlEntities = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&apos;",
+            "[": "<",
+            "]": ">"
+        };
+        return str
+            .split("")
+            .map(entity => htmlEntities[entity] || entity)
+            .join("");
+    }
 
     if (feed.value === "") {
         const error = document.createElement("p");
@@ -10,8 +28,26 @@ document.querySelector("#feed-form > footer > button").addEventListener("click",
         document.querySelector("button").addEventListener("click", () => {error.remove()});
         return;
     }
+    if (link.value && !regex.test(link.value)) {
+        const error = document.createElement("p");
+        error.innerText = "The link entered is not valid. Please enter a valid link starting with \"https://\".";
+        document.querySelector("main").appendChild(error);
+        error.classList.add("error");
+        feed.addEventListener("keydown", () => {error.remove()});
+        document.querySelector("button").addEventListener("click", () => {error.remove()});
+        return;
+    }
+    let data = convertHTML(feed.value);
+    if (link.value) {
+        data = "<a target=CBSHfeed href="+ link.value +">" + data + "</a>";
+    }
 
-    let data = feed.value;
+    console.log(data);
+    const error = document.createElement("p");
+    error.innerHTML = data;
+    document.querySelector("main").appendChild(error);
+    error.classList.add("error");
+    document.querySelector("button").addEventListener("click", () => {error.remove()});
 
     const request = new Request("https://api.croomssched.tech/feed", {
         method: "POST",
