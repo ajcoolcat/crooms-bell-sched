@@ -25,6 +25,12 @@
       "check": false
     },
     {
+      "id": "typing",
+      "name": "Typing Practice",
+      "link": "https://www.keybr.com",
+      "check": false
+    },
+    {
       "id": "suggestion",
       "name": "Suggest a Tool",
       "link": "/tools/suggest/",
