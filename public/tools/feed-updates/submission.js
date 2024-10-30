@@ -63,7 +63,7 @@ document.querySelector("#feed-form > footer > button").addEventListener("click",
     const response = await fetch(request);
     const status = await response.json();
 
-    if (status.data.error === "One of the following keys is missing or is empty in request body: 'name', 'link'") {
+    if (status.data.error === "One of the following keys is missing or is empty in request body: 'data'") {
         const error = document.createElement("p");
         error.innerText = "Please enter a Feed Update.";
         document.querySelector("main").appendChild(error);
