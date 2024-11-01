@@ -9,7 +9,8 @@ function poll() {
             if (window.top.location.href === window.location.href) {
                 window.location.replace("https://croomssched.tech?goto=poll");
             } else {
-                window.location.replace(link);
+                //window.location.replace(link);
+                window.location.replace("https://forms.gle/s25YCxD7pars3rx77");
             }
         } catch {
             window.location.replace(link);
