@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feed Update</title>
+    <style>
+        @import url("/styles/master.css");
+
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            user-select: none;
+        }
+
+        :root, body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #feed-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.5rem 1rem;
+            user-select: none;
+            margin: auto;
+            max-width: 400px;
+        }
+
+        #feed-form > main {
+            margin-bottom: 1rem;
+        }
+
+        #feed-form > main > div > label {
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        #feed-form > main > div > input {
+            font-size: inherit;
+            text-align: left;
+            width: 100%;
+        }
+
+        #feed-form > footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<img src="/spinner.svg" alt="Loading..." draggable="false" id="loader">
+<div id="feed-form" style="display: none;">
+    <header>
+        <h1>Vent Box</h1>
+        <p>Vent in the box, when you put in here stays on your computer until you refresh the page.</p>
+    </header>
+    <main>
+        <div style="padding: 0 0 0.4rem;">
+            <label for="vent" class="hidden">Vent Box</label>
+            <textarea id="vent" placeholder="Vent Box" autocomplete="off">
+        </div>
+    </main>
+</div>
+<script src="/scripts/commons.js"></script>
+<script src="/tools/feed-updates/submission.js"></script>
+<script>
+    document.body.onload = () => {
+        document.getElementById("loader").remove();
+        document.getElementById("feed-form").removeAttribute("style");
+    }
+</script>
+</body>
+</html>
