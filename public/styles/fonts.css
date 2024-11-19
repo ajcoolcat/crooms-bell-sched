@@ -137,3 +137,37 @@
     font-style: italic;
     src: url("https://cdn.croomssched.tech/fonts/Aptos/Aptos-Black-Italic.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: "Comic";
+    src: url("https://cdn.croomssched.tech/fonts/Comic/comic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Comic";
+    font-weight: bold;
+    src: url("https://cdn.croomssched.tech/fonts/Comic/comicbd.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Comic";
+    font-style: italic;
+    src: url("https://cdn.croomssched.tech/fonts/Comic/comici.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Comic";
+    font-style: italic;
+    font-weight: bold;
+    src: url("https://cdn.croomssched.tech/fonts/Comic/comicz.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DOS";
+    src: url("https://cdn.croomssched.tech/fonts/dos.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Wingdings";
+    src: url("https://cdn.croomssched.tech/fonts/wingding.ttf") format("truetype");
+}

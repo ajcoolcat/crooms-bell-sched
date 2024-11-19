@@ -21,10 +21,10 @@ function fixMissingSettings() {
             }
         }
 
-        for (let setting in Settings.font.values) {
-            if (Settings.font.value[setting] === undefined || Settings.font.value[setting] === null) {
+        for (let setting in DefaultSettings.font.values) {
+            if (Settings.font.values[setting] === undefined || Settings.font.values[setting] === null) {
                 try {
-                    Settings.font.value[setting] = DefaultSettings.font.value[setting];
+                    Settings.font.values[setting] = DefaultSettings.font.values[setting];
                     console.warn(setting.name + " was not found, so we added the font.");
                 } catch (e) {
                     console.error(setting.name + " could not be found, and was not reset because of an error.\n\nDetails: " +
