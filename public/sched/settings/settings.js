@@ -1,6 +1,7 @@
 let saveSettings = () => {}
 let Settings, DefaultSettings = {};
 let periodNameElements = [];
+const isWeb = determineIfInWeb();
 
 function fixMissingSettings() {
     fetch("/sched/defaultSettings.json").then(async (res) => {
@@ -32,7 +33,7 @@ function fixMissingSettings() {
                 }
             }
         }
-
+        if (!isWeb) document.querySelectorAll(".webOnly").forEach((element) => element.classList.add("hidden"));
         localStorage.setItem("settings", JSON.stringify(Settings));
         start();
     });
@@ -129,4 +130,9 @@ function resetSettings(answer) {
             '&nbsp;<button onclick="resetSettings(false)">No</button></footer>',
             3);
     }
+}
+
+function determineIfInWeb() {
+    try {return typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.includes('Electron') === false;}
+    catch {return true;}
 }
