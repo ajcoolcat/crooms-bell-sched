@@ -49,6 +49,12 @@
       "check": true
     },
     {
+      "id": "minion-hair",
+      "name": "Minion Real Haircuts",
+      "link": "https://www.yiv.com/Minion-Real-Haircuts",
+      "check": false
+    },
+    {
       "id": "self",
       "name": "Crooms Bell Schedule",
       "link": "https://croomssched.tech",
