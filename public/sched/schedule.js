@@ -24,6 +24,7 @@ let Settings = {
 let Schedules = {
     "days": {}
 };
+let titleUpdateLoop;
 
 function createCBSHSched(element) {
     const application = document.createElement("div");
@@ -36,6 +37,16 @@ function createCBSHSched(element) {
         return JSON.parse(res).data;
     }).then((res) => {
         Schedules = res;
+        if ((location.hostname === "croomssched.tech" || location.hostname === "localhost") && (location.pathname === "/" || location.pathname === "")) {
+            window.addEventListener("blur", () =>
+                titleUpdateLoop = setInterval(
+                    () => document.title = CBSHSched.period.remainingTime + " | Crooms Bell Schedule", 1000)
+            );
+            window.addEventListener("focus", () => {
+                document.title = "Crooms Bell Schedule";
+                clearInterval(titleUpdateLoop);
+            });
+        }
     }).finally(() => {
         fixMissingSettings();
     });
