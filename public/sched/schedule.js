@@ -248,6 +248,7 @@ function startSched(element) {
     */
 
     let currentDay = null;
+    let startDate = new Date().getDate();
 
     //main loop is called twice before being used in setInterval so that the text doesn't say "Loading..." or the current period text isn't wrong for 2 seconds.
     mainLoop();
@@ -261,6 +262,7 @@ function startSched(element) {
         let periodMsg;
         drawDateTime();
         let now = new Date();
+        if (now.getDate() !== startDate) location.reload()
 
         currentDay = Schedules.schedule[current_lunch - 1];
         periodMsg = Schedules.msg;
