@@ -173,7 +173,7 @@ const loadSurveys = (surveys) => {
     document.querySelector("#survey-list").innerHTML = ""
     surveys.forEach((survey) => {
         let link = document.createElement("a");
-        link.innerHTML = survey.name;
+        link.innerText = survey.name;
         link.href = survey.link;
         link.target = "CBSH-survey";
 
