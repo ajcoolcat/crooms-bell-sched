@@ -1,0 +1,44 @@
+@import url("/styles/master.css");
+
+#wrapper {
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+#wrapper > header {
+    padding-bottom: 2rem;
+    text-align: center;
+    user-select: none;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 539px) {
+    #wrapper > header {
+        font-size: unset;
+    }
+}
+
+#wrapper > header > * {
+    line-height: 1.1;
+}
+
+#wrapper > header > h1 {
+    color: var(--main);
+}
+
+#wrapper > footer {
+    padding-top: 2rem;
+    text-align: center;
+    user-select: none;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+#wrapper dl > dt {
+    font-weight: bold;
+}
+
+#wrapper dl > dd {
+    margin-inline-start: 20px;
+}
