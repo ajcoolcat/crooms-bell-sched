@@ -44,7 +44,7 @@
     },
     {
       "id": "ice-age-baby",
-      "name": "Kill Ice Age Baby",
+      "name": "Kill Ice Age Baby (Opens in new tab)",
       "link": "https://kypello.itch.io/kill-the-ice-age-baby-adventure-the-game",
       "check": true
     },
@@ -53,6 +53,24 @@
       "name": "Minion Real Haircuts",
       "link": "https://www.yiv.com/Minion-Real-Haircuts",
       "check": false
+    },
+    {
+      "id": "diep",
+      "name": "Diep.io (Opens in new tab)",
+      "link": "https://diep.io",
+      "check": true
+    },
+    {
+      "id": "powerline",
+      "name": "Powerline.io",
+      "link": "https://powerline.io/",
+      "check": false
+    },
+    {
+      "id": "fard",
+      "name": "Fun Platformer Games (Opens in new tab)",
+      "link": "https://fard-games-entertainment.itch.io/",
+      "check": true
     },
     {
       "id": "self",
