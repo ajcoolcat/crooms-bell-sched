@@ -450,6 +450,8 @@ function startSched(element) {
             EventName = "After School";
         } else if (EventName === 106) {
             EventName = "End";
+        } else if (EventName === 107) {
+            EventName = "Break";
         } else if (EventName === 110) {
             EventName = "PSAT/SAT";
         } else {
