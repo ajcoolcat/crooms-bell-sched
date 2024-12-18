@@ -40,6 +40,7 @@
           href="https://cdn.croomssched.tech/data/a686c29b-4479-45e8-870f-077f6ec47c5f/assets/clippy.css">
     <!-- End Clippy -->
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/styles/schedule.css">
     <link rel="stylesheet" type="text/css" href="/styles/icons.css">
     <link rel="stylesheet" type="text/css" href="/styles/tabs.css">
 </head>
@@ -76,6 +77,15 @@
         <i><q id="senseless"></q></i>
     </div>
     <div id="widget-board" class="active">
+        <div id="schedule" class="widget">
+            <!-- Temporary Ad Location -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7615151731467786"
+                 data-ad-slot="8739090285"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
         <div id="lunch" class="widget">
             <div id="lunchContainer">
                 <div id="DailyLunchImageContainer">
@@ -209,15 +219,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="more" class="widget">
-            <!-- Temporary Ad Location -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-7615151731467786"
-                 data-ad-slot="8739090285"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
         </div>
     </div>
     <div id="teacherquote">This week's teacher quote is...
@@ -355,9 +356,10 @@
 <script src="/scripts/index.js"></script>
 <script src="/scripts/commons.js"></script>
 <script src="/scripts/fetch.js"></script>
-<script src="/scripts/downloader.js"></script>
 <script src="/sched/schedule.js"></script>
+<script src="/scripts/downloader.js"></script>
 <script src="/scripts/tab-mgr.js"></script>
+<script src="/scripts/schedule.js"></script>
 <script src="/scripts/home-tabs.js"></script>
 <script src="/scripts/alerts/viewer.js"></script>
 <script src="https://croomssched.statuspage.io/embed/script.js"></script>
@@ -374,5 +376,6 @@
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<!-- <script>createScheduleTable(document.querySelector("#schedule > div"))</script> -->
 </body>
 </html>
